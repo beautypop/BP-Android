@@ -4,7 +4,7 @@
     <string name="env">prod</string>
     <string name="facebook_app_id">195306590831308</string>
     <string name="gcm_project_id"></string>
-    <string name="base_url">http://www.beautypop.hk</string>
+    <string name="base_url">http://www.beautypop.com.hk</string>
     <string name="base_url_dev">http://192.168.1.133:9000</string>
 
     <!-- Crash report -->
