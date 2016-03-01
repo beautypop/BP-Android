@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.beautypop">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.beautypop.gcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission
+        android:name="com.beautypop.gcm.permission.C2D_MESSAGE" />
+
+    <application
+        android:name="com.beautypop.app.AppController"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:hardwareAccelerated="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <meta-data android:name="com.beautypop.util.GlideConfiguration" android:value="GlideModule"/>
+
+        <activity
+            android:name="com.beautypop.activity.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.beautypop.activity.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="false" />
+        <activity
+            android:name="com.beautypop.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.SignupActivity"
+            android:screenOrientation="portrait"  />
+        <activity
+            android:name="com.beautypop.activity.SignupDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.ForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.TermsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.PrivacyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.SelectImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.image.crop.CropImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.beautypop.activity.CategoryActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.beautypop.activity.NewPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.EditPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.ProductActivity"
+            android:screenOrientation="portrait">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="baby-box.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="baby-box.com.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="www.baby-box.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="www.baby-box.com.hk" android:pathPrefix="/product"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.beautypop.activity.FullscreenImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.CommentsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.UserProfileActivity"
+            android:screenOrientation="portrait">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!--data android:scheme="http" android:host="baby-box.hk" android:pathPrefix="/profile"/>
+                <data android:scheme="http" android:host="baby-box.com.hk" android:pathPrefix="/profile"/>
+                <data android:scheme="http" android:host="www.baby-box.hk" android:pathPrefix="/profile"/>
+                <data android:scheme="http" android:host="www.baby-box.com.hk" android:pathPrefix="/profile"/-->
+                <data android:scheme="http" android:host="baby-box.hk" android:pathPrefix="/seller"/>
+                <data android:scheme="http" android:host="baby-box.com.hk" android:pathPrefix="/seller"/>
+                <data android:scheme="http" android:host="www.baby-box.hk" android:pathPrefix="/seller"/>
+                <data android:scheme="http" android:host="www.baby-box.com.hk" android:pathPrefix="/seller"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.beautypop.activity.EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.GameBadgesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.FollowersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.FollowingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.ConversationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.ProductConversationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.MessageListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.beautypop.activity.SellerRulesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NotificationSettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdminNewUsersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdminLatestLoginsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdminConversationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdminMessageListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ReportPostActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+
+        <activity android:name="org.acra.CrashReportDialog"
+            android:theme="@android:style/Theme.Dialog"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true" />
+
+        <receiver
+            android:name="com.beautypop.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.beautypop" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.beautypop.gcm.GCMNotificationIntentService" />
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+    </application>
+
+</manifest>
