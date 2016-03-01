@@ -101,10 +101,10 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="baby-box.hk" android:pathPrefix="/product"/>
-                <data android:scheme="http" android:host="baby-box.com.hk" android:pathPrefix="/product"/>
-                <data android:scheme="http" android:host="www.baby-box.hk" android:pathPrefix="/product"/>
-                <data android:scheme="http" android:host="www.baby-box.com.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="beautypop.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="beautypop.com.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="www.beautypop.hk" android:pathPrefix="/product"/>
+                <data android:scheme="http" android:host="www.beautypop.com.hk" android:pathPrefix="/product"/>
             </intent-filter>
         </activity>
 
@@ -121,14 +121,14 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!--data android:scheme="http" android:host="baby-box.hk" android:pathPrefix="/profile"/>
-                <data android:scheme="http" android:host="baby-box.com.hk" android:pathPrefix="/profile"/>
-                <data android:scheme="http" android:host="www.baby-box.hk" android:pathPrefix="/profile"/>
-                <data android:scheme="http" android:host="www.baby-box.com.hk" android:pathPrefix="/profile"/-->
-                <data android:scheme="http" android:host="baby-box.hk" android:pathPrefix="/seller"/>
-                <data android:scheme="http" android:host="baby-box.com.hk" android:pathPrefix="/seller"/>
-                <data android:scheme="http" android:host="www.baby-box.hk" android:pathPrefix="/seller"/>
-                <data android:scheme="http" android:host="www.baby-box.com.hk" android:pathPrefix="/seller"/>
+                <!--data android:scheme="http" android:host="beautypop.hk" android:pathPrefix="/profile"/>
+                <data android:scheme="http" android:host="beautypop.com.hk" android:pathPrefix="/profile"/>
+                <data android:scheme="http" android:host="www.beautypop.hk" android:pathPrefix="/profile"/>
+                <data android:scheme="http" android:host="www.beautypop.com.hk" android:pathPrefix="/profile"/-->
+                <data android:scheme="http" android:host="beautypop.hk" android:pathPrefix="/seller"/>
+                <data android:scheme="http" android:host="beautypop.com.hk" android:pathPrefix="/seller"/>
+                <data android:scheme="http" android:host="www.beautypop.hk" android:pathPrefix="/seller"/>
+                <data android:scheme="http" android:host="www.beautypop.com.hk" android:pathPrefix="/seller"/>
             </intent-filter>
         </activity>
 

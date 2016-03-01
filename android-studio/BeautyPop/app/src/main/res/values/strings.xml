@@ -110,7 +110,6 @@
     <string name="signup_details_error_name_not_entered">請填寫姓名</string>
     <string name="signup_details_error_location_not_entered">請選擇地區</string>
     <string name="signup_details_error_status_not_entered">請選擇您現在是</string>
-    <string name="signup_details_error_baby_not_entered">請填寫小寶寶性別，出生日期</string>
 
     <!-- Main -->
     <string name="tabset_home">逛逛</string>

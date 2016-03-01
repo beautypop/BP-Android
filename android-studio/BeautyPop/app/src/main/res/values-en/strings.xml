@@ -110,7 +110,6 @@
     <string name="signup_details_error_name_not_entered">Please enter your name</string>
     <string name="signup_details_error_location_not_entered">Please select location</string>
     <string name="signup_details_error_status_not_entered">Please select your status</string>
-    <string name="signup_details_error_baby_not_entered">Please enter gender and birthday of you baby</string>
 
     <!-- Main -->
     <string name="tabset_home">Explore</string>
