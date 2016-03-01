@@ -67,7 +67,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:id="@+id/mbLoginIcon"
-                        android:src="@drawable/ic_bb_logo" />
+                        android:src="@drawable/ic_bp_logo" />
                 </LinearLayout>
 
             </LinearLayout>
