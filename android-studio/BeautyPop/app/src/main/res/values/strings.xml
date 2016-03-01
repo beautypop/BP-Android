@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="env">prod</string>
+    <string name="facebook_app_id">195306590831308</string>
+    <string name="gcm_project_id"></string>
+    <string name="base_url">http://www.beautypop.hk</string>
+    <string name="base_url_dev">http://192.168.1.133:9000</string>
+
+    <!-- Crash report -->
+    <string name="crash_toast_text">對不起！BeautyPop 發生問題要退出</string>
+    <string name="crash_dialog_title">BeautyPop 要退出</string>
+    <string name="crash_dialog_text">對不起! BeautyPop 發生問題要退出，請幫我們修理問題，提供資訊報告給我們</string>
+    <string name="crash_dialog_comment_prompt">按OK寄出 (報告只包括問題資訊)</string>
+    <string name="crash_dialog_ok_toast">謝謝！</string>
+
+    <!-- Settings -->
+    <string name="app_name">BeautyPop</string>
+    <string name="app_desc">BeautyPop - Sell your style!</string>
+    <string name="app_version">版本:</string>
+    <string name="request_upgrade">BeautyPop 新版本已上線！更多新功能為你而設！</string>
+    <string name="request_upgrade_confirm">立即安裝</string>
+    <string name="request_upgrade_cancel">取消</string>
+    <string name="lang_zh">中文</string>
+    <string name="lang_en">English</string>
+    <string name="lang_desc">語言設定:</string>
+    <string name="lang_confirm">確定轉換語言?\n(將重新開啟 BeautyPop)</string>
+    <string name="lang_complete">語言轉換成功並將於下一次生效</string>
+    <string name="notification_settings">通知設定</string>
+    <string name="notifications">通知設定</string>
+    <string name="notifications_email">EMAIL NOTIFICATIONS</string>
+    <string name="notifications_email_new_post">New product listed</string>
+    <string name="notifications_email_new_chat">New chat</string>
+    <string name="notifications_email_new_comment">New comment on your product listings</string>
+    <string name="notifications_email_new_promo">New promotions</string>
+    <string name="notifications_push">PUSH NOTIFICATIONS</string>
+    <string name="notifications_push_new_chat">New chat</string>
+    <string name="notifications_push_new_comment">New comment on your product listings</string>
+    <string name="notifications_push_new_follow">New follower</string>
+    <string name="notifications_push_new_feedback">New feedback</string>
+    <string name="notifications_push_new_promo">New promotions</string>
+
+    <string name="spinner_select">-選擇-</string>
+    <string name="clipboard_text_label">複制信息</string>
+    <string name="connection_timeout_title">網路問題</string>
+    <string name="connection_timeout_message">網路出現問題。請檢查是否已經上缐</string>
+    <string name="url_copy_success">連結已複制</string>
+    <string name="url_copy_failed">連結不能複制</string>
+    <string name="text_copy_success">信息已複制</string>
+    <string name="text_copy_failed">信息不能複制</string>
+    <string name="comment_copy_success">留言已複制</string>
+    <string name="comment_copy_failed">留言不能複制</string>
+    <string name="report_wrong_cat">錯誤商品分類</string>
+    <string name="report_counterfeit">仿冒品</string>
+    <string name="report_repeat">重覆刊登</string>
+    <string name="report_spam">不正當促銷手法</string>
+    <string name="report_prohibited">違反刊登規則</string>
+    <string name="report_other">其他</string>
+    <string name="report_post">檢舉商品</string>
+    <string name="report_this_post">檢舉這個商品</string>
+    <string name="report_post_confirm">檢舉這個商品?</string>
+    <string name="report_post_success">成功檢舉商品</string>
+    <string name="report_post_failed">不能檢舉商品，請稍後重試</string>
+    <string name="report_post_other_title">請列明檢舉商品原因</string>
+    <string name="report_post_other_hint">檢舉原因...</string>
+
+    <!-- Login / Signup -->
+    <string name="login">登入</string>
+    <string name="login_forgot_password">忘記密碼</string>
+    <string name="login_new_signup">新會員注册</string>
+    <string name="login_error_title">登入錯誤</string>
+    <string name="login_error_message">登入錯誤。請重試</string>
+    <string name="login_id_error_message">登入電郵或密碼錯誤</string>
+    <string name="signup">註冊</string>
+    <string name="signup_fb_title">以 Facebook 註冊\n(無需驗證電郵，一分鐘完成)</string>
+    <string name="signup_fb_note">註: BeautyPop 絕對不會發佈或留言到您的 Facebook 帳戶中</string>
+    <string name="signup_email_title">以電郵註冊</string>
+    <string name="signup_lastname_hint">姓</string>
+    <string name="signup_firstname_hint">名</string>
+    <string name="signup_email_hint">您的電郵</string>
+    <string name="signup_password_hint">密碼</string>
+    <string name="signup_password_confirm_hint">再次輸入密碼</string>
+    <string name="signup_privacy">私隱權聲明</string>
+    <string name="signup_terms">使用條款細則</string>
+    <string name="signup_success_title">歡迎加入 BeautyPop! 我們已經將認證電郵發送到</string>
+    <string name="signup_success_title_2">請點擊電郵中的連結即可使用帳號。</string>
+    <string name="signup_success_note">註: 若您沒有收到會員認證電郵，請檢查廣告信件匣，部分電郵信箱會誤判我們所發出的郵件為廣告電郵</string>
+    <string name="signup_error_email_unverified">電郵尚未認證，請登入電郵並按認證連結 - </string>
+    <string name="signup_error_email_already_exists">電郵已被登記</string>
+    <string name="signup_error_password_min_char">密碼最小4個字</string>
+    <string name="signup_error_password_not_identical">密碼不同</string>
+    <string name="signup_error_please_check">請檢查輸入資料</string>
+    <string name="signup_error_field_required">必須填寫</string>
+    <string name="signup_error_email_format">電郵格式不對</string>
+    <string name="signup_error_displayname_no_space">顯示名稱不可以有空格</string>
+    <string name="signup_error_displayname_format">顯示名稱可以輸入英文字母、數字 和 _ . -</string>
+    <string name="signup_error_displayname_min_max_char">顯示名稱最小2個字、最多20個字</string>
+
+    <string name="signup_details_greeting">歡迎登入 BeautyPop</string>
+    <string name="signup_details_displayname_title">顯示名稱 : </string>
+    <string name="signup_details_displayname_note">您的顯示名稱，選用一個您喜愛的暱稱</string>
+    <string name="signup_details_location_title">地區 : </string>
+    <string name="signup_details_location_note">BeautyPop 會按地區推介商品給您</string>
+    <string name="signup_details_location">-地區-</string>
+    <string name="signup_details_complete">完成!</string>
+    <string name="signup_details_error_info">請檢查已輸入資料。再重試</string>
+    <string name="signup_details_error_displayname_already_exists">已被選用。請選擇另一個顯示名稱重試</string>
+    <string name="signup_details_error_displayname_not_entered">請填寫顯示名稱</string>
+    <string name="signup_details_error_displayname_format">顯示名稱格式不對</string>
+    <string name="signup_details_error_name_not_entered">請填寫姓名</string>
+    <string name="signup_details_error_location_not_entered">請選擇地區</string>
+    <string name="signup_details_error_status_not_entered">請選擇您現在是</string>
+    <string name="signup_details_error_baby_not_entered">請填寫小寶寶性別，出生日期</string>
+
+    <!-- Main -->
+    <string name="tabset_home">逛逛</string>
+    <string name="tabset_seller">賣家</string>
+    <string name="tabset_activity">動態</string>
+    <string name="tabset_profile">我的</string>
+
+    <!-- Tips -->
+    <string name="home_explore_tips">所有商品都是 BeautyPop 用家刊登\n發掘心目中最喜愛商品！</string>
+    <string name="home_following_tips">關注你喜愛的賣家，發掘最新商品</string>
+    <string name="category_tips">以不同分類搜尋商品</string>
+    <string name="my_profile_tips">按 \"Sell\" 刊登商品\n立即成為 BeautyPop 賣家！</string>
+
+    <!-- Home tab -->
+    <string name="main_tab_seller">推薦賣家</string>
+    <string name="main_tab_following">我的關注</string>
+    <string name="suggest_for_you">推介給你</string>
+    <string name="follow">+ 關注</string>
+    <string name="following">關注中</string>
+    <string name="followings">關注中</string>
+    <string name="followers">關注我</string>
+    <string name="user_followers">關注</string>
+    <string name="products">商品</string>
+
+    <!-- Activity tab -->
+    <string name="no_activity">~ 暫沒有動態 ~</string>
+    <string name="activity_first_post">歡迎成為 BeautyPop 賣家！你已成功刊登第一個商品:</string>
+    <string name="activity_posted">刊登了新商品:</string>
+    <string name="activity_commented">在商品留言:</string>
+    <string name="activity_liked">喜歡你的商品。</string>
+    <string name="activity_followed">關注了你。</string>
+    <string name="activity_sold">已賣出商品。</string>
+    <string name="activity_game_badge">恭喜你！你已獲得徽章:</string>
+
+    <!-- Category page -->
+    <string name="category">商品分類</string>
+    <string name="filter_popular">熱門商品</string>
+    <string name="filter_newest">最新上架</string>
+    <string name="filter_price_low_high">$ ⇾ $$</string>
+    <string name="filter_price_high_low">$$ ⇾ $</string>
+    <string name="filter_all">所有商品</string>
+    <string name="filter_new">全新</string>
+    <string name="filter_used">二手</string>
+
+    <!-- Product page -->
+    <string name="view_shop">看看商店</string>
+    <string name="last_active">上線</string>
+    <string name="post_details">商品詳情:</string>
+    <string name="image">照片</string>
+    <string name="like">喜歡</string>
+    <string name="likes">喜歡</string>
+    <string name="comments">個留言</string>
+    <string name="chat">發問</string>
+    <string name="buy">立即購買</string>
+    <string name="buy_again">再購買</string>
+    <string name="view_chats">查看訊息</string>
+    <string name="mark_as_sold">標為已售</string>
+    <string name="sold_text">此商品已售</string>
+    <string name="sold">已售</string>
+    <string name="sold_view_chats">已售 - 查看訊息</string>
+    <string name="listed">已刊登</string>
+    <string name="more_products">其他商品</string>
+    <string name="comment_bar_hint"></string>
+    <string name="no_products">~ 暫沒有商品 ~</string>
+    <string name="no_product_comments">~ 沒有留言 ~</string>
+
+    <string name="edit_post_action">更新</string>
+    <string name="new_post_action">刊登</string>
+    <string name="edit_post_actionbar_title">更新商品</string>
+    <string name="new_post_actionbar_title">刊登商品</string>
+    <string name="new_post">發出</string>
+    <string name="new_post_price">價格($):</string>
+    <string name="new_post_price_hint">請輸入價格</string>
+    <string name="new_post_original_price">原價($):</string>
+    <string name="new_post_original_price_hint">請輸入原價</string>
+    <string name="new_post_condition">商品狀況:</string>
+    <string name="new_post_to_popup_title">請選擇分類</string>
+    <string name="new_post_to">分類:</string>
+    <string name="new_post_select_category">請選擇分類</string>
+    <string name="new_post_title">你要賣的是?</string>
+    <string name="new_post_body">商品詳情</string>
+    <string name="new_post_max_images">最多可加入%1$d張圖</string>
+    <string name="post_success">成功%1$s商品</string>
+    <string name="post_failed">暫時不能%1$s商品，請稍後重試</string>
+
+    <string name="new_with_tag">全新(未開封/有價錢牌)</string>
+    <string name="new_without_tag">全新(已開封/沒有價錢牌)</string>
+    <string name="used">二手</string>
+
+    <string name="new_post_location">Location:</string>
+    <string name="field_optional">(Optional)</string>
+    <string name="location_actionbar_title">Location</string>
+    <string name="location_search_hint">Enter location</string>
+
+    <string name="new_post_free_delivery">免郵</string>
+    <string name="new_post_country">國家</string>
+
+    <string name="post_delete_confirm">確定刪除?</string>
+    <string name="post_sold_confirm">商品更改為已售後，不會收到買家訊息。\n確定商品已售?</string>
+    <string name="post_not_found">尋找不到此商品。可能已被刪除</string>
+    <string name="post_delete_success">成功刪除</string>
+    <string name="post_delete_failed">暫時不能刪除，請稍後重試</string>
+    <string name="comment_delete_success">成功刪除</string>
+    <string name="comment_delete_failed">暫時不能刪除，請稍後重試</string>
+    <string name="post_actionbar_title">商品詳情</string>
+    <string name="comment_success">成功回覆話題</string>
+    <string name="comment_failed">暫時不能回覆話題，請稍後重試</string>
+    <string name="photo_select_title">請選擇商品照片</string>
+    <string name="photo_select_gallery">從相簿選擇</string>
+    <string name="photo_select_camera">使用相機拍攝</string>
+    <string name="photo_select">請選擇商品照片</string>
+    <string name="photo_not_found">尋找不到照片</string>
+    <string name="photo_size_too_big">照片太大，請重試或選其他照片</string>
+    <string name="timeago_just_now">剛剛</string>
+    <string name="timeago_min">分鐘前</string>
+    <string name="timeago_hrs">小時前</string>
+    <string name="timeago_yesterday">昨天</string>
+    <string name="timeago_days">日前</string>
+    <string name="timeago_weeks">星期前</string>
+    <string name="timeago_months">個月前</string>
+    <string name="timeago_years">年前</string>
+    <string name="delete">刪除</string>
+    <string name="list_loading">加載中。。。</string>
+    <string name="list_loading_error">加載出現問題。請檢查網路再重試</string>
+    <string name="list_loaded_all">- 已加載全部 -</string>
+
+    <!-- Profile tab -->
+    <string name="settings_actionbar_title">設定</string>
+    <string name="logout">登出</string>
+    <string name="my_profile_actionbar_title"></string>
+    <string name="user_profile_actionbar_title">主頁</string>
+    <string name="edit_user_info">更新個人資料</string>
+    <string name="edit_user_info_login_method">登入方式 : </string>
+    <string name="edit_user_info_email">電郵 : </string>
+    <string name="edit_user_info_aboutme">個人簡介 : </string>
+    <string name="edit_user_info_name">姓名 : </string>
+    <string name="edit_user_info_save">儲存資料</string>
+
+    <string name="edit_cover_image">更改封面照片</string>
+    <string name="edit_profile_image">更改個人照片</string>
+
+    <string name="no_messages">~ 沒有訊息 ~</string>
+    <string name="no_followers">~ 暫沒有關注 ~</string>
+    <string name="no_followings">~ 暫沒有關注 ~</string>
+
+    <string name="pm_actionbar_title">訊息</string>
+    <string name="pm_max_images">最多可加入%1$d張圖</string>
+    <string name="pm_load_more">加載訊息</string>
+    <string name="pm_start_failed">暫時不能開啟訊息，請稍後重試</string>
+    <string name="pm_send_failed">暫時不能發出訊息，請稍後重試</string>
+    <string name="pm_buy">買</string>
+    <string name="pm_sell">賣</string>
+    <string name="pm_sold">已售</string>
+
+    <string name="pm_buy_message">購買商品</string>
+    <string name="pm_cancelled_message">購買已取消</string>
+    <string name="pm_accepted_message">購買已被接受</string>
+    <string name="pm_declined_message">購買不被接受</string>
+
+    <string name="pm_order_buy_text">有興趣？</string>
+    <string name="pm_order_buy">購買商品</string>
+    <string name="pm_order_buy_again">再購買</string>
+    <string name="pm_order_cancel_text">已下訂單</string>
+    <string name="pm_order_cancel">取消購買</string>
+    <string name="pm_order_cancelled">購買已被取消</string>
+    <string name="pm_order_new_text">你有新訂單</string>
+    <string name="pm_order_accept">接受購買</string>
+    <string name="pm_order_accepted_for_buyer">賣家已接受你的購買</string>
+    <string name="pm_order_accepted_for_seller">購買已被接受</string>
+    <string name="pm_order_decline">不接受購買</string>
+    <string name="pm_order_declined_for_buyer">賣家不接受購買</string>
+    <string name="pm_order_declined_for_seller">購買不被接受</string>
+    <string name="pm_order_failed">暫時不能購買，請稍後重試</string>
+    <string name="pm_order_already">你已發出購買訂單，請等待回覆或聯絡賣家</string>
+    <string name="pm_order_already_closed">購買訂單已完成，如有問題請聯絡賣家</string>
+    <string name="pm_order_buy_confirm">購買商品\n出價給賣家</string>
+    <string name="pm_order_cancel_confirm">取消購買商品?</string>
+    <string name="pm_order_accept_confirm">接受購買?</string>
+    <string name="pm_order_decline_confirm">不接受購買?</string>
+
+    <!-- Game -->
+    <string name="game_badges">徽章</string>
+    <string name="game_my_badges">我的徽章</string>
+    <string name="game_badges_desc">完成每個任務後即可獲得徽章\n立即開始任務，收集徽章！</string>
+    <string name="game_badges_awarded_already">[你已獲得此徽章！]</string>
+
+    <!-- Sharing -->
+    <string name="sharing">分享</string>
+    <string name="sharing_fb">分享到 Facebook</string>
+    <string name="sharing_seller_msg_prefix">看看 BeautyPop 商店</string>
+    <string name="sharing_app_not_installed"> 沒有安裝。</string>
+    <string name="sharing_message_note">(分享自 BeautyPop App 立即下載全新 Android App)</string>
+
+    <!-- Seller -->
+    <string name="seller_url">商店連結</string>
+    <string name="seller_rules_title">賣家需知</string>
+
+    <!-- Dialog -->
+    <string name="cancel_post">退出%1$s商品？</string>
+    <string name="exit_app">退出 BeautyPop？</string>
+    <string name="logout_message">確定登出 BeautyPop？</string>
+    <string name="delete_account_message">確定刪除帳戶？</string>
+    <string name="yes">是</string>
+    <string name="no">取消</string>
+    <string name="confirm">確定</string>
+    <string name="cancel">取消</string>
+
+    <!-- Validation -->
+    <string name="invalid_post_no_photo">請上載照片</string>
+    <string name="invalid_post_title_empty">請填寫標題</string>
+    <string name="invalid_post_desc_empty">請填寫內容</string>
+    <string name="invalid_post_price_empty">請填寫價格</string>
+    <string name="invalid_post_price_not_number">價格需為數字</string>
+    <string name="invalid_post_price_negative">價格不可以小於$0</string>
+    <string name="invalid_post_original_price_less_than_price">原價不可以小於現價</string>
+    <string name="invalid_post_condition_empty">請選擇商品狀況</string>
+    <string name="invalid_comment_body_empty">請填寫內容</string>
+
+    <!-- Image processing library -->
+    <string name="no_media">找不到你的相簿</string>
+    <string name="crop__saving">儲存照片中。。。</string>
+    <string name="crop__wait">請等候。。。</string>
+    <string name="crop__pick_error">找不到照片</string>
+    <string name="crop__done">完成！</string>
+    <string name="crop__cancel">取消</string>
+
+    <!-- GCM -->
+    <string name="gcm_new_conversations">%1$d個新訊息</string>
+    <string name="gcm_new_comments">%1$d個新留言</string>
+    <string name="gcm_new_followers">%1$d個新關注</string>
+
+    <!-- Admin -->
+    <string name="admin">Admin</string>
+    <string name="id">ID:</string>
+    <string name="score">Score:</string>
+    <string name="score_adjust">Score Adjust:</string>
+    <string name="score_adjust_success">Score Adjust by %1$s</string>
+    <string name="score_adjust_reset_success">Score Adjust Reset to 0</string>
+    <string name="score_adjust_failure">Score Adjust Failure:\n%1$s</string>
+
+    <string name="admin_new_users">New Users</string>
+    <string name="admin_latest_logins">Latest Logins</string>
+    <string name="admin_delete_account">Delete</string>
+    <string name="admin_delete_account_confirm">Confirm delete account?</string>
+    <string name="admin_delete_account_success">Account deleted</string>
+    <string name="admin_delete_account_failed">Account delete failed</string>
+    <string name="admin_latest_conversations">Latest Chats</string>
+</resources>

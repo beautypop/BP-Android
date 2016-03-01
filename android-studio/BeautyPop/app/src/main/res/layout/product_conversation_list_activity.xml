@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/feed_bg"
+    tools:context=".MainActivity">
+
+    <ProgressBar
+        android:id="@+id/spinner"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_spinner"></ProgressBar>
+
+    <TextView
+        android:id="@+id/tipText"
+        android:layout_centerHorizontal="true"
+        android:text="@string/no_messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_gray"
+        android:textSize="16dp"
+        android:layout_marginTop="65dp"
+        android:visibility="invisible" />
+
+    <include layout="@layout/view_actionbar"
+        android:id="@+id/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="@color/view_bg"
+        android:id="@+id/postLayout"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/postImageLayout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/postImage"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm_buy"
+                android:id="@+id/buyText"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textSize="12dp"
+                android:background="@color/pink"
+                android:textColor="@color/white"
+                android:layout_marginTop="-5dp"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm_sell"
+                android:id="@+id/sellText"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textSize="12dp"
+                android:background="@color/green"
+                android:textColor="@color/white"
+                android:layout_marginTop="-5dp"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm_sold"
+                android:id="@+id/soldText"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textSize="12dp"
+                android:background="@color/gray"
+                android:textColor="@color/white"
+                android:layout_marginTop="-5dp"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/postTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_gray_2"
+            android:textSize="18dp"
+            android:layout_toRightOf="@+id/postImageLayout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="7dp" />
+
+        <TextView
+            android:id="@+id/postPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green"
+            android:textSize="16dp"
+            android:layout_toRightOf="@+id/postImageLayout"
+            android:layout_below="@+id/postTitleText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar1"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/conversationList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/bar1"
+        android:dividerHeight="0.8dp"
+        android:layout_below="@+id/postLayout" />
+
+</RelativeLayout>

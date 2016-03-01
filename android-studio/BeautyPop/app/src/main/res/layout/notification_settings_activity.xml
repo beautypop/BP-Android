@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_actionbar"
+        android:id="@+id/toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notifications_email"
+        android:singleLine="true"
+        android:textColor="@color/dark_gray_2"
+        android:textSize="14dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.8dp"
+        android:background="@drawable/bar1"
+        android:id="@+id/bar1"
+        android:layout_marginTop="5dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/emailNewPostLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_email_new_post"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailNewPostCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar11" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/emailNewChatLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_email_new_chat"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailNewChatCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar12" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/emailNewCommentLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_email_new_comment"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailNewCommentCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar13" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/emailNewPromoLayout"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_email_new_promo"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailNewPromoCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.8dp"
+        android:background="@drawable/bar1"
+        android:id="@+id/bar2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notifications_push"
+        android:singleLine="true"
+        android:textColor="@color/dark_gray_2"
+        android:textSize="14dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.8dp"
+        android:background="@drawable/bar1"
+        android:id="@+id/bar3"
+        android:layout_marginTop="5dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/pushNewChatLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_push_new_chat"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pushNewChatCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar21" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/pushNewCommentLayout"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_push_new_comment"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pushNewCommentCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar22" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/pushNewFollowLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_push_new_follow"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pushNewFollowCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar23" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/pushNewFeedbackLayout"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_push_new_feedback"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pushNewFeedbackCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.8dp"
+            android:background="@drawable/bar1"
+            android:id="@+id/bar24" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="10"
+            android:id="@+id/pushNewPromoLayout"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/notifications_push_new_promo"
+                android:layout_weight="5"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_2"
+                android:textSize="16dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pushNewPromoCheckBox"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="false"
+                android:button="@drawable/checkbox" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.8dp"
+        android:background="@drawable/bar1"
+        android:id="@+id/bar4"
+        android:focusableInTouchMode="false" />
+
+</LinearLayout>

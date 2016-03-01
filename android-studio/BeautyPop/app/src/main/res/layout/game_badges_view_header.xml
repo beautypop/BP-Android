@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_weight="20"
+        android:id="@+id/detailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageView
+            android:scaleType="fitCenter"
+            android:id="@+id/gameBadgeImage"
+            android:layout_width="60dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/game_badge_mascot"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/descText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/dark_gray"
+                android:textSize="16dp"
+                android:text="@string/game_badges_desc"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewBar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/bar1"
+        android:layout_below="@+id/detailsLayout"
+        android:layout_marginBottom="10dp"></View>
+
+</RelativeLayout>
