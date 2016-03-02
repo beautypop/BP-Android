@@ -158,6 +158,7 @@
     <string name="view_shop">看看商店</string>
     <string name="last_active">上線</string>
     <string name="post_details">商品詳情</string>
+    <string name="post_condition">商品狀況</string>
     <string name="image">照片</string>
     <string name="like">喜歡</string>
     <string name="likes">喜歡</string>
@@ -185,7 +186,7 @@
     <string name="new_post_price_hint">請輸入價格</string>
     <string name="new_post_original_price">原價($):</string>
     <string name="new_post_original_price_hint">請輸入原價</string>
-    <string name="new_post_condition">商品狀況</string>
+    <string name="new_post_condition">商品狀況:</string>
     <string name="new_post_to_popup_title">請選擇分類</string>
     <string name="new_post_to">分類:</string>
     <string name="new_post_select_category">請選擇分類</string>

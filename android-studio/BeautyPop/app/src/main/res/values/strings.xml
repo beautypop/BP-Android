@@ -158,6 +158,7 @@
     <string name="view_shop">View Shop</string>
     <string name="last_active">Active</string>
     <string name="post_details">PRODUCT DETAILS</string>
+    <string name="post_condition">CONDITION</string>
     <string name="image">Photo</string>
     <string name="like">Like</string>
     <string name="likes">Likes</string>
@@ -185,7 +186,7 @@
     <string name="new_post_price_hint">Set a Price</string>
     <string name="new_post_original_price">Original Price($):</string>
     <string name="new_post_original_price_hint">Enter Original Price</string>
-    <string name="new_post_condition">CONDITION</string>
+    <string name="new_post_condition">Condition</string>
     <string name="new_post_to_popup_title">Choose a Category</string>
     <string name="new_post_to">Category:</string>
     <string name="new_post_select_category">Choose a Category</string>

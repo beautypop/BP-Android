@@ -101,10 +101,11 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="@color/dark_gray_2"
+                    android:textSize="13dp"
+                    android:textColor="@color/gray"
                     android:singleLine="true"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <RelativeLayout
