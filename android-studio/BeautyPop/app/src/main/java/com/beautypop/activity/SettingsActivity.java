@@ -49,8 +49,8 @@ public class SettingsActivity extends TrackedFragmentActivity {
 
         // lang
         langNames = new String[]{
-                getString(R.string.lang_zh),
-                getString(R.string.lang_en)
+                getString(R.string.lang_en),
+                getString(R.string.lang_zh)
         };
 
         final ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(
