@@ -14,7 +14,6 @@ public class PostVM extends PostVMLite {
     public String categoryIcon;
     public Long categoryId;
     public List<CommentVM> latestComments;
-    public List<PostVMLite> relatedPosts;
 
     public boolean isOwner = false;
     public boolean isFollowingOwner = false;
@@ -107,14 +106,6 @@ public class PostVM extends PostVMLite {
 
     public void setLatestComments(List<CommentVM> latestComments) {
         this.latestComments = latestComments;
-    }
-
-    public List<PostVMLite> getRelatedPosts() {
-        return relatedPosts;
-    }
-
-    public void setRelatedPosts(List<PostVMLite> relatedPosts) {
-        this.relatedPosts = relatedPosts;
     }
 
     public boolean isOwner() {

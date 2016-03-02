@@ -1,5 +1,7 @@
 package com.beautypop.viewmodel;
 
+import java.util.List;
+
 public class CategoryVM {
     public Long id;
     public String icon;
@@ -7,6 +9,7 @@ public class CategoryVM {
     public String description;
     public String categoryType;
     public int seq;
+    public List<CategoryVM> subCategories;
 
     public Long getId() {
         return id;
@@ -54,5 +57,13 @@ public class CategoryVM {
 
     public void setSeq(int seq) {
         this.seq = seq;
+    }
+
+    public List<CategoryVM> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(List<CategoryVM> subCategories) {
+        this.subCategories = subCategories;
     }
 }

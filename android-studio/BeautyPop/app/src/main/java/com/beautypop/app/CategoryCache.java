@@ -62,6 +62,14 @@ public class CategoryCache {
         return categories;
     }
 
+    public static List<CategoryVM> getSubCategories(Long id) {
+        CategoryVM category = getCategory(id);
+        if (category != null) {
+            return category.subCategories;
+        }
+        return new ArrayList<>();
+    }
+
     public static CategoryVM getCategory(Long id) {
         for (CategoryVM cat : CategoryCache.getCategories()) {
             if (cat.getId().equals(id)) {

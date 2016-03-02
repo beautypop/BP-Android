@@ -36,9 +36,7 @@ import com.beautypop.viewmodel.NotificationCounterVM;
 
 public class MainActivity extends TrackedFragmentActivity {
 
-    private RelativeLayout userLayout;
-    private ImageView userImage, gameBadgeImage;
-    private TextView userNameText;
+    private ImageView gameBadgeImage;
 
     private ViewGroup chatLayout, newPostLayout;
     private TextView chatCountText;
@@ -83,24 +81,11 @@ public class MainActivity extends TrackedFragmentActivity {
 
         mInstance = this;
 
-        userLayout = (RelativeLayout) findViewById(R.id.userLayout);
-        userImage = (ImageView) findViewById(R.id.userImage);
-        userNameText = (TextView) findViewById(R.id.userNameText);
         gameBadgeImage = (ImageView) findViewById(R.id.gameBadgeImage);
 
         chatCountText = (TextView) findViewById(R.id.chatCountText);
         chatLayout = (ViewGroup) findViewById(R.id.chatLayout);
         newPostLayout = (ViewGroup) findViewById(R.id.newPostLayout);
-
-        // user profile thumbnail
-        setUserProfileThumbnail();
-
-        userLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pressProfileTab();
-            }
-        });
 
         /*
         new Handler().postDelayed(new Runnable() {
@@ -200,12 +185,6 @@ public class MainActivity extends TrackedFragmentActivity {
             pressActivityTab();
             getIntent().removeExtra(ViewUtil.GCM_LAUNCH_TARGET);
         }
-    }
-
-    public void setUserProfileThumbnail() {
-        ImageUtil.clearImageView(userImage);
-        ImageUtil.displayMyThumbnailProfileImage(UserInfoCache.getUser().getId(), userImage);
-        userNameText.setText(UserInfoCache.getUser().getDisplayName());
     }
 
     public void pressHomeTab() {
@@ -350,7 +329,6 @@ public class MainActivity extends TrackedFragmentActivity {
         if (requestCode == ViewUtil.START_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             boolean refresh = data.getBooleanExtra(ViewUtil.INTENT_RESULT_REFRESH, false);
             if (refresh) {
-                setUserProfileThumbnail();
                 pressProfileTab(true);
                 return;     // handled... dont trickle down to fragments
             }
