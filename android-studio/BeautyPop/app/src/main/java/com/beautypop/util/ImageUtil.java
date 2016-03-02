@@ -127,6 +127,43 @@ public class ImageUtil {
         return ViewUtil.urlAppendSessionId(ORIGINAL_MESSAGE_IMAGE_BY_ID_URL + id);
     }
 
+    private static int getImageLoadingResId(long id) {
+        int index = (int)id % 15;
+        switch (index) {
+            case 1:
+                return R.drawable.ic_image_load_1;
+            case 2:
+                return R.drawable.ic_image_load_2;
+            case 3:
+                return R.drawable.ic_image_load_3;
+            case 4:
+                return R.drawable.ic_image_load_4;
+            case 5:
+                return R.drawable.ic_image_load_5;
+            case 6:
+                return R.drawable.ic_image_load_6;
+            case 7:
+                return R.drawable.ic_image_load_7;
+            case 8:
+                return R.drawable.ic_image_load_8;
+            case 9:
+                return R.drawable.ic_image_load_9;
+            case 10:
+                return R.drawable.ic_image_load_10;
+            case 11:
+                return R.drawable.ic_image_load_11;
+            case 12:
+                return R.drawable.ic_image_load_12;
+            case 13:
+                return R.drawable.ic_image_load_13;
+            case 14:
+                return R.drawable.ic_image_load_14;
+            case 15:
+                return R.drawable.ic_image_load_15;
+        }
+        return R.drawable.ic_image_load;
+    }
+
     // Cover image
 
     public static void displayCoverImage(long id, ImageView imageView) {
@@ -135,6 +172,7 @@ public class ImageUtil {
     }
 
     public static void displayCoverImage(long id, ImageView imageView, RequestListener listener) {
+        Glide.clear(imageView);
         displayImage(COVER_IMAGE_BY_ID_URL + id, imageView, listener, true, true);
     }
 
@@ -149,33 +187,39 @@ public class ImageUtil {
     // Profile image
 
     public static void displayProfileImage(long id, ImageView imageView) {
+        Glide.clear(imageView);
         displayCircleImage(PROFILE_IMAGE_BY_ID_URL + id, imageView, null, true, false);
     }
 
     public static void displayProfileImage(long id, ImageView imageView, RequestListener listener) {
+        Glide.clear(imageView);
         displayCircleImage(PROFILE_IMAGE_BY_ID_URL + id, imageView, listener, true, false);
     }
 
     public static void displayThumbnailProfileImage(long id, ImageView imageView) {
+        Glide.clear(imageView);
         displayCircleImage(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id, imageView, null, true, false);
     }
 
     public static void displayThumbnailProfileImage(long id, ImageView imageView, RequestListener listener) {
+        Glide.clear(imageView);
         displayCircleImage(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id, imageView, listener, true, false);
     }
 
     public static void displayMyProfileImage(long id, ImageView imageView, RequestListener listener) {
+        Glide.clear(imageView);
         displayCircleImage(PROFILE_IMAGE_BY_ID_URL + id, imageView, listener, true, true);
     }
 
     public static void displayMyThumbnailProfileImage(long id, ImageView imageView) {
+        Glide.clear(imageView);
         displayCircleImage(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id, imageView, null, true, true);
     }
 
     // Post image
 
     public static void displayPostImage(long id, ImageView imageView) {
-        displayImage(POST_IMAGE_BY_ID_URL + id, imageView);
+        displayImage(POST_IMAGE_BY_ID_URL + id, imageView, null, true, false, getImageLoadingResId(id));
     }
 
     public static void displayPostImage(long id, ImageView imageView, RequestListener listener) {
@@ -254,6 +298,10 @@ public class ImageUtil {
     }
 
     public static void displayImage(String url, ImageView imageView, RequestListener listener, boolean centerCrop, boolean noCache) {
+        displayImage(url, imageView, listener, centerCrop, noCache, R.drawable.ic_image_load);
+    }
+
+    public static void displayImage(String url, ImageView imageView, RequestListener listener, boolean centerCrop, boolean noCache, int imageLoadingResId) {
         int resId = ImageMapping.map(url);
         if (resId != -1) {
             imageView.setImageDrawable(imageView.getResources().getDrawable(resId));
@@ -266,8 +314,8 @@ public class ImageUtil {
         DrawableRequestBuilder builder = Glide.with(AppController.getInstance())
                 .load(url)
                 .signature(new StringSignature(stringSignature))
-                .placeholder(R.drawable.img_loading)
-                .error(R.drawable.img_loading)
+                .placeholder(imageLoadingResId)
+                .error(imageLoadingResId)
                 .crossFade(IMAGE_DISPLAY_CROSS_FADE_DURATION);
 
         displayImage(builder, imageView, listener, centerCrop, noCache, null);
@@ -288,6 +336,10 @@ public class ImageUtil {
     }
 
     public static void displayCircleImage(String url, ImageView imageView, RequestListener listener, boolean centerCrop, boolean noCache) {
+        displayCircleImage(url, imageView, listener, centerCrop, noCache, R.drawable.ic_image_load);
+    }
+
+    public static void displayCircleImage(String url, ImageView imageView, RequestListener listener, boolean centerCrop, boolean noCache, int imageLoadingResId) {
         int resId = ImageMapping.map(url);
         if (resId != -1) {
             imageView.setImageDrawable(imageView.getResources().getDrawable(resId));
@@ -298,8 +350,8 @@ public class ImageUtil {
         DrawableRequestBuilder builder = Glide.with(AppController.getInstance())
                 .load(url)
                 .signature(new StringSignature(stringSignature))
-                .placeholder(R.drawable.img_loading)
-                .error(R.drawable.img_loading)
+                .placeholder(imageLoadingResId)
+                .error(imageLoadingResId)
                 .crossFade(IMAGE_DISPLAY_CROSS_FADE_DURATION);
                 //.dontAnimate();
 
@@ -321,6 +373,10 @@ public class ImageUtil {
     }
 
     public static void displayRoundedImage(String url, ImageView imageView, RequestListener listener, boolean centerCrop, boolean noCache) {
+        displayRoundedImage(url, imageView, listener, centerCrop, noCache, R.drawable.ic_image_load);
+    }
+
+    public static void displayRoundedImage(String url, ImageView imageView, RequestListener listener, boolean centerCrop, boolean noCache, int imageLoadingResId) {
         int resId = ImageMapping.map(url);
         if (resId != -1) {
             imageView.setImageDrawable(imageView.getResources().getDrawable(resId));
@@ -331,8 +387,8 @@ public class ImageUtil {
         DrawableRequestBuilder builder = Glide.with(AppController.getInstance())
                 .load(url)
                 .signature(new StringSignature(stringSignature))
-                .placeholder(R.drawable.img_loading)
-                .error(R.drawable.img_loading)
+                .placeholder(imageLoadingResId)
+                .error(imageLoadingResId)
                 .crossFade(IMAGE_DISPLAY_CROSS_FADE_DURATION);
 
         displayImage(builder, imageView, listener, centerCrop, noCache, roundedTransform);
