@@ -13,7 +13,6 @@ import android.graphics.drawable.LevelListDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -48,7 +47,25 @@ public class ImageUtil {
 
     public static final int IMAGE_DISPLAY_CROSS_FADE_DURATION = 500;
 
-    public static final int NUM_IMAGE_LOADING_PLACEHOLDER = 15;
+    public static final int NUM_IMAGE_LOADING_PLACEHOLDER = 10;
+
+    private static int[] IMAGE_LOADING_PLACEHOLDER_RES_LIST = {
+            R.drawable.ic_image_load_1,
+            R.drawable.ic_image_load_2,
+            R.drawable.ic_image_load_3,
+            R.drawable.ic_image_load_4,
+            R.drawable.ic_image_load_5,
+            R.drawable.ic_image_load_6,
+            R.drawable.ic_image_load_7,
+            R.drawable.ic_image_load_8,
+            R.drawable.ic_image_load_9,
+            R.drawable.ic_image_load_10,
+            R.drawable.ic_image_load_11,
+            R.drawable.ic_image_load_12,
+            R.drawable.ic_image_load_13,
+            R.drawable.ic_image_load_14,
+            R.drawable.ic_image_load_15
+    };
 
     private static final String COVER_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-cover-image-by-id/";
     private static final String THUMBNAIL_COVER_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-thumbnail-cover-image-by-id/";
@@ -120,6 +137,10 @@ public class ImageUtil {
         }
     }
 
+    public static void clearRequests(ImageView imageView) {
+        Glide.clear(imageView);
+    }
+
     // Url helpers
 
     public static String getOriginalPostImageUrl(long id) {
@@ -130,39 +151,11 @@ public class ImageUtil {
         return ViewUtil.urlAppendSessionId(ORIGINAL_MESSAGE_IMAGE_BY_ID_URL + id);
     }
 
-    private static int getImageLoadingResId(long id) {
-        int index = (int)id % NUM_IMAGE_LOADING_PLACEHOLDER + 1;
-        switch (index) {
-            case 1:
-                return R.drawable.ic_image_load_1;
-            case 2:
-                return R.drawable.ic_image_load_2;
-            case 3:
-                return R.drawable.ic_image_load_3;
-            case 4:
-                return R.drawable.ic_image_load_4;
-            case 5:
-                return R.drawable.ic_image_load_5;
-            case 6:
-                return R.drawable.ic_image_load_6;
-            case 7:
-                return R.drawable.ic_image_load_7;
-            case 8:
-                return R.drawable.ic_image_load_8;
-            case 9:
-                return R.drawable.ic_image_load_9;
-            case 10:
-                return R.drawable.ic_image_load_10;
-            case 11:
-                return R.drawable.ic_image_load_11;
-            case 12:
-                return R.drawable.ic_image_load_12;
-            case 13:
-                return R.drawable.ic_image_load_13;
-            case 14:
-                return R.drawable.ic_image_load_14;
-            case 15:
-                return R.drawable.ic_image_load_15;
+    public static int getImageLoadingResId(long id) {
+        try {
+            int index = (int) id % NUM_IMAGE_LOADING_PLACEHOLDER;
+            return IMAGE_LOADING_PLACEHOLDER_RES_LIST[index];
+        } catch (Exception e) {
         }
         return R.drawable.ic_image_load;
     }
@@ -170,54 +163,54 @@ public class ImageUtil {
     // Cover image
 
     public static void displayCoverImage(long id, ImageView imageView) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayImage(COVER_IMAGE_BY_ID_URL + id, imageView, null, true, true);
     }
 
     public static void displayCoverImage(long id, ImageView imageView, RequestListener listener) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayImage(COVER_IMAGE_BY_ID_URL + id, imageView, listener, true, true);
     }
 
     public static void displayThumbnailCoverImage(long id, ImageView imageView) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayImage(THUMBNAIL_COVER_IMAGE_BY_ID_URL + id, imageView, null, true, true);
     }
 
     public static void displayThumbnailCoverImage(long id, ImageView imageView, RequestListener listener) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayImage(THUMBNAIL_COVER_IMAGE_BY_ID_URL + id, imageView, listener, true, true);
     }
 
     // Profile image
 
     public static void displayProfileImage(long id, ImageView imageView) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayCircleImage(PROFILE_IMAGE_BY_ID_URL + id, imageView, null, true, false);
     }
 
     public static void displayProfileImage(long id, ImageView imageView, RequestListener listener) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayCircleImage(PROFILE_IMAGE_BY_ID_URL + id, imageView, listener, true, false);
     }
 
     public static void displayThumbnailProfileImage(long id, ImageView imageView) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayCircleImage(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id, imageView, null, true, false);
     }
 
     public static void displayThumbnailProfileImage(long id, ImageView imageView, RequestListener listener) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayCircleImage(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id, imageView, listener, true, false);
     }
 
     public static void displayMyProfileImage(long id, ImageView imageView, RequestListener listener) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayCircleImage(PROFILE_IMAGE_BY_ID_URL + id, imageView, listener, true, true);
     }
 
     public static void displayMyThumbnailProfileImage(long id, ImageView imageView) {
-        Glide.clear(imageView);
+        clearRequests(imageView);
         displayCircleImage(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id, imageView, null, true, true);
     }
 
@@ -407,6 +400,8 @@ public class ImageUtil {
             boolean noCache,
             BitmapTransformation transform) {
 
+        clearRequests(imageView);
+
         if (listener != null) {
             builder = builder.listener(listener);
         }
@@ -424,6 +419,16 @@ public class ImageUtil {
         builder.into(imageView);
     }
 
+    public static void displayCircleImageFromPath(String imagePath, ImageView imageView) {
+        DrawableRequestBuilder builder = Glide.with(AppController.getInstance())
+                .load(imagePath)
+                .signature(new StringSignature(stringSignature))
+                .placeholder(R.drawable.ic_image_load)
+                .error(R.drawable.ic_image_load)
+                .crossFade(IMAGE_DISPLAY_CROSS_FADE_DURATION);
+        displayImage(builder, imageView, null, true, true, circleTransform);
+    }
+
     public static void clearProfileImageCache(long id){
         clearImageCache(PROFILE_IMAGE_BY_ID_URL + id);
         clearImageCache(THUMBNAIL_PROFILE_IMAGE_BY_ID_URL + id);
@@ -436,10 +441,6 @@ public class ImageUtil {
 
     private static void clearImageCache(String url) {
         //Glide.get(AppController.getInstance()).clearMemory();
-    }
-
-    public static void clearImageView(ImageView imageView) {
-        Glide.clear(imageView);
     }
 
     // Select photo

@@ -1,6 +1,7 @@
 package com.beautypop.adapter;
 
 import android.app.Activity;
+import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.beautypop.activity.ProductActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.CountryCache;
 import com.beautypop.app.UserInfoCache;
+import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.PostVMLite;
@@ -205,11 +207,20 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         return isHeader(position) ? ITEM_VIEW_TYPE_HEADER : ITEM_VIEW_TYPE_ITEM;
     }
 
-    private void loadImage(Long imageId, ImageView imageView) {
+    private void loadImage(final Long imageId, final ImageView imageView) {
         imageView.setAdjustViewBounds(true);
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         imageView.setPadding(0, 0, 0, 0);
         ImageUtil.displayPostImage(imageId, imageView);
+
+        /*
+        imageView.setImageResource(ImageUtil.getImageLoadingResId(imageId));
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                ImageUtil.displayPostImage(imageId, imageView);
+            }
+        }, 0);
+        */
     }
 
     private void like(final PostVMLite post, final FeedViewHolder holder) {
@@ -217,16 +228,15 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             return;
         }
 
+        post.isLiked = true;
+        post.numLikes++;
+        ViewUtil.selectLikeTipsStyle(holder.likeImage, holder.likeText, post.getNumLikes());
+
         pending = true;
         AppController.getApiService().likePost(post.id, new Callback<Response>() {
             @Override
             public void success(Response responseObject, Response response) {
-                post.isLiked = true;
-                post.numLikes++;
-                ViewUtil.selectLikeTipsStyle(holder.likeImage, holder.likeText, post.getNumLikes());
-
                 UserInfoCache.incrementNumLikes();
-
                 pending = false;
             }
 
@@ -247,16 +257,15 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             return;
         }
 
+        post.isLiked = false;
+        post.numLikes--;
+        ViewUtil.unselectLikeTipsStyle(holder.likeImage, holder.likeText, post.getNumLikes());
+
         pending = true;
         AppController.getApiService().unlikePost(post.id, new Callback<Response>() {
             @Override
             public void success(Response responseObject, Response response) {
-                post.isLiked = false;
-                post.numLikes--;
-                ViewUtil.unselectLikeTipsStyle(holder.likeImage, holder.likeText, post.getNumLikes());
-
                 UserInfoCache.decrementNumLikes();
-
                 pending = false;
             }
 

@@ -253,6 +253,9 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
             AppController.getApiService().uploadProfilePhoto(typedFile, new Callback<Response>() {
                 @Override
                 public void success(Response responseObject, Response response) {
+                    ViewUtil.stopSpinner(getActivity());
+
+                    /*
                     new Handler().postDelayed(new Runnable() {
                         public void run() {
                             ImageUtil.displayMyProfileImage(id, profileImage, new RequestListener<String, GlideBitmapDrawable>() {
@@ -270,10 +273,12 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
                             });
                         }
                     }, DefaultValues.DEFAULT_HANDLER_DELAY);
+                    */
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
+                    ViewUtil.stopSpinner(getActivity());
                     Log.e(MyProfileFeedViewFragment.class.getSimpleName(), "uploadProfileImage: failure", error);
                 }
             });
@@ -328,10 +333,13 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
 
     private void setImagePreviewThumbnail(ImageView imageView, String imagePath) {
         if (!StringUtils.isEmpty(imagePath)) {
+            ImageUtil.displayCircleImageFromPath(imagePath, imageView);
+            /*
             Bitmap bp = ImageUtil.resizeAsPreviewThumbnail(imagePath);
             imageView.setImageBitmap(bp);
             //imageView.setImageURI(Uri.parse(imagePath);
             imageView.setVisibility(View.VISIBLE);
+            */
         }
     }
 

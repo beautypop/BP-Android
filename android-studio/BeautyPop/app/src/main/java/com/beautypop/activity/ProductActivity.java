@@ -832,14 +832,14 @@ public class ProductActivity extends TrackedFragmentActivity {
             return;
         }
 
+        post.isLiked = true;
+        post.numLikes++;
+        ViewUtil.selectLikeButtonStyle(likeImage, likeText, post.getNumLikes());
+
         pending = true;
         AppController.getApiService().likePost(post.id, new Callback<Response>() {
             @Override
             public void success(Response responseObject, Response response) {
-                post.isLiked = true;
-                post.numLikes++;
-                ViewUtil.selectLikeButtonStyle(likeImage, likeText, post.getNumLikes());
-
                 UserInfoCache.incrementNumLikes();
 
                 // pass back to feed view to handle
@@ -864,14 +864,14 @@ public class ProductActivity extends TrackedFragmentActivity {
             return;
         }
 
+        post.isLiked = false;
+        post.numLikes--;
+        ViewUtil.unselectLikeButtonStyle(likeImage, likeText, post.getNumLikes());
+
         pending = true;
         AppController.getApiService().unlikePost(post.id, new Callback<Response>() {
             @Override
             public void success(Response responseObject, Response response) {
-                post.isLiked = false;
-                post.numLikes--;
-                ViewUtil.unselectLikeButtonStyle(likeImage, likeText, post.getNumLikes());
-
                 UserInfoCache.decrementNumLikes();
 
                 // pass back to feed view to handle
