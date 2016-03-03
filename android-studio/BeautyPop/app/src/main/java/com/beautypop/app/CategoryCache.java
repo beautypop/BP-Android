@@ -6,7 +6,9 @@ import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.viewmodel.CategoryVM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -15,7 +17,11 @@ import retrofit.client.Response;
 public class CategoryCache {
     private static final String TAG = CategoryCache.class.getName();
 
+    // top level categories
     private static List<CategoryVM> categories = new ArrayList<>();
+
+    // all categories
+    private static Map<Long, CategoryVM> allCategoriesMap = new HashMap<>();
 
     private CategoryCache() {}
 
@@ -40,6 +46,7 @@ public class CategoryCache {
                     return;
 
                 categories = vms;
+                initAllCategories(categories);
                 SharedPreferencesUtil.getInstance().saveCategories(vms);
                 if (callback != null) {
                     callback.success(vms, response);
@@ -57,8 +64,10 @@ public class CategoryCache {
     }
 
     public static List<CategoryVM> getCategories() {
-        if (categories == null || categories.size() == 0)
+        if (categories == null || categories.size() == 0) {
             categories = SharedPreferencesUtil.getInstance().getCategories();
+            initAllCategories(categories);
+        }
         return categories;
     }
 
@@ -71,15 +80,20 @@ public class CategoryCache {
     }
 
     public static CategoryVM getCategory(Long id) {
-        for (CategoryVM cat : CategoryCache.getCategories()) {
-            if (cat.getId().equals(id)) {
-                return cat;
-            }
-        }
-        return null;
+        return allCategoriesMap.get(id);
     }
 
     public static void clear() {
         SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.CATEGORIES);
+    }
+
+    private static void initAllCategories(List<CategoryVM> categories) {
+        allCategoriesMap = new HashMap<>();
+        for (CategoryVM category : categories) {
+            allCategoriesMap.put(category.id, category);
+            for (CategoryVM subCategory : category.subCategories) {
+                allCategoriesMap.put(subCategory.id, subCategory);
+            }
+        }
     }
 }

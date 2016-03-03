@@ -1,7 +1,6 @@
 package com.beautypop.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
-import com.beautypop.util.ImageMapping;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
@@ -20,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeCategoryPagerFragment extends TrackedFragment {
+    private static final String TAG = HomeCategoryPagerFragment.class.getName();
 
     private int[] catLayoutIds = { R.id.cat1, R.id.cat2, R.id.cat3, R.id.cat4, R.id.cat5, R.id.cat6, R.id.cat7, R.id.cat8, R.id.cat9 };
     private int[] imageIds = { R.id.image1, R.id.image2, R.id.image3, R.id.image4, R.id.image5, R.id.image6, R.id.image7, R.id.image8, R.id.image9 };
@@ -38,7 +37,6 @@ public class HomeCategoryPagerFragment extends TrackedFragment {
         catLayouts = new ArrayList<>();
         images = new ArrayList<>();
         names = new ArrayList<>();
-
         for (int i = 0; i < catLayoutIds.length; i++) {
             catLayouts.add((RelativeLayout) view.findViewById(catLayoutIds[i]));
             images.add((ImageView) view.findViewById(imageIds[i]));
@@ -59,20 +57,25 @@ public class HomeCategoryPagerFragment extends TrackedFragment {
             List<CategoryVM> categories = HomeCategoryPagerAdapter.getCategoriesForPosition(page);
             if (i < categories.size()) {
                 final CategoryVM category = categories.get(i);
-                name.setText(category.getName());
-                ImageUtil.displayImage(category.getIcon(), image);
-
-                catLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ViewUtil.startCategoryActivity(getActivity(), category.getId());
-                    }
-                });
-                catLayout.setVisibility(View.VISIBLE);
+                initCategoryLayout(category, catLayout, image, name);
             } else {
-                catLayout.setVisibility(View.GONE);
+                catLayout.setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    private void initCategoryLayout(
+            final CategoryVM category, RelativeLayout catLayout, ImageView catImage, TextView nameText) {
+        nameText.setText(category.getName());
+        ImageUtil.displayImage(category.getIcon(), catImage);
+
+        catLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewUtil.startCategoryActivity(getActivity(), category.getId());
+            }
+        });
+        catLayout.setVisibility(View.VISIBLE);
     }
 
     public void setPage(int page) {

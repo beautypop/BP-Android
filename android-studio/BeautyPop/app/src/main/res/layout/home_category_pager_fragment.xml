@@ -14,15 +14,15 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:layout_marginLeft="1dp">
+            android:weightSum="3"
+            android:layout_marginLeft="2dp">
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat1"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -59,9 +59,9 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat2"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -98,9 +98,9 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat3"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -140,15 +140,15 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="10"
+            android:weightSum="3"
             android:layout_marginLeft="1dp">
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat4"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -185,9 +185,9 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat5"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -224,9 +224,9 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat6"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -266,15 +266,15 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:layout_marginLeft="1dp">
+            android:weightSum="3"
+            android:layout_marginLeft="2dp">
 
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat7"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -311,9 +311,9 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat8"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -350,9 +350,9 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.333333"
+                android:layout_weight="1"
                 android:id="@+id/cat9"
-                android:layout_marginRight="1dp">
+                android:layout_marginRight="2dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
