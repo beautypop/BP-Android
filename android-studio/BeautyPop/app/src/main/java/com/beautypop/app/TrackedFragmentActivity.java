@@ -44,6 +44,7 @@ public abstract class TrackedFragmentActivity extends FragmentActivity {
     @Override
     public void onStart() {
         super.onStart();
+
         Log.d(this.getClass().getSimpleName(), "[DEBUG] activityStart");
         if (tracked) {
             getTracker().activityStart(this);

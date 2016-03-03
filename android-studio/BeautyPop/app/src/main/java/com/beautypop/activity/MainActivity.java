@@ -178,7 +178,8 @@ public class MainActivity extends TrackedFragmentActivity {
     public void onResume() {
         super.onResume();
 
-        NotificationCounter.refresh();
+        // Refresh fom Home and My profile page
+        //NotificationCounter.refresh();
 
         // handle gcm
         if (ViewUtil.isGcmLaunchTarget(getIntent())) {

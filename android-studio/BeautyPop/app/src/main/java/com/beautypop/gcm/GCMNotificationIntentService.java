@@ -15,6 +15,7 @@ import com.beautypop.activity.ConversationListActivity;
 import com.beautypop.activity.MainActivity;
 import com.beautypop.activity.UserProfileActivity;
 import com.beautypop.app.AppController;
+import com.beautypop.app.NotificationCounter;
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ViewUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -190,5 +191,8 @@ public class GCMNotificationIntentService extends IntentService {
 		mBuilder.setContentText(contextText);
 
 		notificationManager.notify(notificationType.ordinal(), mBuilder.build());
+
+		// refresh notifications counter
+		NotificationCounter.refresh();
 	}
 }

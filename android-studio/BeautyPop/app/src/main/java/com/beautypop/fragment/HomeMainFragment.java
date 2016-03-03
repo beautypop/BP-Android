@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.beautypop.app.NotificationCounter;
 import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ViewUtil;
 
@@ -39,20 +40,7 @@ public class HomeMainFragment extends TrackedFragment {
     public void onStart() {
         super.onStart();
 
-        // TODO: add back notification code
-        /*
-        NotificationCache.refresh(new Callback<NotificationsParentVM>() {
-            @Override
-            public void success(NotificationsParentVM notificationsParentVM, Response response) {
-                // update notification count
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                error.printStackTrace();
-            }
-        });
-        */
+        NotificationCounter.refresh();
     }
 
     @Override

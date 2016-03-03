@@ -13,6 +13,7 @@ import android.graphics.drawable.LevelListDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -179,10 +180,12 @@ public class ImageUtil {
     }
 
     public static void displayThumbnailCoverImage(long id, ImageView imageView) {
+        Glide.clear(imageView);
         displayImage(THUMBNAIL_COVER_IMAGE_BY_ID_URL + id, imageView, null, true, true);
     }
 
     public static void displayThumbnailCoverImage(long id, ImageView imageView, RequestListener listener) {
+        Glide.clear(imageView);
         displayImage(THUMBNAIL_COVER_IMAGE_BY_ID_URL + id, imageView, listener, true, true);
     }
 
@@ -412,6 +415,8 @@ public class ImageUtil {
         }
         if (noCache) {
             builder = builder.diskCacheStrategy(DiskCacheStrategy.NONE);
+        } else {
+            builder = builder.diskCacheStrategy(DiskCacheStrategy.SOURCE);
         }
         if (transform != null) {
             builder = builder.transform(transform);

@@ -17,6 +17,7 @@ import com.beautypop.R;
 import com.beautypop.activity.EditProfileActivity;
 import com.beautypop.activity.SettingsActivity;
 import com.beautypop.app.AppController;
+import com.beautypop.app.NotificationCounter;
 import com.beautypop.app.UserInfoCache;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.FeedFilter;
@@ -49,6 +50,13 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        NotificationCounter.refresh();
     }
 
     @Override
