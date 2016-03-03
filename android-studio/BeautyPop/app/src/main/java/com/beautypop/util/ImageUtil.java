@@ -47,6 +47,8 @@ public class ImageUtil {
 
     public static final int IMAGE_DISPLAY_CROSS_FADE_DURATION = 500;
 
+    public static final int NUM_IMAGE_LOADING_PLACEHOLDER = 15;
+
     private static final String COVER_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-cover-image-by-id/";
     private static final String THUMBNAIL_COVER_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-thumbnail-cover-image-by-id/";
     private static final String PROFILE_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-profile-image-by-id/";
@@ -128,7 +130,7 @@ public class ImageUtil {
     }
 
     private static int getImageLoadingResId(long id) {
-        int index = (int)id % 15;
+        int index = (int)id % NUM_IMAGE_LOADING_PLACEHOLDER + 1;
         switch (index) {
             case 1:
                 return R.drawable.ic_image_load_1;

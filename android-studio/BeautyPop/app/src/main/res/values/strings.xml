@@ -113,7 +113,7 @@
 
     <!-- Main -->
     <string name="tabset_home">Explore</string>
-    <string name="tabset_seller">Seller</string>
+    <string name="tabset_seller">Shop</string>
     <string name="tabset_activity">Activity</string>
     <string name="tabset_profile">Me</string>
 
