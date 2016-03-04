@@ -152,12 +152,14 @@ public class ImageUtil {
     }
 
     public static int getImageLoadingResId(long id) {
+        /*
         try {
             int index = (int) id % NUM_IMAGE_LOADING_PLACEHOLDER;
             return IMAGE_LOADING_PLACEHOLDER_RES_LIST[index];
         } catch (Exception e) {
         }
-        return R.drawable.ic_image_load;
+        */
+        return R.drawable.ic_image_load_1;
     }
 
     // Cover image

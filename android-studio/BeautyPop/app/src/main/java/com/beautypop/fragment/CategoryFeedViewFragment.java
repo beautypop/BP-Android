@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.beautypop.R;
 import com.beautypop.app.AppController;
 import com.beautypop.app.CategoryCache;
+import com.beautypop.util.CategorySelectorViewUtil;
 import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ImageMapping;
 import com.beautypop.util.ImageUtil;
@@ -30,12 +31,12 @@ import retrofit.client.Response;
 public class CategoryFeedViewFragment extends FeedViewFragment {
     private static final String TAG = CategoryFeedViewFragment.class.getName();
 
+    private int[] catsRowLaoutIds = { R.id.catsRow1Layout, R.id.catsRow2Layout };
     private int[] catLayoutIds = { R.id.cat1, R.id.cat2, R.id.cat3, R.id.cat4, R.id.cat5, R.id.cat6, R.id.cat7, R.id.cat8 };
     private int[] imageIds = { R.id.image1, R.id.image2, R.id.image3, R.id.image4, R.id.image5, R.id.image6, R.id.image7, R.id.image8 };
     private int[] nameIds = { R.id.name1, R.id.name2, R.id.name3, R.id.name4, R.id.name5, R.id.name6, R.id.name7, R.id.name8 };
-    private List<RelativeLayout> catLayouts;
-    private List<ImageView> images;
-    private List<TextView> names;
+
+    private CategorySelectorViewUtil catSelectorViewUtil;
 
     private CategoryVM category;
     private Long catId;
@@ -79,16 +80,6 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
                 ViewUtil.startNewPostActivity(getActivity(), catId);
             }
         });
-
-        // subcategory views
-        catLayouts = new ArrayList<>();
-        images = new ArrayList<>();
-        names = new ArrayList<>();
-        for (int i = 0; i < catLayoutIds.length; i++) {
-            catLayouts.add((RelativeLayout) headerView.findViewById(catLayoutIds[i]));
-            images.add((ImageView) headerView.findViewById(imageIds[i]));
-            names.add((TextView) headerView.findViewById(nameIds[i]));
-        }
 
         // feed type filters
         popularFilterButton = (Button) headerView.findViewById(R.id.popularFilterButton);
@@ -165,12 +156,10 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
         }
         */
 
-        // header
-
-
         // init
         catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1L);
         setCategory(catId);
+
         /*
         if (!getArguments().getString(ViewUtil.BUNDLE_KEY_SOURCE).equals("FromDetailActivity")) {
             catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1L);
@@ -264,38 +253,12 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
     private void setCategory(Long catId) {
         category = CategoryCache.getCategory(catId);
         setActionBarTitle(category.name);
-        setSubCategories(catId);
-    }
 
-    private void setSubCategories(Long catId) {
+        // subcategory views
         List<CategoryVM> subCategories = CategoryCache.getSubCategories(catId);
-        for (int i = 0; i < catLayoutIds.length; i++) {
-            RelativeLayout catLayout = catLayouts.get(i);
-            ImageView image = images.get(i);
-            TextView name = names.get(i);
-
-            if (i < subCategories.size()) {
-                final CategoryVM subCategory = subCategories.get(i);
-                Log.d(TAG, "subCategories.size="+subCategories.size()+" i="+i+" name="+subCategory.name);
-                initCategoryLayout(subCategory, catLayout, image, name);
-            } else {
-                catLayout.setVisibility(View.INVISIBLE);
-            }
-        }
-    }
-
-    private void initCategoryLayout(
-            final CategoryVM category, RelativeLayout catLayout, ImageView catImage, TextView nameText) {
-        nameText.setText(category.getName());
-        ImageUtil.displayImage(category.getIcon(), catImage);
-
-        catLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewUtil.startCategoryActivity(getActivity(), category.getId());
-            }
-        });
-        catLayout.setVisibility(View.VISIBLE);
+        catSelectorViewUtil = new CategorySelectorViewUtil(
+                subCategories, catsRowLaoutIds, catLayoutIds, imageIds, nameIds, headerView, getActivity());
+        catSelectorViewUtil.initLayout();
     }
 
     public FeedFilter.FeedType getFeedType() {

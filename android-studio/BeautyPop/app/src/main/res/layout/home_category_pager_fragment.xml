@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
-            android:layout_marginLeft="2dp">
+            android:layout_marginLeft="2dp"
+            android:id="@+id/catsRow1Layout">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -141,7 +142,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
-            android:layout_marginLeft="1dp">
+            android:layout_marginLeft="1dp"
+            android:id="@+id/catsRow2Layout">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -267,7 +269,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
-            android:layout_marginLeft="2dp">
+            android:layout_marginLeft="2dp"
+            android:id="@+id/catsRow3Layout">
 
             <RelativeLayout
                 android:layout_width="0dp"
