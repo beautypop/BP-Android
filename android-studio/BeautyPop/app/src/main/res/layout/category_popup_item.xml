@@ -4,29 +4,28 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:paddingLeft="10dp"
-    android:paddingTop="10dp"
+    android:paddingTop="5dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="5dp">
 
     <ImageView
         android:id="@+id/catIcon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_alignParentBottom="false"
         android:background="@drawable/image_rounded_thin"
         android:layout_toRightOf="@+id/catText"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="false"
-        android:layout_marginLeft="5dp" />
+        android:layout_alignParentLeft="false" />
 
     <TextView
         android:id="@+id/catName"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="false"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/dark_gray_3"
-        android:textSize="16dp"
+        android:textSize="15dp"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
         android:layout_toRightOf="@+id/catIcon" />

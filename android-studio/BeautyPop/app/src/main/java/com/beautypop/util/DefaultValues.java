@@ -46,8 +46,8 @@ public class DefaultValues {
     public static final int LISTVIEW_SLIDE_IN_ANIM_START = 10;
     public static final int LISTVIEW_SCROLL_FRICTION_SCALE_FACTOR = 2;
 
-    public static final int CATEGORY_PICKER_POPUP_WIDTH = 250;
-    public static final int CATEGORY_PICKER_POPUP_HEIGHT = 450;
+    public static final int CATEGORY_PICKER_POPUP_WIDTH = 220;
+    public static final int CATEGORY_PICKER_POPUP_HEIGHT = 380;
 
     public static final int MAX_POST_IMAGES = 4;
     public static final int MAX_MESSAGE_IMAGES = 1;

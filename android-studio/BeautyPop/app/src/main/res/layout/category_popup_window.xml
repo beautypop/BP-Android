@@ -13,8 +13,8 @@
         <TextView
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:text="@string/new_post_to_popup_title"
-            android:textSize="17dp"
+            android:text="@string/new_post_cat_popup_title"
+            android:textSize="15dp"
             android:layout_height="wrap_content"
             android:textColor="@color/dark_gray" />
     </RelativeLayout>
@@ -22,8 +22,10 @@
         android:id="@+id/categoryList"
         android:layout_below="@+id/titleText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:divider="@null"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
     </ListView>
 </RelativeLayout>

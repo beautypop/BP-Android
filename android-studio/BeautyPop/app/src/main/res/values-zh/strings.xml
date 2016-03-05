@@ -187,9 +187,12 @@
     <string name="new_post_original_price">原價($):</string>
     <string name="new_post_original_price_hint">請輸入原價</string>
     <string name="new_post_condition">商品狀況:</string>
-    <string name="new_post_to_popup_title">請選擇分類</string>
-    <string name="new_post_to">分類:</string>
+    <string name="new_post_cat_popup_title">請選擇分類</string>
+    <string name="new_post_cat">分類:</string>
+    <string name="new_post_subcat_popup_title">請選擇子分類</string>
+    <string name="new_post_subcat">分類:</string>
     <string name="new_post_select_category">請選擇分類</string>
+    <string name="new_post_select_subcategory">請選擇子分類</string>
     <string name="new_post_title">你要賣的是?</string>
     <string name="new_post_body">商品詳情</string>
     <string name="new_post_max_images">最多可加入%1$d張圖</string>

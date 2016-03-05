@@ -119,7 +119,7 @@
                 android:id="@+id/titleLayout"
                 android:background="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/bar1">
 
                 <EditText
@@ -128,7 +128,7 @@
                     android:id="@+id/titleEdit"
                     android:hint="@string/new_post_title"
                     android:layout_width="match_parent"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/input_text"
@@ -157,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/descEdit"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:minHeight="100dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
@@ -188,7 +188,7 @@
             <RelativeLayout
                 android:id="@+id/priceLayout"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:background="@color/white">
 
@@ -199,7 +199,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="@string/new_post_price"
                     android:textColor="@color/dark_gray_2"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
                     android:id="@+id/priceText" />
@@ -209,7 +209,7 @@
                     android:id="@+id/priceEdit"
                     android:hint="@string/new_post_price_hint"
                     android:layout_width="200dp"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:textColor="@color/input_text"
@@ -233,7 +233,7 @@
             <RelativeLayout
                 android:id="@+id/conditionLayout"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:background="@color/white"
                 android:layout_below="@+id/bar4">
@@ -245,7 +245,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="@string/new_post_condition"
                     android:textColor="@color/dark_gray_2"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
                     android:id="@+id/conditionText" />
@@ -278,7 +278,7 @@
             <RelativeLayout
                 android:id="@+id/catLayout"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:background="@color/white"
                 android:layout_below="@+id/bar6">
@@ -288,9 +288,9 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/new_post_to"
+                    android:text="@string/new_post_cat"
                     android:textColor="@color/dark_gray_2"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
                     android:id="@+id/catText" />
@@ -321,8 +321,8 @@
                         android:layout_height="fill_parent"
                         android:layout_alignParentLeft="false"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#FF6795"
-                        android:textSize="16dp"
+                        android:textColor="@color/pink"
+                        android:textSize="15dp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:layout_toRightOf="@+id/catIcon"
@@ -336,7 +336,7 @@
                         android:layout_marginLeft="5dp"
                         android:text="@string/new_post_select_category"
                         android:textColor="@color/pink"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:layout_toRightOf="@+id/catIcon"
@@ -364,9 +364,97 @@
                 android:layout_height="0.8dp" />
 
             <RelativeLayout
+                android:id="@+id/subCatLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_below="@+id/bar6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/new_post_subcat"
+                    android:textColor="@color/dark_gray_2"
+                    android:textSize="15dp"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:id="@+id/subCatText" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/selectsubCatLayout"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp">
+
+                    <ImageView
+                        android:id="@+id/subCatIcon"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentBottom="false"
+                        android:background="@drawable/image_rounded_thin"
+                        android:layout_toRightOf="@+id/catText"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="false"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/subCatName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentLeft="false"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/light_pink"
+                        android:textSize="15dp"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:layout_toRightOf="@+id/catIcon"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/selectsubCatText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentLeft="false"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/new_post_select_subcategory"
+                        android:textColor="@color/light_pink"
+                        android:textSize="15dp"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:layout_toRightOf="@+id/catIcon"
+                        android:layout_gravity="center_vertical" />
+
+                    <ImageView
+                        android:id="@+id/selectsubCatIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentBottom="false"
+                        android:layout_toRightOf="@+id/catText"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="false"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/dropdown_arrow" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/bar8"
+                android:background="@drawable/bar1"
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp" />
+
+            <RelativeLayout
                 android:id="@+id/locationLayout"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:background="@color/white"
                 android:layout_below="@+id/bar4"
@@ -379,7 +467,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="@string/new_post_location"
                     android:textColor="@color/dark_gray_2"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
                     android:id="@+id/locationText" />
@@ -400,7 +488,7 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/bar8"
+                android:id="@+id/bar9"
                 android:background="@drawable/bar1"
                 android:layout_width="match_parent"
                 android:layout_height="0.8dp"
@@ -414,7 +502,7 @@
                 android:visibility="gone">
 
                 <View
-                    android:id="@+id/bar9"
+                    android:id="@+id/bar10"
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp"
                     android:layout_marginTop="15dp"
@@ -423,7 +511,7 @@
                 <RelativeLayout
                     android:id="@+id/originalPriceLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:background="@color/white">
 
@@ -434,7 +522,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="@string/new_post_original_price"
                         android:textColor="@color/dark_gray_2"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:id="@+id/originalPriceText" />
@@ -444,7 +532,7 @@
                         android:id="@+id/originalPriceEdit"
                         android:hint="@string/new_post_original_price_hint"
                         android:layout_width="200dp"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         android:textColor="@color/input_text"
@@ -460,7 +548,7 @@
                 </RelativeLayout>
 
                 <View
-                    android:id="@+id/bar10"
+                    android:id="@+id/bar11"
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp"
                     android:background="@drawable/bar1" />
@@ -468,7 +556,7 @@
                 <RelativeLayout
                     android:id="@+id/freeDeliveryLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:background="@color/white"
                     android:layout_below="@+id/bar4">
@@ -480,7 +568,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="@string/new_post_free_delivery"
                         android:textColor="@color/dark_gray_2"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:id="@+id/freeDeliveryText" />
@@ -498,7 +586,7 @@
                 </RelativeLayout>
 
                 <View
-                    android:id="@+id/bar11"
+                    android:id="@+id/bar12"
                     android:background="@drawable/bar1"
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp" />
@@ -506,7 +594,7 @@
                 <RelativeLayout
                     android:id="@+id/countryLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:background="@color/white"
                     android:layout_below="@+id/bar4">
@@ -518,7 +606,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="@string/new_post_country"
                         android:textColor="@color/dark_gray_2"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:id="@+id/countryText" />
@@ -543,7 +631,7 @@
                 </RelativeLayout>
 
                 <View
-                    android:id="@+id/bar12"
+                    android:id="@+id/bar13"
                     android:background="@drawable/bar1"
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp" />
@@ -558,7 +646,7 @@
                 android:visibility="gone">
 
                 <View
-                    android:id="@+id/bar13"
+                    android:id="@+id/bar14"
                     android:background="@drawable/bar1"
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp"
@@ -580,7 +668,7 @@
                     <TextView
                         android:textColor="@color/dark_gray_2"
                         android:id="@+id/facebookText"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:layout_toRightOf="@+id/facebookButton"
                         android:text="@string/sharing_fb"
                         android:layout_marginLeft="7dp"
@@ -601,7 +689,7 @@
                     <ToggleButton
                         android:layout_marginTop="10dp"
                         android:id="@+id/facebookshare"
-                        android:layout_width="45dp"
+                        android:layout_width="40dp"
                         android:layout_height="25dp"
                         android:background="@drawable/toggle_selector"
                         android:layout_marginRight="10dp"
@@ -616,7 +704,7 @@
                 </RelativeLayout>
 
                 <View
-                    android:id="@+id/bar14"
+                    android:id="@+id/bar15"
                     android:background="@drawable/bar1"
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp" />

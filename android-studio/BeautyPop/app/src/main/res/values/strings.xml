@@ -187,9 +187,12 @@
     <string name="new_post_original_price">Original Price($):</string>
     <string name="new_post_original_price_hint">Enter Original Price</string>
     <string name="new_post_condition">Condition</string>
-    <string name="new_post_to_popup_title">Choose a Category</string>
-    <string name="new_post_to">Category:</string>
-    <string name="new_post_select_category">Choose a Category</string>
+    <string name="new_post_cat_popup_title">Choose Category</string>
+    <string name="new_post_cat">Category:</string>
+    <string name="new_post_subcat_popup_title">Choose Subcategory</string>
+    <string name="new_post_subcat">Subcategory:</string>
+    <string name="new_post_select_category">Choose Category</string>
+    <string name="new_post_select_subcategory">Choose Subcategory</string>
     <string name="new_post_title">What are you selling?</string>
     <string name="new_post_body">Product details</string>
     <string name="new_post_max_images">You can select up to %1$d photos</string>
