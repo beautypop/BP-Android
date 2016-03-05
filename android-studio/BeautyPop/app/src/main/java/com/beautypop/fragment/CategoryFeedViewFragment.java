@@ -31,7 +31,7 @@ import retrofit.client.Response;
 public class CategoryFeedViewFragment extends FeedViewFragment {
     private static final String TAG = CategoryFeedViewFragment.class.getName();
 
-    private int[] catsRowLaoutIds = { R.id.catsRow1Layout, R.id.catsRow2Layout };
+    private int[] catsRowLayoutIds = { R.id.catsRow1Layout, R.id.catsRow2Layout };
     private int[] catLayoutIds = { R.id.cat1, R.id.cat2, R.id.cat3, R.id.cat4, R.id.cat5, R.id.cat6, R.id.cat7, R.id.cat8 };
     private int[] imageIds = { R.id.image1, R.id.image2, R.id.image3, R.id.image4, R.id.image5, R.id.image6, R.id.image7, R.id.image8 };
     private int[] nameIds = { R.id.name1, R.id.name2, R.id.name3, R.id.name4, R.id.name5, R.id.name6, R.id.name7, R.id.name8 };
@@ -257,7 +257,8 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
         // subcategory views
         List<CategoryVM> subCategories = CategoryCache.getSubCategories(catId);
         catSelectorViewUtil = new CategorySelectorViewUtil(
-                subCategories, catsRowLaoutIds, catLayoutIds, imageIds, nameIds, headerView, getActivity());
+                subCategories, catsRowLayoutIds, catLayoutIds, imageIds, nameIds, headerView, getActivity());
+        catSelectorViewUtil.setNumCategoriesPerRow(4);
         catSelectorViewUtil.initLayout();
     }
 

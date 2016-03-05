@@ -1,6 +1,7 @@
 package com.beautypop.util;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,15 +15,14 @@ import java.util.List;
 public class CategorySelectorViewUtil {
     private static final String TAG = CategorySelectorViewUtil.class.getName();
 
+    public static final int DEFAULT_NUM_CATS_PER_ROW = 3;
+
     private int[] catsRowLayoutIds;
     private int[] catLayoutIds;
     private int[] imageIds;
     private int[] nameIds;
 
-    private List<ViewGroup> catsRowLaouts;
-    private List<ViewGroup> catLayouts;
-    private List<ImageView> images;
-    private List<TextView> names;
+    private int numCatsPerRow;
 
     private View view;
     private Activity activity;
@@ -39,20 +39,38 @@ public class CategorySelectorViewUtil {
         this.catLayoutIds = catLayoutIds;
         this.imageIds = imageIds;
         this.nameIds = nameIds;
+        setNumCategoriesPerRow(DEFAULT_NUM_CATS_PER_ROW);
+    }
+
+    public void setNumCategoriesPerRow(int numCatsPerRow) {
+        this.numCatsPerRow = numCatsPerRow;
     }
 
     public void initLayout() {
-        catsRowLaouts = new ArrayList<>();
-        catLayouts = new ArrayList<>();
-        images = new ArrayList<>();
-        names = new ArrayList<>();
+        List<ViewGroup> catLayouts = new ArrayList<>();
+        List<ImageView> images = new ArrayList<>();
+        List<TextView> names = new ArrayList<>();
+
+        // init views
         for (int i = 0; i < catLayoutIds.length; i++) {
-            catsRowLaouts.add((ViewGroup) view.findViewById(catLayoutIds[i]));
             catLayouts.add((ViewGroup) view.findViewById(catLayoutIds[i]));
             images.add((ImageView) view.findViewById(imageIds[i]));
             names.add((TextView) view.findViewById(nameIds[i]));
         }
 
+        // show/hide rows
+        int maxRows = (int) Math.ceil((double)categories.size() / numCatsPerRow);
+        for (int i = 0; i < catsRowLayoutIds.length; i++) {
+            ViewGroup catsRowLayout = (ViewGroup) view.findViewById(catsRowLayoutIds[i]);
+            Log.d(TAG, "cat.size="+categories.size()+" numCatsPerRow="+numCatsPerRow+" maxRows="+maxRows+" i="+i);
+            if (maxRows > i) {
+                catsRowLayout.setVisibility(View.VISIBLE);
+            } else {
+                catsRowLayout.setVisibility(View.GONE);
+            }
+        }
+
+        // init cat layouts
         for (int i = 0; i < catLayoutIds.length; i++) {
             ViewGroup catLayout = catLayouts.get(i);
             ImageView image = images.get(i);
@@ -80,7 +98,4 @@ public class CategorySelectorViewUtil {
         });
         catLayout.setVisibility(View.VISIBLE);
     }
-
-
-
 }

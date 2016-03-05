@@ -181,7 +181,7 @@
     <string name="new_post_action">List</string>
     <string name="edit_post_actionbar_title">Edit Product</string>
     <string name="new_post_actionbar_title">Sell Product</string>
-    <string name="new_post">Send</string>
+    <string name="new_post">List</string>
     <string name="new_post_price">Price($):</string>
     <string name="new_post_price_hint">Set a Price</string>
     <string name="new_post_original_price">Original Price($):</string>
