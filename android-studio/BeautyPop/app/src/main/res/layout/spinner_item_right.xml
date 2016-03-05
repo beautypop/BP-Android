@@ -10,8 +10,8 @@
     android:background="@color/white"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="3dp"
-    android:paddingBottom="3dp" />
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp" />
 
 
 

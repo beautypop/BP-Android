@@ -90,7 +90,7 @@ public class ProductActivity extends TrackedFragmentActivity {
     private RelativeLayout moreCommentsLayout;
     private ImageView moreCommentsImage;
 
-    private TextView commentText, commentSendButton, catNameText, timeText, numViewsText, numCommentsText, deleteText;
+    private TextView commentText, commentSendButton, catNameText, subCatNameText, timeText, numViewsText, numCommentsText, deleteText;
     private EditText commentEditText;
     private Button sendButton;
 
@@ -173,6 +173,7 @@ public class ProductActivity extends TrackedFragmentActivity {
         commentText = (TextView) findViewById(R.id.commentText);
         sendButton = (Button) findViewById(R.id.sendButton);
         catNameText = (TextView) findViewById(R.id.catNameText);
+        subCatNameText = (TextView) findViewById(R.id.subCatNameText);
         timeText = (TextView) findViewById(R.id.timeText);
         numViewsText = (TextView) findViewById(R.id.numViewsText);
         numCommentsText = (TextView) findViewById(R.id.numCommentsText);
@@ -304,6 +305,7 @@ public class ProductActivity extends TrackedFragmentActivity {
                 ViewUtil.setHtmlText(post.getTitle(), titleText, ProductActivity.this, true);
                 ViewUtil.setHtmlText(post.getBody(), descText, ProductActivity.this, true, true);
                 catNameText.setText(post.getCategoryName());
+                subCatNameText.setText(post.getSubCategoryName());
                 priceText.setText(ViewUtil.priceFormat(post.getPrice()));
                 conditionText.setText(ViewUtil.getPostConditionTypeValue(
                         ViewUtil.parsePostConditionType(post.getConditionType())));
@@ -314,6 +316,13 @@ public class ProductActivity extends TrackedFragmentActivity {
                     @Override
                     public void onClick(View v) {
                         ViewUtil.startCategoryActivity(ProductActivity.this, post.getCategoryId());
+                    }
+                });
+
+                subCatNameText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startCategoryActivity(ProductActivity.this, post.getSubCategoryId());
                     }
                 });
 
@@ -615,6 +624,13 @@ public class ProductActivity extends TrackedFragmentActivity {
                     idText.setText(post.id + "");
                     numViewsText.setText(post.getNumViews() + "");
                     scoreText.setText(post.timeScore + "");
+
+                    idText.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            adminLayout.setVisibility(View.GONE);
+                        }
+                    });
 
                     upImage.setOnClickListener(new View.OnClickListener() {
                         @Override

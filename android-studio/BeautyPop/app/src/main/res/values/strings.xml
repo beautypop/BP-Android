@@ -157,8 +157,10 @@
     <!-- Product page -->
     <string name="view_shop">View Shop</string>
     <string name="last_active">Active</string>
-    <string name="post_details">PRODUCT DETAILS</string>
-    <string name="post_condition">CONDITION</string>
+    <string name="post_details">Product Details</string>
+    <string name="post_condition">Condition</string>
+    <string name="post_category">Category</string>
+    <string name="post_subcategory">Subcategory</string>
     <string name="image">Photo</string>
     <string name="like">Like</string>
     <string name="likes">Likes</string>

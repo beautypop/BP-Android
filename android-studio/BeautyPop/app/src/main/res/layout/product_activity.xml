@@ -84,9 +84,10 @@
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp">
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
 
                             <LinearLayout
                                 android:orientation="horizontal"
@@ -161,22 +162,21 @@
                             android:id="@+id/viewBar1"
                             android:layout_width="match_parent"
                             android:layout_height="0.8dp"
-                            android:background="@drawable/bar1"
-                            android:layout_marginTop="15dp"></View>
+                            android:background="@drawable/bar1"></View>
 
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp">
+                            android:paddingLeft="15dp"
+                            android:paddingTop="15dp"
+                            android:paddingRight="15dp">
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/light_gray"
-                                android:textSize="12dp"
+                                android:textSize="13dp"
                                 android:text="@string/post_details"
                                 android:textStyle="bold"
                                 android:gravity="center_vertical" />
@@ -187,67 +187,42 @@
                                 android:id="@+id/descText"
                                 android:textColor="@color/dark_gray"
                                 android:textSize="15dp"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="10dp"
                                 android:autoLink="web" />
 
-                            <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/conditionLayout"
-                                android:layout_alignParentRight="false"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginTop="15dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:textSize="12dp"
-                                    android:textColor="@color/light_gray"
-                                    android:layout_gravity="center_vertical"
-                                    android:text="@string/post_condition"
-                                    android:textStyle="bold"
-                                    android:gravity="center_vertical" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:id="@+id/conditionText"
-                                    android:textSize="15dp"
-                                    android:textColor="@color/dark_gray"
-                                    android:layout_gravity="center_vertical"
-                                    android:gravity="center_vertical"
-                                    android:layout_marginTop="5dp" />
-
-                            </LinearLayout>
-
                         </LinearLayout>
-
-                        <View
-                            android:id="@+id/viewBar2"
-                            android:layout_width="match_parent"
-                            android:layout_height="0.8dp"
-                            android:background="@drawable/bar1"
-                            android:layout_marginTop="15dp"></View>
 
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="10dp">
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:layout_marginTop="10dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
+                                <TextView
+                                    android:id="@+id/deleteText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="14dp"
+                                    android:text="@string/delete"
+                                    android:textColor="@color/gray"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center_vertical"
+                                    android:textStyle="bold" />
+
                                 <LinearLayout
                                     android:orientation="horizontal"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:id="@+id/timeLayout">
+                                    android:id="@+id/timeLayout"
+                                    android:layout_toLeftOf="@+id/numLikesLayout">
 
                                     <ImageView
                                         android:id="@+id/timeImage"
@@ -274,8 +249,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:id="@+id/numLikesLayout"
-                                    android:layout_toRightOf="@+id/timeLayout"
-                                    android:layout_marginLeft="10dp" >
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_alignParentRight="true">
 
                                     <ImageView
                                         android:id="@+id/numLikesImage"
@@ -300,39 +275,146 @@
                                         android:layout_toRightOf="@+id/imageView2" />
                                 </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/deleteText"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="14dp"
-                                    android:text="@string/delete"
-                                    android:textColor="@color/gray"
-                                    android:layout_centerVertical="true"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_toRightOf="@+id/numLikesLayout"
-                                    android:layout_marginLeft="10dp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:id="@+id/catNameText"
-                                    android:textColor="@color/light_pink"
-                                    android:textSize="14dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_alignParentRight="true" />
-
                             </RelativeLayout>
                         </LinearLayout>
 
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:id="@+id/viewBar2"
+                                android:layout_width="match_parent"
+                                android:layout_height="0.8dp"
+                                android:background="@drawable/bar1"></View>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="32dp"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/post_condition"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@color/light_gray"
+                                    android:textColor="@color/white"
+                                    android:textSize="13dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="3.5"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/conditionText"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="6.5"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="14dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewBar3"
+                                android:layout_width="match_parent"
+                                android:layout_height="0.8dp"
+                                android:background="@drawable/bar1"></View>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="32dp"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/post_category"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@color/light_gray"
+                                    android:textColor="@color/white"
+                                    android:textSize="13dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="3.5"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/catNameText"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="6.5"
+                                    android:textColor="@color/light_pink"
+                                    android:textSize="14dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewBar4"
+                                android:layout_width="match_parent"
+                                android:layout_height="0.8dp"
+                                android:background="@drawable/bar1"></View>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="32dp"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/post_subcategory"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:background="@color/light_gray"
+                                    android:textColor="@color/white"
+                                    android:textSize="13dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="3.5"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/subCatNameText"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:layout_weight="6.5"
+                                    android:textSize="14dp"
+                                    android:textColor="@color/light_pink" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewBar5"
+                                android:layout_width="match_parent"
+                                android:layout_height="0.8dp"
+                                android:background="@drawable/bar1"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="10dp"
                             android:id="@+id/adminLayout"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
 
                             <LinearLayout
                                 android:orientation="horizontal"
@@ -590,7 +672,7 @@
                         </RelativeLayout>
 
                         <View
-                            android:id="@+id/viewBar3"
+                            android:id="@+id/viewBar10"
                             android:layout_width="match_parent"
                             android:layout_height="0.8dp"
                             android:background="@drawable/bar1"></View>
@@ -708,7 +790,7 @@
                     android:id="@+id/likeImage"
                     android:src="@drawable/ic_like"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="3dp"
+                    android:layout_marginBottom="1dp"
                     android:layout_marginTop="3dp" />
 
                 <TextView
@@ -738,7 +820,7 @@
                     android:layout_weight="5"
                     android:textColor="@color/white"
                     android:background="@drawable/button_gray_2"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:text="@string/chat"
                     android:textAllCaps="false" />
@@ -751,7 +833,7 @@
                     android:layout_weight="5"
                     android:textColor="@color/white"
                     android:background="@drawable/button_pink_2"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:textAllCaps="false" />
 
@@ -773,7 +855,7 @@
                     android:layout_weight="5"
                     android:textColor="@color/white"
                     android:background="@drawable/button_gray_2"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:text="@string/view_chats"
                     android:textAllCaps="false" />
@@ -785,7 +867,7 @@
                     android:id="@+id/soldButton"
                     android:textColor="@color/white"
                     android:background="@drawable/button_green_2"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:layout_weight="5"
                     android:textAllCaps="false" />
@@ -807,7 +889,7 @@
                     android:layout_weight="10"
                     android:textColor="@color/white"
                     android:background="@drawable/button_gray_2"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:text="@string/sold"
                     android:gravity="center" />
@@ -830,7 +912,7 @@
                     android:layout_weight="10"
                     android:textColor="@color/white"
                     android:background="@drawable/button_gray_2"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     android:textStyle="bold"
                     android:text="@string/sold_view_chats"
                     android:textAllCaps="false" />
