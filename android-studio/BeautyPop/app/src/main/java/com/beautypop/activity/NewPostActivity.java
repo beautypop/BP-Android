@@ -38,12 +38,10 @@ import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.SelectedImage;
 import com.beautypop.util.SharedPreferencesUtil;
-import com.beautypop.util.SharingUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.CountryVM;
 import com.beautypop.viewmodel.NewPostVM;
-import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.ResponseStatusVM;
 
 import org.parceler.apache.commons.lang.StringUtils;
