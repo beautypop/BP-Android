@@ -9,10 +9,14 @@ public class PostVM extends PostVMLite {
     public Long createdDate;
     public Long updatedDate;
     public String body;
+    public Long categoryId;
     public String categoryType;
     public String categoryName;
     public String categoryIcon;
-    public Long categoryId;
+    public Long subCategoryId;
+    public String subCategoryType;
+    public String subCategoryName;
+    public String subCategoryIcon;
     public List<CommentVM> latestComments;
 
     public boolean isOwner = false;
@@ -68,6 +72,14 @@ public class PostVM extends PostVMLite {
         this.body = body;
     }
 
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public String getCategoryType() {
         return categoryType;
     }
@@ -92,12 +104,36 @@ public class PostVM extends PostVMLite {
         this.categoryIcon = categoryIcon;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public Long getSubCategoryId() {
+        return subCategoryId;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setSubCategoryId(Long subCategoryId) {
+        this.subCategoryId = subCategoryId;
+    }
+
+    public String getSubCategoryType() {
+        return subCategoryType;
+    }
+
+    public void setSubCategoryType(String subCategoryType) {
+        this.subCategoryType = subCategoryType;
+    }
+
+    public String getSubCategoryName() {
+        return subCategoryName;
+    }
+
+    public void setSubCategoryName(String subCategoryName) {
+        this.subCategoryName = subCategoryName;
+    }
+
+    public String getSubCategoryIcon() {
+        return subCategoryIcon;
+    }
+
+    public void setSubCategoryIcon(String subCategoryIcon) {
+        this.subCategoryIcon = subCategoryIcon;
     }
 
     public List<CommentVM> getLatestComments() {

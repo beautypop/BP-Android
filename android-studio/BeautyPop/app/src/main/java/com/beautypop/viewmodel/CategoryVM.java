@@ -9,6 +9,7 @@ public class CategoryVM {
     public String description;
     public String categoryType;
     public int seq;
+    public Long parentId;
     public List<CategoryVM> subCategories;
 
     public Long getId() {
@@ -57,6 +58,14 @@ public class CategoryVM {
 
     public void setSeq(int seq) {
         this.seq = seq;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public List<CategoryVM> getSubCategories() {

@@ -387,7 +387,7 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/selectsubCatLayout"
+                    android:id="@+id/selectSubCatLayout"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="20dp">
 
@@ -417,7 +417,7 @@
                         android:layout_gravity="center_vertical" />
 
                     <TextView
-                        android:id="@+id/selectsubCatText"
+                        android:id="@+id/selectSubCatText"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:layout_alignParentLeft="false"
@@ -431,7 +431,7 @@
                         android:layout_gravity="center_vertical" />
 
                     <ImageView
-                        android:id="@+id/selectsubCatIcon"
+                        android:id="@+id/selectSubCatIcon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_alignParentBottom="false"

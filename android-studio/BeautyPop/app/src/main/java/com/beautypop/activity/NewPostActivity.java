@@ -57,12 +57,12 @@ import retrofit.client.Response;
 public class NewPostActivity extends TrackedFragmentActivity{
     private static final String TAG = NewPostActivity.class.getName();
 
-    protected LinearLayout imagesLayout, selectCatLayout, sellerLayout, sharingLayout;
+    protected LinearLayout imagesLayout, selectCatLayout, selectSubCatLayout, sellerLayout, sharingLayout;
     protected RelativeLayout catLayout;
-    protected TextView selectCatText;
-    protected ImageView selectCatIcon;
-    protected TextView catName;
-    protected ImageView catIcon;
+    protected TextView selectCatText, selectSubCatText;
+    protected ImageView selectCatIcon, selectSubCatIcon;
+    protected TextView catName, subCatName;
+    protected ImageView catIcon, subCatIcon;
     protected ImageView backImage;
     protected TextView titleEdit, descEdit, priceEdit, originalPriceEdit, postAction, editTextInFocus;
     protected Spinner conditionTypeSpinner, countrySpinner;
@@ -79,8 +79,10 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
     protected CountryVM country;
 
-    protected Long catId;
+    protected CategoryVM category;
+    protected CategoryVM subCategory;
     protected PopupWindow categoryPopup;
+    protected PopupWindow subCategoryPopup;
     protected PopupCategoryListAdapter adapter;
 
     protected ToggleButton fbSharingButton;
@@ -104,10 +106,15 @@ public class NewPostActivity extends TrackedFragmentActivity{
         imagesLayout = (LinearLayout) findViewById(R.id.imagesLayout);
         catLayout = (RelativeLayout) findViewById(R.id.catLayout);
         selectCatLayout = (LinearLayout) findViewById(R.id.selectCatLayout);
+        selectSubCatLayout = (LinearLayout) findViewById(R.id.selectSubCatLayout);
         selectCatText = (TextView) findViewById(R.id.selectCatText);
         selectCatIcon = (ImageView) findViewById(R.id.selectCatIcon);
+        selectSubCatText = (TextView) findViewById(R.id.selectSubCatText);
+        selectSubCatIcon = (ImageView) findViewById(R.id.selectSubCatIcon);
         catIcon = (ImageView) findViewById(R.id.catIcon);
         catName = (TextView) findViewById(R.id.catName);
+        subCatIcon = (ImageView) findViewById(R.id.subCatIcon);
+        subCatName = (TextView) findViewById(R.id.subCatName);
         titleEdit = (TextView) findViewById(R.id.titleEdit);
         descEdit = (TextView) findViewById(R.id.descEdit);
         priceEdit = (TextView) findViewById(R.id.priceEdit);
@@ -149,18 +156,37 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
         Long id = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, 0L);
         if (id == null || id == 0L) {
-            catId = null;
+            setCategory(null);
+            setSubCategory(null);
         } else {
-            catId = id;
-            initCategoryLayout(CategoryCache.getCategory(id));
+            // set category, subcategory
+            CategoryVM cat = CategoryCache.getCategory(id);
+            if (cat.parentId > 0) {
+                category = CategoryCache.getCategory(cat.parentId);
+                subCategory = cat;
+            } else {
+                category = cat;
+                subCategory = null;
+            }
+
+            setCategory(category);
+            setSubCategory(subCategory);
         }
-        Log.d(this.getClass().getSimpleName(), "onCreate: catId=" + catId);
+        //Log.d(this.getClass().getSimpleName(), "onCreate: category="+category.id+" subCategory="+subCategory.id);
 
         updateSelectCategoryLayout();
         selectCatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initCategoryPopup();
+                initCategoryPopup(categoryPopup, CategoryCache.getCategories(), false);
+            }
+        });
+
+        updateSelectSubCategoryLayout();
+        selectSubCatLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
             }
         });
 
@@ -373,16 +399,34 @@ public class NewPostActivity extends TrackedFragmentActivity{
     }
 
     protected void updateSelectCategoryLayout() {
-        if (catId == null) {
-            selectCatText.setVisibility(View.VISIBLE);
-            selectCatIcon.setVisibility(View.VISIBLE);
-            catIcon.setVisibility(View.GONE);
-            catName.setVisibility(View.GONE);
-        } else {
+        if (category != null) {
+            catName.setText(category.getName());
+            ImageUtil.displayImage(category.getIcon(), catIcon);
             selectCatText.setVisibility(View.GONE);
             selectCatIcon.setVisibility(View.GONE);
             catIcon.setVisibility(View.VISIBLE);
             catName.setVisibility(View.VISIBLE);
+        } else {
+            selectCatText.setVisibility(View.VISIBLE);
+            selectCatIcon.setVisibility(View.VISIBLE);
+            catIcon.setVisibility(View.GONE);
+            catName.setVisibility(View.GONE);
+        }
+    }
+
+    protected void updateSelectSubCategoryLayout() {
+        if (subCategory != null) {
+            subCatName.setText(subCategory.getName());
+            ImageUtil.displayImage(subCategory.getIcon(), subCatIcon);
+            selectSubCatText.setVisibility(View.GONE);
+            selectSubCatIcon.setVisibility(View.GONE);
+            subCatIcon.setVisibility(View.VISIBLE);
+            subCatName.setVisibility(View.VISIBLE);
+        } else {
+            selectSubCatText.setVisibility(View.VISIBLE);
+            selectSubCatIcon.setVisibility(View.VISIBLE);
+            subCatIcon.setVisibility(View.GONE);
+            subCatName.setVisibility(View.GONE);
         }
     }
 
@@ -458,8 +502,13 @@ public class NewPostActivity extends TrackedFragmentActivity{
             return null;
         }
 
-        if (catId == null) {
-            initCategoryPopup();
+        if (category == null) {
+            initCategoryPopup(categoryPopup, CategoryCache.getCategories(), false);
+            return null;
+        }
+
+        if (subCategory == null) {
+            initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
             return null;
         }
 
@@ -493,7 +542,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
         }
 
         NewPostVM newPost = new NewPostVM(
-                catId, title, body, price, conditionType, selectedImages,
+                subCategory.id, title, body, price, conditionType, selectedImages,
                 originalPrice, freeDelivery, countryCode);
         return newPost;
     }
@@ -564,14 +613,19 @@ public class NewPostActivity extends TrackedFragmentActivity{
         finish();
     }
 
-    protected void initCategoryLayout(CategoryVM category) {
-        catId = category.id;
-        catName.setText(category.getName());
-        ImageUtil.displayImage(category.getIcon(), catIcon);
+    protected void setCategory(CategoryVM cat) {
+        this.category = cat;
+        this.subCategory = null;
         updateSelectCategoryLayout();
+        updateSelectSubCategoryLayout();
     }
 
-    protected void initCategoryPopup() {
+    protected void setSubCategory(CategoryVM cat) {
+        this.subCategory = cat;
+        updateSelectSubCategoryLayout();
+    }
+
+    protected void initCategoryPopup(PopupWindow popup, List<CategoryVM> categories, final boolean isSubCategory) {
         try {
             LayoutInflater inflater = (LayoutInflater) NewPostActivity.this
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -579,32 +633,35 @@ public class NewPostActivity extends TrackedFragmentActivity{
             View layout = inflater.inflate(R.layout.category_popup_window,
                     (ViewGroup) findViewById(R.id.popupElement));
 
-            if (categoryPopup == null) {
-                categoryPopup = new PopupWindow(
+            if (popup == null) {
+                popup = new PopupWindow(
                         layout,
                         ViewUtil.getRealDimension(DefaultValues.CATEGORY_PICKER_POPUP_WIDTH),
                         ViewGroup.LayoutParams.WRAP_CONTENT,    //ViewUtil.getRealDimension(DefaultValues.CATEGORY_PICKER_POPUP_HEIGHT),
                         true);
             }
 
-            categoryPopup.setBackgroundDrawable(new BitmapDrawable(getResources(), ""));
-            categoryPopup.setOutsideTouchable(false);
-            categoryPopup.setFocusable(true);
-            categoryPopup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+            popup.setBackgroundDrawable(new BitmapDrawable(getResources(), ""));
+            popup.setOutsideTouchable(false);
+            popup.setFocusable(true);
+            popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
             ListView listView = (ListView) layout.findViewById(R.id.categoryList);
-            adapter = new PopupCategoryListAdapter(this, CategoryCache.getCategories());
+            adapter = new PopupCategoryListAdapter(this, categories);
             listView.setAdapter(adapter);
 
+            final PopupWindow thisPopup = popup;
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    CategoryVM category = adapter.getItem(position);
-                    catId = category.getId();
-                    initCategoryLayout(category);
+                    CategoryVM cat = adapter.getItem(position);
+                    if (!isSubCategory) {
+                        setCategory(cat);
+                    } else {
+                        setSubCategory(cat);
+                    }
 
-                    categoryPopup.dismiss();
-                    categoryPopup = null;
+                    thisPopup.dismiss();
                     Log.d(this.getClass().getSimpleName(), "initCategoryPopup: listView.onItemClick: category=" + category.getId() + "|" + category.getName());
                 }
             });

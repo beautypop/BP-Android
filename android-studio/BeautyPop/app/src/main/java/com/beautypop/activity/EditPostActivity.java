@@ -11,6 +11,7 @@ import com.beautypop.app.AppController;
 import com.beautypop.app.CategoryCache;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ViewUtil;
+import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.NewPostVM;
 import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.ResponseStatusVM;
@@ -51,7 +52,10 @@ public class EditPostActivity extends NewPostActivity {
                 descEdit.setText(post.getBody());
                 priceEdit.setText((int) post.getPrice() + "");
                 setConditionTypeSpinner(ViewUtil.parsePostConditionType(post.getConditionType()));
-                initCategoryLayout(CategoryCache.getCategory(post.getCategoryId()));
+
+                // category, subcategory
+                setCategory(CategoryCache.getCategory(post.categoryId));
+                setSubCategory(CategoryCache.getCategory(post.subCategoryId));
 
                 // seller
                 if (post.getOriginalPrice() > 0) {
