@@ -126,6 +126,8 @@ public class NewPostActivity extends TrackedFragmentActivity{
         sharingLayout = (LinearLayout) findViewById(R.id.sharingLayout);
         editTextInFocus = titleEdit;
 
+        ViewUtil.hideInputMethodWindow(this, titleEdit);
+
         SharedPreferencesUtil.getInstance().saveUserLocation("");
 
         autoCompleteText = (TextView) findViewById(R.id.autoCompleteText);
@@ -174,7 +176,6 @@ public class NewPostActivity extends TrackedFragmentActivity{
         }
         //Log.d(this.getClass().getSimpleName(), "onCreate: category="+category.id+" subCategory="+subCategory.id);
 
-        updateSelectCategoryLayout();
         selectCatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +183,6 @@ public class NewPostActivity extends TrackedFragmentActivity{
             }
         });
 
-        updateSelectSubCategoryLayout();
         selectSubCatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -615,9 +615,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
     protected void setCategory(CategoryVM cat) {
         this.category = cat;
-        this.subCategory = null;
         updateSelectCategoryLayout();
-        updateSelectSubCategoryLayout();
     }
 
     protected void setSubCategory(CategoryVM cat) {
@@ -657,6 +655,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
                     CategoryVM cat = adapter.getItem(position);
                     if (!isSubCategory) {
                         setCategory(cat);
+                        setSubCategory(null);
                     } else {
                         setSubCategory(cat);
                     }
@@ -706,7 +705,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
             }
 
             // pop back soft keyboard
-            ViewUtil.popupInputMethodWindow(this);
+            //ViewUtil.popupInputMethodWindow(this);
         }
     }
 
