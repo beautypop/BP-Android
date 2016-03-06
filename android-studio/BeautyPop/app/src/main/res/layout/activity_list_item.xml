@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/activityLayout"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="10dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:id="@+id/userImageLayout"
-        android:layout_margin="10dp">
+        android:id="@+id/userImageLayout">
 
         <ImageView
             android:id="@+id/userImage"
@@ -28,9 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/userImageLayout"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginLeft="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
