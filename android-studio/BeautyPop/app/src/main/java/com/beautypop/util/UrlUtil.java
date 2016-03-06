@@ -58,7 +58,7 @@ public class UrlUtil {
         if (ValidationUtil.isValidSellerUrl(user.displayName)) {
             url = AppController.BASE_URL + "/" + user.displayName.toLowerCase();
         } else {
-            url = createSellerUrl(user);
+            url = String.format(SELLER_URL, user.getId());
         }
         return url;
     }
