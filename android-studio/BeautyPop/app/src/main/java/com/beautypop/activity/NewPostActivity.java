@@ -186,6 +186,10 @@ public class NewPostActivity extends TrackedFragmentActivity{
         selectSubCatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (category == null) {
+                    Toast.makeText(NewPostActivity.this, getString(R.string.invalid_post_no_category), Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
             }
         });

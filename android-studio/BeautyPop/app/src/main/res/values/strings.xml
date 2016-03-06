@@ -332,6 +332,7 @@
     <string name="invalid_post_price_negative">Price cannot be less than $0</string>
     <string name="invalid_post_original_price_less_than_price">Original price cannot be less than listed price</string>
     <string name="invalid_post_condition_empty">Please select a condition</string>
+    <string name="invalid_post_no_category">Please select a category first</string>
     <string name="invalid_comment_body_empty">Please enter comment</string>
 
     <!-- Image processing library -->

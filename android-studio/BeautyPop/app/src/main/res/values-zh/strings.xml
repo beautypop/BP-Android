@@ -332,6 +332,7 @@
     <string name="invalid_post_price_negative">價格不可以小於$0</string>
     <string name="invalid_post_original_price_less_than_price">原價不可以小於現價</string>
     <string name="invalid_post_condition_empty">請選擇商品狀況</string>
+    <string name="invalid_post_no_category">請先選擇商品分類</string>
     <string name="invalid_comment_body_empty">請填寫內容</string>
 
     <!-- Image processing library -->

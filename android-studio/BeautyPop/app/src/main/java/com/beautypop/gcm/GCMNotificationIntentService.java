@@ -68,11 +68,11 @@ public class GCMNotificationIntentService extends IntentService {
 
 		if (messageType.equals(NotificationType.COMMENT.name())) {
 			if (MainActivity.getInstance() != null) {
-				gcmMessage = actor + MainActivity.getInstance().getString(R.string.activity_commented) + "\n" + message;
+				gcmMessage = actor + " " + MainActivity.getInstance().getString(R.string.activity_commented) + "\n" + message;
 			}
 		} else if (messageType.equals(NotificationType.FOLLOW.name())) {
 			if (MainActivity.getInstance() != null) {
-				gcmMessage = actor + MainActivity.getInstance().getString(R.string.activity_followed);
+				gcmMessage = actor + " " + MainActivity.getInstance().getString(R.string.activity_followed);
 			}
 		}
 		return gcmMessage;
