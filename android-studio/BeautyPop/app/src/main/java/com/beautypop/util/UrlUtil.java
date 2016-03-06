@@ -28,6 +28,8 @@ public class UrlUtil {
     private static String PRODUCT_URL_REGEX = ".*/product/(\\d+)";
     private static String CATEGORY_URL_REGEX = ".*/category/(\\d+)";
 
+    private static String VALID_SELLER_URL_REGEX = "[A-Za-z0-9._-]";
+
     private static String[] HTTP_PREFIXES = {
             "http://www.",
             "https://www.",
@@ -52,7 +54,13 @@ public class UrlUtil {
     }
 
     public static String createSellerUrl(UserVM user) {
-        return String.format(SELLER_URL, user.getId());
+        String url;
+        if (ValidationUtil.isValidSellerUrl(user.displayName)) {
+            url = AppController.BASE_URL + "/" + user.displayName.toLowerCase();
+        } else {
+            url = createSellerUrl(user);
+        }
+        return url;
     }
 
     public static String createProductUrl(PostVM post) {
@@ -80,8 +88,7 @@ public class UrlUtil {
     }
 
     public static String createShortSellerUrl(UserVM user) {
-        String url = createSellerUrl(user);
-        return AppController.getInstance().getString(R.string.seller_url) + ": " + stripHttpPrefix(url);
+        return AppController.getInstance().getString(R.string.seller_url) + ": " + stripHttpPrefix(createSellerUrl(user));
     }
 
     public static String stripHttpPrefix(String url) {

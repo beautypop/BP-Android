@@ -61,10 +61,10 @@ public class SettingsActivity extends TrackedFragmentActivity {
 
         String lang = SharedPreferencesUtil.getInstance().getLang();
         int pos = -1;
-        if (DefaultValues.LANG_EN.equalsIgnoreCase(lang)) {
-            pos = languageAdapter.getPosition(getString(R.string.lang_en));
-        } else {
+        if (DefaultValues.LANG_ZH.equalsIgnoreCase(lang)) {
             pos = languageAdapter.getPosition(getString(R.string.lang_zh));
+        } else {
+            pos = languageAdapter.getPosition(getString(R.string.lang_en));
         }
         langSpinner.setSelection(pos);
 
@@ -93,10 +93,10 @@ public class SettingsActivity extends TrackedFragmentActivity {
                         .setCancelable(false)
                         .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                if (getString(R.string.lang_en).equalsIgnoreCase(lang)) {
-                                    SharedPreferencesUtil.getInstance().saveLang(DefaultValues.LANG_EN);
-                                } else {
+                                if (getString(R.string.lang_zh).equalsIgnoreCase(lang)) {
                                     SharedPreferencesUtil.getInstance().saveLang(DefaultValues.LANG_ZH);
+                                } else {
+                                    SharedPreferencesUtil.getInstance().saveLang(DefaultValues.LANG_EN);
                                 }
                                 ViewUtil.startSplashActivity(SettingsActivity.this, "");
                                 finish();

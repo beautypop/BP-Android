@@ -310,7 +310,7 @@
     <string name="sharing_message_note">(Shared from BeautyPop App, Install Android App now)</string>
 
     <!-- Seller -->
-    <string name="seller_url">Seller Link</string>
+    <string name="seller_url">Shop Link</string>
     <string name="seller_rules_title">Seller Policy</string>
 
     <!-- Dialog -->

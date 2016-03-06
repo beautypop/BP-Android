@@ -19,8 +19,8 @@ public class ValidationUtil {
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     private static final String USER_DISPLAYNAME_FORMAT_REGEX =
             "^[_\\p{L}0-9-\\+]+(\\.[_\\p{L}0-9-]+)*$";      // \p{L} matches letter in any language
-    //private static final String USER_DISPLAYNAME_FORMAT_REGEX =
-    //        "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*$";
+    private static final String SELLER_URL_FORMAT_REGEX =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*$";
 
     private static final String ERROR_REQUIRED = AppController.getInstance().getString(R.string.signup_error_field_required);
     private static final String ERROR_EMAIL_FORMAT = AppController.getInstance().getString(R.string.signup_error_email_format);
@@ -51,6 +51,14 @@ public class ValidationUtil {
         Pattern pattern = Pattern.compile("\\s");
         Matcher matcher = pattern.matcher(text);
         return matcher.find();
+    }
+
+    public static boolean isValidSellerUrl(String displayName) {
+        // pattern doesn't match so returning false
+        if (Pattern.matches(SELLER_URL_FORMAT_REGEX, displayName)) {
+            return true;
+        }
+        return false;
     }
 
     /**
