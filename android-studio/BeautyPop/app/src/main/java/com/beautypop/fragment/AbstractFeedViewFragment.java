@@ -330,16 +330,18 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
                     item.numLikes = feedPost.numLikes;
                     feedAdapter.notifyItemChanged(position);
                 }
+            } else if (itemChangedState == ItemChangedState.ITEM_REMOVED) {
+                int position = feedAdapter.getClickedPosition();
+                Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_REMOVED="+position);
+                feedAdapter.notifyItemRemoved(position);
             }
 
             // TODO: handle add / remove item
             /*
             else if (itemChangedState == ItemChangedState.ITEM_ADDED) {
-                Log.d(this.getClass().getSimpleName(), "onResume: feedAdapter ITEM_ADDED="+position);
+                int position = feedAdapter.getClickedPosition();
+                Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_ADDED="+position);
                 feedAdapter.notifyItemInserted(position);
-            } else if (itemChangedState == ItemChangedState.ITEM_REMOVED) {
-                Log.d(this.getClass().getSimpleName(), "onResume: feedAdapter ITEM_REMOVED="+position);
-                feedAdapter.notifyItemRemoved(position);
             }
             */
         }

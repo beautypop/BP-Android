@@ -174,6 +174,7 @@ public class EditPostActivity extends NewPostActivity {
                 // pass back to feed view to handle
                 setActivityResult(AbstractFeedViewFragment.ItemChangedState.ITEM_REMOVED, null);
                 pending = false;
+                finish();
             }
 
             @Override

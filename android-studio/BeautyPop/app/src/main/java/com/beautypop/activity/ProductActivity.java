@@ -1052,6 +1052,7 @@ public class ProductActivity extends TrackedFragmentActivity {
                 // pass back to feed view to handle
                 setActivityResult(ItemChangedState.ITEM_REMOVED, null);
                 pending = false;
+                finish();
             }
 
             @Override
@@ -1147,6 +1148,18 @@ public class ProductActivity extends TrackedFragmentActivity {
             boolean refresh = data.getBooleanExtra(ViewUtil.INTENT_RESULT_REFRESH, false);
             if (refresh) {
                 getProduct(postId);
+            }
+
+            // changed state
+            ItemChangedState itemChangedState = null;
+            try {
+                itemChangedState = Enum.valueOf(ItemChangedState.class, data.getStringExtra(ViewUtil.INTENT_RESULT_ITEM_CHANGED_STATE));
+            } catch (Exception e) {
+            }
+
+            if (itemChangedState == ItemChangedState.ITEM_REMOVED) {
+                Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_REMOVED");
+                finish();
             }
         }
     }
