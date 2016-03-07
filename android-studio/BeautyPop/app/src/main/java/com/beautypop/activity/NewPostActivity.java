@@ -87,6 +87,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
     protected ToggleButton fbSharingButton;
 
+    protected boolean pending = false;
     protected boolean postSuccess = false;
 
     protected String getActionTypeText() {
@@ -552,6 +553,10 @@ public class NewPostActivity extends TrackedFragmentActivity{
     }
 
     protected void doPost() {
+        if (pending) {
+            return;
+        }
+
         if (selectedImages.size() == 0) {
             Toast.makeText(this, getString(R.string.invalid_post_no_photo), Toast.LENGTH_SHORT).show();
             return;
@@ -565,6 +570,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
         ViewUtil.showSpinner(this);
 
         postAction.setEnabled(false);
+        pending = true;
         AppController.getApiService().newPost(newPost, new Callback<ResponseStatusVM>() {
             @Override
             public void success(ResponseStatusVM responseStatus, Response response) {
@@ -585,12 +591,14 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
                 UserInfoCache.incrementNumProducts();
                 complete();
+                pending = false;
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Toast.makeText(NewPostActivity.this, String.format(NewPostActivity.this.getString(R.string.post_failed), getActionTypeText()), Toast.LENGTH_SHORT).show();
                 Log.e(NewPostActivity.class.getSimpleName(), "doPost: failure", error);
+                pending = false;
             }
         });
     }

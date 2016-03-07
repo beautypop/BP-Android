@@ -213,7 +213,7 @@
     <string name="new_post_free_delivery">Free Delivery</string>
     <string name="new_post_country">Country</string>
 
-    <string name="post_delete_confirm">Delete now?</string>
+    <string name="post_delete_confirm">Are you sure to delete?</string>
     <string name="post_sold_confirm">Confirm product has been sold?\nYou will no longer receive chats and orders for this product</string>
     <string name="post_not_found">Cannot find this product. It might have been removed.</string>
     <string name="post_delete_success">Delete successfully</string>
@@ -237,7 +237,7 @@
     <string name="timeago_weeks">weeks ago</string>
     <string name="timeago_months">months ago</string>
     <string name="timeago_years">years ago</string>
-    <string name="delete">Delete</string>
+    <string name="delete">Delete Product</string>
     <string name="list_loading">Loading...</string>
     <string name="list_loading_error">Problem during loading. Please check network connection and try again.</string>
     <string name="list_loaded_all">- Loaded all items -</string>

@@ -710,6 +710,30 @@
                     android:layout_height="0.8dp" />
             </LinearLayout>
 
+            <RelativeLayout
+                android:id="@+id/deleteLayout"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/deleteText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:text="@string/delete"
+                    android:textColor="@color/dark_gray_2"
+                    android:textSize="15dp"
+                    android:background="@color/light_gray_2"
+                    android:gravity="center"
+                    android:paddingLeft="35dp"
+                    android:paddingRight="35dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp" />
+            </RelativeLayout>
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"

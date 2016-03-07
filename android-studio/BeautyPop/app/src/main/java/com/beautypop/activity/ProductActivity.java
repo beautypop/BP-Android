@@ -393,12 +393,7 @@ public class ProductActivity extends TrackedFragmentActivity {
 
                 // delete
 
-                if (post.isOwner() || AppController.isUserAdmin()) {
-                    if (post.isOwner()) {
-                        deleteText.setTextColor(getResources().getColor(R.color.gray));
-                    } else if (AppController.isUserAdmin()) {
-                        deleteText.setTextColor(getResources().getColor(R.color.admin_green));
-                    }
+                if (AppController.isUserAdmin()) {
                     deleteText.setVisibility(View.VISIBLE);
 
                     deleteText.setOnClickListener(new View.OnClickListener() {
