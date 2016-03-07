@@ -34,7 +34,6 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class ActivityMainFragment extends TrackedFragment {
-
     private static final String TAG = ActivityMainFragment.class.getName();
 
     protected ListView listView;
@@ -143,8 +142,10 @@ public class ActivityMainFragment extends TrackedFragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (getChildFragmentManager() != null && getChildFragmentManager().getFragments() != null) {
             for (Fragment fragment : getChildFragmentManager().getFragments()) {
-                if (fragment != null)
+                if (fragment != null) {
+                    Log.d(TAG, "onActivityResult: propagate to fragment=" + fragment.getClass().getSimpleName());
                     fragment.onActivityResult(requestCode, resultCode, data);
+                }
             }
         }
     }

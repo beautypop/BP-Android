@@ -35,6 +35,7 @@ import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.NotificationCounterVM;
 
 public class MainActivity extends TrackedFragmentActivity {
+    private static final String TAG = MainActivity.class.getName();
 
     private ImageView gameBadgeImage;
 
@@ -140,7 +141,7 @@ public class MainActivity extends TrackedFragmentActivity {
         homeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(MainActivity.this.getClass().getSimpleName(), "onClick: Home tab clicked");
+                Log.d(TAG, "onClick: Home tab clicked");
                 pressHomeTab();
             }
         });
@@ -148,7 +149,7 @@ public class MainActivity extends TrackedFragmentActivity {
         sellerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(MainActivity.this.getClass().getSimpleName(), "onClick: Seller tab clicked");
+                Log.d(TAG, "onClick: Seller tab clicked");
                 pressSellerTab();
             }
         });
@@ -156,7 +157,7 @@ public class MainActivity extends TrackedFragmentActivity {
         activityLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(MainActivity.this.getClass().getSimpleName(), "onClick: Activity tab clicked");
+                Log.d(TAG, "onClick: Activity tab clicked");
                 pressActivityTab();
             }
         });
@@ -164,7 +165,7 @@ public class MainActivity extends TrackedFragmentActivity {
         profileLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(MainActivity.this.getClass().getSimpleName(), "onClick: Profile tab clicked");
+                Log.d(TAG, "onClick: Profile tab clicked");
                 pressProfileTab();
             }
         });
@@ -319,25 +320,28 @@ public class MainActivity extends TrackedFragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        Log.d(this.getClass().getSimpleName(), "onDestroy: clear all");
+        Log.d(TAG, "onDestroy: clear all");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(this.getClass().getSimpleName(), "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
+        Log.d(TAG, "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
 
         if (requestCode == ViewUtil.START_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             boolean refresh = data.getBooleanExtra(ViewUtil.INTENT_RESULT_REFRESH, false);
             if (refresh) {
+                Log.d(TAG, "onActivityResult: pressProfileTab");
                 pressProfileTab(true);
                 return;     // handled... dont trickle down to fragments
             }
         }
 
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-            if (fragment != null)
+            if (fragment != null) {
+                Log.d(TAG, "onActivityResult: propagate to fragment=" + fragment.getClass().getSimpleName());
                 fragment.onActivityResult(requestCode, resultCode, data);
+            }
         }
     }
 
@@ -347,7 +351,7 @@ public class MainActivity extends TrackedFragmentActivity {
             return;
         }
 
-        Log.d(this.getClass().getSimpleName(), "refreshNotifications: activitiesCount=" + counter.activitiesCount + " conversationsCount=" + counter.conversationsCount);
+        Log.d(TAG, "refreshNotifications: activitiesCount=" + counter.activitiesCount + " conversationsCount=" + counter.conversationsCount);
 
         if (counter.activitiesCount == 0) {
             activityCountText.setVisibility(View.INVISIBLE);

@@ -18,6 +18,7 @@ import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ViewUtil;
 
 public class SellerMainFragment extends TrackedFragment {
+    private static final String TAG = SellerMainFragment.class.getName();
 
     private ViewPager viewPager;
     private SellerMainPagerAdapter adapter;
@@ -61,8 +62,10 @@ public class SellerMainFragment extends TrackedFragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (getChildFragmentManager() != null && getChildFragmentManager().getFragments() != null) {
             for (Fragment fragment : getChildFragmentManager().getFragments()) {
-                if (fragment != null)
+                if (fragment != null) {
+                    Log.d(TAG, "onActivityResult: propagate to fragment=" + fragment.getClass().getSimpleName());
                     fragment.onActivityResult(requestCode, resultCode, data);
+                }
             }
         }
     }

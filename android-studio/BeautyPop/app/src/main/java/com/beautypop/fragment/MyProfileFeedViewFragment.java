@@ -289,13 +289,14 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
 
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE  && data != null) {
+            if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE && data != null) {
 
                 String imagePath = "";
-                if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE  && data != null) {
+                if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE && data != null) {
                     selectedImageUri = data.getData();
                     imagePath = ImageUtil.getRealPathFromUri(getActivity(), selectedImageUri);
                 }

@@ -84,7 +84,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
     }
 
     protected void setFeedFilter(FeedFilter feedFilter) {
-        Log.d(this.getClass().getSimpleName(), "setFeedFilter: feedFilter\n" + feedFilter.toString());
+        Log.d(TAG, "setFeedFilter: feedFilter\n" + feedFilter.toString());
         this.feedFilter = feedFilter;
     }
 
@@ -183,7 +183,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         if (this.feedFilter != null &&
                 this.feedFilter.equals(feedFilter) &&
                 reload) {
-            Log.w(this.getClass().getSimpleName(), "reloadFeed: reload already fired for filter\n"+feedFilter.toString());
+            Log.w(TAG, "reloadFeed: reload already fired for filter\n"+feedFilter.toString());
             return;
         }
 
@@ -198,14 +198,14 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
 
     protected FeedFilter.FeedType getFeedType(String feedType) {
         if (StringUtils.isEmpty(feedType)) {
-            Log.w(this.getClass().getSimpleName(), "getFeedType: null feedType!!");
+            Log.w(TAG, "getFeedType: null feedType!!");
             return null;
         }
 
         try {
             return FeedFilter.FeedType.valueOf(feedType);
         } catch (IllegalArgumentException e) {
-            Log.e(this.getClass().getSimpleName(), "getFeedType: Invalid feedType="+feedType, e);
+            Log.e(TAG, "getFeedType: Invalid feedType="+feedType, e);
         }
         return null;
     }
@@ -218,7 +218,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         try {
             return FeedFilter.ConditionType.valueOf(conditionType);
         } catch (IllegalArgumentException e) {
-            Log.e(this.getClass().getSimpleName(), "getConditionType: Invalid conditionType="+conditionType, e);
+            Log.e(TAG, "getConditionType: Invalid conditionType="+conditionType, e);
         }
         return FeedFilter.ConditionType.ALL;
     }
@@ -243,7 +243,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
     }
 
     protected void loadFeedItemsToList(List<PostVMLite> posts) {
-        Log.d(this.getClass().getSimpleName(), "loadFeedItemsToList: size=" + posts.size()+"\n"+getFeedFilter().toString());
+        Log.d(TAG, "loadFeedItemsToList: size=" + posts.size()+"\n"+getFeedFilter().toString());
 
         if (reload) {
             clearFeedItems();
@@ -291,7 +291,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(this.getClass().getSimpleName(), "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
+        Log.d(TAG, "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
 
         if (requestCode == ViewUtil.START_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK &&
                 data != null && feedAdapter != null) {
@@ -321,8 +321,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
 
                 PostVMLite item = feedAdapter.getItem(position);
                 if (feedPost != null) {
-                    Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_UPDATED=" + position + " post=" + feedPost.id);
-
+                    Log.d(TAG, "onActivityResult: feedAdapter ITEM_UPDATED=" + position + " post=" + feedPost.id);
                     item.title = feedPost.title;
                     item.price = feedPost.price;
                     item.sold = feedPost.sold;
@@ -332,18 +331,20 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
                 }
             } else if (itemChangedState == ItemChangedState.ITEM_REMOVED) {
                 int position = feedAdapter.getClickedPosition();
-                Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_REMOVED="+position);
-                feedAdapter.notifyItemRemoved(position);
-            }
+                if (position == -1 || feedAdapter.isEmpty()) {
+                    return;
+                }
 
-            // TODO: handle add / remove item
-            /*
-            else if (itemChangedState == ItemChangedState.ITEM_ADDED) {
-                int position = feedAdapter.getClickedPosition();
-                Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_ADDED="+position);
-                feedAdapter.notifyItemInserted(position);
+                Log.d(TAG, "onActivityResult: feedAdapter ITEM_REMOVED="+position);
+                feedAdapter.removeItem(position);
+                feedAdapter.notifyItemRemoved(position);
+            }  else if (itemChangedState == ItemChangedState.ITEM_ADDED) {
+                if (feedPost != null) {
+                    Log.d(TAG, "onActivityResult: feedAdapter ITEM_ADDED=0 post=" + feedPost.id);
+                    items.add(0, feedPost);
+                    feedAdapter.notifyItemInserted(0);
+                }
             }
-            */
         }
     }
 }

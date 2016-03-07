@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
 
 public class ProfileMainFragment extends TrackedFragment {
+    private static final String TAG = ProfileMainFragment.class.getName();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,8 +82,10 @@ public class ProfileMainFragment extends TrackedFragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (getChildFragmentManager() != null && getChildFragmentManager().getFragments() != null) {
             for (Fragment fragment : getChildFragmentManager().getFragments()) {
-                if (fragment != null)
+                if (fragment != null) {
+                    Log.d(TAG, "onActivityResult: propagate to fragment=" + fragment.getClass().getSimpleName());
                     fragment.onActivityResult(requestCode, resultCode, data);
+                }
             }
         }
     }

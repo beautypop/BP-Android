@@ -84,6 +84,13 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         return items.get(position);
     }
 
+    public PostVMLite removeItem(int position) {
+        if (hasHeader()) {
+            return items.remove(position - 1);
+        }
+        return items.remove(position);
+    }
+
     public boolean isEmpty() {
         return items.size() == 0;
     }

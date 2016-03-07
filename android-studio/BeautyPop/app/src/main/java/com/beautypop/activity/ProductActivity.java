@@ -39,6 +39,7 @@ import com.beautypop.app.ConversationCache;
 import com.beautypop.app.CountryCache;
 import com.beautypop.app.TrackedFragmentActivity;
 import com.beautypop.app.UserInfoCache;
+import com.beautypop.fragment.AbstractFeedViewFragment;
 import com.beautypop.fragment.AbstractFeedViewFragment.ItemChangedState;
 import com.beautypop.fragment.ProductImagePagerFragment;
 import com.beautypop.util.DateTimeUtil;
@@ -579,7 +580,7 @@ public class ProductActivity extends TrackedFragmentActivity {
                     }
                 });
 
-                if (post.isOwner() && !post.isSold()) {
+                if (post.isOwner()) {
                     editPostAction.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -1159,6 +1160,8 @@ public class ProductActivity extends TrackedFragmentActivity {
 
             if (itemChangedState == ItemChangedState.ITEM_REMOVED) {
                 Log.d(this.getClass().getSimpleName(), "onActivityResult: feedAdapter ITEM_REMOVED");
+                // pass back to feed view to handle
+                setActivityResult(AbstractFeedViewFragment.ItemChangedState.ITEM_REMOVED, null);
                 finish();
             }
         }
