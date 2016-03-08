@@ -59,12 +59,7 @@ public class ImageUtil {
             R.drawable.ic_image_load_7,
             R.drawable.ic_image_load_8,
             R.drawable.ic_image_load_9,
-            R.drawable.ic_image_load_10,
-            R.drawable.ic_image_load_11,
-            R.drawable.ic_image_load_12,
-            R.drawable.ic_image_load_13,
-            R.drawable.ic_image_load_14,
-            R.drawable.ic_image_load_15
+            R.drawable.ic_image_load_10
     };
 
     private static final String COVER_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-cover-image-by-id/";
