@@ -20,6 +20,9 @@ public class CategoryCache {
     // top level categories
     private static List<CategoryVM> categories = new ArrayList<>();
 
+    // custom categories
+    private static List<CategoryVM> customCategories = new ArrayList<>();
+
     // all categories
     private static Map<Long, CategoryVM> allCategoriesMap = new HashMap<>();
 
@@ -45,8 +48,7 @@ public class CategoryCache {
                 if (vms == null || vms.size() == 0)
                     return;
 
-                categories = vms;
-                initAllCategories(categories);
+                initAllCategories(vms);
                 SharedPreferencesUtil.getInstance().saveCategories(vms);
                 if (callback != null) {
                     callback.success(vms, response);
@@ -79,6 +81,10 @@ public class CategoryCache {
         return new ArrayList<>();
     }
 
+    public static List<CategoryVM> getCustomCategories() {
+        return customCategories;
+    }
+
     public static CategoryVM getCategory(Long id) {
         return allCategoriesMap.get(id);
     }
@@ -87,13 +93,26 @@ public class CategoryCache {
         SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.CATEGORIES);
     }
 
-    private static void initAllCategories(List<CategoryVM> categories) {
-        allCategoriesMap = new HashMap<>();
+    private static void initAllCategories(List<CategoryVM> list) {
+        categories.clear();
+        customCategories.clear();
+        for (CategoryVM category : list) {
+            if ("PUBLIC".equalsIgnoreCase(category.categoryType)) {
+                categories.add(category);
+            } else if ("CUSTOM".equalsIgnoreCase(category.categoryType)){
+                customCategories.add(category);
+            }
+        }
+
+        allCategoriesMap.clear();
         for (CategoryVM category : categories) {
             allCategoriesMap.put(category.id, category);
             for (CategoryVM subCategory : category.subCategories) {
                 allCategoriesMap.put(subCategory.id, subCategory);
             }
+        }
+        for (CategoryVM customCategory : customCategories) {
+            allCategoriesMap.put(customCategory.id, customCategory);
         }
     }
 }
