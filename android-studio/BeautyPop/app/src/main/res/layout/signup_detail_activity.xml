@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:text="@string/signup_details_displayname_title"
                     android:textColor="@color/dark_gray_3"
                     android:layout_weight="2.5"
@@ -67,7 +67,7 @@
                     android:id="@+id/displaynameEdit"
                     android:background="@drawable/edit_text_round"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_weight="7"
@@ -86,7 +86,8 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"
-                android:id="@+id/displaynameNoteLayout">
+                android:id="@+id/displaynameNoteLayout"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
@@ -126,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/signup_details_location_title"
                     android:layout_below="@+id/displaynameLayout"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:textColor="@color/dark_gray_3"
                     android:layout_weight="2.5"
                     android:layout_gravity="center_vertical"

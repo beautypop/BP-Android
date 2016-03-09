@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.activity.MainActivity;
+import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ViewUtil;
 import com.google.analytics.tracking.android.EasyTracker;
 
@@ -70,7 +71,7 @@ public abstract class TrackedFragmentActivity extends FragmentActivity {
     protected void setActionBarTitle(String title) {
         TextView titleText = (TextView) findViewById(R.id.toolbarTitleText);
         if (titleText != null) {
-            titleText.setText(title);
+            titleText.setText(ViewUtil.shortenString(title, DefaultValues.DEFAULT_SHORT_TITLE_COUNT));
         }
 
         /*

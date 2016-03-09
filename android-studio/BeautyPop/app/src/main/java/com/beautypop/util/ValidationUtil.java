@@ -13,20 +13,23 @@ import com.beautypop.app.AppController;
 public class ValidationUtil {
 
     public static final int USER_DISPLAYNAME_MIN_CHAR = 2;
-    public static final int USER_DISPLAYNAME_MAX_CHAR = 18;
+    public static final int USER_DISPLAYNAME_MAX_CHAR = 30;
+    public static final int USER_NAME_MAX_CHAR = 20;
 
     private static final String EMAIL_FORMAT_REGEX =
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     private static final String USER_DISPLAYNAME_FORMAT_REGEX =
-            "^[_\\p{L}0-9-\\+]+(\\.[_\\p{L}0-9-]+)*$";      // \p{L} matches letter in any language
-    private static final String SELLER_URL_FORMAT_REGEX =
-            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*$";
+            "^[_A-Za-z0-9]+([\\._A-Za-z0-9]+)*[_A-Za-z0-9]$";
+    private static final String USER_NAME_FORMAT_REGEX =
+            "^[_\\p{L}0-9]+([\\._\\p{L}0-9]+)*$";      // \p{L} matches letter in any language
 
     private static final String ERROR_REQUIRED = AppController.getInstance().getString(R.string.signup_error_field_required);
     private static final String ERROR_EMAIL_FORMAT = AppController.getInstance().getString(R.string.signup_error_email_format);
     private static final String ERROR_USER_DISPLAYNAME_FORMAT = AppController.getInstance().getString(R.string.signup_error_displayname_format);
-    private static final String ERROR_USER_DISPLAYNAME_NO_SPACE = AppController.getInstance().getString(R.string.signup_error_displayname_no_space);
     private static final String ERROR_USER_DISPLAYNAME_MIN_MAX_CHAR = AppController.getInstance().getString(R.string.signup_error_displayname_min_max_char);
+    private static final String ERROR_USER_DISPLAYNAME_NO_SPACE = AppController.getInstance().getString(R.string.signup_error_displayname_no_space);
+    private static final String ERROR_USER_DISPLAYNAME_PERIODS = AppController.getInstance().getString(R.string.signup_error_displayname_periods);
+    private static final String ERROR_USER_NAME_MIN_MAX_CHAR = AppController.getInstance().getString(R.string.signup_error_name_min_max_char);
 
     /**
      * Email validation
@@ -53,14 +56,6 @@ public class ValidationUtil {
         return matcher.find();
     }
 
-    public static boolean isValidSellerUrl(String displayName) {
-        // pattern doesn't match so returning false
-        if (Pattern.matches(SELLER_URL_FORMAT_REGEX, displayName)) {
-            return true;
-        }
-        return false;
-    }
-
     /**
      * Displayname validation
      * - no whitespace chars, special chars
@@ -70,11 +65,11 @@ public class ValidationUtil {
      * @param editText
      * @return
      */
-    public static boolean isUserDisplaynameValid(EditText editText) {
+    public static boolean isValidDisplayName(EditText editText) {
         String text = editText.getText().toString().trim();
         editText.setError(null);
 
-        // char 2-20
+        // char 2-30
         if (text.length() < USER_DISPLAYNAME_MIN_CHAR || text.length() > USER_DISPLAYNAME_MAX_CHAR) {
             editText.setError(ERROR_USER_DISPLAYNAME_MIN_MAX_CHAR);
             return false;
@@ -86,7 +81,26 @@ public class ValidationUtil {
             return false;
         }
 
+        // .. in a row
+        if (text.contains("..")) {
+            editText.setError(ERROR_USER_DISPLAYNAME_PERIODS);
+            return false;
+        }
+
         return isValid(editText, USER_DISPLAYNAME_FORMAT_REGEX, ERROR_USER_DISPLAYNAME_FORMAT, true);
+    }
+
+    public static boolean isValidUserName(EditText editText) {
+        String text = editText.getText().toString().trim();
+        editText.setError(null);
+
+        // char max 20
+        if (text.length() > USER_NAME_MAX_CHAR) {
+            editText.setError(ERROR_USER_NAME_MIN_MAX_CHAR);
+            return false;
+        }
+
+        return true;
     }
 
     /**

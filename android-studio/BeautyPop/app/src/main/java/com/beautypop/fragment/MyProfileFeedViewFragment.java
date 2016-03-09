@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.beautypop.R;
-import com.beautypop.activity.EditProfileActivity;
-import com.beautypop.activity.SettingsActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.NotificationCounter;
 import com.beautypop.app.UserInfoCache;
@@ -132,7 +130,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
     private void setUserProfile(UserVM user) {
         ViewUtil.showSpinner(getActivity());
 
-        setUserId(user.getId());
+        setUserId(user.id);
 
         initUserInfoLayout(user);
 
@@ -191,7 +189,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
             @Override
             public void failure(RetrofitError error) {
                 ViewUtil.stopSpinner(getActivity());
-                Log.e(EditProfileActivity.class.getSimpleName(), "onRefreshView: failure", error);
+                Log.e(TAG, "onRefreshView: failure", error);
             }
         });
     }
@@ -199,7 +197,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
     protected void uploadCoverImage(final long id, final String imagePath) {
         ViewUtil.showSpinner(getActivity());
 
-        Log.d(this.getClass().getSimpleName(), "uploadCoverImage: Id=" + id);
+        Log.d(TAG, "uploadCoverImage: Id=" + id);
 
         ImageUtil.clearCoverImageCache(id);
 
@@ -232,7 +230,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e(MyProfileFeedViewFragment.class.getSimpleName(), "uploadCoverPhoto: failure", error);
+                Log.e(TAG, "uploadCoverPhoto: failure", error);
             }
         });
     }
@@ -240,7 +238,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
     protected void uploadProfileImage(final long id, final String imagePath) {
         ViewUtil.showSpinner(getActivity());
 
-        Log.d(this.getClass().getSimpleName(), "uploadProfileImage: id=" + id + " imagePath=" + imagePath);
+        Log.d(TAG, "uploadProfileImage: id=" + id + " imagePath=" + imagePath);
 
         ImageUtil.clearProfileImageCache(id);
 
@@ -279,7 +277,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
                 @Override
                 public void failure(RetrofitError error) {
                     ViewUtil.stopSpinner(getActivity());
-                    Log.e(MyProfileFeedViewFragment.class.getSimpleName(), "uploadProfileImage: failure", error);
+                    Log.e(TAG, "uploadProfileImage: failure", error);
                 }
             });
         } else {
@@ -301,7 +299,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
                     imagePath = ImageUtil.getRealPathFromUri(getActivity(), selectedImageUri);
                 }
 
-                Log.d(this.getClass().getSimpleName(), "onActivityResult: imagePath=" + imagePath);
+                Log.d(TAG, "onActivityResult: imagePath=" + imagePath);
 
                 Bitmap bitmap = ImageUtil.resizeToUpload(imagePath);
                 if (bitmap != null) {

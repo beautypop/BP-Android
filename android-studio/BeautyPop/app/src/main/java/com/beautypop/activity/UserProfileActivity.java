@@ -38,9 +38,6 @@ public class UserProfileActivity extends TrackedFragmentActivity {
         Bundle bundle = new Bundle();
         bundle.putLong(ViewUtil.BUNDLE_KEY_ID, userId);
 
-        //set Fragmentclass Arguments
-        //Fragmentclass fragobj=new Fragmentclass();
-
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         UserProfileFeedViewFragment profileFragment = new UserProfileFeedViewFragment();
         profileFragment.setArguments(bundle);

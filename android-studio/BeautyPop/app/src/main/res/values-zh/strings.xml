@@ -93,8 +93,10 @@
     <string name="signup_error_field_required">必須填寫</string>
     <string name="signup_error_email_format">電郵格式不對</string>
     <string name="signup_error_displayname_no_space">顯示名稱不可以有空格</string>
-    <string name="signup_error_displayname_format">顯示名稱可以輸入英文字母、數字 和 _ . -</string>
-    <string name="signup_error_displayname_min_max_char">顯示名稱最小2個字、最多20個字</string>
+    <string name="signup_error_displayname_min_max_char">顯示名稱最小2個字、最多30個字</string>
+    <string name="signup_error_displayname_format">顯示名稱只可輸入 英文字母(a-z) 數字(0-9) 和 符號(_)(.)，不可以 (.) 結尾</string>
+    <string name="signup_error_displayname_periods">顯示名稱不可有2個或以上相連符號(.)</string>
+    <string name="signup_error_name_min_max_char">姓名最多20個字</string>
 
     <string name="signup_details_greeting">歡迎登入 BeautyPop</string>
     <string name="signup_details_displayname_title">顯示名稱 : </string>

@@ -138,11 +138,13 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     }
 
     protected void initUserInfoLayout(final UserVM user) {
-        userNameText.setText(user.getDisplayName());
+        setActionBarTitle(user.displayName);
 
-        if (!StringUtils.isEmpty(user.getAboutMe())) {
+        userNameText.setText(user.name);
+
+        if (!StringUtils.isEmpty(user.aboutMe)) {
             userDescText.setVisibility(View.VISIBLE);
-            userDescText.setText(user.getAboutMe());
+            userDescText.setText(user.aboutMe);
         } else {
             userDescText.setVisibility(View.GONE);
         }
@@ -169,8 +171,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         AppController.getApiService().getUser(userId, new Callback<UserVM>() {
             @Override
             public void success(final UserVM user, retrofit.client.Response response) {
-                setActionBarTitle(user.getDisplayName());
-
                 initUserInfoLayout(user);
 
                 ImageUtil.displayProfileImage(userId, profileImage, new RequestListener<String, GlideBitmapDrawable>() {
@@ -214,9 +214,9 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
                     @Override
                     public void onClick(View view) {
                         if (following) {
-                            unFollow(user.getId());
+                            unFollow(user.id);
                         } else {
-                            follow(user.getId());
+                            follow(user.id);
                         }
                     }
                 });
@@ -241,7 +241,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e(UserProfileFeedViewFragment.class.getSimpleName(), "getUserProfile: failure", error);
+                Log.e(TAG, "getUserProfile: failure", error);
                 ViewUtil.stopSpinner(getActivity());
             }
         });

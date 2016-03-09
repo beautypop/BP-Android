@@ -8,10 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -162,7 +158,7 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
     private boolean isValid(){
         boolean valid = true;
         String error = "";
-        if (!ValidationUtil.isUserDisplaynameValid(displayName)) {
+        if (!ValidationUtil.isValidDisplayName(displayName)) {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_displayname_format));
             valid = false;
         }
@@ -172,8 +168,9 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
             valid = false;
         }
 
-        if (!valid)
+        if (!valid) {
             Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+        }
         return valid;
     }
 

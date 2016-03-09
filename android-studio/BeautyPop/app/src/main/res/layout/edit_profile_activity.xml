@@ -43,7 +43,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:text="@string/edit_user_info_login_method"
                     android:textColor="@color/dark_gray_3"
                     android:layout_weight="3"
@@ -86,7 +86,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:text="@string/edit_user_info_email"
                     android:textColor="@color/dark_gray_3"
                     android:layout_weight="3"
@@ -97,7 +97,7 @@
                     android:id="@+id/emailEdit"
                     android:background="@drawable/edit_text_round"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_weight="7"
@@ -122,7 +122,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:text="@string/signup_details_displayname_title"
                     android:textColor="@color/dark_gray_3"
                     android:layout_weight="3"
@@ -133,7 +133,7 @@
                     android:id="@+id/displayNameEdit"
                     android:background="@drawable/edit_text_round"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_weight="7"
@@ -152,7 +152,8 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="5dp"
-                android:id="@+id/displaynameNoteLayout">
+                android:id="@+id/displaynameNoteLayout"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
@@ -176,21 +177,71 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/aboutmeLayout"
+                android:id="@+id/nameLayout"
                 android:layout_below="@+id/displaynameNoteLayout"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:weightSum="10"
+                android:transitionGroup="true">
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="@string/edit_user_info_name"
+                    android:textColor="@color/dark_gray_3"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="false"
+                    android:layout_weight="3" />
+
+                <EditText
+                    android:id="@+id/firstNameEditText"
+                    android:layout_weight="3.5"
+                    android:hint="@string/signup_firstname_hint"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_text_round"
+                    android:singleLine="true"
+                    android:inputType="textNoSuggestions|textCapWords" />
+
+                <EditText
+                    android:id="@+id/lastNameEditText"
+                    android:layout_weight="3.5"
+                    android:hint="@string/signup_lastname_hint"
+                    android:textSize="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_text_round"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    android:inputType="textNoSuggestions|textCapWords" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/aboutmeLayout"
+                android:layout_below="@+id/nameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:orientation="horizontal"
                 android:weightSum="10"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="15dp">
 
                 <TextView
                     android:id="@+id/aboutmeText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:text="@string/edit_user_info_aboutme"
                     android:textColor="@color/dark_gray_3"
                     android:singleLine="false"
@@ -199,7 +250,7 @@
                 <EditText
                     android:id="@+id/aboutMeEdit"
                     android:background="@drawable/edit_text_round"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_toRightOf="@+id/aboutmeText"
@@ -212,61 +263,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/nameLayout"
-                android:layout_below="@+id/aboutmeLayout"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:weightSum="10"
-                android:transitionGroup="true">
-                <TextView
-                    android:id="@+id/nameText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:text="@string/edit_user_info_name"
-                    android:textColor="@color/dark_gray_3"
-                    android:layout_gravity="center_vertical"
-                    android:singleLine="false"
-                    android:layout_weight="3" />
-
-                <EditText
-                    android:id="@+id/lastNameEditText"
-                    android:layout_weight="3.5"
-                    android:hint="@string/signup_lastname_hint"
-                    android:textSize="16dp"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:background="@drawable/edit_text_round"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:singleLine="true"
-                    android:inputType="textNoSuggestions|textCapWords" />
-                <EditText
-                    android:id="@+id/firstNameEditText"
-                    android:layout_weight="3.5"
-                    android:hint="@string/signup_firstname_hint"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="16dp"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:background="@drawable/edit_text_round"
-                    android:singleLine="true"
-                    android:inputType="textNoSuggestions|textCapWords" />
-            </LinearLayout>
-
-
-            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/locationLayout"
-                android:layout_below="@+id/nameLayout"
+                android:layout_below="@+id/aboutmeLayout"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="25dp"
                 android:weightSum="10">
 
@@ -276,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/signup_details_location_title"
                     android:layout_below="@+id/displaynameLayout"
-                    android:textSize="16dp"
+                    android:textSize="15dp"
                     android:textColor="@color/dark_gray_3"
                     android:layout_weight="3"
                     android:layout_gravity="center_vertical"
@@ -296,7 +299,8 @@
                     android:gravity="center"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:contextClickable="false" />
 
             </LinearLayout>
 

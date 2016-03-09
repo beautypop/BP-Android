@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class UserVMLite implements Serializable {
     public Long id;
     public String displayName;
+    public String name;
     public String email;
     public String firstName;
     public String lastName;
@@ -53,6 +54,14 @@ public class UserVMLite implements Serializable {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getFirstName() {

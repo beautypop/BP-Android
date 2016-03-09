@@ -190,11 +190,15 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void pressHomeTab() {
-        if (!homeClicked) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            selectedFragment = new HomeMainFragment();
-            fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+        if (homeClicked) {
+            return;
         }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        selectedFragment = new HomeMainFragment();
+        fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+
+        showActionBarTitle(false);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home_sel, R.color.sharp_pink);
         homeClicked = true;
@@ -210,11 +214,15 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void pressSellerTab() {
-        if (!sellerClicked) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            selectedFragment = new SellerMainFragment();
-            fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+        if (sellerClicked) {
+            return;
         }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        selectedFragment = new SellerMainFragment();
+        fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+
+        showActionBarTitle(false);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
@@ -230,15 +238,19 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void pressActivityTab() {
-        if (!activityClicked) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            selectedFragment = new ActivityMainFragment();
-            fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
-
-            // read... clear gcm notifs
-            SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.GCM_COMMENT_NOTIFS);
-            SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.GCM_FOLLOW_NOTIFS);
+        if (activityClicked) {
+            return;
         }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        selectedFragment = new ActivityMainFragment();
+        fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+
+        showActionBarTitle(false);
+
+        // read... clear gcm notifs
+        SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.GCM_COMMENT_NOTIFS);
+        SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.GCM_FOLLOW_NOTIFS);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
@@ -258,12 +270,16 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void pressProfileTab(boolean refresh) {
-        if (!profileClicked || refresh) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            selectedFragment = new ProfileMainFragment();
-            selectedFragment.setTrackedOnce();
-            fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+        if (profileClicked && !refresh) {
+            return;
         }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        selectedFragment = new ProfileMainFragment();
+        selectedFragment.setTrackedOnce();
+        fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+
+        showActionBarTitle(true);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;

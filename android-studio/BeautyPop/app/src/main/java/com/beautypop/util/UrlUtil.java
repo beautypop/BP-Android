@@ -21,7 +21,7 @@ public class UrlUtil {
     private static final String CATEGORY_URL = AppController.BASE_URL + "/category/%d";
 
     //private static final String APPS_DOWNLOAD_URL = AppController.BASE_URL + "/apps";
-    private static final String APPS_DOWNLOAD_URL = "https://goo.gl/BdQeze";
+    private static final String APPS_DOWNLOAD_URL = "https://play.google.com/store/apps/details?id=com.beautypop.app";
     private static final String REFERRAL_URL = AppController.BASE_URL + "/signup-code/%s";
 
     private static String SELLER_URL_REGEX = ".*/seller/(\\d+)";
@@ -54,13 +54,7 @@ public class UrlUtil {
     }
 
     public static String createSellerUrl(UserVM user) {
-        String url;
-        if (ValidationUtil.isValidSellerUrl(user.displayName)) {
-            url = AppController.BASE_URL + "/" + user.displayName.toLowerCase();
-        } else {
-            url = String.format(SELLER_URL, user.getId());
-        }
-        return url;
+        return AppController.BASE_URL + "/" + user.displayName.toLowerCase();
     }
 
     public static String createProductUrl(PostVM post) {
@@ -88,7 +82,8 @@ public class UrlUtil {
     }
 
     public static String createShortSellerUrl(UserVM user) {
-        return AppController.getInstance().getString(R.string.seller_url) + ": " + stripHttpPrefix(createSellerUrl(user));
+        //return AppController.getInstance().getString(R.string.seller_url) + ": " + stripHttpPrefix(createSellerUrl(user));
+        return stripHttpPrefix(createSellerUrl(user));
     }
 
     public static String stripHttpPrefix(String url) {
