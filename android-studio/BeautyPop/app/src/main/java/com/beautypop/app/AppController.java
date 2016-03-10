@@ -45,7 +45,7 @@ import retrofit.client.OkClient;
         resToastText = R.string.crash_toast_text)
         */
 @ReportsCrashes(
-        mailTo = "beautypop.hk@gmail.com",
+        mailTo = "keithlei01@gmail.com",
         mode = ReportingInteractionMode.DIALOG,
         customReportContent = {
                 ReportField.BUILD, ReportField.USER_APP_START_DATE, ReportField.USER_CRASH_DATE,
@@ -76,7 +76,7 @@ public class AppController extends Application {
 
     private static BeautyPopService apiService;
 
-    private static boolean crashReportEnabled = false;
+    private static boolean crashReportEnabled = true;
 
     public enum DeviceType {
         NA,

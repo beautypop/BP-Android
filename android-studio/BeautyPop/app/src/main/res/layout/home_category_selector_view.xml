@@ -391,5 +391,132 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/catsRow4Layout">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/cat10"
+                android:layout_marginRight="2dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image10"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:minHeight="85dp"></ImageView>
+
+                    <TextView
+                        android:id="@+id/name10"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:shadowColor="@color/dark_gray_2"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="6"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:gravity="center_horizontal|bottom"
+                        android:paddingBottom="2dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/gradient_bottom" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/cat11"
+                android:layout_marginRight="2dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image11"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:minHeight="85dp"></ImageView>
+
+                    <TextView
+                        android:id="@+id/name11"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:shadowColor="@color/dark_gray_2"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="6"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:gravity="center_horizontal|bottom"
+                        android:paddingBottom="2dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/gradient_bottom" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/cat12"
+                android:layout_marginRight="2dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image12"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:minHeight="85dp"></ImageView>
+
+                    <TextView
+                        android:id="@+id/name12"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:shadowColor="@color/dark_gray_2"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="6"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:gravity="center_horizontal|bottom"
+                        android:paddingBottom="2dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/gradient_bottom" />
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>

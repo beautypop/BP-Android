@@ -30,6 +30,7 @@ public class DefaultValues {
 
     public static final int MIN_CHAR_SIGNUP_PASSWORD = 4;
     public static final int DEFAULT_SHORT_TITLE_COUNT = 12;
+    public static final int DEFAULT_TITLE_COUNT = 20;
 
     public static final int SPLASH_DISPLAY_MILLIS = 500;
     public static final int DEFAULT_CONNECTION_TIMEOUT_MILLIS = 3000;

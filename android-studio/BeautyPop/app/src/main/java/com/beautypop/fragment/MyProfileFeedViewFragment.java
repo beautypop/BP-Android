@@ -132,6 +132,8 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
 
         setUserId(user.id);
 
+        setActionBarTitle(ViewUtil.shortenString(user.displayName, DefaultValues.DEFAULT_SHORT_TITLE_COUNT));
+
         initUserInfoLayout(user);
 
         ImageUtil.displayMyProfileImage(userId, profileImage, new RequestListener<String, GlideBitmapDrawable>() {

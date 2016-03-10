@@ -71,7 +71,7 @@ public abstract class TrackedFragmentActivity extends FragmentActivity {
     protected void setActionBarTitle(String title) {
         TextView titleText = (TextView) findViewById(R.id.toolbarTitleText);
         if (titleText != null) {
-            titleText.setText(ViewUtil.shortenString(title, DefaultValues.DEFAULT_SHORT_TITLE_COUNT));
+            titleText.setText(ViewUtil.shortenString(title, DefaultValues.DEFAULT_TITLE_COUNT));
         }
 
         /*

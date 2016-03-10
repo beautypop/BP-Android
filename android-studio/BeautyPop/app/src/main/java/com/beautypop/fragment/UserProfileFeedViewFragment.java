@@ -138,8 +138,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     }
 
     protected void initUserInfoLayout(final UserVM user) {
-        setActionBarTitle(user.displayName);
-
         userNameText.setText(user.name);
 
         if (!StringUtils.isEmpty(user.aboutMe)) {
@@ -171,6 +169,8 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         AppController.getApiService().getUser(userId, new Callback<UserVM>() {
             @Override
             public void success(final UserVM user, retrofit.client.Response response) {
+                setActionBarTitle(user.displayName);
+
                 initUserInfoLayout(user);
 
                 ImageUtil.displayProfileImage(userId, profileImage, new RequestListener<String, GlideBitmapDrawable>() {
