@@ -75,8 +75,8 @@
     <string name="signup_fb_title">Signup with Facebook\n(No email verification required. Complete in 1 minute)</string>
     <string name="signup_fb_note">Note: BeautyPop will not post to your Facebook account</string>
     <string name="signup_email_title">Signup with Email</string>
-    <string name="signup_lastname_hint">Lastname</string>
-    <string name="signup_firstname_hint">Firstname</string>
+    <string name="signup_lastname_hint">Last Name</string>
+    <string name="signup_firstname_hint">First Name</string>
     <string name="signup_email_hint">Your email</string>
     <string name="signup_password_hint">Password</string>
     <string name="signup_password_confirm_hint">Enter password again</string>
@@ -254,6 +254,8 @@
     <string name="edit_user_info_email">Email : </string>
     <string name="edit_user_info_aboutme">Description : </string>
     <string name="edit_user_info_name">Name : </string>
+    <string name="edit_user_info_firstname">First Name : </string>
+    <string name="edit_user_info_lastname">Last Name : </string>
     <string name="edit_user_info_save">Save</string>
 
     <string name="edit_cover_image">Upload Cover Photo</string>

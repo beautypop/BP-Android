@@ -12,6 +12,7 @@ import com.beautypop.R;
 import com.beautypop.activity.MainActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.CategoryCache;
+import com.beautypop.app.NotificationCounter;
 import com.beautypop.util.CategorySelectorViewUtil;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.SharedPreferencesUtil;
@@ -55,19 +56,21 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         // home slider
-        homeSlider = (SliderLayout) headerView.findViewById(R.id.homeSlider);
         initSlider();
 
         // category selector
-        List<CategoryVM> categories = CategoryCache.getCategories();
-        catSelectorViewUtil = new CategorySelectorViewUtil(
-                categories, catsRowLayoutIds, catLayoutIds, imageIds, nameIds, headerView, getActivity());
-        catSelectorViewUtil.setNumCategoriesPerRow(3);
-        catSelectorViewUtil.initLayout();
+        initCategorySelector();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+
+        homeSlider = (SliderLayout) headerView.findViewById(R.id.homeSlider);
 
         // tips
         tipsLayout = (FrameLayout) headerView.findViewById(R.id.tipsLayout);
@@ -151,6 +154,22 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
                 Log.e(TAG, "initSlider: failure", error);
             }
         });
+    }
+
+    private void initCategorySelector() {
+        List<CategoryVM> categories = CategoryCache.getCategories();
+        catSelectorViewUtil = new CategorySelectorViewUtil(
+                categories, catsRowLayoutIds, catLayoutIds, imageIds, nameIds, headerView, getActivity());
+        catSelectorViewUtil.setNumCategoriesPerRow(3);
+        catSelectorViewUtil.initLayout();
+    }
+
+    @Override
+    protected void onRefreshView() {
+        super.onRefreshView();
+
+        initSlider();
+        initCategorySelector();
     }
 
     @Override

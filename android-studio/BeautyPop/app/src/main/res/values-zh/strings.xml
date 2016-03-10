@@ -254,6 +254,8 @@
     <string name="edit_user_info_email">電郵 : </string>
     <string name="edit_user_info_aboutme">個人簡介 : </string>
     <string name="edit_user_info_name">姓名 : </string>
+    <string name="edit_user_info_firstname">名 : </string>
+    <string name="edit_user_info_lastname">姓 : </string>
     <string name="edit_user_info_save">儲存資料</string>
 
     <string name="edit_cover_image">更改封面照片</string>
