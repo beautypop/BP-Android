@@ -21,8 +21,8 @@ android {
         applicationId "com.beautypop.app"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
 
         // Enabling multidex support.
         multiDexEnabled true

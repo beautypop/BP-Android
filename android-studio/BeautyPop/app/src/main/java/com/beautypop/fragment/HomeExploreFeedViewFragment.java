@@ -31,7 +31,6 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class HomeExploreFeedViewFragment extends FeedViewFragment {
-
     private static final String TAG = HomeExploreFeedViewFragment.class.getName();
 
     private int[] catsRowLayoutIds = { R.id.catsRow1Layout, R.id.catsRow2Layout, R.id.catsRow3Layout, R.id.catsRow4Layout };
