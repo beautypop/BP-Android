@@ -22,7 +22,7 @@ import com.yalantis.phoenix.util.Utils;
  * Created by Oleksii Shliama on 22/12/2014.
  * https://dribbble.com/shots/1650317-Pull-to-Refresh-Rentals
  */
-public class MyRefreshView extends BaseRefreshView implements Animatable {
+public class PopRefreshView extends BaseRefreshView implements Animatable {
 
     private static final float SCALE_START_PERCENT = 0.5f;
     private static final int ANIMATION_DURATION = 1000;
@@ -69,7 +69,7 @@ public class MyRefreshView extends BaseRefreshView implements Animatable {
 
     private boolean isRefreshing = false;
 
-    public MyRefreshView(Context context, final PullToRefreshView parent) {
+    public PopRefreshView(Context context, final PullToRefreshView parent) {
         super(context, parent);
         mParent = parent;
         mMatrix = new Matrix();
@@ -109,7 +109,7 @@ public class MyRefreshView extends BaseRefreshView implements Animatable {
         mSky = Bitmap.createScaledBitmap(mSky, mScreenWidth, mSkyHeight, true);
         mTown = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.buildings);
         mTown = Bitmap.createScaledBitmap(mTown, mScreenWidth, (int) (mScreenWidth * TOWN_RATIO), true);
-        mSun = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.box);
+        mSun = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.pop);
         mSun = Bitmap.createScaledBitmap(mSun, mSunSize, mSunSize, true);
     }
 

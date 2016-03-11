@@ -135,7 +135,7 @@ public class SunRefreshView extends BaseRefreshView implements Animatable {
 
         drawSky(canvas);
         drawSun(canvas);
-        drawTown(canvas);
+        //drawTown(canvas);
 
         canvas.restoreToCount(saveCount);
     }
