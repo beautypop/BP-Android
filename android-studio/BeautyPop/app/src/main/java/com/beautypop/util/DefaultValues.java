@@ -5,6 +5,9 @@ package com.beautypop.util;
  */
 public class DefaultValues {
 
+    // Config
+    public static final boolean IMAGE_ADJUST_ENABLED = false;
+
     // Email signup need verification email
     public static final boolean EMAIL_SIGNUP_VERIFICATION_REQUIRED = false;
 
