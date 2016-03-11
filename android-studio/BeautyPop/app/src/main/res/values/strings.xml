@@ -319,6 +319,7 @@
 
     <!-- Dialog -->
     <string name="cancel_post">Cancel %1$s product？</string>
+    <string name="cancel_image">Do you want to close image ?</string>
     <string name="exit_app">Exit BeautyPop？</string>
     <string name="logout_message">Logout from BeautyPop？</string>
     <string name="delete_account_message">Confirm to delete account？</string>

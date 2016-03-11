@@ -322,6 +322,7 @@
     <string name="exit_app">退出 BeautyPop？</string>
     <string name="logout_message">確定登出 BeautyPop？</string>
     <string name="delete_account_message">確定刪除帳戶？</string>
+    <string name="cancel_image">Do you want to close image ?</string>
     <string name="yes">是</string>
     <string name="no">取消</string>
     <string name="confirm">確定</string>
