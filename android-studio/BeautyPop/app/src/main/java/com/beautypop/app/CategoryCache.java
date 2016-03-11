@@ -94,8 +94,8 @@ public class CategoryCache {
     }
 
     private static void initAllCategories(List<CategoryVM> list) {
-        categories.clear();
-        customCategories.clear();
+        categories = new ArrayList<>();
+        customCategories = new ArrayList<>();
         for (CategoryVM category : list) {
             if ("PUBLIC".equalsIgnoreCase(category.categoryType)) {
                 categories.add(category);
@@ -104,7 +104,7 @@ public class CategoryCache {
             }
         }
 
-        allCategoriesMap.clear();
+        allCategoriesMap = new HashMap<>();
         for (CategoryVM category : categories) {
             allCategoriesMap.put(category.id, category);
             for (CategoryVM subCategory : category.subCategories) {

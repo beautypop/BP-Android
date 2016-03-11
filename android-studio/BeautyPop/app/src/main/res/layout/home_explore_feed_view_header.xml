@@ -77,15 +77,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/categoryText" />
 
-    <View
-        android:id="@+id/viewBar"
-        android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:background="@drawable/bar1"
-        android:layout_below="@+id/categorySelector">
-
-    </View>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,6 +86,6 @@
         android:layout_marginTop="7dp"
         android:textSize="13dp"
         android:layout_marginBottom="2dp"
-        android:layout_below="@+id/viewBar" />
+        android:layout_below="@+id/categorySelector" />
 
 </RelativeLayout>

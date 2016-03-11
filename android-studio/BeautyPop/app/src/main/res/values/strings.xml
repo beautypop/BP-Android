@@ -128,7 +128,7 @@
     <!-- Home tab -->
     <string name="main_tab_seller">Sellers</string>
     <string name="main_tab_following">Following</string>
-    <string name="suggest_for_you">Suggested For You</string>
+    <string name="suggest_for_you">Suggest For You</string>
     <string name="follow">+ Follow</string>
     <string name="following">Following</string>
     <string name="followings">Followings</string>

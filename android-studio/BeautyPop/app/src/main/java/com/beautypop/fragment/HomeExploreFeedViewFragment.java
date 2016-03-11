@@ -12,7 +12,6 @@ import com.beautypop.R;
 import com.beautypop.activity.MainActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.CategoryCache;
-import com.beautypop.app.NotificationCounter;
 import com.beautypop.util.CategorySelectorViewUtil;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.SharedPreferencesUtil;
@@ -56,8 +55,8 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
 
         // home slider
         initSlider();

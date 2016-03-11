@@ -290,8 +290,8 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
 
+        Log.d(TAG, "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode + " data:" + data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE && data != null) {
 
