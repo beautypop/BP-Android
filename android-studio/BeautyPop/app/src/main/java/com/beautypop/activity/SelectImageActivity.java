@@ -20,6 +20,8 @@ import org.joda.time.DateTime;
 import java.io.File;
 
 public class SelectImageActivity extends Activity {
+    private static final String TAG = SelectImageActivity.class.getName();
+
     final int SELECT_PICTURE = 1000;
     public String outputUrl;
 	public Uri outputUri;
@@ -67,15 +69,9 @@ public class SelectImageActivity extends Activity {
 
     private void handleCrop(int resultCode, Intent result) {
         if (resultCode == RESULT_OK) {
-            Log.d(this.getClass().getSimpleName(), "handleCrop: outputUrl=" + outputUrl);
-            Log.d(this.getClass().getSimpleName(), "handleCrop: outputUri=" + outputUri);
+            Log.d(TAG, "handleCrop: outputUrl=" + outputUrl);
 
-            // set activity result
-            /*Intent intent = new Intent();
-            intent.putExtra(ViewUtil.INTENT_RESULT_OBJECT, outputUrl);
-            setResult(RESULT_OK, intent);*/
-
-			if(DefaultValues.IMAGE_ADJUST_ENABLED) {
+			if (DefaultValues.IMAGE_ADJUST_ENABLED) {
 				Intent intent = new Intent(this, EditImageActivity.class);
 				intent.putExtra("uri", outputUri + "");
 				intent.putExtra(ViewUtil.INTENT_RESULT_OBJECT, outputUrl);
@@ -83,7 +79,7 @@ public class SelectImageActivity extends Activity {
 				intent.putExtra("cropHeight", result.getIntExtra("cropHeight", 0));
 				setResult(RESULT_OK, intent);
 				startActivityForResult(intent, ViewUtil.EDIT_IMAGE_REQUEST_CODE);
-			}else{
+			} else {
 				Intent intent = new Intent();
 				intent.putExtra(ViewUtil.INTENT_RESULT_OBJECT, outputUrl);
 				setResult(RESULT_OK, intent);
