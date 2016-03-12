@@ -26,6 +26,7 @@ import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
+import org.parceler.apache.commons.lang.StringUtils;
 
 import java.security.MessageDigest;
 
@@ -73,6 +74,8 @@ public class AppController extends Application {
     private static int versionCode;
 
     private static String versionName;
+
+    private static String sessionId;
 
     private static BeautyPopService apiService;
 
@@ -141,11 +144,17 @@ public class AppController extends Application {
     }
 
     public void saveSessionId(String sessionId) {
+        AppController.sessionId = sessionId;
         SharedPreferencesUtil.getInstance().saveSessionId(sessionId);
     }
 
     public String getSessionId() {
-        return SharedPreferencesUtil.getInstance().getSessionId();
+        if (!StringUtils.isEmpty(AppController.sessionId)) {
+            return AppController.sessionId;
+        }
+        String sessionId = SharedPreferencesUtil.getInstance().getSessionId();
+        AppController.sessionId = sessionId;
+        return sessionId;
     }
 
     public void saveLoginFailedCount(Long count) {
