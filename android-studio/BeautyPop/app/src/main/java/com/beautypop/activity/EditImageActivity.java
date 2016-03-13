@@ -260,7 +260,7 @@ public class EditImageActivity extends Activity {
 	}
 
 	private void saveImage(final Bitmap image) {
-		File file = new File(ImageUtil.IMAGE_FOLDER_PATH, String.valueOf(new DateTime().getSecondOfDay())+".jpg");
+		File file = new File(ImageUtil.getImageTempDirPath(), String.valueOf(new DateTime().getSecondOfDay())+".jpg");
 		try {
 			file.getParentFile().mkdirs();
 			image.compress(Bitmap.CompressFormat.JPEG, 80, new FileOutputStream(file));

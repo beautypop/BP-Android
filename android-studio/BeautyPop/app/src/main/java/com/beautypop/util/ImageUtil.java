@@ -74,8 +74,7 @@ public class ImageUtil {
     private static final String MINI_MESSAGE_IMAGE_BY_ID_URL = AppController.BASE_URL + "/image/get-mini-message-image-by-id/";
 
     public static final String IMAGE_FOLDER_NAME = AppController.APP_NAME;
-    public static final String IMAGE_FOLDER_PATH = Environment.getExternalStorageDirectory() + "/" + IMAGE_FOLDER_NAME;
-    public static final String CAMERA_IMAGE_TEMP_PATH = IMAGE_FOLDER_PATH + "/" + "Image-snap-temp.jpg";
+    public static final String CAMERA_IMAGE_TEMP_PATH = getImageTempDirPath() + "/" + "Image-camera.jpg";
 
     private static ImageCircleTransform circleTransform =
             new ImageCircleTransform(AppController.getInstance());
@@ -114,6 +113,14 @@ public class ImageUtil {
         } else {
             Log.e(ImageUtil.class.getSimpleName(), "initImageTempDir: no external storage!!!");
             tempDir = null;
+        }
+    }
+
+    public static String getImageTempDirPath() {
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            return Environment.getExternalStorageDirectory() + "/" + IMAGE_FOLDER_NAME;
+        } else {
+            return "";
         }
     }
 
@@ -512,7 +519,7 @@ public class ImageUtil {
         try {
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
             cursor = context.getContentResolver().query(contentUri, filePathColumn, null, null, null);
-            if (cursor.moveToFirst()) {
+            if (cursor != null && cursor.moveToFirst()) {
                 int columnIndex = cursor.getColumnIndexOrThrow(filePathColumn[0]);
                 String filePath = cursor.getString(columnIndex);
                 return filePath;
@@ -526,6 +533,7 @@ public class ImageUtil {
     }
 
     private static File createImageFile() throws IOException {
+        Log.d(TAG, "createImageFile: camera path=" + CAMERA_IMAGE_TEMP_PATH);
         File storageDir = new File(CAMERA_IMAGE_TEMP_PATH);
         storageDir.createNewFile();
         return storageDir;

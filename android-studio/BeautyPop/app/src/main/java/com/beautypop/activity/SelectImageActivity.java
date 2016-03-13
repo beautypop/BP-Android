@@ -31,7 +31,7 @@ public class SelectImageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select);
 
-        File imageFolder = new File(ImageUtil.IMAGE_FOLDER_PATH);
+        File imageFolder = new File(ImageUtil.getImageTempDirPath());
         if (!imageFolder.exists()) {
             imageFolder.mkdirs();
         }

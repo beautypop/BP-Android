@@ -81,7 +81,8 @@
                     android:textColor="@color/gray"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/timeText"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:orientation="horizontal"

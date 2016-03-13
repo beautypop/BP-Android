@@ -185,7 +185,7 @@
     <string name="new_post_action">List</string>
     <string name="edit_post_actionbar_title">Edit Product</string>
     <string name="new_post_actionbar_title">Sell Product</string>
-    <string name="new_post">List</string>
+    <string name="new_post">OK</string>
     <string name="new_post_price">Price($):</string>
     <string name="new_post_price_hint">Set a Price</string>
     <string name="new_post_original_price">Original Price($):</string>
@@ -239,7 +239,7 @@
     <string name="timeago_weeks">weeks ago</string>
     <string name="timeago_months">months ago</string>
     <string name="timeago_years">years ago</string>
-    <string name="delete">Delete Product</string>
+    <string name="delete">Delete</string>
     <string name="list_loading">Loading...</string>
     <string name="list_loading_error">Problem during loading. Please check network connection and try again.</string>
     <string name="list_loaded_all">- Loaded all items -</string>
@@ -319,7 +319,7 @@
 
     <!-- Dialog -->
     <string name="cancel_post">Cancel %1$s product？</string>
-    <string name="cancel_image">Do you want to close image ?</string>
+    <string name="cancel_image">Are you sure you want to cancel select this photo?</string>
     <string name="exit_app">Exit BeautyPop？</string>
     <string name="logout_message">Logout from BeautyPop？</string>
     <string name="delete_account_message">Confirm to delete account？</string>
@@ -345,7 +345,7 @@
     <string name="crop__saving">Saving image...</string>
     <string name="crop__wait">Please wait...</string>
     <string name="crop__pick_error">Photo not found</string>
-    <string name="crop__done">Done!</string>
+    <string name="crop__done">OK</string>
     <string name="crop__cancel">Cancel</string>
 
     <!-- GCM -->
