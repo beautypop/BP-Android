@@ -79,7 +79,7 @@ public class AppController extends Application {
 
     private static BeautyPopService apiService;
 
-    private static boolean crashReportEnabled = false;
+    private static boolean crashReportEnabled = true;
 
     public enum DeviceType {
         NA,

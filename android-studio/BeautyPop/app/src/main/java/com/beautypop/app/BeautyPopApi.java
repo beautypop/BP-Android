@@ -230,9 +230,6 @@ public interface BeautyPopApi {
     // Conversation
     //
 
-    @GET("/api/get-conversations")
-    public void getConversations(@Query("key") String key, Callback<List<ConversationVM>> cb);
-
     @GET("/api/get-user-conversations/{offset}")
     public void getConversations(@Path("offset") Long offset, @Query("key") String key, Callback<List<ConversationVM>> cb);
 

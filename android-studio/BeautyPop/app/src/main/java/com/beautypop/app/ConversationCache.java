@@ -63,28 +63,6 @@ public class ConversationCache {
         });
     }
 
-    public static void refresh(final Callback<List<ConversationVM>> callback) {
-        Log.d(ConversationCache.class.getSimpleName(), "refresh");
-
-        AppController.getApiService().getConversations(new Callback<List<ConversationVM>>() {
-            @Override
-            public void success(List<ConversationVM> vms, Response response) {
-                conversations = vms;
-                if (callback != null) {
-                    callback.success(vms, response);
-                }
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                if (callback != null) {
-                    callback.failure(error);
-                }
-                Log.e(ConversationCache.class.getSimpleName(), "refresh: failure", error);
-            }
-        });
-    }
-
     public static void open(final Long postId, final Callback<ConversationVM> callback) {
         Log.d(ConversationCache.class.getSimpleName(), "open: post="+postId);
 

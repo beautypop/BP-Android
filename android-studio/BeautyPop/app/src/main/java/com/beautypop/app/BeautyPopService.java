@@ -249,10 +249,6 @@ public class BeautyPopService {
 
     // conversation
 
-    public void getConversations(Callback<List<ConversationVM>> cb) {
-        api.getConversations(AppController.getInstance().getSessionId(), cb);
-    }
-
     public void getConversations(Long offset, Callback<List<ConversationVM>> cb) {
         api.getConversations(offset, AppController.getInstance().getSessionId(), cb);
     }
