@@ -33,7 +33,7 @@
             android:layout_height="32dp"
             android:id="@+id/backImage"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/ic_back_gray"
             android:alpha="0.5" />
 
         <RelativeLayout
@@ -43,9 +43,9 @@
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="60dp"
                 android:src="@drawable/logo_login"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"

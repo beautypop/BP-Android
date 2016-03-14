@@ -72,7 +72,7 @@
     <string name="login_error_message">登入錯誤。請重試</string>
     <string name="login_id_error_message">登入電郵或密碼錯誤</string>
     <string name="signup">註冊</string>
-    <string name="signup_fb_title">以 Facebook 註冊\n(無需驗證電郵，一分鐘完成)</string>
+    <string name="signup_fb_title">以 Facebook 註冊\n(30秒完成)</string>
     <string name="signup_fb_note">註: BeautyPop 絕對不會發佈或留言到您的 Facebook 帳戶中</string>
     <string name="signup_email_title">以電郵註冊</string>
     <string name="signup_lastname_hint">姓</string>

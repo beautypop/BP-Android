@@ -14,6 +14,15 @@
         android:indeterminateDrawable="@drawable/progress_spinner"
         android:visibility="invisible" />
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:gravity="clip_horizontal"
+        android:src="@drawable/login_bg" />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,20 +37,12 @@
                 android:layout_height="32dp"
                 android:id="@+id/backImage"
                 android:layout_margin="10dp"
-                android:src="@drawable/ic_back"
+                android:src="@drawable/ic_back_gray"
                 android:alpha="0.5" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/bgImage"
-                    android:src="@drawable/logo_box_bg"
-                    android:scaleType="fitEnd"
-                    android:layout_alignParentBottom="true" />
 
                 <TextView
                     android:id="@+id/facebookText"
@@ -49,8 +50,8 @@
                     android:textSize="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:textColor="@color/sharp_pink"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/dark_gray"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="60dp"
                     android:layout_marginRight="35dp" />
@@ -155,7 +156,7 @@
                                 android:layout_marginRight="5dp"
                                 android:textSize="15dp"
                                 android:layout_width="0dp"
-                                android:layout_height="35dp"
+                                android:layout_height="40dp"
                                 android:background="@drawable/edit_text_round"
                                 android:singleLine="true"
                                 android:textColor="@color/dark_gray_2"
@@ -168,7 +169,7 @@
                                 android:hint="@string/signup_lastname_hint"
                                 android:textSize="15dp"
                                 android:layout_width="0dp"
-                                android:layout_height="35dp"
+                                android:layout_height="40dp"
                                 android:background="@drawable/edit_text_round"
                                 android:layout_marginLeft="5dp"
                                 android:singleLine="true"
@@ -183,7 +184,7 @@
                             android:layout_marginTop="15dp"
                             android:textSize="15dp"
                             android:layout_width="match_parent"
-                            android:layout_height="35dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/edit_text_round"
                             android:hint="@string/signup_email_hint"
                             android:singleLine="true"
@@ -195,7 +196,7 @@
                             android:layout_width="match_parent"
                             android:hint="@string/signup_password_hint"
                             android:textSize="15dp"
-                            android:layout_height="35dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/edit_text_round"
                             android:singleLine="true"
                             android:password="true"
@@ -208,7 +209,7 @@
                             android:hint="@string/signup_password_confirm_hint"
                             android:textSize="15dp"
                             android:layout_width="match_parent"
-                            android:layout_height="35dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/edit_text_round"
                             android:singleLine="true"
                             android:password="true"
@@ -219,7 +220,7 @@
                         <Button
                             android:id="@+id/signupButton"
                             android:layout_width="match_parent"
-                            android:layout_height="35dp"
+                            android:layout_height="45dp"
                             android:layout_below="@+id/editLayout"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="15dp"
@@ -232,9 +233,8 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/checkboxLayout"
-                    android:orientation="horizontal"
                     android:layout_alignParentLeft="true"
                     android:layout_marginTop="35dp"
                     android:layout_below="@+id/emailLayout"
@@ -242,30 +242,38 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="50dp">
 
-                    <CheckBox
-                        android:id="@+id/termsCheckbox"
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/signup_terms"
-                        android:textSize="13dp"
-                        android:layout_weight="0.5"
-                        android:layout_marginLeft="50dp"
-                        android:textColor="@color/dark_gray_2"
-                        android:checked="true" />
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_centerInParent="true">
 
-                    <CheckBox
-                        android:id="@+id/privacyCheckbox"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/signup_privacy"
-                        android:textSize="13dp"
-                        android:layout_marginRight="50dp"
-                        android:layout_weight="0.5"
-                        android:textColor="@color/dark_gray_2"
-                        android:checked="true" />
-                </LinearLayout>
+                        <CheckBox
+                            android:id="@+id/termsCheckbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/signup_terms"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/dark_gray_2"
+                            android:checked="true"
+                            android:layout_marginRight="25dp" />
+
+                        <CheckBox
+                            android:id="@+id/privacyCheckbox"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/signup_privacy"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/dark_gray_2"
+                            android:checked="true"
+                            android:layout_marginLeft="25dp" />
+                    </LinearLayout>
+                </RelativeLayout>
 
             </RelativeLayout>
         </FrameLayout>

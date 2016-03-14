@@ -72,7 +72,7 @@
     <string name="login_error_message">Login failed. Please try again.</string>
     <string name="login_id_error_message">Login email or password is wrong</string>
     <string name="signup">Signup</string>
-    <string name="signup_fb_title">Signup with Facebook\n(No email verification required. Complete in 1 minute)</string>
+    <string name="signup_fb_title">Signup with Facebook\n(Complete in 30 seconds)</string>
     <string name="signup_fb_note">Note: BeautyPop will not post to your Facebook account</string>
     <string name="signup_email_title">Signup with Email</string>
     <string name="signup_lastname_hint">Last Name</string>
