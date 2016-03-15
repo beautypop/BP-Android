@@ -68,6 +68,10 @@ public class CategoryCache {
     public static List<CategoryVM> getCategories() {
         if (categories == null || categories.size() == 0) {
             categories = SharedPreferencesUtil.getInstance().getCategories();
+            if (categories == null || categories.size() == 0) {
+                categories = new ArrayList<>();
+                refresh();
+            }
             initAllCategories(categories);
         }
         return categories;
