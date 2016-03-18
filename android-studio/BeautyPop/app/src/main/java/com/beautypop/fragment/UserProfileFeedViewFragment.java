@@ -65,6 +65,9 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
+        RelativeLayout toolbarOffsetLayout = (RelativeLayout) headerView.findViewById(R.id.toolbarOffsetLayout);
+        toolbarOffsetLayout.setVisibility(View.GONE);
+
         userNameText = (TextView) headerView.findViewById(R.id.userNameText);
         coverImage = (ImageView) headerView.findViewById(R.id.coverImage);
         profileImage = (ImageView) headerView.findViewById(R.id.userImage);
@@ -331,14 +334,14 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     @Override
     protected void onScrollUp() {
         if (MainActivity.getInstance() != null) {
-            MainActivity.getInstance().showBottomMenuBar(true);
+            //MainActivity.getInstance().showToolbar(true);
         }
     }
 
     @Override
     protected void onScrollDown() {
         if (MainActivity.getInstance() != null) {
-            MainActivity.getInstance().showBottomMenuBar(false);
+            //MainActivity.getInstance().showToolbar(false);
         }
     }
 }

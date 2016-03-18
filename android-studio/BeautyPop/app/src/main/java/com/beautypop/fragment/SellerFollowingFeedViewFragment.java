@@ -57,12 +57,12 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
 
     @Override
     protected void onScrollUp() {
-        MainActivity.getInstance().showBottomMenuBar(true);
+        //MainActivity.getInstance().showToolbar(true);
     }
 
     @Override
     protected void onScrollDown() {
-        MainActivity.getInstance().showBottomMenuBar(false);
+        //MainActivity.getInstance().showToolbar(false);
     }
 }
 

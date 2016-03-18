@@ -1,12 +1,14 @@
 package com.beautypop.activity;
 
-import android.app.ActionBar;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,6 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beautypop.R;
@@ -28,7 +29,6 @@ import com.beautypop.fragment.HomeMainFragment;
 import com.beautypop.fragment.ProfileMainFragment;
 import com.beautypop.fragment.SellerMainFragment;
 import com.beautypop.listener.EndlessScrollListener;
-import com.beautypop.util.ImageUtil;
 import com.beautypop.util.LocationUtil;
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ViewUtil;
@@ -62,6 +62,7 @@ public class MainActivity extends TrackedFragmentActivity {
 
     private boolean homeClicked = false, sellerClicked = false, activityClicked = false, profileClicked = false;
 
+    private boolean animatingToolbar = false;
     private boolean showBottomMenuBar = true;
 
     private TrackedFragment selectedFragment;
@@ -380,7 +381,7 @@ public class MainActivity extends TrackedFragmentActivity {
             chatCountText.setVisibility(View.INVISIBLE);
         } else {
             chatCountText.setVisibility(View.VISIBLE);
-            chatCountText.setText(counter.conversationsCount+"");
+            chatCountText.setText(counter.conversationsCount + "");
         }
     }
 
@@ -405,16 +406,31 @@ public class MainActivity extends TrackedFragmentActivity {
         }
     }
 
-    public void showActionBar(boolean show) {
-        ActionBar actionBar = getActionBar();
-        if (actionBar == null) {
+    public void showToolbar(boolean show) {
+        final Toolbar toolbar = getToolbar();
+        if (toolbar == null || animatingToolbar) {
             return;
         }
 
+        animatingToolbar = true;
         if (show) {
-            actionBar.show();
+            //toolbar.setVisibility(View.VISIBLE);
+            toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).setListener(
+                    new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            animatingToolbar = false;
+                        }
+                    }).start();
         } else {
-            actionBar.hide();
+            toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2)).setListener(
+                    new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            //toolbar.setVisibility(View.GONE);
+                            animatingToolbar = false;
+                        }
+                    }).start();
         }
     }
 

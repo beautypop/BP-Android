@@ -91,12 +91,12 @@ public class ActivityMainFragment extends TrackedFragment {
 
             @Override
             public void onScrollUp() {
-                MainActivity.getInstance().showBottomMenuBar(false);
+                //MainActivity.getInstance().showToolbar(true);
             }
 
             @Override
             public void onScrollDown() {
-                MainActivity.getInstance().showBottomMenuBar(true);
+                //MainActivity.getInstance().showToolbar(false);
             }
         });
     }

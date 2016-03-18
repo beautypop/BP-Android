@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/feed_bg">
+    android:background="@color/feed_bg"
+    android:orientation="vertical">
 
     <com.yalantis.phoenix.PullToRefreshView
         android:id="@+id/pull_to_refresh"
@@ -16,4 +17,4 @@
 
     </com.yalantis.phoenix.PullToRefreshView>
 
-</RelativeLayout>
+</LinearLayout>

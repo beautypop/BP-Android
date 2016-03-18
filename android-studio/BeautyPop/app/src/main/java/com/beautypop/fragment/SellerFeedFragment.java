@@ -86,12 +86,12 @@ public class SellerFeedFragment extends TrackedFragment {
 
             @Override
             public void onScrollUp() {
-                MainActivity.getInstance().showBottomMenuBar(false);
+                //MainActivity.getInstance().showToolbar(false);
             }
 
             @Override
             public void onScrollDown() {
-                MainActivity.getInstance().showBottomMenuBar(true);
+                //MainActivity.getInstance().showToolbar(true);
             }
         });
     }

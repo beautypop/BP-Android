@@ -2,8 +2,10 @@ package com.beautypop.app;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beautypop.R;
@@ -89,8 +91,19 @@ public abstract class TrackedFragmentActivity extends FragmentActivity {
     protected void showActionBarTitle(boolean show) {
         TextView titleText = (TextView) findViewById(R.id.toolbarTitleText);
         if (titleText != null) {
-            titleText.setVisibility(show? View.VISIBLE : View.GONE);
+            titleText.setVisibility(show ? View.VISIBLE : View.GONE);
         }
+    }
 
+    protected Toolbar getToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        return toolbar;
+    }
+
+    protected void showToolbarOffsetLayout(boolean show) {
+        if (findViewById(R.id.toolbarOffsetLayout) != null) {
+            RelativeLayout toolbarOffsetLayout = (RelativeLayout) findViewById(R.id.toolbarOffsetLayout);
+            toolbarOffsetLayout.setVisibility(show? View.VISIBLE : View.GONE);
+        }
     }
 }

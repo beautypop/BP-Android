@@ -50,10 +50,10 @@ public abstract class InfiniteScrollListener implements OnScrollListener {
     public void onScroll(AbsListView view,int firstVisibleItem,int visibleItemCount,int totalItemCount) {
         // scrolling up down
         if (mLastFirstVisibleItem < firstVisibleItem) {
-            onScrollUp();
+            onScrollDown();
         }
         if (mLastFirstVisibleItem > firstVisibleItem) {
-            onScrollDown();
+            onScrollUp();
         }
         mLastFirstVisibleItem = firstVisibleItem;
 

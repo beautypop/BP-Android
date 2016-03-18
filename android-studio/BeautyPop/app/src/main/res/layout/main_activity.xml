@@ -13,22 +13,31 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center" />
 
-    <include layout="@layout/main_actionbar"
-        android:id="@+id/toolbar" />
-
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/toolbar">
+        android:layout_above="@+id/bottomBarLayout">
 
         <LinearLayout
-            android:id="@+id/placeHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_above="@+id/bottomBarLayout">
+
+            <LinearLayout
+                android:id="@+id/placeHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+        <include layout="@layout/main_actionbar"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="top" />
+    </FrameLayout>
 
     <LinearLayout
         android:orientation="vertical"

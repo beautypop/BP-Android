@@ -3,7 +3,10 @@ package com.beautypop.app;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
+import com.beautypop.R;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -68,6 +71,13 @@ public abstract class TrackedFragment extends Fragment {
         if (getActivity() instanceof TrackedFragmentActivity) {
             TrackedFragmentActivity activity = (TrackedFragmentActivity) getActivity();
             activity.setActionBarTitle(title);
+        }
+    }
+
+    protected void showToolbarOffsetLayout(boolean show) {
+        if (getActivity() instanceof TrackedFragmentActivity) {
+            TrackedFragmentActivity activity = (TrackedFragmentActivity) getActivity();
+            activity.showToolbarOffsetLayout(show);
         }
     }
 
