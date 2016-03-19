@@ -300,8 +300,8 @@ public class ProductActivity extends TrackedFragmentActivity {
 
                 // details
 
-                //setActionBarTitle(post.getTitle());
-                showActionBarTitle(false);
+                //setToolbarTitle(post.getTitle());
+                showToolbarTitle(false);
 
                 ViewUtil.setHtmlText(post.getTitle(), titleText, ProductActivity.this, true);
                 ViewUtil.setHtmlText(post.getBody(), descText, ProductActivity.this, true, true);

@@ -29,8 +29,6 @@ import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.ConversationVM;
 import com.yalantis.phoenix.PullToRefreshView;
 
-import org.parceler.apache.commons.lang.StringUtils;
-
 import java.util.List;
 
 import retrofit.Callback;
@@ -62,7 +60,7 @@ public class ConversationListActivity extends TrackedFragmentActivity {
 
         setContentView(getContentViewResource());
 
-        setActionBarTitle(getActionBarTitle());
+        setToolbarTitle(getActionBarTitle());
 
         tipText = (TextView) findViewById(R.id.tipText);
         listView = (ListView) findViewById(R.id.conversationList);

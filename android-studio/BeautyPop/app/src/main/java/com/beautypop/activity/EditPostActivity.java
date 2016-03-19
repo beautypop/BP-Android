@@ -17,7 +17,6 @@ import com.beautypop.app.UserInfoCache;
 import com.beautypop.fragment.AbstractFeedViewFragment;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ViewUtil;
-import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.NewPostVM;
 import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.PostVMLite;
@@ -43,7 +42,7 @@ public class EditPostActivity extends NewPostActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setActionBarTitle(getString(R.string.edit_post_actionbar_title));
+        setToolbarTitle(getString(R.string.edit_post_actionbar_title));
 
         // disable images edit
         imagesLayout.setVisibility(View.GONE);

@@ -39,7 +39,7 @@ public class DefaultValues {
     public static final int DEFAULT_CONNECTION_TIMEOUT_MILLIS = 3000;
     public static final int DEFAULT_HANDLER_DELAY = 100;
 
-    public static final int MAIN_TOOLBAR_MIN_HEIGHT = 10;
+    public static final int MAIN_TOOLBAR_MIN_HEIGHT = 12;
     public static final int DEFAULT_SLIDER_DURATION = 4000;
 
     public static final int PULL_TO_REFRESH_DELAY = 250;

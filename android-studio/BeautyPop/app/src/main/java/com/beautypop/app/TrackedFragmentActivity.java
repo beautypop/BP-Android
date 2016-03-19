@@ -70,7 +70,7 @@ public abstract class TrackedFragmentActivity extends FragmentActivity {
     // UI helper
     //
 
-    protected void setActionBarTitle(String title) {
+    protected void setToolbarTitle(String title) {
         TextView titleText = (TextView) findViewById(R.id.toolbarTitleText);
         if (titleText != null) {
             titleText.setText(ViewUtil.shortenString(title, DefaultValues.DEFAULT_TITLE_COUNT));
@@ -88,7 +88,7 @@ public abstract class TrackedFragmentActivity extends FragmentActivity {
         */
     }
 
-    protected void showActionBarTitle(boolean show) {
+    protected void showToolbarTitle(boolean show) {
         TextView titleText = (TextView) findViewById(R.id.toolbarTitleText);
         if (titleText != null) {
             titleText.setVisibility(show ? View.VISIBLE : View.GONE);

@@ -33,7 +33,7 @@ public class NotificationSettingsActivity extends TrackedFragmentActivity {
 
         setContentView(R.layout.notification_settings_activity);
 
-        setActionBarTitle(getString(R.string.notifications));
+        setToolbarTitle(getString(R.string.notifications));
 
         emailNewPostLayout = (RelativeLayout) this.findViewById(R.id.emailNewPostLayout);
         emailNewChatLayout = (RelativeLayout) this.findViewById(R.id.emailNewChatLayout);

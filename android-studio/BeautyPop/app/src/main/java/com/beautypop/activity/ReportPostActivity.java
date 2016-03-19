@@ -50,7 +50,7 @@ public class ReportPostActivity extends TrackedFragmentActivity {
             postId = extras.getLong(ViewUtil.BUNDLE_KEY_ID, 0L);
         }
 
-        setActionBarTitle(getString(R.string.report_post));
+        setToolbarTitle(getString(R.string.report_post));
 
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,7 +36,7 @@ public class SettingsActivity extends TrackedFragmentActivity {
 
         setContentView(R.layout.settings_activity);
 
-        setActionBarTitle(getString(R.string.settings_actionbar_title));
+        setToolbarTitle(getString(R.string.settings_actionbar_title));
 
         appVersionText = (TextView) findViewById(R.id.appVersionText);
         langSpinner = (Spinner) findViewById(R.id.langSpinner);

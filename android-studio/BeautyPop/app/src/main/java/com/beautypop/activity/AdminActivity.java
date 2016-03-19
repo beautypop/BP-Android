@@ -21,7 +21,7 @@ public class AdminActivity extends TrackedFragmentActivity {
 
         setContentView(R.layout.admin_activity);
 
-        setActionBarTitle(getString(R.string.admin));
+        setToolbarTitle(getString(R.string.admin));
 
         setTracked(false);
 

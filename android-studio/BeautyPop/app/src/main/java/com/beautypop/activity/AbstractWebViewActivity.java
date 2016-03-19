@@ -8,7 +8,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.app.AppController;
@@ -33,7 +32,7 @@ public abstract class AbstractWebViewActivity extends TrackedFragmentActivity {
 
         setContentView(R.layout.webview_activity);
 
-        setActionBarTitle(getActionBarTitle());
+        setToolbarTitle(getActionBarTitle());
 
         final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);

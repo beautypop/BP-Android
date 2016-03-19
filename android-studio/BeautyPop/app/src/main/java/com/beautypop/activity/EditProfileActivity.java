@@ -54,7 +54,7 @@ public class EditProfileActivity extends TrackedFragmentActivity {
 
         setContentView(R.layout.edit_profile_activity);
 
-        setActionBarTitle(getString(R.string.edit_user_info));
+        setToolbarTitle(getString(R.string.edit_user_info));
 
         fbLoginIcon = (ImageView) findViewById(R.id.fbLoginIcon);
         mbLoginIcon = (ImageView) findViewById(R.id.mbLoginIcon);

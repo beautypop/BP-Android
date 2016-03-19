@@ -40,7 +40,7 @@ public abstract class AbstractListViewActivity extends TrackedFragmentActivity {
 
         setContentView(R.layout.child_list_view);
 
-        setActionBarTitle(getTitleText());
+        setToolbarTitle(getTitleText());
 
         noItemText = (TextView) findViewById(R.id.noItemText);
         listView = (ListView) findViewById(R.id.listView);

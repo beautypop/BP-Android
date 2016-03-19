@@ -12,10 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beautypop.R;
@@ -30,7 +32,6 @@ import com.beautypop.fragment.ProfileMainFragment;
 import com.beautypop.fragment.SellerMainFragment;
 import com.beautypop.listener.EndlessScrollListener;
 import com.beautypop.util.DefaultValues;
-import com.beautypop.util.LocationUtil;
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.NotificationCounterVM;
@@ -200,7 +201,8 @@ public class MainActivity extends TrackedFragmentActivity {
         selectedFragment = new HomeMainFragment();
         fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
 
-        showActionBarTitle(false);
+        showToolbar(true, false);
+        showToolbarTitle(false);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home_sel, R.color.sharp_pink);
         homeClicked = true;
@@ -224,7 +226,8 @@ public class MainActivity extends TrackedFragmentActivity {
         selectedFragment = new SellerMainFragment();
         fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
 
-        showActionBarTitle(false);
+        showToolbar(true, false);
+        showToolbarTitle(false);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
@@ -248,7 +251,8 @@ public class MainActivity extends TrackedFragmentActivity {
         selectedFragment = new ActivityMainFragment();
         fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
 
-        showActionBarTitle(false);
+        showToolbar(true, false);
+        showToolbarTitle(false);
 
         // read... clear gcm notifs
         SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.GCM_COMMENT_NOTIFS);
@@ -281,7 +285,8 @@ public class MainActivity extends TrackedFragmentActivity {
         selectedFragment.setTrackedOnce();
         fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
 
-        showActionBarTitle(true);
+        showToolbar(true, false);
+        showToolbarTitle(true);
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
@@ -408,6 +413,10 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void showToolbar(boolean show) {
+        showToolbar(show, true);
+    }
+
+    public void showToolbar(boolean show, boolean animate) {
         final Toolbar toolbar = getToolbar();
         if (toolbar == null || animatingToolbar) {
             return;
@@ -415,21 +424,31 @@ public class MainActivity extends TrackedFragmentActivity {
 
         animatingToolbar = true;
         if (show) {
-            toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).setListener(
+            ViewPropertyAnimator animator = toolbar.animate().translationY(0).setListener(
                     new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             animatingToolbar = false;
                         }
-                    }).start();
+                    });
+            if (animate) {
+                animator.setDuration(300).setInterpolator(new DecelerateInterpolator(2)).start();
+            } else {
+                animator.setDuration(0).start();
+            }
         } else {
-            toolbar.animate().translationY(DefaultValues.MAIN_TOOLBAR_MIN_HEIGHT - toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2)).setListener(
+            ViewPropertyAnimator animator = toolbar.animate().translationY(DefaultValues.MAIN_TOOLBAR_MIN_HEIGHT - toolbar.getHeight()).setListener(
                     new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             animatingToolbar = false;
                         }
-                    }).start();
+                    });
+            if (animate) {
+                animator.setDuration(300).setInterpolator(new AccelerateInterpolator(2)).start();
+            } else {
+                animator.setDuration(0).start();
+            }
         }
     }
 

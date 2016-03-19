@@ -124,7 +124,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
         // conversation
         conversation = (ConversationVM) getIntent().getSerializableExtra(ViewUtil.BUNDLE_KEY_OBJECT);
 
-        setActionBarTitle(conversation.getUserName());
+        setToolbarTitle(conversation.getUserName());
         postTitleText.setText(conversation.getPostTitle());
         postPriceText.setText(ViewUtil.priceFormat(conversation.getPostPrice()));
         ImageUtil.displayPostImage(conversation.getPostImage(), postImage);
