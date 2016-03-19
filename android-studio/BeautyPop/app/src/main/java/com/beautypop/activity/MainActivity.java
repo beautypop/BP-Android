@@ -29,6 +29,7 @@ import com.beautypop.fragment.HomeMainFragment;
 import com.beautypop.fragment.ProfileMainFragment;
 import com.beautypop.fragment.SellerMainFragment;
 import com.beautypop.listener.EndlessScrollListener;
+import com.beautypop.util.DefaultValues;
 import com.beautypop.util.LocationUtil;
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ViewUtil;
@@ -414,7 +415,6 @@ public class MainActivity extends TrackedFragmentActivity {
 
         animatingToolbar = true;
         if (show) {
-            //toolbar.setVisibility(View.VISIBLE);
             toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).setListener(
                     new AnimatorListenerAdapter() {
                         @Override
@@ -423,11 +423,10 @@ public class MainActivity extends TrackedFragmentActivity {
                         }
                     }).start();
         } else {
-            toolbar.animate().translationY(-toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2)).setListener(
+            toolbar.animate().translationY(DefaultValues.MAIN_TOOLBAR_MIN_HEIGHT - toolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2)).setListener(
                     new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            //toolbar.setVisibility(View.GONE);
                             animatingToolbar = false;
                         }
                     }).start();
