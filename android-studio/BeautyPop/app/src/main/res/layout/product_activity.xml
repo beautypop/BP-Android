@@ -40,6 +40,89 @@
                     android:layout_height="wrap_content"
                     android:background="@color/feed_bg">
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sellerLayout"
+                        android:background="@drawable/box_light_gray_border">
+
+                        <ImageView
+                            android:id="@+id/sellerImage"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_gravity="center_vertical"></ImageView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="7dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="7dp">
+
+                            <TextView
+                                android:id="@+id/sellerNameText"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/light_pink"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:layout_gravity="center_vertical"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/sellerLastActiveText"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/last_active"
+                                android:layout_below="@+id/sellerNameText" />
+
+                            <TextView
+                                android:id="@+id/sellerProductsText"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/products"
+                                android:layout_below="@+id/sellerLastActiveText" />
+
+                            <TextView
+                                android:id="@+id/sellerFollowersText"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/user_followers"
+                                android:layout_below="@+id/sellerLastActiveText"
+                                android:layout_toRightOf="@+id/sellerProductsText"
+                                android:layout_marginLeft="10dp" />
+
+                            <Button
+                                android:layout_width="75dp"
+                                android:layout_height="30dp"
+                                android:id="@+id/followButton"
+                                android:background="@drawable/button_pink_border"
+                                android:scaleType="fitCenter"
+                                android:text="@string/view_shop"
+                                android:textColor="@color/light_pink"
+                                android:textSize="14dp"
+                                android:layout_alignParentRight="true"
+                                android:textAllCaps="false"
+                                android:singleLine="true"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="5dp"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -535,95 +618,6 @@
                             </LinearLayout>
 
                         </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/sellerLayout"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/box_light_gray_border"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp">
-
-                        <ImageView
-                            android:id="@+id/sellerImage"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="15dp"></ImageView>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="10dp"
-                            android:paddingBottom="10dp">
-
-                            <TextView
-                                android:id="@+id/sellerNameText"
-                                android:layout_width="wrap_content"
-                                android:textColor="@color/light_pink"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:layout_gravity="center_vertical"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/sellerLastActiveText"
-                                android:layout_width="wrap_content"
-                                android:textColor="@color/dark_gray"
-                                android:layout_height="wrap_content"
-                                android:textSize="12dp"
-                                android:layout_gravity="center_vertical"
-                                android:text="@string/last_active"
-                                android:layout_below="@+id/sellerNameText"
-                                android:layout_marginTop="2dp" />
-
-                            <TextView
-                                android:id="@+id/sellerProductsText"
-                                android:layout_width="wrap_content"
-                                android:textColor="@color/dark_gray"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:layout_gravity="center_vertical"
-                                android:text="@string/products"
-                                android:layout_below="@+id/sellerLastActiveText"
-                                android:layout_marginTop="3dp" />
-
-                            <TextView
-                                android:id="@+id/sellerFollowersText"
-                                android:layout_width="wrap_content"
-                                android:textColor="@color/dark_gray"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:layout_gravity="center_vertical"
-                                android:text="@string/user_followers"
-                                android:layout_below="@+id/sellerLastActiveText"
-                                android:layout_marginTop="3dp"
-                                android:layout_toRightOf="@+id/sellerProductsText"
-                                android:layout_marginLeft="10dp" />
-
-                            <Button
-                                android:layout_width="75dp"
-                                android:layout_height="30dp"
-                                android:id="@+id/followButton"
-                                android:background="@drawable/button_pink_border"
-                                android:scaleType="fitCenter"
-                                android:text="@string/view_shop"
-                                android:textColor="@color/light_pink"
-                                android:textSize="14dp"
-                                android:layout_alignParentRight="true"
-                                android:textAllCaps="false"
-                                android:singleLine="true"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginRight="5dp" />
-                        </RelativeLayout>
 
                     </LinearLayout>
 
