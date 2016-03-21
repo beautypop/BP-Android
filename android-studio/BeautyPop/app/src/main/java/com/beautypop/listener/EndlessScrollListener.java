@@ -2,6 +2,7 @@ package com.beautypop.listener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 public abstract class EndlessScrollListener extends RecyclerView.OnScrollListener {
     public static String TAG = EndlessScrollListener.class.getName();
@@ -75,11 +76,15 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
             scrollReset();
         }
 
+        //Log.d(TAG, "mControlsVisible="+mControlsVisible+" mScrolledDistance="+mScrolledDistance);
+
         if (mScrolledDistance > threshold && mControlsVisible) {
+            //Log.d(TAG, "onScrollDown()");
             onScrollDown();
             mControlsVisible = false;
             mScrolledDistance = 0;
         } else if (mScrolledDistance < -threshold && !mControlsVisible) {
+            //Log.d(TAG, "onScrollUp()");
             onScrollUp();
             mControlsVisible = true;
             mScrolledDistance = 0;
@@ -104,7 +109,7 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
         }
         */
 
-        if ((mControlsVisible && dy>0) || (!mControlsVisible && dy<0)) {
+        if ((mControlsVisible && dy > 0) || (!mControlsVisible && dy < 0)) {
             mScrolledDistance += dy;
         }
     }
@@ -114,6 +119,7 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
     }
 
     public void scrollReset() {
+        //Log.d(TAG, "scrollReset()");
         mControlsVisible = true;
         mScrolledDistance = 0;
         scrollReset = false;

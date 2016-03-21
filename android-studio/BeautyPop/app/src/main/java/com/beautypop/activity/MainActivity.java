@@ -466,7 +466,9 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void resetControls() {
-        showBottomMenuBar(true);
-        EndlessScrollListener.setScrollReset();
+        if (!showBottomMenuBar) {
+            showBottomMenuBar(true);
+            EndlessScrollListener.setScrollReset();
+        }
     }
 }
