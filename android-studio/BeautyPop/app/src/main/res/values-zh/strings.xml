@@ -198,7 +198,7 @@
     <string name="new_post_select_category">請選擇分類</string>
     <string name="new_post_select_subcategory">請選擇子分類</string>
     <string name="new_post_title">你要賣的是?</string>
-    <string name="new_post_body">商品詳情</string>
+    <string name="new_post_body">商品詳情 (自選填寫)\n例如: 尺寸丶顏色</string>
     <string name="new_post_max_images">最多可加入%1$d張圖</string>
     <string name="post_success">成功%1$s商品</string>
     <string name="post_failed">暫時不能%1$s商品，請稍後重試</string>

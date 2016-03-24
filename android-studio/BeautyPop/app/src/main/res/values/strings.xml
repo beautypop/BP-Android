@@ -198,7 +198,7 @@
     <string name="new_post_select_category">Choose Category</string>
     <string name="new_post_select_subcategory">Choose Subcategory</string>
     <string name="new_post_title">What are you selling?</string>
-    <string name="new_post_body">Product details</string>
+    <string name="new_post_body">Product details (Optional)\nE.g. Size, color</string>
     <string name="new_post_max_images">You can select up to %1$d photos</string>
     <string name="post_success">Successfully %1$s Product</string>
     <string name="post_failed">Failed to %1$s Product. Please try again later.</string>

@@ -113,7 +113,7 @@ public abstract class AbstractLoginActivity extends TrackedFragmentActivity {
 
                 Log.d(this.getClass().getSimpleName(), "emailLogin: success");
                 if (saveToSession(responseObject)) {
-                    onSuccessLogin();
+                    onLoginSuccess();
                 } else {
                     ViewUtil.alert(AbstractLoginActivity.this,
                             getString(R.string.login_error_title),
@@ -165,7 +165,7 @@ public abstract class AbstractLoginActivity extends TrackedFragmentActivity {
 
                 Log.d(this.getClass().getSimpleName(), "fbLogin: success");
                 if (saveToSession(responseObject)) {
-                    onSuccessLogin();
+                    onLoginSuccess();
                 } else {
                     ViewUtil.alert(AbstractLoginActivity.this,
                             getString(R.string.login_error_title),
@@ -185,23 +185,19 @@ public abstract class AbstractLoginActivity extends TrackedFragmentActivity {
         });
     }
 
-    protected void onSuccessLogin() {
+    protected void onLoginSuccess() {
         GCMClient.getInstance().registerGCM();
+        ViewUtil.startSplashActivity(AbstractLoginActivity.this, AppController.getInstance().getSessionId());
+        finish();
     }
 
     protected boolean saveToSession(Response response) {
         if (response == null) {
             return false;
         }
-
         String key = ViewUtil.getResponseBody(response);
         Log.d(this.getClass().getSimpleName(), "saveToSession: sessionID=" + key);
         AppController.getInstance().saveSessionId(key);
-
-        ViewUtil.startSplashActivity(this, key);
-
-        finish();
-
         return true;
     }
 

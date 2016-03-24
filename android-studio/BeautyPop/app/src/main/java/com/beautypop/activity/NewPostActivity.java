@@ -482,10 +482,12 @@ public class NewPostActivity extends TrackedFragmentActivity{
             return null;
         }
 
+        /*
         if (StringUtils.isEmpty(body)) {
             Toast.makeText(this, getString(R.string.invalid_post_desc_empty), Toast.LENGTH_SHORT).show();
             return null;
         }
+        */
 
         if (StringUtils.isEmpty(priceValue)) {
             Toast.makeText(this, getString(R.string.invalid_post_price_empty), Toast.LENGTH_SHORT).show();
