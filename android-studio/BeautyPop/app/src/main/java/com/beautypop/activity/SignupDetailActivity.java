@@ -19,7 +19,6 @@ import com.beautypop.app.TrackedFragmentActivity;
 import com.beautypop.util.ValidationUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.LocationVM;
-import com.beautypop.viewmodel.UserVM;
 
 import org.parceler.apache.commons.lang.StringUtils;
 
@@ -99,7 +98,9 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
                         @Override
                         public void success(Response responseObject, Response response) {
                             Log.d(SignupDetailActivity.class.getSimpleName(), "submitDetails: api.signUpInfo.success");
-                            initNewUser();
+                            stopSpinner();
+                            startActivity(new Intent(SignupDetailActivity.this, SplashActivity.class));
+                            finish();
                         }
 
                         @Override
@@ -120,24 +121,6 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
                         }
                     });
         }
-    }
-
-    private void initNewUser() {
-        Log.d(this.getClass().getSimpleName(), "initNewUser");
-        AppController.getApiService().initNewUser(new Callback<UserVM>() {
-            @Override
-            public void success(UserVM userVM, Response response) {
-                Log.d(SignupDetailActivity.class.getSimpleName(), "initNewUser.success");
-                startActivity(new Intent(SignupDetailActivity.this, SplashActivity.class));
-                finish();
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                stopSpinner();
-                Log.e(SignupDetailActivity.class.getSimpleName(), "initNewUser: failure", error);
-            }
-        });
     }
 
     private void setDistricts(){

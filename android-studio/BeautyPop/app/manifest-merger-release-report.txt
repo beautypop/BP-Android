@@ -1,0 +1,390 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	package
+		ADDED from AndroidManifest.xml:2:70
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionCode
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:4:5
+	android:name
+		ADDED from AndroidManifest.xml:4:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:5:5
+	android:name
+		ADDED from AndroidManifest.xml:5:22
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from AndroidManifest.xml:6:5
+	android:name
+		ADDED from AndroidManifest.xml:6:22
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:7:5
+	android:name
+		ADDED from AndroidManifest.xml:7:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:8:5
+	android:name
+		ADDED from AndroidManifest.xml:8:22
+uses-permission#android.permission.READ_LOGS
+ADDED from AndroidManifest.xml:9:5
+	android:name
+		ADDED from AndroidManifest.xml:9:22
+uses-permission#android.permission.CAMERA
+ADDED from AndroidManifest.xml:10:5
+	android:name
+		ADDED from AndroidManifest.xml:10:22
+uses-feature#android.hardware.camera
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:19
+uses-feature#android.hardware.camera.autofocus
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:19
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from AndroidManifest.xml:14:5
+	android:name
+		ADDED from AndroidManifest.xml:14:22
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:15:5
+	android:name
+		ADDED from AndroidManifest.xml:15:22
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:17:5
+	android:name
+		ADDED from AndroidManifest.xml:17:22
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from AndroidManifest.xml:18:5
+	android:name
+		ADDED from AndroidManifest.xml:18:22
+permission#com.babybox.gcm.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:20:5
+	android:protectionLevel
+		ADDED from AndroidManifest.xml:22:9
+	android:name
+		ADDED from AndroidManifest.xml:21:9
+uses-permission#com.babybox.gcm.permission.C2D_MESSAGE
+ADDED from AndroidManifest.xml:24:5
+	android:name
+		ADDED from AndroidManifest.xml:25:9
+application
+ADDED from AndroidManifest.xml:27:5
+MERGED from com.facebook.android:facebook-android-sdk:4.5.0:28:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.google.android.gms:play-services-base:6.5.87:20:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.android.support:appcompat-v7:23.0.0:22:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.android.support:cardview-v7:22.0.0:22:5
+MERGED from com.android.support:recyclerview-v7:22.0.0:22:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from com.jpardogo.materialtabstrip:library:1.0.9:9:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+MERGED from it.sephiroth.android.library.imagezoom:imagezoom:2.2.2:11:5
+MERGED from BabyBox:library:unspecified:11:5
+MERGED from com.android.support:support-v4:23.0.0:22:5
+	android:label
+		ADDED from AndroidManifest.xml:31:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:29:9
+	android:icon
+		ADDED from AndroidManifest.xml:30:9
+	android:theme
+		ADDED from AndroidManifest.xml:34:9
+	android:hardwareAccelerated
+		ADDED from AndroidManifest.xml:33:9
+	android:largeHeap
+		ADDED from AndroidManifest.xml:32:9
+	android:name
+		ADDED from AndroidManifest.xml:28:9
+meta-data#com.facebook.sdk.ApplicationId
+ADDED from AndroidManifest.xml:36:9
+	android:name
+		ADDED from AndroidManifest.xml:36:20
+	android:value
+		ADDED from AndroidManifest.xml:36:66
+meta-data#com.babybox.util.GlideConfiguration
+ADDED from AndroidManifest.xml:38:9
+	android:name
+		ADDED from AndroidManifest.xml:38:20
+	android:value
+		ADDED from AndroidManifest.xml:38:71
+activity#com.babybox.activity.SplashActivity
+ADDED from AndroidManifest.xml:40:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:43:13
+	android:noHistory
+		ADDED from AndroidManifest.xml:44:13
+	android:label
+		ADDED from AndroidManifest.xml:42:13
+	android:theme
+		ADDED from AndroidManifest.xml:45:13
+	android:name
+		ADDED from AndroidManifest.xml:41:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:46:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:47:17
+	android:name
+		ADDED from AndroidManifest.xml:47:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:48:17
+	android:name
+		ADDED from AndroidManifest.xml:48:27
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from AndroidManifest.xml:51:13
+action#android.intent.action.VIEW
+ADDED from AndroidManifest.xml:52:17
+	android:name
+		ADDED from AndroidManifest.xml:52:25
+category#android.intent.category.DEFAULT
+ADDED from AndroidManifest.xml:53:17
+	android:name
+		ADDED from AndroidManifest.xml:53:27
+category#android.intent.category.BROWSABLE
+ADDED from AndroidManifest.xml:54:17
+	android:name
+		ADDED from AndroidManifest.xml:54:27
+data
+ADDED from AndroidManifest.xml:55:17
+	android:scheme
+		ADDED from AndroidManifest.xml:55:23
+activity#com.babybox.activity.LoginActivity
+ADDED from AndroidManifest.xml:59:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:61:13
+	android:noHistory
+		ADDED from AndroidManifest.xml:62:13
+	android:theme
+		ADDED from AndroidManifest.xml:63:13
+	android:name
+		ADDED from AndroidManifest.xml:60:13
+activity#com.babybox.activity.SelectImageActivity
+ADDED from AndroidManifest.xml:64:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:66:13
+	android:noHistory
+		ADDED from AndroidManifest.xml:67:13
+	android:theme
+		ADDED from AndroidManifest.xml:68:13
+	android:name
+		ADDED from AndroidManifest.xml:65:13
+activity#com.babybox.activity.MainActivity
+ADDED from AndroidManifest.xml:69:9
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:72:13
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:71:13
+	android:name
+		ADDED from AndroidManifest.xml:70:13
+activity#com.babybox.activity.CategoryActivity
+ADDED from AndroidManifest.xml:73:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:75:13
+	android:name
+		ADDED from AndroidManifest.xml:74:13
+activity#com.babybox.activity.NewPostActivity
+ADDED from AndroidManifest.xml:76:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:78:13
+	android:name
+		ADDED from AndroidManifest.xml:77:13
+activity#com.babybox.activity.EditPostActivity
+ADDED from AndroidManifest.xml:79:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:81:13
+	android:name
+		ADDED from AndroidManifest.xml:80:13
+activity#com.babybox.activity.ProductActivity
+ADDED from AndroidManifest.xml:82:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:84:13
+	android:name
+		ADDED from AndroidManifest.xml:83:13
+activity#com.babybox.activity.FullscreenImageActivity
+ADDED from AndroidManifest.xml:85:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:87:13
+	android:name
+		ADDED from AndroidManifest.xml:86:13
+activity#com.babybox.activity.CommentsActivity
+ADDED from AndroidManifest.xml:88:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:90:13
+	android:name
+		ADDED from AndroidManifest.xml:89:13
+activity#com.babybox.activity.UserProfileActivity
+ADDED from AndroidManifest.xml:91:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:93:13
+	android:name
+		ADDED from AndroidManifest.xml:92:13
+activity#com.babybox.activity.EditProfileActivity
+ADDED from AndroidManifest.xml:94:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:96:13
+	android:name
+		ADDED from AndroidManifest.xml:95:13
+activity#com.babybox.activity.FollowersActivity
+ADDED from AndroidManifest.xml:97:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:99:13
+	android:name
+		ADDED from AndroidManifest.xml:98:13
+activity#com.babybox.activity.FollowingsActivity
+ADDED from AndroidManifest.xml:100:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:102:13
+	android:name
+		ADDED from AndroidManifest.xml:101:13
+activity#com.babybox.activity.ConversationListActivity
+ADDED from AndroidManifest.xml:103:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:105:13
+	android:name
+		ADDED from AndroidManifest.xml:104:13
+activity#com.babybox.activity.ProductConversationListActivity
+ADDED from AndroidManifest.xml:106:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:108:13
+	android:name
+		ADDED from AndroidManifest.xml:107:13
+activity#com.babybox.activity.MessageListActivity
+ADDED from AndroidManifest.xml:109:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:111:13
+	android:name
+		ADDED from AndroidManifest.xml:110:13
+activity#com.babybox.activity.SellerRulesActivity
+ADDED from AndroidManifest.xml:112:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:114:13
+	android:name
+		ADDED from AndroidManifest.xml:113:13
+activity#com.babybox.activity.SettingsActivity
+ADDED from AndroidManifest.xml:115:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:117:13
+	android:name
+		ADDED from AndroidManifest.xml:116:13
+activity#com.babybox.activity.SignupActivity
+ADDED from AndroidManifest.xml:118:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:120:13
+	android:name
+		ADDED from AndroidManifest.xml:119:13
+activity#com.babybox.activity.SignupDetailActivity
+ADDED from AndroidManifest.xml:121:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:123:13
+	android:name
+		ADDED from AndroidManifest.xml:122:13
+activity#com.babybox.activity.ForgetPasswordActivity
+ADDED from AndroidManifest.xml:124:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:126:13
+	android:name
+		ADDED from AndroidManifest.xml:125:13
+activity#com.babybox.activity.TermsActivity
+ADDED from AndroidManifest.xml:127:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:129:13
+	android:name
+		ADDED from AndroidManifest.xml:128:13
+activity#com.babybox.activity.PrivacyActivity
+ADDED from AndroidManifest.xml:130:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:132:13
+	android:name
+		ADDED from AndroidManifest.xml:131:13
+activity#com.babybox.image.crop.CropImageActivity
+ADDED from AndroidManifest.xml:133:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:135:13
+	android:name
+		ADDED from AndroidManifest.xml:134:13
+activity#com.facebook.FacebookActivity
+ADDED from AndroidManifest.xml:137:9
+	android:label
+		ADDED from AndroidManifest.xml:141:13
+	android:configChanges
+		ADDED from AndroidManifest.xml:138:13
+	android:theme
+		ADDED from AndroidManifest.xml:140:13
+	android:name
+		ADDED from AndroidManifest.xml:137:19
+activity#org.acra.CrashReportDialog
+ADDED from AndroidManifest.xml:142:9
+	android:theme
+		ADDED from AndroidManifest.xml:143:13
+	android:excludeFromRecents
+		ADDED from AndroidManifest.xml:145:13
+	android:name
+		ADDED from AndroidManifest.xml:142:19
+	android:finishOnTaskLaunch
+		ADDED from AndroidManifest.xml:146:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:144:13
+receiver#com.babybox.gcm.GCMBroadcastReceiver
+ADDED from AndroidManifest.xml:148:9
+	android:permission
+		ADDED from AndroidManifest.xml:150:13
+	android:name
+		ADDED from AndroidManifest.xml:149:13
+intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from AndroidManifest.xml:151:13
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from AndroidManifest.xml:152:17
+	android:name
+		ADDED from AndroidManifest.xml:152:25
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from AndroidManifest.xml:153:17
+	android:name
+		ADDED from AndroidManifest.xml:153:25
+service#com.babybox.gcm.GCMNotificationIntentService
+ADDED from AndroidManifest.xml:158:9
+	android:name
+		ADDED from AndroidManifest.xml:158:18
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
+MERGED from com.android.support:multidex:1.0.0:18:5
+MERGED from com.facebook.android:facebook-android-sdk:4.5.0:24:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.google.android.gms:play-services-base:6.5.87:18:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.android.support:appcompat-v7:23.0.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.android.support:cardview-v7:22.0.0:20:5
+MERGED from com.android.support:recyclerview-v7:22.0.0:20:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from com.jpardogo.materialtabstrip:library:1.0.9:5:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+MERGED from it.sephiroth.android.library.imagezoom:imagezoom:2.2.2:7:5
+MERGED from BabyBox:library:unspecified:7:5
+MERGED from com.android.support:support-v4:23.0.0:20:5
+	android:targetSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+meta-data#com.google.android.gms.version
+ADDED from com.google.android.gms:play-services-base:6.5.87:21:9
+	android:name
+		ADDED from com.google.android.gms:play-services-base:6.5.87:22:13
+	android:value
+		ADDED from com.google.android.gms:play-services-base:6.5.87:23:13
+activity#android.support.v7.widget.TestActivity
+ADDED from com.android.support:recyclerview-v7:22.0.0:23:9
+	android:label
+		ADDED from com.android.support:recyclerview-v7:22.0.0:25:13
+	android:name
+		ADDED from com.android.support:recyclerview-v7:22.0.0:24:13

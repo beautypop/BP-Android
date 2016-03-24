@@ -22,6 +22,7 @@ import org.parceler.apache.commons.lang.StringUtils;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class SplashActivity extends TrackedFragmentActivity {
 
@@ -49,17 +50,33 @@ public class SplashActivity extends TrackedFragmentActivity {
             ViewUtil.startWelcomeActivity(this);
         } else {
             Log.d(this.getClass().getSimpleName(), "onStart: sessionID - " + sessionId);
-            startMainActivity(sessionId);
+            refreshUserInfo(sessionId);
         }
     }
 
-    private void startMainActivity(final String sessionId) {
-        Log.d(this.getClass().getSimpleName(), "startMainActivity: UserInfoCache.refresh");
+    private void initNewUser() {
+        Log.d(this.getClass().getSimpleName(), "initNewUser");
+        AppController.getApiService().initNewUser(new Callback<UserVM>() {
+            @Override
+            public void success(UserVM userVM, Response response) {
+                Log.d(SplashActivity.class.getSimpleName(), "initNewUser.success");
+                startMainActivity();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e(SplashActivity.class.getSimpleName(), "initNewUser: failure", error);
+            }
+        });
+    }
+
+    private void refreshUserInfo(final String sessionId) {
+        Log.d(this.getClass().getSimpleName(), "refreshUserInfo: UserInfoCache.refresh");
 
         UserInfoCache.refresh(sessionId, new Callback<UserVM>() {
             @Override
             public void success(UserVM user, retrofit.client.Response response) {
-                Log.d(SplashActivity.this.getClass().getSimpleName(), "startMainActivity: getUserInfo.success: user=" + user.getDisplayName() + " id=" + user.getId() + " newUser=" + user.newUser);
+                Log.d(SplashActivity.this.getClass().getSimpleName(), "refreshUserInfo: getUserInfo.success: user=" + user.getDisplayName() + " id=" + user.getId() + " newUser=" + user.newUser);
 
                 // user not logged in, redirect to login page
                 if (user.getId() == -1) {
@@ -69,14 +86,16 @@ public class SplashActivity extends TrackedFragmentActivity {
                 }
 
                 // new user flow
-                if (user.isNewUser() || StringUtils.isEmpty(user.getDisplayName())) {
-                    if (!user.isEmailValidated()) {
+                if (user.isNewUser()) {
+                    if (StringUtils.isEmpty(user.getDisplayName())) {
+                        ViewUtil.startSignupDetailActivity(SplashActivity.this, user.firstName);
+                        finish();
+                    } else if (!user.isEmailValidated()) {
                         Toast.makeText(SplashActivity.this, SplashActivity.this.getString(R.string.signup_error_email_unverified) + user.email, Toast.LENGTH_LONG).show();
                         AppController.getInstance().clearUserSession();
                         ViewUtil.startWelcomeActivity(SplashActivity.this);
                     } else {
-                        ViewUtil.startSignupDetailActivity(SplashActivity.this, user.firstName);
-                        finish();
+                        initNewUser();
                     }
                 }
                 // login successful
@@ -86,14 +105,7 @@ public class SplashActivity extends TrackedFragmentActivity {
                         AppController.getInstance().saveSessionId(sessionId);
                     }
 
-                    AppController.getInstance().initUserCaches();
-
-                    // display splash
-                    new Handler().postDelayed(new Runnable() {
-                        public void run() {
-                            ViewUtil.startMainActivity(SplashActivity.this);
-                        }
-                    }, DefaultValues.SPLASH_DISPLAY_MILLIS);
+                    startMainActivity();
                 }
             }
 
@@ -127,6 +139,17 @@ public class SplashActivity extends TrackedFragmentActivity {
                 */
             }
         });
+    }
+
+    private void startMainActivity() {
+        AppController.getInstance().initUserCaches();
+
+        // display splash
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                ViewUtil.startMainActivity(SplashActivity.this);
+            }
+        }, DefaultValues.SPLASH_DISPLAY_MILLIS);
     }
 
     private void showNetworkProblemAlert() {
