@@ -96,7 +96,7 @@ public class ImageUtil {
         initImageTempDir();
     }
 
-    // beautypop temp directory
+    // temp directory
 
     public static void initImageTempDir() {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -578,16 +578,7 @@ public class ImageUtil {
         */
 
         bp = BitmapFactory.decodeFile(path, opts);
-
-        // retain EXIF orientation
-        try {
-            ExifInterface exif = new ExifInterface(path);
-            bp = retainOrientation(bp, exif);
-        } catch (IOException ioe) {
-            Log.e(ImageUtil.class.getSimpleName(), "resizeImage: failed to retain orientation", ioe);
-        }
-
-        return bp;
+        return retainOrientation(bp, path);
     }
 
     public static File resizeAsJPG(File image) {
@@ -627,22 +618,28 @@ public class ImageUtil {
     }
 
     /**
+     * Retain EXIF orientation
      * http://stackoverflow.com/questions/7286714/android-get-orientation-of-a-camera-bitmap-and-rotate-back-90-degrees
      *
      * @param bp
-     * @param exif
+     * @param path
      * @return
      */
-    public static Bitmap retainOrientation(Bitmap bp, ExifInterface exif) {
-        int rotation = exifToDegrees(exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,ExifInterface.ORIENTATION_NORMAL));
-        if (rotation > 0) {
-            int width = bp.getWidth();
-            int height = bp.getHeight();
+    public static Bitmap retainOrientation(Bitmap bp, String path) {
+        try {
+            ExifInterface exif = new ExifInterface(path);
+            int rotation = exifToDegrees(exif.getAttributeInt(ExifInterface.TAG_ORIENTATION,ExifInterface.ORIENTATION_NORMAL));
+            if (rotation > 0) {
+                int width = bp.getWidth();
+                int height = bp.getHeight();
 
-            Matrix matrix = new Matrix();
-            matrix.preRotate(rotation);
+                Matrix matrix = new Matrix();
+                matrix.preRotate(rotation);
 
-            return Bitmap.createBitmap(bp, 0, 0, width, height, matrix, false);
+                return Bitmap.createBitmap(bp, 0, 0, width, height, matrix, false);
+            }
+        } catch (IOException ioe) {
+            Log.e(ImageUtil.class.getSimpleName(), "retainOrientation: failed to retain orientation", ioe);
         }
         return bp;
     }

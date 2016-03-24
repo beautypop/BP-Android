@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -41,7 +40,6 @@ public class SelectImageActivity extends Activity {
         outputUrl = file.getAbsolutePath();
 
         Uri destination = Uri.fromFile(file);
-
 		outputUri = destination;
 
         Crop.of(getIntent().getData(), destination).asSquare().start(this);
@@ -49,7 +47,7 @@ public class SelectImageActivity extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(resultCode == RESULT_CANCELED){
+        if (resultCode == RESULT_CANCELED) {
             finish();
         }
 
@@ -57,7 +55,7 @@ public class SelectImageActivity extends Activity {
             beginCrop(data.getData());
         } else if (requestCode == Crop.REQUEST_CROP) {
             handleCrop(resultCode, data);
-        }else if(requestCode == ViewUtil.EDIT_IMAGE_REQUEST_CODE){
+        } else if(requestCode == ViewUtil.ADJUST_IMAGE_REQUEST_CODE) {
 			handleEffect(resultCode,data);
 		}
     }
@@ -72,13 +70,13 @@ public class SelectImageActivity extends Activity {
             Log.d(TAG, "handleCrop: outputUrl=" + outputUrl);
 
 			if (DefaultValues.IMAGE_ADJUST_ENABLED) {
-				Intent intent = new Intent(this, EditImageActivity.class);
+				Intent intent = new Intent(this, AdjustImageActivity.class);
 				intent.putExtra("uri", outputUri + "");
 				intent.putExtra(ViewUtil.INTENT_RESULT_OBJECT, outputUrl);
 				intent.putExtra("cropWidth", result.getIntExtra("cropWidth", 0));
 				intent.putExtra("cropHeight", result.getIntExtra("cropHeight", 0));
 				setResult(RESULT_OK, intent);
-				startActivityForResult(intent, ViewUtil.EDIT_IMAGE_REQUEST_CODE);
+				startActivityForResult(intent, ViewUtil.ADJUST_IMAGE_REQUEST_CODE);
 			} else {
 				Intent intent = new Intent();
 				intent.putExtra(ViewUtil.INTENT_RESULT_OBJECT, outputUrl);

@@ -210,7 +210,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".activity.EditImageActivity"
+            android:name=".activity.AdjustImageActivity"
              >
         </activity>
     </application>
