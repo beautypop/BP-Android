@@ -27,7 +27,6 @@ public class SettingsActivity extends TrackedFragmentActivity {
     private Spinner langSpinner;
     private ImageView backImage;
 
-    private String[] langNames;
     private boolean userSelect = false;
 
     @Override
@@ -47,16 +46,10 @@ public class SettingsActivity extends TrackedFragmentActivity {
         // version
         appVersionText.setText(AppController.getVersionName());
 
-        // lang
-        langNames = new String[]{
-                getString(R.string.lang_en),
-                getString(R.string.lang_zh)
-        };
-
         final ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(
-                SettingsActivity.this,
+                this,
                 R.layout.spinner_item_right,
-                langNames);
+                ViewUtil.LANG_OPTIONS);
         langSpinner.setAdapter(languageAdapter);
 
         String lang = SharedPreferencesUtil.getInstance().getLang();

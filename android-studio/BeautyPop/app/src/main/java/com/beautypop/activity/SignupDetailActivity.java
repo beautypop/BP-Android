@@ -1,8 +1,11 @@
 package com.beautypop.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +19,8 @@ import com.beautypop.R;
 import com.beautypop.app.AppController;
 import com.beautypop.app.DistrictCache;
 import com.beautypop.app.TrackedFragmentActivity;
+import com.beautypop.util.DefaultValues;
+import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ValidationUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.LocationVM;
@@ -23,7 +28,6 @@ import com.beautypop.viewmodel.LocationVM;
 import org.parceler.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import retrofit.Callback;
@@ -32,6 +36,7 @@ import retrofit.client.Response;
 
 public class SignupDetailActivity extends TrackedFragmentActivity {
     private Spinner locationSpinner;
+    private Spinner langSpinner;
     private Button finishButton;
     private EditText displayName;
     private TextView titleText;
@@ -39,7 +44,8 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
     private List<String> districtNames;
 
     private int locationId = -1;
-    private Calendar calendar;
+
+    private ArrayAdapter<String> languageAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,15 +55,13 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
 
         titleText = (TextView) findViewById(R.id.titleText);
 
-        calendar = Calendar.getInstance();
-
         displayName = (EditText) findViewById(R.id.displaynameEdit);
         locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
-
+        langSpinner = (Spinner) findViewById(R.id.langSpinner);
         finishButton = (Button) findViewById(R.id.finishButton);
 
+        // location
         setDistricts();
-
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -78,6 +82,14 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
             }
         });
 
+        // lang
+        languageAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                ViewUtil.LANG_OPTIONS);
+        langSpinner.setAdapter(languageAdapter);
+        langSpinner.setSelection(0);
+
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +103,14 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
 
         if (isValid()) {
             Log.d(this.getClass().getSimpleName(), "signupInfo: \n displayname="+displayname+"\n locationId="+locationId);
+
+            // lang
+            final String lang = languageAdapter.getItem(langSpinner.getSelectedItemPosition());
+            if (getString(R.string.lang_zh).equalsIgnoreCase(lang)) {
+                SharedPreferencesUtil.getInstance().saveLang(DefaultValues.LANG_ZH);
+            } else {
+                SharedPreferencesUtil.getInstance().saveLang(DefaultValues.LANG_EN);
+            }
 
             showSpinner();
             AppController.getApiService().signUpInfo(

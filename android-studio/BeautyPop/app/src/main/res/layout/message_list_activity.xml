@@ -184,15 +184,15 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:id="@+id/buyerButtonsLayout">
+                    android:id="@+id/buyerButtonsLayout"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/buyerOrderLayout"
-                        android:weightSum="10"
-                        android:visibility="gone">
+                        android:weightSum="10">
 
                         <TextView
                             android:layout_width="0dp"
@@ -205,8 +205,7 @@
                             android:textSize="16dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:layout_weight="3.5"
-                            android:textStyle="bold" />
+                            android:layout_weight="3.5" />
 
                         <Button
                             android:layout_width="0dp"
@@ -215,7 +214,7 @@
                             android:id="@+id/buyerOrderButton"
                             android:textColor="@color/white"
                             android:background="@drawable/button_pink"
-                            android:textSize="18dp"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_weight="6.5"
@@ -230,8 +229,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/buyerCancelLayout"
-                        android:weightSum="10"
-                        android:visibility="gone">
+                        android:weightSum="10">
 
                         <TextView
                             android:layout_width="0dp"
@@ -244,8 +242,7 @@
                             android:textSize="16dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:layout_weight="3.5"
-                            android:textStyle="bold" />
+                            android:layout_weight="3.5" />
 
                         <Button
                             android:layout_width="0dp"
@@ -254,7 +251,7 @@
                             android:id="@+id/buyerCancelButton"
                             android:textColor="@color/white"
                             android:background="@drawable/button_gray"
-                            android:textSize="18dp"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_weight="6.5"
@@ -285,7 +282,6 @@
                                 android:background="@color/view_bg"
                                 android:textSize="16dp"
                                 android:textColor="@color/dark_gray"
-                                android:textStyle="bold"
                                 android:singleLine="false"
                                 android:paddingLeft="10dp"
                                 android:layout_weight="6"
@@ -305,7 +301,7 @@
                             android:id="@+id/buyerOrderAgainButton"
                             android:textColor="@color/white"
                             android:background="@drawable/button_pink"
-                            android:textSize="18dp"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_weight="4"
@@ -321,15 +317,15 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:id="@+id/sellerButtonsLayout">
+                    android:id="@+id/sellerButtonsLayout"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/sellerAcceptDeclineLayout"
-                        android:weightSum="10"
-                        android:visibility="gone">
+                        android:weightSum="10">
 
                         <TextView
                             android:layout_width="0dp"
@@ -342,8 +338,7 @@
                             android:textSize="16dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:layout_weight="3"
-                            android:textStyle="bold" />
+                            android:layout_weight="3" />
 
                         <Button
                             android:layout_width="0dp"
@@ -352,7 +347,7 @@
                             android:id="@+id/sellerAcceptButton"
                             android:textColor="@color/white"
                             android:background="@drawable/button_pink"
-                            android:textSize="18dp"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_weight="3.5"
@@ -367,7 +362,7 @@
                             android:id="@+id/sellerDeclineButton"
                             android:textColor="@color/white"
                             android:background="@drawable/button_gray"
-                            android:textSize="18dp"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_weight="3.5"
@@ -398,7 +393,6 @@
                                 android:background="@color/view_bg"
                                 android:textSize="16dp"
                                 android:textColor="@color/dark_gray"
-                                android:textStyle="bold"
                                 android:singleLine="false"
                                 android:paddingLeft="10dp"
                                 android:layout_weight="10"

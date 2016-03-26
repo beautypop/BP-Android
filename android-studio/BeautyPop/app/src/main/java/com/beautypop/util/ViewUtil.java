@@ -149,6 +149,11 @@ public class ViewUtil {
 
     public static final String HTML_LINE_BREAK = "<br>";
 
+    public static final String[] LANG_OPTIONS = new String[]{
+            AppController.getInstance().getString(R.string.lang_en),
+            AppController.getInstance().getString(R.string.lang_zh)
+    };
+
     private static Rect displayDimensions = null;
 
     public enum FeedItemPosition {
