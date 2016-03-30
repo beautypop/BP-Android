@@ -316,7 +316,7 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
                 }
             } else if (requestCode == ViewUtil.CROP_IMAGE_REQUEST_CODE) {
                 String croppedImagePath = data.getStringExtra(ViewUtil.INTENT_RESULT_OBJECT);
-                Log.d(this.getClass().getSimpleName(), "onActivityResult: croppedImagePath=" + croppedImagePath);
+                Log.d(TAG, "onActivityResult: croppedImagePath=" + croppedImagePath);
 
                 // adjusted?
                 if (data.getData() != null) {
