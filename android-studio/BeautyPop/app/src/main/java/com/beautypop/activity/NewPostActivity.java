@@ -177,7 +177,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
             setCategory(category);
             setSubCategory(subCategory);
         }
-        //Log.d(this.getClass().getSimpleName(), "onCreate: category="+category.id+" subCategory="+subCategory.id);
+        //Log.d(TAG, "onCreate: category="+category.id+" subCategory="+subCategory.id);
 
         selectCatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -437,11 +437,11 @@ public class NewPostActivity extends TrackedFragmentActivity{
         }
     }
 
-    protected void selectPostImage(Bitmap bp, int index) {
+    protected void selectPostImage(Bitmap bp, int index, Uri uri) {
         ImageView postImage = postImages.get(index);
         postImage.setImageDrawable(new BitmapDrawable(this.getResources(), bp));
         postImage.setVisibility(View.VISIBLE);
-        selectedImages.add(new SelectedImage(index, ImageUtil.getRealPathFromUri(this, selectedImageUri)));
+        selectedImages.add(new SelectedImage(index, ImageUtil.getRealPathFromUri(this, uri)));
     }
 
     protected void selectPostImage(int index, String imagePath) {
@@ -453,7 +453,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
             imageView.setImageBitmap(bp);
             //imageView.setImageURI(Uri.parse(imagePath);
 
-            Log.d(this.getClass().getSimpleName(), "selectPostImage: index="+index+" imagePath="+imagePath);
+            Log.d(TAG, "selectPostImage: index="+index+" imagePath="+imagePath);
         }
     }
 
@@ -601,7 +601,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
             @Override
             public void failure(RetrofitError error) {
                 Toast.makeText(NewPostActivity.this, String.format(NewPostActivity.this.getString(R.string.post_failed), getActionTypeText()), Toast.LENGTH_SHORT).show();
-                Log.e(NewPostActivity.class.getSimpleName(), "doPost: failure", error);
+                Log.e(TAG, "doPost: failure", error);
                 pending = false;
             }
         });
@@ -677,7 +677,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
                     }
 
                     thisPopup.dismiss();
-                    Log.d(this.getClass().getSimpleName(), "initCategoryPopup: listView.onItemClick: category=" + category.getId() + "|" + category.getName());
+                    Log.d(TAG, "initCategoryPopup: listView.onItemClick: category=" + category.getId() + "|" + category.getName());
                 }
             });
         } catch (Exception e) {
@@ -707,7 +707,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
                     imagePath = picture.getPath();
                 }
 
-                Log.d(this.getClass().getSimpleName(), "onActivityResult: imagePath=" + imagePath);
+                Log.d(TAG, "onActivityResult: imagePath=" + imagePath);
 
                 Bitmap bitmap = ImageUtil.resizeToUpload(imagePath);
                 if (bitmap != null) {
@@ -716,28 +716,34 @@ public class NewPostActivity extends TrackedFragmentActivity{
                     Toast.makeText(this, getString(R.string.photo_size_too_big), Toast.LENGTH_SHORT).show();
                 }
             } else if (requestCode == ViewUtil.CROP_IMAGE_REQUEST_CODE) {
-
 				String croppedImagePath = data.getStringExtra(ViewUtil.INTENT_RESULT_OBJECT);
+				Log.d(TAG, "onActivityResult: croppedImagePath=" + croppedImagePath);
 
-				Log.d(this.getClass().getSimpleName(), "onActivityResult: imagePath edit set=" + croppedImagePath);
+                // adjusted?
+                if (data.getData() != null) {
+                    selectedImageUri = data.getData();
+                    croppedImagePath = ImageUtil.getRealPathFromUri(this, data.getData());
+                }
 
-				if(data.getData() != null) {
+                selectPostImage(selectedPostImageIndex, croppedImagePath);
+
+                /*
+				if (data.getData() != null) {
 					try {
 						Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
 						selectedImageUri = data.getData();
-						selectPostImage(bitmap, selectedPostImageIndex);
+						selectPostImage(bitmap, selectedPostImageIndex, selectedImageUri);
 					} catch (IOException e) {
-						e.printStackTrace();
+                        Log.e(TAG, "onActivityResult: crop image error", e);
 					}
-				}else{
+				} else {
 					selectPostImage(selectedPostImageIndex, croppedImagePath);
 				}
-
+				*/
             }
 
             // pop back soft keyboard
             ViewUtil.popupInputMethodWindow(this);
-        
 		}
     }
 

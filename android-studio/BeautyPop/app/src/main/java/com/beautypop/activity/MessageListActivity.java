@@ -588,6 +588,17 @@ public class MessageListActivity extends TrackedFragmentActivity {
                 }
             } else if (requestCode == ViewUtil.CROP_IMAGE_REQUEST_CODE) {
                 String croppedImagePath = data.getStringExtra(ViewUtil.INTENT_RESULT_OBJECT);
+                Log.d(this.getClass().getSimpleName(), "onActivityResult: croppedImagePath=" + croppedImagePath);
+
+                // adjusted?
+                if (data.getData() != null) {
+                    selectedImageUri = data.getData();
+                    croppedImagePath = ImageUtil.getRealPathFromUri(this, data.getData());
+                }
+
+                setCommentImage(croppedImagePath);
+
+                /*
                 if (data.getData() != null) {
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
@@ -599,6 +610,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
                 } else {
                     setCommentImage(croppedImagePath);
                 }
+                */
             }
 
             // pop back soft keyboard
