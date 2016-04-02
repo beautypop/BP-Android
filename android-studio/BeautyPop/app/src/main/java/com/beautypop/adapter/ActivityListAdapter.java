@@ -169,6 +169,7 @@ public class ActivityListAdapter extends BaseAdapter {
                 postImage.setVisibility(View.INVISIBLE);
                 break;
             case "NEW_GAME_BADGE":
+            default:
                 // open game badges
                 activityLayout.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -122,16 +122,18 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
 
                         @Override
                         public void failure(RetrofitError error) {
+                            ViewUtil.alert(SignupDetailActivity.this,
+                                    "\""+displayname+"\" "+getString(R.string.signup_details_error_displayname_already_exists));
+                            /*
                             String errorMsg = ViewUtil.getResponseBody(error.getResponse());
-                            if (error.getResponse().getStatus() == 500 &&
-                                    error.getResponse() != null &&
+                            if (error.getResponse() != null &&
                                     !StringUtils.isEmpty(errorMsg)) {
                                 ViewUtil.alert(SignupDetailActivity.this, errorMsg);
                             } else {
-                                //ActivityUtil.alert(SignupDetailActivity.this, getString(R.string.signup_details_error_info));
                                 ViewUtil.alert(SignupDetailActivity.this,
                                         "\""+displayname+"\" "+getString(R.string.signup_details_error_displayname_already_exists));
                             }
+                            */
 
                             stopSpinner();
                             Log.e(SignupDetailActivity.class.getSimpleName(), "submitDetails.api.signUpInfo: failure", error);

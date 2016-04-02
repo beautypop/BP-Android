@@ -139,7 +139,7 @@
                     android:layout_weight="7"
                     android:layout_gravity="center_vertical"
                     android:singleLine="true"
-                    android:inputType="textNoSuggestions|textCapWords" />
+                    android:inputType="textNoSuggestions" />
 
             </LinearLayout>
 

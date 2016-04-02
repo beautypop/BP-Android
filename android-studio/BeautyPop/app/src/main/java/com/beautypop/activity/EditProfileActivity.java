@@ -183,8 +183,7 @@ public class EditProfileActivity extends TrackedFragmentActivity {
             @Override
             public void failure(RetrofitError error) {
                 String errorMsg = ViewUtil.getResponseBody(error.getResponse());
-                if (error.getResponse().getStatus() == 500 &&
-                        error.getResponse() != null &&
+                if (error.getResponse() != null &&
                         !StringUtils.isEmpty(errorMsg)) {
                     ViewUtil.alert(EditProfileActivity.this, errorMsg);
                 } else {
