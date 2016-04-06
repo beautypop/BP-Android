@@ -38,6 +38,21 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:singleLine="true" />
+        <SearchView
+            android:visibility="gone"
+            android:id="@+id/searchView"
+            android:layout_toLeftOf="@+id/newPostAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            </SearchView>
+        <ImageView
+            android:id="@+id/searchImage"
+            android:layout_width="35dp"
+            android:src="@drawable/ic_action_search"
+            android:layout_toLeftOf="@+id/newPostAction"
+            android:layout_height="match_parent"/>
+
 
         <ImageView
             android:id="@+id/newPostAction"
