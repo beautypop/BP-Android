@@ -70,4 +70,6 @@ public class DefaultValues {
 
     public static final long POST_SCORE_POINTS_ADJUST = 10;
     public static final long POST_SCORE_POINTS_ADJUST2 = 100;
+
+    public static final int DEFAULT_DOUBLE_SCALE = 3;
 }

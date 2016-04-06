@@ -155,7 +155,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
         if (AppController.isUserAdmin()) {
             holder.timeScoreText.setVisibility(View.VISIBLE);
-            holder.timeScoreText.setText(item.getTimeScore()+"");
+            holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE)+"");
         } else {
             holder.timeScoreText.setVisibility(View.INVISIBLE);
         }

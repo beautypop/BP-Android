@@ -94,6 +94,7 @@ import org.parceler.apache.commons.lang.StringUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -235,13 +236,12 @@ public class ViewUtil {
                 AppController.getInstance().getString(R.string.main_tab_following)
         };
 
-		SEARCH_MAIN_TITLES = new String[] {
+        SEARCH_MAIN_TITLES = new String[] {
 				AppController.getInstance().getString(R.string.search_tab_product),
 				AppController.getInstance().getString(R.string.search_tab_user)
 		};
 
-
-		postConditionTypeMap.clear();
+        postConditionTypeMap.clear();
         postConditionTypeMap.put(PostConditionType.NEW_WITH_TAG, AppController.getInstance().getString(R.string.new_with_tag));
         postConditionTypeMap.put(PostConditionType.NEW_WITHOUT_TAG, AppController.getInstance().getString(R.string.new_without_tag));
         postConditionTypeMap.put(PostConditionType.USED, AppController.getInstance().getString(R.string.used));
@@ -682,6 +682,10 @@ public class ViewUtil {
 
     public static void strikeText(TextView textView) {
         textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+    }
+
+    public static double formatDouble(double value, int scale) {
+        return new BigDecimal(value).setScale(scale).doubleValue();
     }
 
     public static String formatSellerLastActive(Long value) {
