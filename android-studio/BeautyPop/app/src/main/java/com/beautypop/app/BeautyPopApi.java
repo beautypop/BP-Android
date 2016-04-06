@@ -24,6 +24,7 @@ import com.beautypop.viewmodel.SellerVM;
 import com.beautypop.viewmodel.SettingsVM;
 import com.beautypop.viewmodel.UserVM;
 import com.beautypop.viewmodel.UserVMLite;
+import com.google.android.gms.analytics.ecommerce.Product;
 
 import java.util.List;
 
@@ -320,4 +321,12 @@ public interface BeautyPopApi {
 
     @GET("/api/get-messages-for-admin/{conversationId}/{offset}")
     public void getMessagesForAdmin(@Path("conversationId") Long conversationId, @Path("offset") Long offset, @Query("key") String key, Callback<Response> cb);
+
+	// Search API
+	@GET("/elastic/user/{searchtext}")
+	public void searchUser(@Path("searchtext") String searchtext,Callback<List<UserVM>> callback);
+
+	@GET("/elastic/post/{searchtext}/{id}")
+	public void searchProduct(@Path("searchtext") String searchtext,@Path("id") Long id,Callback<List<PostVMLite>> callback);
+
 }

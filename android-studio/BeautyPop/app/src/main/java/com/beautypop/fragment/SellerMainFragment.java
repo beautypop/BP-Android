@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
@@ -23,12 +24,17 @@ public class SellerMainFragment extends TrackedFragment {
     private ViewPager viewPager;
     private SellerMainPagerAdapter adapter;
     private PagerSlidingTabStrip tabs;
+	private ImageView searchImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.seller_main_fragment, container, false);
+
+		searchImage = (ImageView) getActivity().findViewById(R.id.searchImage);
+
+		searchImage.setVisibility(View.GONE);
 
         // pager
 

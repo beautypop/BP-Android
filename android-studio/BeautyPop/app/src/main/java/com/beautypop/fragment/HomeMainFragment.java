@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.beautypop.app.NotificationCounter;
 import com.beautypop.util.FeedFilter;
@@ -20,14 +21,18 @@ import com.beautypop.app.TrackedFragment;
 
 public class HomeMainFragment extends TrackedFragment {
     private static final String TAG = HomeMainFragment.class.getName();
+	private ImageView searchImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.child_layout_view, container, false);
+		searchImage = (ImageView) getActivity().findViewById(R.id.searchImage);
+		searchImage.setVisibility(View.VISIBLE );
 
-        Bundle bundle = new Bundle();
+
+		Bundle bundle = new Bundle();
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, FeedFilter.FeedType.HOME_EXPLORE.name());
 
         TrackedFragment fragment = new HomeExploreFeedViewFragment();

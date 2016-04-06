@@ -39,7 +39,7 @@ public class ActivityMainFragment extends TrackedFragment {
     protected ListView listView;
     protected TextView tipText;
 
-    protected ImageView backImage;
+    protected ImageView backImage,searchImage;
     protected PullToRefreshView pullListView;
 
     protected List<ActivityVM> items;
@@ -53,6 +53,9 @@ public class ActivityMainFragment extends TrackedFragment {
 
         tipText = (TextView) view.findViewById(R.id.tipText);
         listView = (ListView) view.findViewById(R.id.activityList);
+		searchImage = (ImageView) getActivity().findViewById(R.id.searchImage);
+
+		searchImage.setVisibility(View.GONE);
 
         items = new ArrayList<>();
         adapter = new ActivityListAdapter(getActivity(), items);

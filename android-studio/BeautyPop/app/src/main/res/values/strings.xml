@@ -39,7 +39,6 @@
     <string name="notifications_push_new_follow">New follower</string>
     <string name="notifications_push_new_feedback">New feedback</string>
     <string name="notifications_push_new_promo">New promotions</string>
-
     <string name="spinner_select">-Select-</string>
     <string name="clipboard_text_label">Copy</string>
     <string name="connection_timeout_title">Network Problem</string>
@@ -97,7 +96,6 @@
     <string name="signup_error_displayname_format">Username may contain only letters(a-z), numbers(0-9), underscore(_), periods(.) and may not end with a period(.)</string>
     <string name="signup_error_displayname_periods">Username may not have 2 periods (.) in a row</string>
     <string name="signup_error_name_min_max_char">Firstname and lastname may be at most 20 characters</string>
-
     <string name="signup_details_greeting">Welcome to BeautyPop</string>
     <string name="signup_details_displayname_title">Username : </string>
     <string name="signup_details_displayname_note">Only your username will be shown to public</string>
@@ -135,6 +133,10 @@
     <string name="followers">Followers</string>
     <string name="user_followers">Followers</string>
     <string name="products">Products</string>
+
+    <!-- Search Tab -->
+    <string name="search_tab_product">Product</string>
+    <string name="search_tab_user">User</string>
 
     <!-- Activity tab -->
     <string name="no_activity">~ No Activity ~</string>
@@ -180,7 +182,6 @@
     <string name="comment_bar_hint"></string>
     <string name="no_products">~ No Products ~</string>
     <string name="no_product_comments">~ No Comments ~</string>
-
     <string name="edit_post_action">Edit</string>
     <string name="new_post_action">List</string>
     <string name="edit_post_actionbar_title">Edit Product</string>
@@ -202,19 +203,15 @@
     <string name="new_post_max_images">You can select up to %1$d photos</string>
     <string name="post_success">Successfully %1$s Product</string>
     <string name="post_failed">Failed to %1$s Product. Please try again later.</string>
-
     <string name="new_with_tag">New (sealed/with tags)</string>
     <string name="new_without_tag">New (unsealed/without tags)</string>
     <string name="used">Used</string>
-
     <string name="new_post_location">Location:</string>
     <string name="field_optional">(Optional)</string>
     <string name="location_actionbar_title">Location</string>
     <string name="location_search_hint">Enter location</string>
-
     <string name="new_post_free_delivery">Free Delivery</string>
     <string name="new_post_country">Country</string>
-
     <string name="post_delete_confirm">Are you sure to delete?</string>
     <string name="post_sold_confirm">Confirm product has been sold?\nYou will no longer receive chats and orders for this product</string>
     <string name="post_not_found">Cannot find this product. It might have been removed.</string>
@@ -257,14 +254,11 @@
     <string name="edit_user_info_firstname">First Name : </string>
     <string name="edit_user_info_lastname">Last Name : </string>
     <string name="edit_user_info_save">Save</string>
-
     <string name="edit_cover_image">Upload Cover Photo</string>
     <string name="edit_profile_image">Upload Profile Photo</string>
-
     <string name="no_messages">~ No Chats ~</string>
     <string name="no_followers">~ No followers yet ~</string>
     <string name="no_followings">~ No followings yet ~</string>
-
     <string name="pm_actionbar_title">Chats</string>
     <string name="pm_max_images">You can select %1$d photo</string>
     <string name="pm_load_more">LOAD EARLIER MESSAGES</string>
@@ -273,12 +267,10 @@
     <string name="pm_buy">Buy</string>
     <string name="pm_sell">Sell</string>
     <string name="pm_sold">Sold</string>
-
     <string name="pm_buy_message">New offer</string>
     <string name="pm_cancelled_message">Offer is cancelled</string>
     <string name="pm_accepted_message">Offer is accepted</string>
     <string name="pm_declined_message">Offer is declined</string>
-
     <string name="pm_order_buy_text">Interested?</string>
     <string name="pm_order_buy">Buy Now</string>
     <string name="pm_order_buy_again">Buy Again</string>
@@ -361,7 +353,6 @@
     <string name="score_adjust_success">Score Adjust by %1$s</string>
     <string name="score_adjust_reset_success">Score Adjust Reset to 0</string>
     <string name="score_adjust_failure">Score Adjust Failure:\n%1$s</string>
-
     <string name="admin_new_users">New Users</string>
     <string name="admin_latest_logins">Latest Logins</string>
     <string name="admin_delete_account">Delete</string>

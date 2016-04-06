@@ -212,6 +212,9 @@
         <activity
             android:name=".activity.AdjustImageActivity"
              >
+	     <activity
+            android:name=".activity.SearchResultActivity"
+             >
         </activity>
     </application>
 

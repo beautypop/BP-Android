@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.beautypop.app.UserInfoCache;
 import com.beautypop.util.DefaultValues;
@@ -20,12 +21,17 @@ import com.beautypop.app.TrackedFragment;
 
 public class ProfileMainFragment extends TrackedFragment {
     private static final String TAG = ProfileMainFragment.class.getName();
+	private ImageView searchImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.child_layout_view, container, false);
+		searchImage = (ImageView) getActivity().findViewById(R.id.searchImage);
+
+		searchImage.setVisibility(View.GONE);
+
 
         Bundle bundle = new Bundle();
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, DefaultValues.DEFAULT_USER_FEED_TYPE.name());
