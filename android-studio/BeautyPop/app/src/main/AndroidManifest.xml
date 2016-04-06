@@ -179,6 +179,12 @@
         <activity
             android:name=".activity.ReportPostActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AdjustImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchResultActivity"
+            android:screenOrientation="portrait" />
 
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
@@ -209,13 +215,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity
-            android:name=".activity.AdjustImageActivity"
-             >
-	     <activity
-            android:name=".activity.SearchResultActivity"
-             >
-        </activity>
     </application>
 
 </manifest>

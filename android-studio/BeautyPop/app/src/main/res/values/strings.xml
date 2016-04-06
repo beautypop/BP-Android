@@ -2,10 +2,10 @@
 <resources>
 
     <string name="env">dev</string>
-    <string name="facebook_app_id">195306590831308</string>
+    <string name="facebook_app_id"></string>
     <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
-    <string name="base_url_dev">http://192.168.1.133:9000</string>
+    <string name="base_url_dev">http://119.81.228.91</string>
 
     <!-- Crash report -->
     <string name="crash_toast_text">Sorry.. BeautyPop encountered problem and exit</string>
@@ -13,6 +13,10 @@
     <string name="crash_dialog_text">Sorry.. BeautyPop encountered problem and exit. Please help us to fix and send us a report</string>
     <string name="crash_dialog_comment_prompt">Press OK to send (Report only contains information of the problem)</string>
     <string name="crash_dialog_ok_toast">Thanks!</string>
+
+    <!--Search Tab-->
+    <string name="search_tab_product">Product</string>
+    <string name="search_tab_user">User</string>
 
     <!-- Settings -->
     <string name="app_name">BeautyPop</string>
@@ -134,13 +138,9 @@
     <string name="user_followers">Followers</string>
     <string name="products">Products</string>
 
-    <!-- Search Tab -->
-    <string name="search_tab_product">Product</string>
-    <string name="search_tab_user">User</string>
-
     <!-- Activity tab -->
     <string name="no_activity">~ No Activity ~</string>
-    <string name="activity_first_post">Congratulations! You are now a BeautyPop seller! Your first product has been listed:</string>
+    <string name="activity_first_post">You are now a BeautyPop seller! Your first product has been listed:</string>
     <string name="activity_posted">New product listed:</string>
     <string name="activity_commented">commented on product:</string>
     <string name="activity_liked">liked your product.</string>
@@ -203,15 +203,19 @@
     <string name="new_post_max_images">You can select up to %1$d photos</string>
     <string name="post_success">Successfully %1$s Product</string>
     <string name="post_failed">Failed to %1$s Product. Please try again later.</string>
+
     <string name="new_with_tag">New (sealed/with tags)</string>
     <string name="new_without_tag">New (unsealed/without tags)</string>
     <string name="used">Used</string>
+
     <string name="new_post_location">Location:</string>
     <string name="field_optional">(Optional)</string>
     <string name="location_actionbar_title">Location</string>
     <string name="location_search_hint">Enter location</string>
+
     <string name="new_post_free_delivery">Free Delivery</string>
     <string name="new_post_country">Country</string>
+
     <string name="post_delete_confirm">Are you sure to delete?</string>
     <string name="post_sold_confirm">Confirm product has been sold?\nYou will no longer receive chats and orders for this product</string>
     <string name="post_not_found">Cannot find this product. It might have been removed.</string>

@@ -2,10 +2,10 @@
 <resources>
 
     <string name="env">dev</string>
-    <string name="facebook_app_id">195306590831308</string>
+    <string name="facebook_app_id"></string>
     <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
-    <string name="base_url_dev">http://192.168.1.133:9000</string>
+    <string name="base_url_dev">http://119.81.228.91</string>
 
     <!-- Crash report -->
     <string name="crash_toast_text">對不起！BeautyPop 發生問題要退出</string>
@@ -43,7 +43,6 @@
     <string name="notifications_push_new_follow">New follower</string>
     <string name="notifications_push_new_feedback">New feedback</string>
     <string name="notifications_push_new_promo">New promotions</string>
-
     <string name="spinner_select">-選擇-</string>
     <string name="clipboard_text_label">複制信息</string>
     <string name="connection_timeout_title">網路問題</string>
@@ -101,7 +100,6 @@
     <string name="signup_error_displayname_format">顯示名稱只可輸入 英文字母(a-z) 數字(0-9) 和 符號(_)(.)，不可以 (.) 結尾</string>
     <string name="signup_error_displayname_periods">顯示名稱不可有2個或以上相連符號(.)</string>
     <string name="signup_error_name_min_max_char">姓名最多20個字</string>
-
     <string name="signup_details_greeting">歡迎登入 BeautyPop</string>
     <string name="signup_details_displayname_title">顯示名稱 : </string>
     <string name="signup_details_displayname_note">您的顯示名稱，選用一個您喜愛的暱稱</string>
@@ -184,7 +182,6 @@
     <string name="comment_bar_hint"></string>
     <string name="no_products">~ 暫沒有商品 ~</string>
     <string name="no_product_comments">~ 沒有留言 ~</string>
-
     <string name="edit_post_action">更新</string>
     <string name="new_post_action">刊登</string>
     <string name="edit_post_actionbar_title">更新商品</string>
@@ -261,14 +258,11 @@
     <string name="edit_user_info_firstname">名 : </string>
     <string name="edit_user_info_lastname">姓 : </string>
     <string name="edit_user_info_save">儲存資料</string>
-
     <string name="edit_cover_image">更改封面照片</string>
     <string name="edit_profile_image">更改個人照片</string>
-
     <string name="no_messages">~ 沒有訊息 ~</string>
     <string name="no_followers">~ 暫沒有關注 ~</string>
     <string name="no_followings">~ 暫沒有關注 ~</string>
-
     <string name="pm_actionbar_title">訊息</string>
     <string name="pm_max_images">最多可加入%1$d張圖</string>
     <string name="pm_load_more">加載訊息</string>
@@ -277,12 +271,10 @@
     <string name="pm_buy">買</string>
     <string name="pm_sell">賣</string>
     <string name="pm_sold">已售</string>
-
     <string name="pm_buy_message">購買商品</string>
     <string name="pm_cancelled_message">購買已取消</string>
     <string name="pm_accepted_message">購買已被接受</string>
     <string name="pm_declined_message">購買不被接受</string>
-
     <string name="pm_order_buy_text">有興趣？</string>
     <string name="pm_order_buy">購買商品</string>
     <string name="pm_order_buy_again">再購買</string>
@@ -365,7 +357,6 @@
     <string name="score_adjust_success">Score Adjust by %1$s</string>
     <string name="score_adjust_reset_success">Score Adjust Reset to 0</string>
     <string name="score_adjust_failure">Score Adjust Failure:\n%1$s</string>
-
     <string name="admin_new_users">New Users</string>
     <string name="admin_latest_logins">Latest Logins</string>
     <string name="admin_delete_account">Delete</string>
