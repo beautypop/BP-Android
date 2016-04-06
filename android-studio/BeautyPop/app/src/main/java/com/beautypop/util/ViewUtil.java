@@ -95,6 +95,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -685,7 +686,7 @@ public class ViewUtil {
     }
 
     public static double formatDouble(double value, int scale) {
-        return new BigDecimal(value).setScale(scale).doubleValue();
+        return new BigDecimal(value).setScale(scale, RoundingMode.UP).doubleValue();
     }
 
     public static String formatSellerLastActive(Long value) {
