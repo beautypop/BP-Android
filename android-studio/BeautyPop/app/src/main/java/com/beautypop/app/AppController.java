@@ -250,6 +250,10 @@ public class AppController extends Application {
     }
 
     public void logout() {
+        logout("");
+    }
+
+    public void logout(String email) {
         Log.d(TAG, "logout");
 
         // clear session and exit
@@ -265,7 +269,11 @@ public class AppController extends Application {
         */
 
         if (MainActivity.getInstance() != null) {
-            ViewUtil.startWelcomeActivity(MainActivity.getInstance());
+            if (StringUtils.isEmpty(email)) {
+                ViewUtil.startWelcomeActivity(MainActivity.getInstance());
+            } else {
+                ViewUtil.startLoginActivity(MainActivity.getInstance(), email);
+            }
         }
     }
 

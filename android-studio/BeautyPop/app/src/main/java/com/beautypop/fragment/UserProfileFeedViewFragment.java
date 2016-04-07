@@ -1,5 +1,7 @@
 package com.beautypop.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,7 +45,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected TextView userNameText, followersText, followingsText, userInfoText, userDescText, sellerUrlText;
     protected LinearLayout userInfoLayout;
     protected RelativeLayout settingsLayout;
-    protected Button editButton, followButton, productsButton, likesButton;
+    protected Button loginAsButton, editButton, followButton, productsButton, likesButton;
 
     protected FrameLayout tipsLayout;
     protected ImageView dismissTipsButton;
@@ -91,6 +93,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 
         userInfoLayout = (LinearLayout) headerView.findViewById(R.id.userInfoLayout);
         userInfoText = (TextView) headerView.findViewById(R.id.userInfoText);
+        loginAsButton = (Button) headerView.findViewById(R.id.loginAsButton);
         userDescText = (TextView) headerView.findViewById(R.id.userDescText);
         sellerUrlText = (TextView) headerView.findViewById(R.id.sellerUrlText);
 
@@ -231,6 +234,28 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
                 if (AppController.isUserAdmin()) {
                     userInfoText.setText(user.toString());
                     userInfoLayout.setVisibility(View.VISIBLE);
+
+                    // login as
+                    loginAsButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setMessage(R.string.logout_message)
+                                    .setCancelable(false)
+                                    .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            AppController.getInstance().logout(user.email);
+                                        }
+                                    })
+                                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
+                    });
                 } else {
                     userInfoLayout.setVisibility(View.GONE);
                 }

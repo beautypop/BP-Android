@@ -1126,7 +1126,13 @@ public class ViewUtil {
     }
 
     public static void startLoginActivity(Activity activity) {
-        activity.startActivity(new Intent(activity, LoginActivity.class));
+        startLoginActivity(activity, "");
+    }
+
+    public static void startLoginActivity(Activity activity, String email) {
+        Intent intent = new Intent(activity, LoginActivity.class);
+        intent.putExtra(ViewUtil.BUNDLE_KEY_NAME, email);
+        activity.startActivity(intent);
     }
 
     public static void startSignupActivity(Activity activity) {

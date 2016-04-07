@@ -37,6 +37,20 @@
                 android:layout_alignParentLeft="true" />
 
             <Button
+                android:layout_width="65dp"
+                android:layout_height="25dp"
+                android:id="@+id/loginAsButton"
+                android:background="@drawable/button_gray_border"
+                android:scaleType="fitCenter"
+                android:text="@string/admin_login_as"
+                android:textColor="@color/gray"
+                android:textSize="14dp"
+                android:textAllCaps="false"
+                android:singleLine="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/deleteButton" />
+
+            <Button
                 android:layout_width="60dp"
                 android:layout_height="25dp"
                 android:id="@+id/deleteButton"

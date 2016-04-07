@@ -35,7 +35,7 @@ public class AdminUserListAdapter extends BaseAdapter {
 
     private ImageView userImage;
     private TextView userDisplayNameText, userNameText, userEmailText, lastLoginUserAgentText, userIdText, createdDateText, lastActiveText;
-    private Button deleteButton;
+    private Button loginAsButton, deleteButton;
 
     private Activity activity;
     private LayoutInflater inflater;
@@ -80,6 +80,7 @@ public class AdminUserListAdapter extends BaseAdapter {
         userNameText = (TextView) convertView.findViewById(R.id.userNameText);
         userEmailText = (TextView) convertView.findViewById(R.id.userEmailText);
         lastLoginUserAgentText = (TextView) convertView.findViewById(R.id.lastLoginUserAgentText);
+        loginAsButton = (Button) convertView.findViewById(R.id.loginAsButton);
         deleteButton = (Button) convertView.findViewById(R.id.deleteButton);
         userIdText = (TextView) convertView.findViewById(R.id.userIdText);
         createdDateText = (TextView) convertView.findViewById(R.id.createdDateText);
@@ -114,6 +115,28 @@ public class AdminUserListAdapter extends BaseAdapter {
         } else {
             lastLoginUserAgentText.setVisibility(View.GONE);
         }
+
+        // login as
+        loginAsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setMessage(R.string.logout_message)
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                AppController.getInstance().logout(item.email);
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
 
         // delete account
         deleteButton.setOnClickListener(new View.OnClickListener() {

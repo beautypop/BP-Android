@@ -13,6 +13,8 @@ import com.beautypop.app.AppController;
 import com.beautypop.util.ValidationUtil;
 import com.beautypop.util.ViewUtil;
 
+import org.parceler.apache.commons.lang.StringUtils;
+
 public class LoginActivity extends AbstractLoginActivity {
 
     private EditText email = null;
@@ -43,6 +45,11 @@ public class LoginActivity extends AbstractLoginActivity {
 
         setLoginButton(loginButton);
         setFacebookButton(facebookButton);
+
+        String emailToSwitch = getIntent().getStringExtra(ViewUtil.BUNDLE_KEY_NAME);
+        if (!StringUtils.isEmpty(emailToSwitch)) {
+            email.setText(emailToSwitch);
+        }
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
