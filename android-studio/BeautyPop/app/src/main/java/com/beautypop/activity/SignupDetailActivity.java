@@ -22,8 +22,6 @@ import com.beautypop.util.ValidationUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.LocationVM;
 
-import org.parceler.apache.commons.lang.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 

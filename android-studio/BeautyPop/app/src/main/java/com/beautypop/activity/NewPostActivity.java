@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -48,7 +47,6 @@ import com.beautypop.viewmodel.ResponseStatusVM;
 import org.parceler.apache.commons.lang.StringUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -698,7 +696,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
                     requestCode == ViewUtil.SELECT_CAMERA_IMAGE_REQUEST_CODE )  {
 
                 String imagePath = "";
-                if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE  && data != null) {
+                if (requestCode == ViewUtil.SELECT_GALLERY_IMAGE_REQUEST_CODE && data != null) {
                     selectedImageUri = data.getData();
                     imagePath = ImageUtil.getRealPathFromUri(this, selectedImageUri);
                 } else if (requestCode == ViewUtil.SELECT_CAMERA_IMAGE_REQUEST_CODE) {
@@ -709,12 +707,16 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
                 Log.d(TAG, "onActivityResult: imagePath=" + imagePath);
 
+                ViewUtil.startSelectImageActivity(this, selectedImageUri);
+
+                /*
                 Bitmap bitmap = ImageUtil.resizeToUpload(imagePath);
                 if (bitmap != null) {
                     ViewUtil.startSelectImageActivity(this, selectedImageUri);
                 } else {
                     Toast.makeText(this, getString(R.string.photo_size_too_big), Toast.LENGTH_SHORT).show();
                 }
+                */
             } else if (requestCode == ViewUtil.CROP_IMAGE_REQUEST_CODE) {
 				String croppedImagePath = data.getStringExtra(ViewUtil.INTENT_RESULT_OBJECT);
 				Log.d(TAG, "onActivityResult: croppedImagePath=" + croppedImagePath);
