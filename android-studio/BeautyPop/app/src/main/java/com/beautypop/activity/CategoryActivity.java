@@ -70,7 +70,7 @@ public class CategoryActivity extends TrackedFragmentActivity {
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String searchText) {
-				Intent intent =new Intent(CategoryActivity.this,SearchResultActivity.class);
+				Intent intent =new Intent(CategoryActivity.this,SearchActivity.class);
 				intent.putExtra("searchText",searchText);
 				intent.putExtra("catId",getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L));
 				startActivity(intent);

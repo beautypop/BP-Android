@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:id="@+id/toolbarOffsetLayout"
-        android:background="@android:color/transparent"></RelativeLayout>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/search_result_actionbar"/>
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/searchResultTabs"
@@ -24,7 +22,6 @@
         app:pstsIndicatorHeight="3dp"
         app:pstsUnderlineHeight="0.8dp"
         app:pstsShouldExpand="true"
-        app:pstsTextStyle="normal"
         app:pstsTextSelectedStyle="bold"
         app:pstsTextAllCaps="false"
         android:fillViewport="false"

@@ -358,12 +358,12 @@ public class BeautyPopService {
     }
 
 	//Search APi
-	public void searchUser(String searchKey,Callback<List<UserVM>> cb) {
-		api.searchUser(searchKey,cb);
+	public void searchUser(String searchKey,int offset,Callback<List<UserVM>> cb) {
+		api.searchUser(searchKey,offset,cb);
 	}
 
-	public void searchProduct(String searchKey,Long id,Callback<List<PostVMLite>> cb) {
-		api.searchProduct(searchKey,id,cb);
+	public void searchProduct(String searchKey,Long id,Long offset,Callback<List<PostVMLite>> cb) {
+		api.searchProduct(searchKey,id,offset,cb);
 	}
 }
 

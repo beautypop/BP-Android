@@ -1,19 +1,36 @@
 package com.beautypop.fragment;
 
+import android.content.Context;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beautypop.R;
 import com.beautypop.adapter.FeedViewAdapter;
+import com.beautypop.adapter.PopupCategoryListAdapter;
 import com.beautypop.app.AppController;
+import com.beautypop.app.CategoryCache;
 import com.beautypop.app.TrackedFragment;
+import com.beautypop.listener.EndlessScrollListener;
 import com.beautypop.util.DefaultValues;
+import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
+import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.PostVMLite;
 import com.yalantis.phoenix.PullToRefreshView;
 
@@ -27,6 +44,7 @@ import retrofit.client.Response;
 
 public class SearchResultProductFragment extends TrackedFragment {
 
+
 	public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
 
 	private static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_TOP_MARGIN);
@@ -39,6 +57,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 	protected FeedViewAdapter feedAdapter;
 	protected GridLayoutManager layoutManager;
 	protected List<PostVMLite> items;
+	protected Long cnt = 1L;
 
 	protected PullToRefreshView pullListView;
 	@Override
@@ -49,8 +68,8 @@ public class SearchResultProductFragment extends TrackedFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.feed_view_fragment, container, false);
+
+		View view = inflater.inflate(R.layout.search_result_product_fragment, container, false);
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
 
@@ -73,10 +92,6 @@ public class SearchResultProductFragment extends TrackedFragment {
 						}
 					}
 				});
-
-
-
-		loadFeed();
 
 		feedAdapter = new FeedViewAdapter(getActivity(), items, null, false);
 		feedView.setAdapter(feedAdapter);
@@ -104,6 +119,8 @@ public class SearchResultProductFragment extends TrackedFragment {
 			}
 		});
 
+		loadFeed(0L);
+		attachEndlessScrollListener();
 
 		return view;
 	}
@@ -115,10 +132,9 @@ public class SearchResultProductFragment extends TrackedFragment {
 
 	}
 
-	protected void loadFeed() {
+	protected void loadFeed(Long offset) {
 		ViewUtil.showSpinner(getActivity());
-
-		AppController.getApiService().searchProduct(getArguments().getString("searchText"),getArguments().getLong("catId"),new Callback<List<PostVMLite>>() {
+		AppController.getApiService().searchProduct(getArguments().getString("searchText"),getArguments().getLong("catId"),offset,new Callback<List<PostVMLite>>() {
 			@Override
 			public void success(List<PostVMLite> postVMLites, Response response) {
 				loadFeedItemsToList(postVMLites);
@@ -127,16 +143,32 @@ public class SearchResultProductFragment extends TrackedFragment {
 
 			@Override
 			public void failure(RetrofitError error) {
-				String msg = getActivity().getString(R.string.list_loading_error);
-				if (AppController.isUserAdmin()) {
-					msg += "\n[Error]\n"+
-							ViewUtil.getResponseBody(error.getResponse());
-				}
-				ViewUtil.alert(getActivity(), msg);
+				error.printStackTrace();
 				ViewUtil.stopSpinner(getActivity());
 
 			}
 		});
 
 	}
+
+	protected void attachEndlessScrollListener() {
+
+		feedView.setOnScrollListener(new EndlessScrollListener(layoutManager) {
+			@Override
+			public void onLoadMore(Long offset) {
+				loadFeed(cnt);
+				cnt ++;
+
+			}
+
+			@Override
+			public void onScrollUp() {
+			}
+
+			@Override
+			public void onScrollDown() {
+			}
+		});
+	}
+
 }

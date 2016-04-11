@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -18,7 +17,6 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.beautypop.R;
@@ -58,7 +56,6 @@ public class MainActivity extends TrackedFragmentActivity {
     private ImageView activityImage;
     private TextView activityText;
     private TextView activityCountText;
-	private SearchView searchView;
 
     private LinearLayout profileLayout;
     private ImageView profileImage,searchImage;
@@ -90,12 +87,10 @@ public class MainActivity extends TrackedFragmentActivity {
         gameBadgeImage = (ImageView) findViewById(R.id.gameBadgeImage);
 
 		searchImage = (ImageView) findViewById(R.id.searchImage);
-		toolBar = findViewById(R.id.toolbar);
 
         chatCountText = (TextView) findViewById(R.id.chatCountText);
         chatLayout = (ViewGroup) findViewById(R.id.chatLayout);
         newPostLayout = (ViewGroup) findViewById(R.id.newPostLayout);
-		searchView = (SearchView) findViewById(R.id.searchView);
 
         gameBadgeImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,50 +170,11 @@ public class MainActivity extends TrackedFragmentActivity {
 		searchImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				searchImage.setVisibility(View.GONE);
-				searchView.setVisibility(View.VISIBLE);
-				searchView.setIconified(false);
+				startActivity(new Intent(MainActivity.this,SearchActivity.class));
+
 			}
 		});
 
-		searchView.setOnSearchClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				newPostLayout.setVisibility(View.GONE);
-				chatLayout.setVisibility(View.GONE);
-				view.setBackgroundColor(Color.WHITE);
-			}
-		});
-
-		searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-			@Override
-			public boolean onClose() {
-				searchImage.setVisibility(View.VISIBLE);
-				searchView.setVisibility(View.GONE);
-				newPostLayout.setVisibility(View.VISIBLE);
-				chatLayout.setVisibility(View.VISIBLE);
-				searchView.setBackgroundResource(R.drawable.actionbar_bg_red);
-				toolBar.setBackgroundResource(R.drawable.actionbar_bg_red);
-				return false;
-			}
-		});
-
-		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-			@Override
-			public boolean onQueryTextSubmit(String searchText) {
-				Intent intent =new Intent(MainActivity.this,SearchResultActivity.class);
-				intent.putExtra("searchText",searchText);
-				intent.putExtra("catId", 0L);
-				startActivity(intent);
-				return false;
-			}
-
-			@Override
-			public boolean onQueryTextChange(String s) {
-				return false;
-			}
-		});
-		
         pressHomeTab();
 
         checkAndroidUpgrade();

@@ -53,13 +53,6 @@
                 android:layout_toLeftOf="@+id/chatLayout"
                 android:layout_centerVertical="true">
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    </SearchView>
                 <ImageView
                     android:id="@+id/searchImage"
                     android:layout_width="35dp"
