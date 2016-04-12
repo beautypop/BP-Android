@@ -17,6 +17,8 @@
     <!--Search Tab-->
     <string name="search_tab_product">Product</string>
     <string name="search_tab_user">User</string>
+    <string name="no_user_found">No User Found</string>
+    <string name="no_product_found">No Product Found</string>
 
     <!-- Settings -->
     <string name="app_name">BeautyPop</string>

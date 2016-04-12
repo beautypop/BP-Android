@@ -1,36 +1,21 @@
 package com.beautypop.fragment;
 
-import android.content.Context;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beautypop.R;
 import com.beautypop.adapter.FeedViewAdapter;
-import com.beautypop.adapter.PopupCategoryListAdapter;
 import com.beautypop.app.AppController;
-import com.beautypop.app.CategoryCache;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.listener.EndlessScrollListener;
 import com.beautypop.util.DefaultValues;
-import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
-import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.PostVMLite;
 import com.yalantis.phoenix.PullToRefreshView;
 
@@ -53,6 +38,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 	private static final int LEFT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
 	private static final int RIGHT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
 
+	protected TextView noDataText;
 	protected RecyclerView feedView;
 	protected FeedViewAdapter feedAdapter;
 	protected GridLayoutManager layoutManager;
@@ -72,6 +58,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 		View view = inflater.inflate(R.layout.search_result_product_fragment, container, false);
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
+		noDataText = (TextView) view.findViewById(R.id.noDataText);
 
 		items = new ArrayList<>();
 
@@ -137,12 +124,18 @@ public class SearchResultProductFragment extends TrackedFragment {
 		AppController.getApiService().searchProduct(getArguments().getString("searchText"),getArguments().getLong("catId"),offset,new Callback<List<PostVMLite>>() {
 			@Override
 			public void success(List<PostVMLite> postVMLites, Response response) {
+				if(postVMLites.size() == 0){
+					noDataText.setVisibility(View.VISIBLE);
+					feedView.setVisibility(View.GONE);
+				}
 				loadFeedItemsToList(postVMLites);
 				ViewUtil.stopSpinner(getActivity());
 			}
 
 			@Override
 			public void failure(RetrofitError error) {
+				noDataText.setVisibility(View.VISIBLE);
+				feedView.setVisibility(View.GONE);
 				error.printStackTrace();
 				ViewUtil.stopSpinner(getActivity());
 
