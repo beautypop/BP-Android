@@ -69,11 +69,9 @@ public class SearchProductFragment extends TrackedFragment {
 	protected CategoryVM category;
 	protected CategoryVM subCategory;
 	protected TextView catName, subCatName;
-	private Long catId = 0L;
-
-
-
+	private Long catId = -1L;
 	protected PullToRefreshView pullListView;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
