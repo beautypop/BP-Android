@@ -46,8 +46,7 @@ import retrofit.client.Response;
 
 public class SearchProductFragment extends TrackedFragment {
 
-	protected LinearLayout imagesLayout, selectCatLayout, selectSubCatLayout;
-	protected RelativeLayout catLayout;
+	protected LinearLayout selectCatLayout, selectSubCatLayout;
 
 	public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
 	protected PopupCategoryListAdapter adapter;
@@ -129,6 +128,7 @@ public class SearchProductFragment extends TrackedFragment {
 					Intent intent = new Intent(getActivity(), SearchResultActivity.class);
 					intent.putExtra("searchText", getArguments().getString("searchText"));
 					intent.putExtra("catId", catId);
+					intent.putExtra("flag", "product");
 					startActivity(intent);
 				}else{
 					Toast.makeText(getActivity(),"Enter search Text",Toast.LENGTH_LONG).show();
@@ -191,16 +191,6 @@ public class SearchProductFragment extends TrackedFragment {
 			}
 		});
 
-		/*if (category == null) {
-			initCategoryPopup(categoryPopup, CategoryCache.getCategories(), false);
-			return null;
-		}
-
-		if (subCategory == null) {
-			initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
-			return null;
-		}*/
-
 		selectSubCatLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -218,7 +208,6 @@ public class SearchProductFragment extends TrackedFragment {
 
 	protected void setCategory(CategoryVM cat) {
 		this.category = cat;
-
 		updateSelectCategoryLayout();
 	}
 
@@ -309,6 +298,5 @@ public class SearchProductFragment extends TrackedFragment {
 			e.printStackTrace();
 		}
 	}
-
 
 }

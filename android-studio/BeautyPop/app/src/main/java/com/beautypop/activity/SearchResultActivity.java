@@ -1,44 +1,40 @@
 package com.beautypop.activity;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
-import com.beautypop.fragment.SearchProductFragment;
 import com.beautypop.fragment.SearchResultProductFragment;
-import com.beautypop.fragment.SearchUserFragment;
+import com.beautypop.fragment.SearchResultUserFragment;
 import com.beautypop.util.ViewUtil;
 
 public class SearchResultActivity extends FragmentActivity {
 
 	private static final String TAG = SearchResultActivity.class.getName();
 
-	 ViewPager viewPager;
-	private SearchResultPagerAdapter adapter;
-
-	private PagerSlidingTabStrip tabs;
 	private ImageView backImage;
+	private SearchView searchView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_result);
 
-		tabs = (PagerSlidingTabStrip) findViewById(R.id.searchResultTabs);
-		viewPager = (ViewPager) findViewById(R.id.searchResultPager);
 		backImage = (ImageView) findViewById(R.id.backImage);
+		searchView = (SearchView) findViewById(R.id.searchView);
 
-		adapter = new SearchResultPagerAdapter(getSupportFragmentManager());
+		searchView.setVisibility(View.GONE);
 
 		backImage.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -47,11 +43,26 @@ public class SearchResultActivity extends FragmentActivity {
 			}
 		});
 
-		int pageMargin = ViewUtil.getRealDimension(0);
-		viewPager.setPageMargin(pageMargin);
-		viewPager.setAdapter(adapter);
+		Bundle bundle = new Bundle();
+		TrackedFragment fragment = null;
+		if(getIntent().getStringExtra("flag").equals("user")){
+			fragment = new SearchResultUserFragment();
+			bundle.putString("searchText", getIntent().getStringExtra("searchText"));
+			fragment.setArguments(bundle);
+			fragment.setTrackedOnce();
+			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+			fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
 
-		tabs.setViewPager(viewPager);
+		}else {
+			fragment = new SearchResultProductFragment();
+			bundle.putString("searchText", getIntent().getStringExtra("searchText"));
+			bundle.putLong("catId",getIntent().getLongExtra("catId",0L));
+			fragment.setArguments(bundle);
+			fragment.setTrackedOnce();
+			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+			fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
+
+		}
 
 	}
 
@@ -87,7 +98,7 @@ public class SearchResultActivity extends FragmentActivity {
 				}
 				// USER
 				case 1: {
-					fragment = new SearchUserFragment();
+					fragment = new SearchResultUserFragment();
 					bundle.putString("searchText",getIntent().getStringExtra("searchText"));
 					break;
 				}

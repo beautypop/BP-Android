@@ -116,6 +116,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 
 		items.addAll(posts);
 		feedAdapter.notifyDataSetChanged();
+		ViewUtil.stopSpinner(getActivity());
 
 	}
 
@@ -129,7 +130,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 					feedView.setVisibility(View.GONE);
 				}
 				loadFeedItemsToList(postVMLites);
-				ViewUtil.stopSpinner(getActivity());
+
 			}
 
 			@Override

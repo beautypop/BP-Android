@@ -33,13 +33,14 @@ public class SearchActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_result);
+		setContentView(R.layout.activity_search);
 
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.searchResultTabs);
 		viewPager = (ViewPager) findViewById(R.id.searchResultPager);
 		searchView = (SearchView) findViewById(R.id.searchView);
 		backImage = (ImageView) findViewById(R.id.backImage);
 
+		searchView.setIconified(false);
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String s) {

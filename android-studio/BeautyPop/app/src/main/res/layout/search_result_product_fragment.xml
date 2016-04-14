@@ -27,5 +27,15 @@
             android:scrollbars="vertical" />
 
     </com.yalantis.phoenix.PullToRefreshView>
+    <ProgressBar
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"
+        android:visibility="visible"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_spinner"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center" />
 
 </LinearLayout>

@@ -1,13 +1,17 @@
 package com.beautypop.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beautypop.R;
+import com.beautypop.activity.SearchResultActivity;
 import com.beautypop.adapter.UserListAdapter;
 import com.beautypop.app.AppController;
 import com.beautypop.app.TrackedFragment;
@@ -22,10 +26,7 @@ import retrofit.client.Response;
 
 
 public class SearchUserFragment extends TrackedFragment {
-
-	private TextView noDataText;
-	private UserListAdapter userListAdapter;
-	private ListView userListView;
+	private RelativeLayout searchLayout;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,33 +37,23 @@ public class SearchUserFragment extends TrackedFragment {
 							 Bundle savedInstanceState) {
 
 		View view =  inflater.inflate(R.layout.search_user_fragment, container, false);
-		userListView = (ListView) view.findViewById(R.id.userListView);
-		noDataText = (TextView) view.findViewById(R.id.noDataText);
+		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
 
-
-		AppController.getApiService().searchUser(getArguments().getString("searchText"),0,new Callback<List<UserVM>>() {
+		searchLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void success(List<UserVM> userVMs, Response response) {
-				if(userVMs.size() == 0){
-					userListView.setVisibility(View.GONE);
-					noDataText.setVisibility(View.VISIBLE);
+			public void onClick(View view) {
+
+				if(getArguments().getString("searchText") != null) {
+					Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+					intent.putExtra("searchText", getArguments().getString("searchText"));
+					intent.putExtra("flag", "user");
+					startActivity(intent);
+				}else{
+					Toast.makeText(getActivity(), "Enter search Text", Toast.LENGTH_LONG).show();
 				}
-				userListAdapter = new UserListAdapter(getActivity(),userVMs);
-				userListView.setAdapter(userListAdapter);
-				ViewUtil.stopSpinner(getActivity());
-
-			}
-			@Override
-			public void failure(RetrofitError error) {
-
-				userListView.setVisibility(View.GONE);
-				noDataText.setVisibility(View.VISIBLE);
-
-				ViewUtil.stopSpinner(getActivity());
-				error.printStackTrace();
-
 			}
 		});
+
 		return view;
 	}
 }
