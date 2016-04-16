@@ -6,13 +6,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.fragment.SearchResultProductFragment;
@@ -30,7 +28,7 @@ public class SearchResultActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_result);
+		setContentView(R.layout.search_result_activity);
 
 		backImage = (ImageView) findViewById(R.id.backImage);
 		searchView = (SearchView) findViewById(R.id.searchView);
