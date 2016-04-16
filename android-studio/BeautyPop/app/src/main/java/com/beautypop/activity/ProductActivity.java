@@ -196,14 +196,6 @@ public class ProductActivity extends TrackedFragmentActivity {
         followButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ViewUtil.startUserProfileActivity(ProductActivity.this, post.ownerId);
-            }
-        });
-
-        /*
-        followButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 if (isFollowing) {
                     unfollow(ownerId);
                 } else {
@@ -211,7 +203,6 @@ public class ProductActivity extends TrackedFragmentActivity {
                 }
             }
         });
-        */
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,7 +267,6 @@ public class ProductActivity extends TrackedFragmentActivity {
 
                 ownerId = post.getOwnerId();
 
-                /*
                 if (UserInfoCache.getUser().getId() == ownerId) {
                     followButton.setVisibility(View.GONE);
                 }
@@ -285,9 +275,8 @@ public class ProductActivity extends TrackedFragmentActivity {
                 if (isFollowing) {
                     ViewUtil.selectFollowButtonStyleLite(followButton);
                 } else {
-                    ViewUtil.unselectFollowButtonStyleLite(followButton);
+                    ViewUtil.unselectFollowButtonStyle(followButton);
                 }
-                */
 
                 // Image slider
 
@@ -1127,7 +1116,7 @@ public class ProductActivity extends TrackedFragmentActivity {
         AppController.getApiService().unfollowUser(id, new Callback<Response>() {
             @Override
             public void success(Response responseObject, Response response) {
-                ViewUtil.unselectFollowButtonStyleLite(followButton);
+                ViewUtil.unselectFollowButtonStyle(followButton);
                 isFollowing = false;
                 pending = false;
             }

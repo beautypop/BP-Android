@@ -105,20 +105,19 @@
                                 android:layout_marginLeft="10dp" />
 
                             <Button
-                                android:layout_width="75dp"
-                                android:layout_height="30dp"
+                                android:layout_width="70dp"
+                                android:layout_height="25dp"
                                 android:id="@+id/followButton"
-                                android:background="@drawable/button_pink_border"
+                                android:background="@drawable/button_pink"
                                 android:scaleType="fitCenter"
-                                android:text="@string/view_shop"
-                                android:textColor="@color/light_pink"
-                                android:textSize="14dp"
+                                android:text="@string/follow"
+                                android:textColor="@color/white"
+                                android:textSize="13dp"
                                 android:layout_alignParentRight="true"
                                 android:textAllCaps="false"
                                 android:singleLine="true"
                                 android:layout_marginTop="5dp"
-                                android:layout_marginRight="5dp"
-                                android:visibility="gone" />
+                                android:layout_marginRight="5dp" />
                         </RelativeLayout>
 
                     </LinearLayout>
