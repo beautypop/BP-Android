@@ -24,7 +24,8 @@ public class SearchResultActivity extends FragmentActivity {
 	private static final String TAG = SearchResultActivity.class.getName();
 
 	private ImageView backImage;
-	private SearchView searchView;
+	public SearchView searchView;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

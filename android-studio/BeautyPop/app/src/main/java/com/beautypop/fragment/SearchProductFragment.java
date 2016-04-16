@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beautypop.R;
+import com.beautypop.activity.SearchActivity;
 import com.beautypop.activity.SearchResultActivity;
 import com.beautypop.adapter.FeedViewAdapter;
 import com.beautypop.adapter.PopupCategoryListAdapter;
@@ -96,6 +97,8 @@ public class SearchProductFragment extends TrackedFragment {
 
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
+
+		ViewUtil.popupInputMethodWindow(getActivity());
 
 		items = new ArrayList<>();
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/feed_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,28 +10,46 @@
         android:id="@+id/toolbar"
         layout="@layout/search_result_actionbar"/>
 
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/searchResultTabs"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/searchLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:textSize="15dp"
-        android:textColorPrimary="@color/dark_gray"
-        app:pstsDividerColor="@color/view_bg"
-        app:pstsIndicatorColor="@color/actionbar_selected_text"
-        app:pstsUnderlineColor="@color/light_gray_2"
-        app:pstsTabPaddingLeftRight="10dp"
-        app:pstsIndicatorHeight="3dp"
-        app:pstsUnderlineHeight="0.8dp"
-        app:pstsShouldExpand="true"
-        app:pstsTextSelectedStyle="bold"
-        app:pstsTextAllCaps="false"
-        android:fillViewport="false"
-        android:background="@color/view_bg" />
+        android:layout_height="40dp"
+        android:weightSum="100"
+        >
 
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/searchResultPager"
+        <TextView
+            android:id="@+id/productText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="PRODUCTS"
+            android:layout_weight="50"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@color/dark_gray"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/userText"
+            android:layout_weight="50"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:text="PEOPLES"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:id="@+id/placeHolder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"></RelativeLayout>
 
 </LinearLayout>
