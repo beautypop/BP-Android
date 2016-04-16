@@ -24,7 +24,6 @@ import com.beautypop.viewmodel.SellerVM;
 import com.beautypop.viewmodel.SettingsVM;
 import com.beautypop.viewmodel.UserVM;
 import com.beautypop.viewmodel.UserVMLite;
-import com.google.android.gms.analytics.ecommerce.Product;
 
 import java.util.List;
 

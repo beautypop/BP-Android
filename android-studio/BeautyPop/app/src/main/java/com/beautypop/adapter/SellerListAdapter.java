@@ -144,7 +144,7 @@ public class SellerListAdapter extends BaseAdapter {
         if (item.isFollowing) {
             ViewUtil.selectFollowButtonStyleLite(followButton);
         } else {
-            ViewUtil.unselectFollowButtonStyleLite(followButton);
+            ViewUtil.unselectFollowButtonStyle(followButton);
         }
 
         followButton.setOnClickListener(new View.OnClickListener() {
@@ -231,7 +231,7 @@ public class SellerListAdapter extends BaseAdapter {
         AppController.getApiService().unfollowUser(user.id, new Callback<Response>() {
             @Override
             public void success(Response responseObject, Response response) {
-                ViewUtil.unselectFollowButtonStyleLite(followButton);
+                ViewUtil.unselectFollowButtonStyle(followButton);
                 user.isFollowing = false;
                 notifyDataSetChanged();
             }
