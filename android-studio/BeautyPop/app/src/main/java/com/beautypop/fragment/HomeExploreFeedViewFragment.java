@@ -1,6 +1,7 @@
 package com.beautypop.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,9 +58,6 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
     public void onResume() {
         super.onResume();
 
-        // home slider
-        initSlider();
-
         // category selector
         initCategorySelector();
     }
@@ -87,19 +85,24 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
             });
         }
 
+        // home slider
+        initSlider();
+
         return view;
     }
 
     private void initSlider() {
+        homeSlider.setAlpha(0.0f);
+        homeSlider.stopAutoCycle();
+        homeSlider.removeAllSliders();
+
         AppController.getApiService().getHomeSliderFeaturedItems(new Callback<List<FeaturedItemVM>>() {
             @Override
             public void success(List<FeaturedItemVM> featuredItems, Response response) {
-                Log.d(TAG, "initSlider: returned " + (featuredItems == null ? "null" : featuredItems.size() + " featuredItems"));
+                Log.d(TAG, "initSlider: returned " + (featuredItems == null? "null" : featuredItems.size()+" featuredItems"));
                 if (!featuredItems.isEmpty()) {
-                    homeSlider.setVisibility(View.VISIBLE);
-
                     for (final FeaturedItemVM featuredItem : featuredItems) {
-                        Log.d(TAG, "initSlider: name=" + featuredItem.getName() + " image=" + featuredItem.getImage());
+                        Log.d(TAG, "initSlider: name="+featuredItem.getName()+" image="+featuredItem.getImage());
                         DefaultSliderView sliderView = new DefaultSliderView(getActivity());
                         sliderView
                                 .image(featuredItem.getImage())
@@ -125,6 +128,7 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
                         homeSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
                         homeSlider.setDuration(DefaultValues.DEFAULT_SLIDER_DURATION);
                         homeSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Visible);
+                        homeSlider.startAutoCycle();
 
                         // getResources() only if fragment is attached
                         if (isAdded() && getActivity() != null) {
@@ -139,9 +143,17 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
                                 return;
                             }
                         });
-                        homeSlider.stopAutoCycle();
                         homeSlider.setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Invisible);
+                        homeSlider.stopAutoCycle();
                     }
+
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            homeSlider.setVisibility(View.VISIBLE);
+                            homeSlider.setAlpha(0.0f);
+                            homeSlider.animate().alpha(1.0f);
+                        }
+                    }, DefaultValues.DEFAULT_HANDLER_DELAY);
                 } else {
                     homeSlider.setVisibility(View.GONE);
                 }
