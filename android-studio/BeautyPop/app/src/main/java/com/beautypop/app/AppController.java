@@ -143,6 +143,11 @@ public class AppController extends Application {
         //printKeyHashForFacebook();
     }
 
+    public void clearSessionId() {
+        AppController.sessionId = "";
+        SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.SESSION_ID);
+    }
+
     public void saveSessionId(String sessionId) {
         AppController.sessionId = sessionId;
         SharedPreferencesUtil.getInstance().saveSessionId(sessionId);
@@ -246,7 +251,7 @@ public class AppController extends Application {
 
     public void clearUserSession() {
         clearUserCaches();
-        SharedPreferencesUtil.getInstance().clear(SharedPreferencesUtil.SESSION_ID);
+        clearSessionId();
     }
 
     public void logout() {
