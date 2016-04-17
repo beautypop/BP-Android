@@ -170,8 +170,7 @@ public class MainActivity extends TrackedFragmentActivity {
 		searchImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				startActivity(new Intent(MainActivity.this,SearchActivity.class));
-
+                ViewUtil.startSearchActivity(MainActivity.this);
 			}
 		});
 

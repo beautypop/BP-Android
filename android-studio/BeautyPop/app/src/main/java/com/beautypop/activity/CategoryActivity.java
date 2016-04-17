@@ -62,18 +62,16 @@ public class CategoryActivity extends TrackedFragmentActivity {
 		});
 
         // feed filter keys
-        long catId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
-        if (catId == 0) {
+		long catId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L);
+        if (catId == -1) {
             catId = ViewUtil.getIntentFilterLastPathSegment(getIntent());
         }
 
+		final long searchCatId = catId;
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String searchText) {
-				Intent intent =new Intent(CategoryActivity.this,SearchActivity.class);
-				intent.putExtra("searchText",searchText);
-				intent.putExtra("catId",getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L));
-				startActivity(intent);
+				ViewUtil.startSearchActivity(CategoryActivity.this, searchCatId);
 				return false;
 			}
 

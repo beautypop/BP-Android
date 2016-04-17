@@ -75,6 +75,7 @@ import com.beautypop.activity.NotificationSettingsActivity;
 import com.beautypop.activity.ProductActivity;
 import com.beautypop.activity.CommentsActivity;
 import com.beautypop.activity.ProductConversationListActivity;
+import com.beautypop.activity.SearchActivity;
 import com.beautypop.activity.SelectImageActivity;
 import com.beautypop.activity.SettingsActivity;
 import com.beautypop.activity.SignupActivity;
@@ -1261,6 +1262,18 @@ public class ViewUtil {
         intent.putExtra(ViewUtil.BUNDLE_KEY_ARG2, offeredPrice);
         intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
+    }
+
+    public static void startSearchActivity(Activity activity) {
+        startSearchActivity(activity, null);
+    }
+
+    public static void startSearchActivity(Activity activity, Long catId) {
+        Intent intent = new Intent(activity, SearchActivity.class);
+        if (catId != null && catId != -1L) {
+            intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, catId);
+        }
+        activity.startActivity(intent);
     }
 
     public static void startSelectImageActivity(Activity activity, Uri imageUri) {
