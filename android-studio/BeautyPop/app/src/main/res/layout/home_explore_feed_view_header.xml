@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tipsLayout"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:visibility="gone"
-        android:layout_below="@+id/toolbarOffsetLayout">
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/toolbarOffsetLayout"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/tips"

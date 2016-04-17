@@ -5,7 +5,8 @@
     <string name="facebook_app_id"></string>
     <string name="gcm_project_id"></string>
     <string name="base_url"></string>
-    <string name="base_url_dev">http://119.81.228.91</string>
+    <string name="base_url_dev">http://192.168.1.117:9000</string>
+    <string name="app_name">BeautyPop</string>
 
     <!-- Crash report -->
     <string name="crash_toast_text">對不起！BeautyPop 發生問題要退出</string>
@@ -21,7 +22,6 @@
     <string name="no_product_found">No Product Found</string>
 
     <!-- Settings -->
-    <string name="app_name">BeautyPop</string>
     <string name="app_desc">BeautyPop - Sell your style!</string>
     <string name="app_version">版本:</string>
     <string name="request_upgrade">BeautyPop 新版本已上線！更多新功能為你而設！</string>
