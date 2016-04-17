@@ -21,10 +21,11 @@
         android:text="@string/no_messages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/light_gray"
-        android:textSize="16dp"
+        android:textColor="@color/gray"
+        android:textSize="18dp"
         android:layout_marginTop="65dp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:gravity="center_horizontal" />
 
     <include layout="@layout/view_actionbar"
         android:id="@+id/toolbar" />

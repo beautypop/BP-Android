@@ -16,10 +16,12 @@
         android:text="@string/no_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:textColor="@color/light_gray"
+        android:textSize="18dp"
+        android:textColor="@color/gray"
         android:layout_marginTop="25dp"
-        android:visibility="gone" />
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible" />
 
     <com.yalantis.phoenix.PullToRefreshView
         android:id="@+id/pull_to_refresh"

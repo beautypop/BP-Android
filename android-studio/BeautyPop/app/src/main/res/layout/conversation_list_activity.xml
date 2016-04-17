@@ -24,10 +24,11 @@
         android:text="@string/no_messages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:textColor="@color/light_gray"
+        android:textSize="18dp"
+        android:textColor="@color/gray"
         android:layout_marginTop="65dp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:gravity="center_horizontal" />
 
     <com.yalantis.phoenix.PullToRefreshView
         android:id="@+id/pull_to_refresh"

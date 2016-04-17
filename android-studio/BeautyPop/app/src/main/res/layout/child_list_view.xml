@@ -23,11 +23,11 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:textColor="@color/light_gray"
-        android:layout_margin="65dp"
+        android:textSize="18dp"
+        android:textColor="@color/gray"
         android:gravity="center"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_marginTop="75dp" />
 
     <ListView
         android:id="@+id/listView"
