@@ -7,13 +7,14 @@
 
     <TextView
         android:id="@+id/noDataText"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="12dp"
-        android:visibility="gone"
+        android:textColor="@color/dark_gray"
+        android:textSize="18dp"
         android:text="@string/no_product_found"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone" />
 
     <com.yalantis.phoenix.PullToRefreshView
         android:id="@+id/pull_to_refresh"

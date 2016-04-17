@@ -92,12 +92,14 @@ public class MainActivity extends TrackedFragmentActivity {
         chatLayout = (ViewGroup) findViewById(R.id.chatLayout);
         newPostLayout = (ViewGroup) findViewById(R.id.newPostLayout);
 
+        /*
         gameBadgeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ViewUtil.startGameBadgesActivity(MainActivity.this, UserInfoCache.getUser().getId());
             }
         });
+        */
 
         chatLayout.setOnClickListener(new View.OnClickListener() {
             @Override

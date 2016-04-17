@@ -239,8 +239,8 @@ public class ViewUtil {
         };
 
         SEARCH_MAIN_TITLES = new String[] {
-				AppController.getInstance().getString(R.string.search_tab_product),
-				AppController.getInstance().getString(R.string.search_tab_user)
+				AppController.getInstance().getString(R.string.search_tab_products),
+				AppController.getInstance().getString(R.string.search_tab_users)
 		};
 
         postConditionTypeMap.clear();

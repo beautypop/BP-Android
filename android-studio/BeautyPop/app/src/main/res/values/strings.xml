@@ -16,10 +16,11 @@
     <string name="crash_dialog_ok_toast">Thanks!</string>
 
     <!--Search Tab-->
-    <string name="search_tab_product">Product</string>
-    <string name="search_tab_user">User</string>
-    <string name="no_user_found">No User Found</string>
-    <string name="no_product_found">No Product Found</string>
+    <string name="search_text">Search</string>
+    <string name="search_tab_products">Products</string>
+    <string name="search_tab_users">Users</string>
+    <string name="no_user_found">No Users Found</string>
+    <string name="no_product_found">No Products Found</string>
 
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style</string>
