@@ -1,7 +1,6 @@
 package com.beautypop.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -17,19 +16,17 @@ import com.beautypop.util.ViewUtil;
 
 public class CategoryActivity extends TrackedFragmentActivity {
 
-	private SearchView searchView;
 	private View toolBar;
-	private ImageView newPostAction,searchImage;
+	private ImageView newPostAction, searchImage;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.category_activity);
 
-
 		toolBar = findViewById(R.id.toolbar);
 		searchImage = (ImageView) findViewById(R.id.searchImage);
-		searchView = (SearchView) findViewById(R.id.searchView);
 		newPostAction = (ImageView)findViewById(R.id.newPostAction);
 
 		searchImage.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +43,6 @@ public class CategoryActivity extends TrackedFragmentActivity {
         if (catId == -1) {
             catId = ViewUtil.getIntentFilterLastPathSegment(getIntent());
         }
-
-		
 
         Bundle bundle = new Bundle();
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, DefaultValues.DEFAULT_CATEGORY_FEED_TYPE.name());

@@ -21,6 +21,7 @@ import com.beautypop.app.TrackedFragment;
 
 public class HomeMainFragment extends TrackedFragment {
     private static final String TAG = HomeMainFragment.class.getName();
+
 	private ImageView searchImage;
 
     @Override
@@ -30,7 +31,6 @@ public class HomeMainFragment extends TrackedFragment {
         View view = inflater.inflate(R.layout.child_layout_view, container, false);
 		searchImage = (ImageView) getActivity().findViewById(R.id.searchImage);
 		searchImage.setVisibility(View.VISIBLE );
-
 
 		Bundle bundle = new Bundle();
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, FeedFilter.FeedType.HOME_EXPLORE.name());
