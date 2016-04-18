@@ -6,11 +6,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.fragment.SearchResultProductFragment;
@@ -24,6 +26,7 @@ public class SearchResultActivity extends FragmentActivity {
 	private ImageView backImage;
 	public SearchView searchView;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +35,10 @@ public class SearchResultActivity extends FragmentActivity {
 		backImage = (ImageView) findViewById(R.id.backImage);
 		searchView = (SearchView) findViewById(R.id.searchView);
 
-		searchView.setVisibility(View.GONE);
+		searchView.setQuery(getIntent().getStringExtra("searchText"),false);
+		searchView.setIconified(false);
+		//searchView.setVisibility(View.GONE);
+
 
 		backImage.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -50,15 +56,18 @@ public class SearchResultActivity extends FragmentActivity {
 			fragment.setTrackedOnce();
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
-		} else {
+
+		}else {
 			fragment = new SearchResultProductFragment();
 			bundle.putString("searchText", getIntent().getStringExtra("searchText"));
-			bundle.putLong("catId",getIntent().getLongExtra("catId", -1L));
+			bundle.putLong(ViewUtil.BUNDLE_KEY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID,-1L));
 			fragment.setArguments(bundle);
 			fragment.setTrackedOnce();
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
+
 		}
+
 	}
 
 	class SearchResultPagerAdapter extends FragmentStatePagerAdapter {
@@ -88,7 +97,7 @@ public class SearchResultActivity extends FragmentActivity {
 				case 0: {
 					fragment = new SearchResultProductFragment();
 					bundle.putString("searchText",getIntent().getStringExtra("searchText"));
-					bundle.putLong("catId",getIntent().getLongExtra("catId", -1L));
+					bundle.putLong(ViewUtil.BUNDLE_KEY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID,0L));
 					break;
 				}
 				// USER
@@ -110,4 +119,5 @@ public class SearchResultActivity extends FragmentActivity {
 			return fragment;
 		}
 	}
+
 }

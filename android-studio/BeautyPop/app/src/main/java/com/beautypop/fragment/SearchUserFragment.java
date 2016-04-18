@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import retrofit.client.Response;
 
 public class SearchUserFragment extends TrackedFragment {
 	private RelativeLayout searchLayout;
+	private SearchView searchView;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,16 +40,17 @@ public class SearchUserFragment extends TrackedFragment {
 
 		View view =  inflater.inflate(R.layout.search_user_fragment, container, false);
 		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
+		searchView = (SearchView) getActivity().findViewById(R.id.searchView);
 
-		ViewUtil.popupInputMethodWindow(getActivity());
+		//ViewUtil.popupInputMethodWindow(getActivity());
 
 		searchLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 
-				if(getArguments().getString("searchText") != null) {
+				if(searchView.getQuery().toString() != null && !searchView.getQuery().toString().equals("")) {
 					Intent intent = new Intent(getActivity(), SearchResultActivity.class);
-					intent.putExtra("searchText", getArguments().getString("searchText"));
+					intent.putExtra("searchText", searchView.getQuery().toString());
 					intent.putExtra("flag", "user");
 					startActivity(intent);
 				}else{

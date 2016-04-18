@@ -72,6 +72,7 @@ public class SearchProductFragment extends TrackedFragment {
 	protected TextView catName, subCatName;
 	private Long catId = -1L;
 	protected PullToRefreshView pullListView;
+	private SearchView searchView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -94,16 +95,23 @@ public class SearchProductFragment extends TrackedFragment {
 		catName = (TextView) view.findViewById(R.id.catName);
 		subCatIcon = (ImageView) view.findViewById(R.id.subCatIcon);
 		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
+		searchView = (SearchView) getActivity().findViewById(R.id.searchView);
 
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
 
-		ViewUtil.popupInputMethodWindow(getActivity());
+		if((Long)getArguments().getLong(ViewUtil.BUNDLE_KEY_ID) != null){
+			catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID,-1);
+		}
+		//ViewUtil.popupInputMethodWindow(getActivity());
 
 		items = new ArrayList<>();
 
-		Long id = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L);
-		if (id > 0L) {
+		Long id = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1);
+		if (id == null || id == 0L) {
+			setCategory(null);
+			setSubCategory(null);
+		} else {
 			// set category, subcategory
 			CategoryVM cat = CategoryCache.getCategory(id);
 			if (cat.parentId > 0) {
@@ -116,21 +124,18 @@ public class SearchProductFragment extends TrackedFragment {
 
 			setCategory(category);
 			setSubCategory(subCategory);
-		} else {
-			setCategory(null);
-			setSubCategory(null);
 		}
 
 		searchLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (getArguments().getString("searchText") != null) {
+				if(searchView.getQuery().toString() != null && !searchView.getQuery().toString().equals("")) {
 					Intent intent = new Intent(getActivity(), SearchResultActivity.class);
-					intent.putExtra("searchText", getArguments().getString("searchText"));
-					intent.putExtra("catId", catId);
+					intent.putExtra("searchText", searchView.getQuery().toString());
+					intent.putExtra(ViewUtil.BUNDLE_KEY_ID, catId);
 					intent.putExtra("flag", "product");
 					startActivity(intent);
-				} else {
+				}else{
 					Toast.makeText(getActivity(),"Enter search Text",Toast.LENGTH_LONG).show();
 				}
 			}
@@ -141,6 +146,7 @@ public class SearchProductFragment extends TrackedFragment {
 				new RecyclerView.ItemDecoration() {
 					@Override
 					public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+
 						ViewUtil.FeedItemPosition feedItemPosition =
 								ViewUtil.getFeedItemPosition(view, RECYCLER_VIEW_COLUMN_SIZE, false);
 						if (feedItemPosition == ViewUtil.FeedItemPosition.HEADER) {
@@ -196,6 +202,7 @@ public class SearchProductFragment extends TrackedFragment {
 				initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
 			}
 		});
+
 
 		return view;
 	}

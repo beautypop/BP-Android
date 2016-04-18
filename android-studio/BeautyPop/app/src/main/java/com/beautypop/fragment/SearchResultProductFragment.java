@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,7 +123,10 @@ public class SearchResultProductFragment extends TrackedFragment {
 
 	protected void loadFeed(Long offset) {
 		ViewUtil.showSpinner(getActivity());
-		AppController.getApiService().searchProduct(getArguments().getString("searchText"),getArguments().getLong("catId"),offset,new Callback<List<PostVMLite>>() {
+		Log.d("searchText ::: ",getArguments().getString("searchText"));
+		Log.d("id ::: " ,getArguments().getLong(ViewUtil.BUNDLE_KEY_ID)+"");
+		Log.d("offset ::: ",offset+"");
+		AppController.getApiService().searchProduct(getArguments().getString("searchText"),getArguments().getLong(ViewUtil.BUNDLE_KEY_ID,-1),offset,new Callback<List<PostVMLite>>() {
 			@Override
 			public void success(List<PostVMLite> postVMLites, Response response) {
 				if(postVMLites.size() == 0){

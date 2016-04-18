@@ -35,29 +35,9 @@ public class CategoryActivity extends TrackedFragmentActivity {
 		searchImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				searchImage.setVisibility(View.GONE);
-				searchView.setVisibility(View.VISIBLE);
-				searchView.setIconified(false);
-			}
-		});
-
-		searchView.setOnSearchClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				view.setBackgroundColor(Color.WHITE);
-				newPostAction.setVisibility(View.GONE);
-			}
-		});
-
-		searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-			@Override
-			public boolean onClose() {
-				searchView.setVisibility(View.GONE);
-				searchImage.setVisibility(View.VISIBLE);
-				newPostAction.setVisibility(View.VISIBLE);
-				searchView.setBackgroundResource(R.drawable.actionbar_bg_red);
-				toolBar.setBackgroundResource(R.drawable.actionbar_bg_red);
-				return false;
+				Intent intent = new Intent(CategoryActivity.this,SearchActivity.class);
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L));
+				startActivity(intent);
 			}
 		});
 
@@ -67,19 +47,7 @@ public class CategoryActivity extends TrackedFragmentActivity {
             catId = ViewUtil.getIntentFilterLastPathSegment(getIntent());
         }
 
-		final long searchCatId = catId;
-		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-			@Override
-			public boolean onQueryTextSubmit(String searchText) {
-				ViewUtil.startSearchActivity(CategoryActivity.this, searchCatId);
-				return false;
-			}
-
-			@Override
-			public boolean onQueryTextChange(String s) {
-				return false;
-			}
-		});
+		
 
         Bundle bundle = new Bundle();
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, DefaultValues.DEFAULT_CATEGORY_FEED_TYPE.name());
