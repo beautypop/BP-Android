@@ -572,17 +572,17 @@ public class ViewUtil {
     }
 
     public static void setClickableText(TextView textView, String clickableText, String text, boolean prepend, View.OnClickListener listener) {
-        SpannableString link = new SpannableString("");
         if (!StringUtils.isEmpty(clickableText)) {
-            link = setLinkSpan(clickableText, listener);
-        }
-
-        if (prepend) {
-            textView.setText(link);
-            textView.append(" " + text);
+            SpannableString link = setLinkSpan(clickableText, listener);
+            if (prepend) {
+                textView.setText(link);
+                textView.append(" " + text);
+            } else {
+                textView.setText(text + " ");
+                textView.append(link);
+            }
         } else {
-            textView.setText(text + " ");
-            textView.append(link);
+            textView.setText(text);
         }
 
         setLinksClickable(textView);
@@ -1163,6 +1163,10 @@ public class ViewUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(intent);
+    }
+
+    public static void startNewPostActivity(Activity activity) {
+        startNewPostActivity(activity, -1L);
     }
 
     public static void startNewPostActivity(Activity activity, Long catId) {

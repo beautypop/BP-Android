@@ -59,7 +59,7 @@ public abstract class AbstractListViewActivity extends TrackedFragmentActivity {
         listAdapter = getListAdapter();
         listView.setAdapter(listAdapter);
 
-        final Long objId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
+        final Long objId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L);
         listView.setOnScrollListener(new InfiniteScrollListener(
                 DefaultValues.DEFAULT_INFINITE_SCROLL_VISIBLE_THRESHOLD, false, false) {
             @Override

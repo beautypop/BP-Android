@@ -111,7 +111,7 @@ public class MainActivity extends TrackedFragmentActivity {
         newPostLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewUtil.startNewPostActivity(MainActivity.this, 0L);
+                ViewUtil.startNewPostActivity(MainActivity.this);
             }
         });
 

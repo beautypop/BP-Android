@@ -24,7 +24,6 @@ public class SearchResultActivity extends FragmentActivity {
 	private ImageView backImage;
 	public SearchView searchView;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,18 +50,15 @@ public class SearchResultActivity extends FragmentActivity {
 			fragment.setTrackedOnce();
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
-
-		}else {
+		} else {
 			fragment = new SearchResultProductFragment();
 			bundle.putString("searchText", getIntent().getStringExtra("searchText"));
-			bundle.putLong("catId",getIntent().getLongExtra("catId",0L));
+			bundle.putLong("catId",getIntent().getLongExtra("catId", -1L));
 			fragment.setArguments(bundle);
 			fragment.setTrackedOnce();
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
-
 		}
-
 	}
 
 	class SearchResultPagerAdapter extends FragmentStatePagerAdapter {
@@ -92,7 +88,7 @@ public class SearchResultActivity extends FragmentActivity {
 				case 0: {
 					fragment = new SearchResultProductFragment();
 					bundle.putString("searchText",getIntent().getStringExtra("searchText"));
-					bundle.putLong("catId",getIntent().getLongExtra("catId",0L));
+					bundle.putLong("catId",getIntent().getLongExtra("catId", -1L));
 					break;
 				}
 				// USER
@@ -114,5 +110,4 @@ public class SearchResultActivity extends FragmentActivity {
 			return fragment;
 		}
 	}
-
 }

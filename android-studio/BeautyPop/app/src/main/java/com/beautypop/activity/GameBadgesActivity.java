@@ -101,7 +101,7 @@ public class GameBadgesActivity extends TrackedFragmentActivity {
             }
         });
 
-        userId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
+        userId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L);
 
         loadBadges(userId);
     }

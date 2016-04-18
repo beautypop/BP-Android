@@ -47,7 +47,7 @@ public class ReportPostActivity extends TrackedFragmentActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            postId = extras.getLong(ViewUtil.BUNDLE_KEY_ID, 0L);
+            postId = extras.getLong(ViewUtil.BUNDLE_KEY_ID, -1L);
         }
 
         setToolbarTitle(getString(R.string.report_post));

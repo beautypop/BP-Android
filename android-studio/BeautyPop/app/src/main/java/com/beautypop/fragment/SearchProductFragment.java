@@ -102,11 +102,8 @@ public class SearchProductFragment extends TrackedFragment {
 
 		items = new ArrayList<>();
 
-		Long id = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, 0L);
-		if (id == null || id == 0L) {
-			setCategory(null);
-			setSubCategory(null);
-		} else {
+		Long id = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L);
+		if (id > 0L) {
 			// set category, subcategory
 			CategoryVM cat = CategoryCache.getCategory(id);
 			if (cat.parentId > 0) {
@@ -119,19 +116,21 @@ public class SearchProductFragment extends TrackedFragment {
 
 			setCategory(category);
 			setSubCategory(subCategory);
+		} else {
+			setCategory(null);
+			setSubCategory(null);
 		}
 
 		searchLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
-				if(getArguments().getString("searchText") != null) {
+				if (getArguments().getString("searchText") != null) {
 					Intent intent = new Intent(getActivity(), SearchResultActivity.class);
 					intent.putExtra("searchText", getArguments().getString("searchText"));
 					intent.putExtra("catId", catId);
 					intent.putExtra("flag", "product");
 					startActivity(intent);
-				}else{
+				} else {
 					Toast.makeText(getActivity(),"Enter search Text",Toast.LENGTH_LONG).show();
 				}
 			}
@@ -142,7 +141,6 @@ public class SearchProductFragment extends TrackedFragment {
 				new RecyclerView.ItemDecoration() {
 					@Override
 					public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-
 						ViewUtil.FeedItemPosition feedItemPosition =
 								ViewUtil.getFeedItemPosition(view, RECYCLER_VIEW_COLUMN_SIZE, false);
 						if (feedItemPosition == ViewUtil.FeedItemPosition.HEADER) {
@@ -154,10 +152,6 @@ public class SearchProductFragment extends TrackedFragment {
 						}
 					}
 				});
-
-
-
-
 
 		feedAdapter = new FeedViewAdapter(getActivity(), items, null, false);
 		feedView.setAdapter(feedAdapter);
@@ -202,7 +196,6 @@ public class SearchProductFragment extends TrackedFragment {
 				initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
 			}
 		});
-
 
 		return view;
 	}

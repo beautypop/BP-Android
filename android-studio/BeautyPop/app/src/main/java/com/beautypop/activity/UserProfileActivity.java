@@ -30,8 +30,8 @@ public class UserProfileActivity extends TrackedFragmentActivity {
             }
         });
 
-        long userId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
-        if (userId == 0) {
+        long userId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L);
+        if (userId <= 0L) {
             userId = ViewUtil.getIntentFilterLastPathSegment(getIntent());
         }
 

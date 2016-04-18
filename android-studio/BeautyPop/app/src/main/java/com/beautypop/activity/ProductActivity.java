@@ -218,8 +218,8 @@ public class ProductActivity extends TrackedFragmentActivity {
             }
         });
 
-        postId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
-        if (postId == 0) {
+        postId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L);
+        if (postId <= 0L) {
             postId = ViewUtil.getIntentFilterLastPathSegment(getIntent());
         }
 

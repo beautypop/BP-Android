@@ -157,11 +157,8 @@ public class NewPostActivity extends TrackedFragmentActivity{
             }
         });
 
-        Long id = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, 0L);
-        if (id == null || id == 0L) {
-            setCategory(null);
-            setSubCategory(null);
-        } else {
+        Long id = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L);
+        if (id > 0L) {
             // set category, subcategory
             CategoryVM cat = CategoryCache.getCategory(id);
             if (cat.parentId > 0) {
@@ -174,6 +171,9 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
             setCategory(category);
             setSubCategory(subCategory);
+        } else {
+            setCategory(null);
+            setSubCategory(null);
         }
         //Log.d(TAG, "onCreate: category="+category.id+" subCategory="+subCategory.id);
 

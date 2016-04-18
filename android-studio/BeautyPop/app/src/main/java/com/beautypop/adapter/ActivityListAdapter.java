@@ -115,6 +115,9 @@ public class ActivityListAdapter extends BaseAdapter {
             case "NEW_GAME_BADGE":
                 message = activity.getString(R.string.activity_game_badge) + "\n\"" + item.getTargetName() + "\"";
                 break;
+            case "TIPS_NEW_USER":
+                message = activity.getString(R.string.activity_tips_new_user);
+                break;
         }
 
         // skip unknown activities
@@ -166,7 +169,23 @@ public class ActivityListAdapter extends BaseAdapter {
                         ViewUtil.startUserProfileActivity(activity, item.getActor());
                     }
                 });
-                postImage.setVisibility(View.INVISIBLE);
+                postImage.setVisibility(View.GONE);
+                break;
+            case "TIPS_NEW_USER":
+                // open new post page
+                activityLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startNewPostActivity(activity);
+                    }
+                });
+                messageText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startNewPostActivity(activity);
+                    }
+                });
+                postImage.setVisibility(View.GONE);
                 break;
             case "NEW_GAME_BADGE":
             default:
@@ -183,7 +202,7 @@ public class ActivityListAdapter extends BaseAdapter {
                         ViewUtil.startGameBadgesActivity(activity, UserInfoCache.getUser().id);
                     }
                 });
-                postImage.setVisibility(View.INVISIBLE);
+                postImage.setVisibility(View.GONE);
                 break;
         }
     }
