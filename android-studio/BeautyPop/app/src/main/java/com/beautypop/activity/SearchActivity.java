@@ -58,11 +58,11 @@ public class SearchActivity extends FragmentActivity {
 				FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 				fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
 
-				productText.setBackgroundColor(getResources().getColor(R.color.dark_gray));
+				productText.setBackgroundColor(getResources().getColor(R.color.gray));
 				productText.setTextColor(getResources().getColor(R.color.white));
 
 				userText.setBackgroundColor(getResources().getColor(R.color.white));
-				userText.setTextColor(getResources().getColor(R.color.dark_gray));
+				userText.setTextColor(getResources().getColor(R.color.gray));
 			}
 		});
 
@@ -79,11 +79,11 @@ public class SearchActivity extends FragmentActivity {
 				FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 				fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
 
-				userText.setBackgroundColor(getResources().getColor(R.color.dark_gray));
+				userText.setBackgroundColor(getResources().getColor(R.color.gray));
 				userText.setTextColor(getResources().getColor(R.color.white));
 
 				productText.setBackgroundColor(getResources().getColor(R.color.white));
-				productText.setTextColor(getResources().getColor(R.color.dark_gray));
+				productText.setTextColor(getResources().getColor(R.color.gray));
 			}
 		});
 
