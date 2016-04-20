@@ -27,7 +27,9 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+
 public class SearchResultProductFragment extends TrackedFragment {
+
 
 	public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
 
@@ -45,14 +47,15 @@ public class SearchResultProductFragment extends TrackedFragment {
 	protected Long cnt = 1L;
 
 	protected PullToRefreshView pullListView;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+
 		View view = inflater.inflate(R.layout.search_result_product_fragment, container, false);
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
@@ -65,6 +68,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 				new RecyclerView.ItemDecoration() {
 					@Override
 					public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+
 						ViewUtil.FeedItemPosition feedItemPosition =
 								ViewUtil.getFeedItemPosition(view, RECYCLER_VIEW_COLUMN_SIZE, false);
 						if (feedItemPosition == ViewUtil.FeedItemPosition.HEADER) {
@@ -111,6 +115,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 
 	protected void loadFeedItemsToList(List<PostVMLite> posts) {
 
+		Log.d("ResultProductFragment ::: ",posts.size()+"");
 		items.addAll(posts);
 		feedAdapter.notifyDataSetChanged();
 		ViewUtil.stopSpinner(getActivity());
@@ -119,32 +124,36 @@ public class SearchResultProductFragment extends TrackedFragment {
 
 	protected void loadFeed(Long offset) {
 		ViewUtil.showSpinner(getActivity());
-
 		Log.d("searchText ::: ",getArguments().getString("searchText"));
 		Log.d("id ::: " ,getArguments().getLong(ViewUtil.BUNDLE_KEY_ID)+"");
 		Log.d("offset ::: ",offset+"");
-		AppController.getApiService().searchProducts(
-                getArguments().getString("searchText"),
-                getArguments().getLong(ViewUtil.BUNDLE_KEY_ID,-1),
-                offset,
-                new Callback<List<PostVMLite>>() {
-                    @Override
-                    public void success(List<PostVMLite> postVMLites, Response response) {
-                        if(postVMLites.size() == 0){
-                            noDataText.setVisibility(View.VISIBLE);
-                            feedView.setVisibility(View.GONE);
-                        }
-                        loadFeedItemsToList(postVMLites);
-                    }
+		AppController.getApiService().searchProducts(getArguments().getString("searchText"),getArguments().getLong(ViewUtil.BUNDLE_KEY_ID,-1),offset,new Callback<List<PostVMLite>>() {
+			@Override
+			public void success(List<PostVMLite> postVMLites, Response response) {
+				Log.d("postVMLites size ::: ",postVMLites.size()+"");
+				if(postVMLites.size() == 0){
+					noDataText.setVisibility(View.VISIBLE);
+					feedView.setVisibility(View.GONE);
+				}else {
+					loadFeedItemsToList(postVMLites);
+				}
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        noDataText.setVisibility(View.VISIBLE);
-                        feedView.setVisibility(View.GONE);
-                        error.printStackTrace();
-                        ViewUtil.stopSpinner(getActivity());
-                    }
-                });
+			}
+
+			@Override
+			public void failure(RetrofitError error) {
+
+				if(items.size() == 0) {
+					noDataText.setVisibility(View.VISIBLE);
+					feedView.setVisibility(View.GONE);
+				}
+
+				error.printStackTrace();
+				ViewUtil.stopSpinner(getActivity());
+
+			}
+		});
+
 	}
 
 	protected void attachEndlessScrollListener() {
@@ -152,8 +161,10 @@ public class SearchResultProductFragment extends TrackedFragment {
 		feedView.setOnScrollListener(new EndlessScrollListener(layoutManager) {
 			@Override
 			public void onLoadMore(Long offset) {
+				Log.d("SearchResultFragment","Scrolled ::"+cnt);
 				loadFeed(cnt);
 				cnt ++;
+
 			}
 
 			@Override

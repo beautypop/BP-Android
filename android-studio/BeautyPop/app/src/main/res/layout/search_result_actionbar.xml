@@ -40,6 +40,14 @@
             android:gravity="center"
             android:singleLine="true" />
 
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_centerInParent="true"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"

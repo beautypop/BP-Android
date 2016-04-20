@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
@@ -25,6 +26,7 @@ public class SearchResultActivity extends FragmentActivity {
 
 	private ImageView backImage;
 	public SearchView searchView;
+	private TextView titleText;
 
 
 	@Override
@@ -34,9 +36,11 @@ public class SearchResultActivity extends FragmentActivity {
 
 		backImage = (ImageView) findViewById(R.id.backImage);
 		searchView = (SearchView) findViewById(R.id.searchView);
+		titleText = (TextView) findViewById(R.id.titleText);
 
-		searchView.setQuery(getIntent().getStringExtra("searchText"),false);
-		searchView.setIconified(false);
+		searchView.setVisibility(View.GONE);
+		titleText.setText(getIntent().getStringExtra("searchText"));
+		//searchView.setIconified(false);
 		//searchView.setVisibility(View.GONE);
 
 
