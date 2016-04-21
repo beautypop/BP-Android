@@ -47,7 +47,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -1187,7 +1186,7 @@ public class ViewUtil {
 
     public static void startCategoryActivity(Activity activity, Long catId) {
         Intent intent = new Intent(activity, CategoryActivity.class);
-        intent.putExtra(BUNDLE_KEY_ID, catId);
+        intent.putExtra(BUNDLE_KEY_CATEGORY_ID, catId);
         intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
     }

@@ -56,12 +56,13 @@
 
         <ImageView
             android:id="@+id/newPostAction"
-            android:layout_width="35dp"
+            android:layout_width="32dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:src="@drawable/btn_sell" />
+            android:src="@drawable/btn_sell"
+            android:layout_marginLeft="10dp" />
 
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

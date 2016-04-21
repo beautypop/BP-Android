@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragmentActivity;
 import com.beautypop.fragment.UserProfileFeedViewFragment;
+import com.beautypop.util.DefaultValues;
+import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ViewUtil;
 
 public class UserProfileActivity extends TrackedFragmentActivity {
@@ -36,6 +38,8 @@ public class UserProfileActivity extends TrackedFragmentActivity {
         }
 
         Bundle bundle = new Bundle();
+        bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, FeedFilter.FeedType.USER_POSTED.name());
+        bundle.putString(ViewUtil.BUNDLE_KEY_FEED_FILTER_CONDITION_TYPE, DefaultValues.DEFAULT_FEED_FILTER_CONDITION_TYPE.name());
         bundle.putLong(ViewUtil.BUNDLE_KEY_ID, userId);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

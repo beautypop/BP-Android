@@ -16,7 +16,6 @@ public class DefaultValues {
     public static final int HTTP_STATUS_BAD_REQUEST = 400;
 
     // Default feeds
-    public static final FeedFilter.FeedType DEFAULT_HOME_FEED_TYPE = FeedFilter.FeedType.HOME_EXPLORE;
     public static final FeedFilter.FeedType DEFAULT_CATEGORY_FEED_TYPE = FeedFilter.FeedType.CATEGORY_POPULAR;
     public static final FeedFilter.FeedType DEFAULT_USER_FEED_TYPE = FeedFilter.FeedType.USER_POSTED;
     public static final FeedFilter.ConditionType DEFAULT_FEED_FILTER_CONDITION_TYPE = FeedFilter.ConditionType.ALL;

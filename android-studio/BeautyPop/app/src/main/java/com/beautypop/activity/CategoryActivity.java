@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.SearchView;
 
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragmentActivity;
@@ -18,6 +17,7 @@ public class CategoryActivity extends TrackedFragmentActivity {
 
 	private View toolBar;
 	private ImageView newPostAction, searchImage;
+    private long catId = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,25 +29,23 @@ public class CategoryActivity extends TrackedFragmentActivity {
 		searchImage = (ImageView) findViewById(R.id.searchImage);
 		newPostAction = (ImageView)findViewById(R.id.newPostAction);
 
-		searchImage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(CategoryActivity.this,SearchActivity.class);
-				intent.putExtra(ViewUtil.BUNDLE_KEY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L));
-				startActivity(intent);
-			}
-		});
-
         // feed filter keys
-		long catId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L);
+        catId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L);
         if (catId == -1) {
             catId = ViewUtil.getIntentFilterLastPathSegment(getIntent());
         }
 
+        searchImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewUtil.startSearchActivity(CategoryActivity.this, catId);
+            }
+        });
+
         Bundle bundle = new Bundle();
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, DefaultValues.DEFAULT_CATEGORY_FEED_TYPE.name());
         bundle.putString(ViewUtil.BUNDLE_KEY_FEED_FILTER_CONDITION_TYPE, DefaultValues.DEFAULT_FEED_FILTER_CONDITION_TYPE.name());
-        bundle.putLong(ViewUtil.BUNDLE_KEY_ID, catId);
+        bundle.putLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, catId);
 
         CategoryFeedViewFragment fragment = new CategoryFeedViewFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

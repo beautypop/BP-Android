@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.beautypop.R;
 import com.beautypop.app.AppController;
-import com.beautypop.app.UserInfoCache;
 import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.PostVMLite;
@@ -24,6 +23,16 @@ public class FeedViewFragment extends AbstractFeedViewFragment {
     private static final String TAG = FeedViewFragment.class.getName();
 
     protected Callback<List<PostVMLite>> feedCallback;
+
+    @Override
+    protected void initFeedFilter() {
+        FeedFilter.FeedType feedType = getFeedType(
+                getArguments().getString(ViewUtil.BUNDLE_KEY_FEED_TYPE));
+        FeedFilter.ConditionType conditionType = getFeedFilterConditionType(
+                getArguments().getString(ViewUtil.BUNDLE_KEY_FEED_FILTER_CONDITION_TYPE));
+        Long objId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1);
+        setFeedFilter(new FeedFilter(feedType, conditionType, objId));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.beautypop.R;
-import com.beautypop.activity.MainActivity;
 import com.beautypop.util.SharedPreferencesUtil;
 
 public class SellerFollowingFeedViewFragment extends FeedViewFragment {

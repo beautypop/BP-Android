@@ -53,6 +53,16 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
     private ImageView dismissTipsButton;
 
     @Override
+    protected void initFeedFilter() {
+        FeedFilter.FeedType feedType = getFeedType(
+                getArguments().getString(ViewUtil.BUNDLE_KEY_FEED_TYPE));
+        FeedFilter.ConditionType conditionType = getFeedFilterConditionType(
+                getArguments().getString(ViewUtil.BUNDLE_KEY_FEED_FILTER_CONDITION_TYPE));
+        Long objId = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1);
+        setFeedFilter(new FeedFilter(feedType, conditionType, objId));
+    }
+
+    @Override
     protected View getHeaderView(LayoutInflater inflater) {
         if (headerView == null) {
             headerView = inflater.inflate(R.layout.category_feed_view_header, null);
@@ -157,17 +167,8 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
         */
 
         // init
-        catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1L);
+        catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L);
         setCategory(catId);
-
-        /*
-        if (!getArguments().getString(ViewUtil.BUNDLE_KEY_SOURCE).equals("FromDetailActivity")) {
-            catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1L);
-            setCategory();
-        } else {
-            getCategory(getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1L));
-        }
-        */
 
         return view;
     }
