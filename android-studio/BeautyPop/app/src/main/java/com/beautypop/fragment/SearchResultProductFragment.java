@@ -18,7 +18,6 @@ import com.beautypop.listener.EndlessScrollListener;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.PostVMLite;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,36 +28,32 @@ import retrofit.client.Response;
 
 
 public class SearchResultProductFragment extends TrackedFragment {
+    private static final String TAG = SearchResultProductFragment.class.getName();
 
+    public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
 
-	public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
+    protected static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_TOP_MARGIN);
+    protected static final int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_BOTTOM_MARGIN);
+    protected static final int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_SIDE_MARGIN);
+    protected static final int LEFT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
+    protected static final int RIGHT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
 
-	private static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_TOP_MARGIN);
-	private static final int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_BOTTOM_MARGIN);
-	private static final int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_SIDE_MARGIN);
-	private static final int LEFT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
-	private static final int RIGHT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
-
-	protected TextView noDataText;
+    protected TextView noDataText;
 	protected RecyclerView feedView;
 	protected FeedViewAdapter feedAdapter;
 	protected GridLayoutManager layoutManager;
 	protected List<PostVMLite> items;
-	protected Long cnt = 1L;
 
-	protected PullToRefreshView pullListView;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.search_result_product_fragment, container, false);
 
-		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
 		noDataText = (TextView) view.findViewById(R.id.noDataText);
 
 		items = new ArrayList<>();
@@ -87,25 +82,12 @@ public class SearchResultProductFragment extends TrackedFragment {
 		// layout manager
 		layoutManager = new GridLayoutManager(getActivity(), RECYCLER_VIEW_COLUMN_SIZE);
 		layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-			@Override
-			public int getSpanSize(int position) {
-				return feedAdapter.isHeader(position) ? layoutManager.getSpanCount() : 1;
-			}
-		});
+            @Override
+            public int getSpanSize(int position) {
+                return feedAdapter.isHeader(position) ? layoutManager.getSpanCount() : 1;
+            }
+        });
 		feedView.setLayoutManager(layoutManager);
-
-		// pull refresh
-		pullListView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				pullListView.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						pullListView.setRefreshing(false);
-					}
-				}, DefaultValues.PULL_TO_REFRESH_DELAY);
-			}
-		});
 
 		loadFeed(0L);
 		attachEndlessScrollListener();
@@ -114,57 +96,44 @@ public class SearchResultProductFragment extends TrackedFragment {
 	}
 
 	protected void loadFeedItemsToList(List<PostVMLite> posts) {
-
-		Log.d("ResultProductFragment ::: ",posts.size()+"");
 		items.addAll(posts);
 		feedAdapter.notifyDataSetChanged();
 		ViewUtil.stopSpinner(getActivity());
-
 	}
 
-	protected void loadFeed(Long offset) {
+	protected void loadFeed(final Long offset) {
 		ViewUtil.showSpinner(getActivity());
-		Log.d("searchText ::: ",getArguments().getString("searchText"));
-		Log.d("id ::: " ,getArguments().getLong(ViewUtil.BUNDLE_KEY_ID)+"");
-		Log.d("offset ::: ",offset+"");
-		AppController.getApiService().searchProducts(getArguments().getString("searchText"),getArguments().getLong(ViewUtil.BUNDLE_KEY_ID,-1),offset,new Callback<List<PostVMLite>>() {
-			@Override
-			public void success(List<PostVMLite> postVMLites, Response response) {
-				Log.d("postVMLites size ::: ",postVMLites.size()+"");
-				if(postVMLites.size() == 0){
-					noDataText.setVisibility(View.VISIBLE);
-					feedView.setVisibility(View.GONE);
-				}else {
-					loadFeedItemsToList(postVMLites);
-				}
 
-			}
+        String searchKey = getArguments().getString(ViewUtil.BUNDLE_KEY_NAME);
+        long catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1);
 
-			@Override
-			public void failure(RetrofitError error) {
+        Log.d(TAG, "loadFeed: searchKey=" + searchKey + " catId="+ catId+" offset="+offset);
+		AppController.getApiService().searchProducts(searchKey, catId, offset, new Callback<List<PostVMLite>>() {
+            @Override
+            public void success(List<PostVMLite> posts, Response response) {
+                Log.d(TAG, "loadFeed.success: posts.size="+posts.size());
+                ViewUtil.stopSpinner(getActivity());
+                if (offset == 0 && posts.size() == 0) {
+                    noDataText.setVisibility(View.VISIBLE);
+                    feedView.setVisibility(View.GONE);
+                } else if (posts.size() > 0){
+                    loadFeedItemsToList(posts);
+                }
+            }
 
-				if(items.size() == 0) {
-					noDataText.setVisibility(View.VISIBLE);
-					feedView.setVisibility(View.GONE);
-				}
-
-				error.printStackTrace();
-				ViewUtil.stopSpinner(getActivity());
-
-			}
+            @Override
+            public void failure(RetrofitError error) {
+                ViewUtil.stopSpinner(getActivity());
+                Log.e(TAG, "loadFeed.failure", error);
+            }
 		});
-
 	}
 
 	protected void attachEndlessScrollListener() {
-
-		feedView.setOnScrollListener(new EndlessScrollListener(layoutManager) {
+		feedView.setOnScrollListener(new EndlessScrollListener(layoutManager, false) {
 			@Override
 			public void onLoadMore(Long offset) {
-				Log.d("SearchResultFragment","Scrolled ::"+cnt);
-				loadFeed(cnt);
-				cnt ++;
-
+				loadFeed(offset);
 			}
 
 			@Override
@@ -176,5 +145,4 @@ public class SearchResultProductFragment extends TrackedFragment {
 			}
 		});
 	}
-
 }

@@ -117,7 +117,7 @@ public class EditPostActivity extends NewPostActivity {
                     }
                 }, DefaultValues.DEFAULT_HANDLER_DELAY);
 
-                Log.e(ProductActivity.class.getSimpleName(), "getPost: failure", error);
+                Log.e(TAG, "getPost: failure", error);
             }
         });
     }
@@ -151,7 +151,7 @@ public class EditPostActivity extends NewPostActivity {
             public void failure(RetrofitError error) {
                 reset();
                 Toast.makeText(EditPostActivity.this, String.format(EditPostActivity.this.getString(R.string.post_failed), getActionTypeText()), Toast.LENGTH_SHORT).show();
-                Log.e(EditPostActivity.class.getSimpleName(), "doPost: failure", error);
+                Log.e(TAG, "doPost: failure", error);
                 pending = false;
             }
         });

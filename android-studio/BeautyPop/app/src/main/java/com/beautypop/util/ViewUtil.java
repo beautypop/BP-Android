@@ -76,6 +76,7 @@ import com.beautypop.activity.ProductActivity;
 import com.beautypop.activity.CommentsActivity;
 import com.beautypop.activity.ProductConversationListActivity;
 import com.beautypop.activity.SearchActivity;
+import com.beautypop.activity.SearchResultActivity;
 import com.beautypop.activity.SelectImageActivity;
 import com.beautypop.activity.SettingsActivity;
 import com.beautypop.activity.SignupActivity;
@@ -447,7 +448,7 @@ public class ViewUtil {
             dot.setImageDrawable(AppController.getInstance().getResources().getDrawable(imageResource));
             //dot.setAlpha(80F);
 
-            int dimension = ViewUtil.getRealDimension(PAGER_INDICATOR_DOT_DIMENSION);
+            int dimension = getRealDimension(PAGER_INDICATOR_DOT_DIMENSION);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dimension, dimension);
             params.gravity = Gravity.CENTER_VERTICAL;
             dotsLayout.addView(dot, params);
@@ -1132,7 +1133,7 @@ public class ViewUtil {
 
     public static void startLoginActivity(Activity activity, String email) {
         Intent intent = new Intent(activity, LoginActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_NAME, email);
+        intent.putExtra(BUNDLE_KEY_NAME, email);
         activity.startActivity(intent);
     }
 
@@ -1142,8 +1143,8 @@ public class ViewUtil {
 
     public static void startSignupDetailActivity(Activity activity, String username) {
         Intent intent = new Intent(activity, SignupDetailActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_NAME, username);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_NAME, username);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
@@ -1153,8 +1154,8 @@ public class ViewUtil {
 
     public static void startSplashActivity(Activity activity, String key) {
         Intent intent = new Intent(activity, SplashActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_LOGIN_KEY, key);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_LOGIN_KEY, key);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
@@ -1171,44 +1172,44 @@ public class ViewUtil {
 
     public static void startNewPostActivity(Activity activity, Long catId) {
         Intent intent = new Intent(activity, NewPostActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, catId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_CATEGORY_ID, catId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
     }
 
     public static void startEditPostActivity(Activity activity, Long postId, Long catId) {
         Intent intent = new Intent(activity, EditPostActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, postId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, catId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, postId);
+        intent.putExtra(BUNDLE_KEY_CATEGORY_ID, catId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
     }
 
     public static void startCategoryActivity(Activity activity, Long catId) {
         Intent intent = new Intent(activity, CategoryActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, catId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, catId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
     }
 
     public static void startProductActivity(Activity activity, Long postId) {
         Intent intent = new Intent(activity, ProductActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, postId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, postId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
     }
 
     public static void startFullscreenImageActivity(Activity activity, String source) {
         Intent intent = new Intent(activity, FullscreenImageActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_IMAGE_SOURCE, source);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_IMAGE_SOURCE, source);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
     public static void startUserProfileActivity(Activity activity, Long userId) {
         Intent intent = new Intent(activity, UserProfileActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, userId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, userId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
@@ -1219,28 +1220,28 @@ public class ViewUtil {
 
     public static void startGameBadgesActivity(Activity activity, Long userId) {
         Intent intent = new Intent(activity, GameBadgesActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, userId);
+        intent.putExtra(BUNDLE_KEY_ID, userId);
         activity.startActivity(intent);
     }
 
     public static void startFollowersActivity(Activity activity, Long userId) {
         Intent intent = new Intent(activity, FollowersActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, userId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, userId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
     public static void startFollowingsActivity(Activity activity, Long userId) {
         Intent intent = new Intent(activity, FollowingsActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, userId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, userId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
     public static void startCommentsActivity(Activity activity, Long postId) {
         Intent intent = new Intent(activity, CommentsActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, postId);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_ID, postId);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
@@ -1251,7 +1252,7 @@ public class ViewUtil {
 
     public static void startProductConversationListActivity(Activity activity, Long postId) {
         Intent intent = new Intent(activity, ProductConversationListActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ID, postId);
+        intent.putExtra(BUNDLE_KEY_ID, postId);
         activity.startActivity(intent);
     }
 
@@ -1261,10 +1262,10 @@ public class ViewUtil {
 
     public static void startMessageListActivity(Activity activity, ConversationVM conversation, boolean buy, long offeredPrice) {
         Intent intent = new Intent(activity, MessageListActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_OBJECT, conversation);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1, buy);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_ARG2, offeredPrice);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_OBJECT, conversation);
+        intent.putExtra(BUNDLE_KEY_ARG1, buy);
+        intent.putExtra(BUNDLE_KEY_ARG2, offeredPrice);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
     }
 
@@ -1274,15 +1275,28 @@ public class ViewUtil {
 
     public static void startSearchActivity(Activity activity, Long catId) {
         Intent intent = new Intent(activity, SearchActivity.class);
-        if (catId != null && catId != -1L) {
-            intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, catId);
+        if (catId != null && catId > 0) {
+            intent.putExtra(BUNDLE_KEY_CATEGORY_ID, catId);
+        }
+        activity.startActivity(intent);
+    }
+
+    public static void startSearchResultActivity(Activity activity, String actionType, String searchKey) {
+        startSearchResultActivity(activity, actionType, searchKey, null);
+    }
+    public static void startSearchResultActivity(Activity activity, String actionType, String searchKey, Long catId) {
+        Intent intent = new Intent(activity, SearchResultActivity.class);
+        intent.putExtra(BUNDLE_KEY_ACTION_TYPE, actionType);
+        intent.putExtra(ViewUtil.BUNDLE_KEY_NAME, searchKey);
+        if (catId != null && catId > 0) {
+            intent.putExtra(BUNDLE_KEY_CATEGORY_ID, catId);
         }
         activity.startActivity(intent);
     }
 
     public static void startSelectImageActivity(Activity activity, Uri imageUri) {
         Intent intent = new Intent(activity, SelectImageActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_IMAGE_SOURCE, 2);
+        intent.putExtra(BUNDLE_KEY_IMAGE_SOURCE, 2);
         intent.setData(imageUri);
         activity.startActivityForResult(intent, CROP_IMAGE_REQUEST_CODE);
         activity.overridePendingTransition(0, 0);
@@ -1320,8 +1334,8 @@ public class ViewUtil {
 
     public static void startAdminMessageListActivity(Activity activity, AdminConversationVM conversation) {
         Intent intent = new Intent(activity, AdminMessageListActivity.class);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_OBJECT, conversation);
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_OBJECT, conversation);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.startActivity(intent);
     }
 
@@ -1336,12 +1350,12 @@ public class ViewUtil {
     public static void setActivityResult(Activity activity, Long id, Boolean refresh) {
         Intent intent = new Intent();
         if (id != null && id != -1L) {
-            intent.putExtra(ViewUtil.INTENT_RESULT_ID, id);
+            intent.putExtra(INTENT_RESULT_ID, id);
         }
         if (refresh != null) {
-            intent.putExtra(ViewUtil.INTENT_RESULT_REFRESH, refresh);
+            intent.putExtra(INTENT_RESULT_REFRESH, refresh);
         }
-        intent.putExtra(ViewUtil.BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
         activity.setResult(Activity.RESULT_OK, intent);
     }
 
@@ -1382,10 +1396,10 @@ public class ViewUtil {
 
     public static boolean isGcmLaunchTarget(Intent intent) {
         Bundle bundle = intent.getExtras();
-        return bundle != null && bundle.getString(ViewUtil.GCM_LAUNCH_TARGET) != null;
-        //return bundle != null && Boolean.valueOf(bundle.getString(ViewUtil.GCM_LAUNCH_TARGET));
-        //return bundle != null && bundle.getBoolean(ViewUtil.GCM_LAUNCH_TARGET);
-        //return intent != null && intent.getBooleanExtra(ViewUtil.GCM_LAUNCH_TARGET, false);
+        return bundle != null && bundle.getString(GCM_LAUNCH_TARGET) != null;
+        //return bundle != null && Boolean.valueOf(bundle.getString(GCM_LAUNCH_TARGET));
+        //return bundle != null && bundle.getBoolean(GCM_LAUNCH_TARGET);
+        //return intent != null && intent.getBooleanExtra(GCM_LAUNCH_TARGET, false);
     }
 
     /**

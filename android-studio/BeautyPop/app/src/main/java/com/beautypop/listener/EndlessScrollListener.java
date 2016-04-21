@@ -12,7 +12,9 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
     private int visibleThreshold = 5; // The minimum amount of items to have below your current scroll position before loading more.
     int firstVisibleItem, visibleItemCount, totalItemCount;
 
-    private int current_page = 1;
+    private boolean isOffsetItemTag = true;
+
+    private int currentPage = 0;
 
     private static final int HIDE_THRESHOLD = 20;
 
@@ -24,7 +26,12 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
     private LinearLayoutManager mLinearLayoutManager;
 
     public EndlessScrollListener(LinearLayoutManager linearLayoutManager) {
+        this(linearLayoutManager, true);
+    }
+
+    public EndlessScrollListener(LinearLayoutManager linearLayoutManager, boolean isOffsetItemTag) {
         this.mLinearLayoutManager = linearLayoutManager;
+        this.isOffsetItemTag = isOffsetItemTag;
     }
 
     @Override
@@ -34,7 +41,7 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
         visibleItemCount = recyclerView.getChildCount();
         totalItemCount = mLinearLayoutManager.getItemCount();
         firstVisibleItem = mLinearLayoutManager.findFirstVisibleItemPosition();
-        int totalItem = totalItemCount - previousTotal;
+        //int totalItems = totalItemCount - previousTotal;
         if (loading) {
             if (totalItemCount > previousTotal) {
                 loading = false;
@@ -52,15 +59,10 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
                 return;
             }
 
-            Long offset = 0L;
-            offset = (Long) recyclerView.getChildAt(visibleItemCount - 1).getTag();
+            currentPage++;
+            Long offset = isOffsetItemTag? (Long) recyclerView.getChildAt(visibleItemCount - 1).getTag() : currentPage;
             if (offset != null) {
-                if (offset == 0) {
-                    current_page++;
-                    onLoadMore((long)current_page);
-                } else {
-                    onLoadMore(offset);
-                }
+                onLoadMore(offset);
             }
 
             loading = true;
@@ -123,9 +125,10 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
         mControlsVisible = true;
         mScrolledDistance = 0;
         scrollReset = false;
+        currentPage = 0;
     }
 
-    public abstract void onLoadMore(Long current_page);
+    public abstract void onLoadMore(Long offset);
     public abstract void onScrollUp();
     public abstract void onScrollDown();
 }

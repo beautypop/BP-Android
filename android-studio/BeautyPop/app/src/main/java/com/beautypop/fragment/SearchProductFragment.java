@@ -1,7 +1,6 @@
 package com.beautypop.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -23,11 +22,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beautypop.R;
-import com.beautypop.activity.SearchActivity;
-import com.beautypop.activity.SearchResultActivity;
 import com.beautypop.adapter.FeedViewAdapter;
 import com.beautypop.adapter.PopupCategoryListAdapter;
-import com.beautypop.app.AppController;
 import com.beautypop.app.CategoryCache;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.util.DefaultValues;
@@ -35,17 +31,12 @@ import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.PostVMLite;
-import com.yalantis.phoenix.PullToRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
-
 public class SearchProductFragment extends TrackedFragment {
+    private static final String TAG = SearchProductFragment.class.getName();
 
 	protected LinearLayout selectCatLayout, selectSubCatLayout;
 
@@ -58,21 +49,20 @@ public class SearchProductFragment extends TrackedFragment {
 	private static final int LEFT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
 	private static final int RIGHT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
 
-	protected RelativeLayout searchLayout;
-	protected PopupWindow categoryPopup;
-	protected PopupWindow subCategoryPopup;
-	protected RecyclerView feedView;
+    private RelativeLayout searchLayout;
+    private PopupWindow categoryPopup;
+    private PopupWindow subCategoryPopup;
+    private RecyclerView feedView;
 	protected FeedViewAdapter feedAdapter;
-	protected GridLayoutManager layoutManager;
-	protected List<PostVMLite> items;
-	protected TextView selectCatText, selectSubCatText;
-	protected ImageView selectCatIcon, selectSubCatIcon,catIcon,subCatIcon;
-	protected CategoryVM category;
-	protected CategoryVM subCategory;
-	protected TextView catName, subCatName;
-	private Long catId = -1L;
-	protected PullToRefreshView pullListView;
+    private GridLayoutManager layoutManager;
+    private List<PostVMLite> items;
+    private TextView selectCatText, selectSubCatText;
+    private ImageView selectCatIcon, selectSubCatIcon,catIcon,subCatIcon;
+    private CategoryVM category;
+    private CategoryVM subCategory;
+    private TextView catName, subCatName;
 	private SearchView searchView;
+    private Long catId = -1L;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,10 +70,9 @@ public class SearchProductFragment extends TrackedFragment {
 	}
 
 	@Override
-	public View onCreateView(final LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
+	public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.search_product_fragment, container, false);
+
 		selectCatText = (TextView)view. findViewById(R.id.selectCatText);
 		selectSubCatText = (TextView)view. findViewById(R.id.selectSubCatText);
 		selectCatIcon = (ImageView) view.findViewById(R.id.selectCatIcon);
@@ -97,23 +86,17 @@ public class SearchProductFragment extends TrackedFragment {
 		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
 		searchView = (SearchView) getActivity().findViewById(R.id.searchView);
 
-
-		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
-
-		if((Long)getArguments().getLong(ViewUtil.BUNDLE_KEY_ID) != null){
-			catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID,-1);
-		}
 		//ViewUtil.popupInputMethodWindow(getActivity());
 
 		items = new ArrayList<>();
 
-		Long id = getArguments().getLong(ViewUtil.BUNDLE_KEY_ID, -1);
-		if (id == null || id == -1L) {
+		catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1);
+		if (catId == null || catId <= 0) {
 			setCategory(null);
 			setSubCategory(null);
 		} else {
 			// set category, subcategory
-			CategoryVM cat = CategoryCache.getCategory(id);
+			CategoryVM cat = CategoryCache.getCategory(catId);
 			if (cat.parentId > 0) {
 				category = CategoryCache.getCategory(cat.parentId);
 				subCategory = cat;
@@ -129,13 +112,9 @@ public class SearchProductFragment extends TrackedFragment {
 		searchLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(searchView.getQuery().toString() != null && !searchView.getQuery().toString().equals("")) {
-					Intent intent = new Intent(getActivity(), SearchResultActivity.class);
-					intent.putExtra("searchText", searchView.getQuery().toString());
-					intent.putExtra(ViewUtil.BUNDLE_KEY_ID, catId);
-					intent.putExtra("flag", "product");
-					startActivity(intent);
-				}else{
+				if (searchView.getQuery().toString() != null && !searchView.getQuery().toString().equals("")) {
+                    ViewUtil.startSearchResultActivity(getActivity(), "product", searchView.getQuery().toString(), catId);
+				} else {
 					Toast.makeText(getActivity(),"Enter search Text",Toast.LENGTH_LONG).show();
 				}
 			}
@@ -146,7 +125,6 @@ public class SearchProductFragment extends TrackedFragment {
 				new RecyclerView.ItemDecoration() {
 					@Override
 					public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-
 						ViewUtil.FeedItemPosition feedItemPosition =
 								ViewUtil.getFeedItemPosition(view, RECYCLER_VIEW_COLUMN_SIZE, false);
 						if (feedItemPosition == ViewUtil.FeedItemPosition.HEADER) {
@@ -165,25 +143,12 @@ public class SearchProductFragment extends TrackedFragment {
 		// layout manager
 		layoutManager = new GridLayoutManager(getActivity(), RECYCLER_VIEW_COLUMN_SIZE);
 		layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-			@Override
-			public int getSpanSize(int position) {
-				return feedAdapter.isHeader(position) ? layoutManager.getSpanCount() : 1;
-			}
-		});
+            @Override
+            public int getSpanSize(int position) {
+                return feedAdapter.isHeader(position) ? layoutManager.getSpanCount() : 1;
+            }
+        });
 		feedView.setLayoutManager(layoutManager);
-
-		// pull refresh
-		pullListView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				pullListView.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						pullListView.setRefreshing(false);
-					}
-				}, DefaultValues.PULL_TO_REFRESH_DELAY);
-			}
-		});
 
 		selectCatLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -202,7 +167,6 @@ public class SearchProductFragment extends TrackedFragment {
 				initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
 			}
 		});
-
 
 		return view;
 	}
@@ -290,14 +254,14 @@ public class SearchProductFragment extends TrackedFragment {
 					} else {
 						setSubCategory(cat);
 					}
+                    catId = cat.id;
 
 					thisPopup.dismiss();
-					Log.d("SearchResultProductFragment", "initCategoryPopup: listView.onItemClick: category=" + category.getId() + "|" + category.getName());
+					Log.d(TAG, "initCategoryPopup: listView.onItemClick: category=" + category.getId() + "|" + category.getName());
 				}
 			});
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }

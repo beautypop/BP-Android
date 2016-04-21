@@ -357,14 +357,14 @@ public class BeautyPopService {
         api.getMessagesForAdmin(conversationId, offset, AppController.getInstance().getSessionId(), cb);
     }
 
-	//Search APi
-	public void searchUsers(String searchKey,int offset,Callback<List<UserVM>> cb) {
-		api.searchUsers(searchKey,offset,cb);
-	}
+	// search
+    public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
+        api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);
+    }
 
-	public void searchProducts(String searchKey,Long id,Long offset,Callback<List<PostVMLite>> cb) {
-		api.searchProducts(searchKey,id,offset,cb);
-	}
+    public void searchUsers(String searchKey, int offset, Callback<List<SellerVM>> cb) {
+        api.searchUsers(searchKey, offset, AppController.getInstance().getSessionId(), cb);
+    }
 }
 
 

@@ -1,25 +1,20 @@
 package com.beautypop.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beautypop.R;
-import com.beautypop.activity.SearchResultActivity;
-import com.beautypop.adapter.UserListAdapter;
+import com.beautypop.adapter.SellerListAdapter;
 import com.beautypop.app.AppController;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.listener.InfiniteScrollListener;
 import com.beautypop.util.ViewUtil;
-import com.beautypop.viewmodel.PostVMLite;
-import com.beautypop.viewmodel.UserVM;
+import com.beautypop.viewmodel.SellerVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,31 +23,29 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-
 public class SearchResultUserFragment extends TrackedFragment {
+    private static final String TAG = SearchResultProductFragment.class.getName();
 
 	private TextView noDataText;
-	private UserListAdapter userListAdapter;
+	private SellerListAdapter adapter;
 	private ListView userListView;
-	private List<UserVM> items;
+	private List<SellerVM> items;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view =  inflater.inflate(R.layout.search_result_user_fragment, container, false);
 		userListView = (ListView) view.findViewById(R.id.userListView);
 		noDataText = (TextView) view.findViewById(R.id.noDataText);
 		items = new ArrayList<>();
 
-		ViewUtil.showSpinner(getActivity());
-
-		userListAdapter = new UserListAdapter(getActivity(),items);
-		userListView.setAdapter(userListAdapter);
+        adapter = new SellerListAdapter(getActivity(),items);
+		userListView.setAdapter(adapter);
 
 		getUsers(0);
 		attachEndlessScrollListener();
@@ -60,50 +53,43 @@ public class SearchResultUserFragment extends TrackedFragment {
 		return view;
 	}
 
-	protected void loadUsersToList(List<UserVM> vms) {
-
-		Log.d("ResultUserFragment ::: ",vms.size()+"");
+	protected void loadUsersToList(List<SellerVM> vms) {
 		items.addAll(vms);
-		userListAdapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
 		ViewUtil.stopSpinner(getActivity());
-
 	}
 
-	protected void getUsers(int offset){
-		AppController.getApiService().searchUsers(getArguments().getString("searchText"),offset,new Callback<List<UserVM>>() {
-			@Override
-			public void success(List<UserVM> userVMs, Response response) {
+	protected void getUsers(final int offset) {
+        ViewUtil.showSpinner(getActivity());
 
-				Log.d("userVMs sizw ::: ", userVMs.size() + "");
+        String searchKey = getArguments().getString(ViewUtil.BUNDLE_KEY_NAME);
 
-				if(userVMs.size() == 0){
-					noDataText.setVisibility(View.VISIBLE);
-					userListView.setVisibility(View.GONE);
-				}else {
-					loadUsersToList(userVMs);
-				}
+        Log.d(TAG, "loadFeed: searchKey="+searchKey+" offset="+offset);
+        AppController.getApiService().searchUsers(searchKey, offset, new Callback<List<SellerVM>>() {
+            @Override
+            public void success(List<SellerVM> users, Response response) {
+                Log.d(TAG, "loadFeed.success: users.size=" + users.size());
+                ViewUtil.stopSpinner(getActivity());
+                if (offset == 0 && users.size() == 0) {
+                    noDataText.setVisibility(View.VISIBLE);
+                    userListView.setVisibility(View.GONE);
+                } else if (users.size() > 0){
+                    loadUsersToList(users);
+                }
+            }
 
-			}
-			@Override
-			public void failure(RetrofitError error) {
-
-				if(items.size() == 0) {
-					noDataText.setVisibility(View.VISIBLE);
-					userListView.setVisibility(View.GONE);
-				}
-
-				error.printStackTrace();
-				ViewUtil.stopSpinner(getActivity());
-
-			}
-		});
+            @Override
+            public void failure(RetrofitError error) {
+                ViewUtil.stopSpinner(getActivity());
+                Log.e(TAG, "loadFeed.failure", error);
+            }
+        });
 	}
 
 	protected void attachEndlessScrollListener() {
 		userListView.setOnScrollListener(new InfiniteScrollListener() {
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
-				Log.d("attachEndlessScrollListener ::: ", page + "");
 				getUsers(page - 1);
 			}
 

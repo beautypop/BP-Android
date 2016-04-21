@@ -35,77 +35,76 @@ public class SearchActivity extends FragmentActivity {
 
 		searchView.setIconified(false);
 
-		Bundle bundle = new Bundle();
-		TrackedFragment fragment = null;
-		bundle.putLong(ViewUtil.BUNDLE_KEY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L));
-		bundle.putString("searchText",searchKey);
-		fragment = new SearchProductFragment();
-		fragment.setArguments(bundle);
-		fragment.setTrackedOnce();
-		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
-
 		productText.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Bundle bundle = new Bundle();
-				TrackedFragment fragment = null;
-				bundle.putString("searchText",searchKey);
-				bundle.putLong(ViewUtil.BUNDLE_KEY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, -1L));
-				fragment = new SearchProductFragment();
-				fragment.setArguments(bundle);
-				fragment.setTrackedOnce();
-				FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-				fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
-
-				productText.setBackgroundColor(getResources().getColor(R.color.gray));
-				productText.setTextColor(getResources().getColor(R.color.white));
-
-				userText.setBackgroundColor(getResources().getColor(R.color.white));
-				userText.setTextColor(getResources().getColor(R.color.gray));
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                clickSearchProductTab();
+            }
+        });
 
 		userText.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
-				Bundle bundle = new Bundle();
-				TrackedFragment fragment = null;
-				bundle.putString("searchText",searchKey);
-				fragment = new SearchUserFragment();
-				fragment.setArguments(bundle);
-				fragment.setTrackedOnce();
-				FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-				fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
-
-				userText.setBackgroundColor(getResources().getColor(R.color.gray));
-				userText.setTextColor(getResources().getColor(R.color.white));
-
-				productText.setBackgroundColor(getResources().getColor(R.color.white));
-				productText.setTextColor(getResources().getColor(R.color.gray));
+                clickSearchUserTab();
 			}
 		});
 
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-			@Override
-			public boolean onQueryTextSubmit(String s) {
-				return false;
-			}
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
 
-			@Override
-			public boolean onQueryTextChange(String s) {
-				searchKey = s;
+            @Override
+            public boolean onQueryTextChange(String s) {
+                searchKey = s;
 
-				return false;
-			}
-		});
+                return false;
+            }
+        });
 
 		backImage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				onBackPressed();
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        clickSearchProductTab();
 	}
+
+	private void clickSearchProductTab() {
+        Bundle bundle = new Bundle();
+        TrackedFragment fragment = null;
+        bundle.putString(ViewUtil.BUNDLE_KEY_NAME,searchKey);
+        bundle.putLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID,getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L));
+        fragment = new SearchProductFragment();
+        fragment.setArguments(bundle);
+        fragment.setTrackedOnce();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
+
+        productText.setBackgroundColor(getResources().getColor(R.color.gray));
+        productText.setTextColor(getResources().getColor(R.color.white));
+
+        userText.setBackgroundColor(getResources().getColor(R.color.white));
+        userText.setTextColor(getResources().getColor(R.color.gray));
+    }
+
+    private void clickSearchUserTab() {
+        Bundle bundle = new Bundle();
+        TrackedFragment fragment = null;
+        bundle.putString(ViewUtil.BUNDLE_KEY_NAME,searchKey);
+        fragment = new SearchUserFragment();
+        fragment.setArguments(bundle);
+        fragment.setTrackedOnce();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.placeHolder, fragment).commit();
+
+        userText.setBackgroundColor(getResources().getColor(R.color.gray));
+        userText.setTextColor(getResources().getColor(R.color.white));
+
+        productText.setBackgroundColor(getResources().getColor(R.color.white));
+        productText.setTextColor(getResources().getColor(R.color.gray));
+    }
 }
