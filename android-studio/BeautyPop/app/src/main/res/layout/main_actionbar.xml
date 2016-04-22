@@ -55,7 +55,7 @@
 
                 <ImageView
                     android:id="@+id/searchImage"
-                    android:layout_width="35dp"
+                    android:layout_width="32dp"
                     android:src="@drawable/ic_action_search"
                     android:layout_height="match_parent"/>
 
