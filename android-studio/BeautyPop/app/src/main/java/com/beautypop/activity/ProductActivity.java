@@ -784,6 +784,11 @@ public class ProductActivity extends TrackedFragmentActivity {
     }
 
     private void openConversation(final Long postId, final boolean buy, final long offeredPrice) {
+        if (pending) {
+            return;
+        }
+
+        pending = true;
         ConversationCache.open(postId, new Callback<ConversationVM>() {
             @Override
             public void success(ConversationVM vm, Response response) {
@@ -792,12 +797,14 @@ public class ProductActivity extends TrackedFragmentActivity {
                 } else {
                     Toast.makeText(ProductActivity.this, getString(R.string.pm_start_failed), Toast.LENGTH_SHORT).show();
                 }
+                pending = false;
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Toast.makeText(ProductActivity.this, getString(R.string.pm_start_failed), Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "openConversation: failure", error);
+                pending = false;
             }
         });
     }
@@ -806,6 +813,8 @@ public class ProductActivity extends TrackedFragmentActivity {
         if (pending) {
             return;
         }
+
+        ViewUtil.showSpinner(ProductActivity.this);
 
         pending = true;
         AppController.getApiService().soldPost(post.id, new Callback<Response>() {
@@ -818,12 +827,14 @@ public class ProductActivity extends TrackedFragmentActivity {
                 setActivityResult(ItemChangedState.ITEM_UPDATED, post);
 
                 pending = false;
+                ViewUtil.stopSpinner(ProductActivity.this);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Log.e(TAG, "sold: failure", error);
                 pending = false;
+                ViewUtil.stopSpinner(ProductActivity.this);
             }
         });
     }
@@ -1031,6 +1042,8 @@ public class ProductActivity extends TrackedFragmentActivity {
             return;
         }
 
+        ViewUtil.showSpinner(this);
+
         pending = true;
         AppController.getApiService().deletePost(id, new Callback<Response>() {
             @Override
@@ -1041,7 +1054,10 @@ public class ProductActivity extends TrackedFragmentActivity {
 
                 // pass back to feed view to handle
                 setActivityResult(ItemChangedState.ITEM_REMOVED, null);
+
                 pending = false;
+                ViewUtil.stopSpinner(ProductActivity.this);
+
                 finish();
             }
 
@@ -1050,6 +1066,7 @@ public class ProductActivity extends TrackedFragmentActivity {
                 Toast.makeText(ProductActivity.this, getString(R.string.post_delete_failed), Toast.LENGTH_SHORT).show();
                 Log.e(TAG, "deletePost: failure", error);
                 pending = false;
+                ViewUtil.stopSpinner(ProductActivity.this);
             }
         });
     }
