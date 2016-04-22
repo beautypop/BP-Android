@@ -382,7 +382,7 @@ public class ConversationListAdapter extends BaseAdapter {
             });
 
             commentPopup.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
-            ViewUtil.popupInputMethodWindow(activity);
+            ViewUtil.popupInputMethodWindow(activity, commentEditText);
         } catch (Exception e) {
             Log.e(this.getClass().getSimpleName(), "initNotePopup: failure", e);
         }

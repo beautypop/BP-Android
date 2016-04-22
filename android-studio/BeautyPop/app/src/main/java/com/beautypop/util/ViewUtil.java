@@ -924,12 +924,13 @@ public class ViewUtil {
     // Popup soft keyboard
     //
 
-    public static void popupInputMethodWindow(final Activity activity) {
+    public static void popupInputMethodWindow(final Activity activity, final View view) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 InputMethodManager imm = (InputMethodManager) activity.getSystemService(Service.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                //imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_NOT_ALWAYS);
             }
         }, 100);
     }

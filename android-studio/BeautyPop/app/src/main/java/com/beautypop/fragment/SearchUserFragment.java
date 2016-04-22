@@ -30,8 +30,6 @@ public class SearchUserFragment extends TrackedFragment {
 		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
 		searchView = (SearchView) getActivity().findViewById(R.id.searchView);
 
-		//ViewUtil.popupInputMethodWindow(getActivity());
-
 		searchLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {

@@ -466,7 +466,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
 
                                 // popup again
                                 commentPopup.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
-                                ViewUtil.popupInputMethodWindow(MessageListActivity.this);
+                                ViewUtil.popupInputMethodWindow(MessageListActivity.this, commentEditText);
                                 return true;
                             }
                         });
@@ -548,7 +548,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             }
 
             commentPopup.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
-            ViewUtil.popupInputMethodWindow(this);
+            ViewUtil.popupInputMethodWindow(this, commentEditText);
         } catch (Exception e) {
             Log.e(TAG, "initCommentPopup: exception", e);
         }
@@ -614,7 +614,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             }
 
             // pop back soft keyboard
-            ViewUtil.popupInputMethodWindow(this);
+            //ViewUtil.popupInputMethodWindow(this);
         }
     }
 

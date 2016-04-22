@@ -975,7 +975,7 @@ public class ProductActivity extends TrackedFragmentActivity {
             }
 
             commentPopup.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
-            ViewUtil.popupInputMethodWindow(this);
+            ViewUtil.popupInputMethodWindow(this, commentEditText);
         } catch (Exception e) {
             Log.e(TAG, "initCommentPopup: failure", e);
         }

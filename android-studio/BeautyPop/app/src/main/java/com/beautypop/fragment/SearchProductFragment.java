@@ -86,8 +86,6 @@ public class SearchProductFragment extends TrackedFragment {
 		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
 		searchView = (SearchView) getActivity().findViewById(R.id.searchView);
 
-		//ViewUtil.popupInputMethodWindow(getActivity());
-
 		items = new ArrayList<>();
 
 		catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1);
@@ -167,6 +165,8 @@ public class SearchProductFragment extends TrackedFragment {
 				initCategoryPopup(subCategoryPopup, CategoryCache.getSubCategories(category.id), true);
 			}
 		});
+
+		ViewUtil.popupInputMethodWindow(getActivity(), searchView);
 
 		return view;
 	}

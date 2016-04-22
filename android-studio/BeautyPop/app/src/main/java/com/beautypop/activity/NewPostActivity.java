@@ -745,7 +745,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
             }
 
             // pop back soft keyboard
-            ViewUtil.popupInputMethodWindow(this);
+            //ViewUtil.popupInputMethodWindow(this);
 		}
     }
 
