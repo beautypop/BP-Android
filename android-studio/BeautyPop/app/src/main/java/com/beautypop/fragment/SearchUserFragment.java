@@ -41,6 +41,25 @@ public class SearchUserFragment extends TrackedFragment {
 			}
 		});
 
+		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+			@Override
+			public boolean onQueryTextSubmit(String s) {
+
+				if (s != null && !s.equals("")) {
+					ViewUtil.startSearchResultActivity(getActivity(), "user", s);
+				} else {
+					Toast.makeText(getActivity(),"Enter search Text",Toast.LENGTH_LONG).show();
+				}
+
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String s) {
+				return false;
+			}
+		});
+
 		return view;
 	}
 }
