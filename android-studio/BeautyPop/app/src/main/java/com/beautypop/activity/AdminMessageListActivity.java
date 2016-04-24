@@ -80,7 +80,7 @@ public class AdminMessageListActivity extends TrackedFragmentActivity {
         conversation = (AdminConversationVM) getIntent().getSerializableExtra(ViewUtil.BUNDLE_KEY_OBJECT);
 
         postTitleText.setText(conversation.getPostTitle());
-        postPriceText.setText(ViewUtil.priceFormat(conversation.getPostPrice()));
+        postPriceText.setText(ViewUtil.formatPrice(conversation.getPostPrice()));
         ImageUtil.displayPostImage(conversation.getPostImage(), postImage);
         soldText.setVisibility(conversation.isPostSold() ? View.VISIBLE : View.GONE);
 

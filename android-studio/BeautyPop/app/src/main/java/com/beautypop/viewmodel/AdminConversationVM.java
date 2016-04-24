@@ -16,6 +16,7 @@ public class AdminConversationVM implements Serializable, Comparable<AdminConver
     public Long lastMessageDate;
     public String lastMessage;
     public boolean lastMessageHasImage;
+    public ConversationOrderVM order;
 
     public Long getId() {
         return id;
@@ -119,6 +120,14 @@ public class AdminConversationVM implements Serializable, Comparable<AdminConver
 
     public void setLastMessageDate(Long lastMessageDate) {
         this.lastMessageDate = lastMessageDate;
+    }
+
+    public ConversationOrderVM getOrder() {
+        return order;
+    }
+
+    public void setOrder(ConversationOrderVM order) {
+        this.order = order;
     }
 
     @Override

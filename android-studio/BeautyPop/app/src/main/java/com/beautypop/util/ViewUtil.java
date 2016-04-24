@@ -637,90 +637,6 @@ public class ViewUtil {
         }
     }
 
-    public static EditText createPriceEditText(Activity activity, String priceValue) {
-        final EditText editText = new EditText(activity);
-        //editText.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 100));
-        editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        editText.setGravity(Gravity.CENTER_HORIZONTAL);
-        editText.setSingleLine(true);
-        editText.setTextSize(18);
-        editText.setText(priceValue);
-        editText.setHint(priceValue);
-        editText.setSelection(priceValue.length());
-        return editText;
-    }
-
-    public static EditText initOfferPriceAlertLayout(Activity activity, long price, AlertDialog.Builder alertDialogBuilder) {
-        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View layout = inflater.inflate(R.layout.offer_price_popup_window, (ViewGroup) activity.findViewById(R.id.popupElement));
-        final EditText priceEdit = (EditText) layout.findViewById(R.id.priceEdit);
-        priceEdit.setText(price + "");
-        priceEdit.setHint(price + "");
-        priceEdit.setSelection(priceEdit.length());
-        alertDialogBuilder.setView(layout);
-        return priceEdit;
-    }
-
-    public static long validateAndGetPriceFromInput(Activity activity, TextView textView) {
-        String value = textView.getText().toString().trim();
-        if (StringUtils.isEmpty(value)) {
-            Toast.makeText(activity, activity.getString(R.string.invalid_post_price_empty), Toast.LENGTH_SHORT).show();
-            return -1L;
-        }
-
-        Long price = -1L;
-        try {
-            price = Long.valueOf(value);
-            if (price < 0) {
-                Toast.makeText(activity, activity.getString(R.string.invalid_post_price_negative), Toast.LENGTH_SHORT).show();
-                return -1L;
-            }
-            return price;
-        } catch (NumberFormatException e) {
-            Toast.makeText(activity, activity.getString(R.string.invalid_post_price_not_number), Toast.LENGTH_SHORT).show();
-            return -1L;
-        }
-    }
-
-    public static void strikeText(TextView textView) {
-        textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-    }
-
-    public static double formatDouble(double value, int scale) {
-        return new BigDecimal(value).setScale(scale, RoundingMode.UP).doubleValue();
-    }
-
-    public static String formatSellerLastActive(Long value) {
-        if (DefaultValues.LANG_EN.equalsIgnoreCase(getAppLocale().getLanguage())) {
-            return AppController.getInstance().getString(R.string.last_active) + " " + DateTimeUtil.getTimeAgo(value);
-        }
-        return DateTimeUtil.getTimeAgo(value) + AppController.getInstance().getString(R.string.last_active);
-    }
-
-    public static String formatUserProducts(Long value) {
-        return AppController.getInstance().getString(R.string.products) + ": " + value;
-    }
-
-    public static String formatUserFollowers(Long value) {
-        return AppController.getInstance().getString(R.string.user_followers) + ": " + value;
-    }
-
-    public static String formatFollowers(Long value) {
-        return AppController.getInstance().getString(R.string.followers) + " " + value;
-    }
-
-    public static String formatFollowings(Long value) {
-        return AppController.getInstance().getString(R.string.followings) + " " + value;
-    }
-
-    public static String formatProductsTab(Long value) {
-        return AppController.getInstance().getString(R.string.products) + "\n" + value;
-    }
-
-    public static String formatLikesTab(Long value) {
-        return AppController.getInstance().getString(R.string.likes) + "\n" + value;
-    }
-
     public static void selectLikeButtonStyle(ImageView image, TextView text, int likes) {
         image.setImageResource(R.drawable.ic_liked);
         text.setText(likes+"");
@@ -915,9 +831,93 @@ public class ViewUtil {
         });
     }
 
-    public static String priceFormat(double value) {
+    public static EditText createPriceEditText(Activity activity, String priceValue) {
+        final EditText editText = new EditText(activity);
+        //editText.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 100));
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        editText.setGravity(Gravity.CENTER_HORIZONTAL);
+        editText.setSingleLine(true);
+        editText.setTextSize(18);
+        editText.setText(priceValue);
+        editText.setHint(priceValue);
+        editText.setSelection(priceValue.length());
+        return editText;
+    }
+
+    public static EditText initOfferPriceAlertLayout(Activity activity, long price, AlertDialog.Builder alertDialogBuilder) {
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View layout = inflater.inflate(R.layout.offer_price_popup_window, (ViewGroup) activity.findViewById(R.id.popupElement));
+        final EditText priceEdit = (EditText) layout.findViewById(R.id.priceEdit);
+        priceEdit.setText(price + "");
+        priceEdit.setHint(price + "");
+        priceEdit.setSelection(priceEdit.length());
+        alertDialogBuilder.setView(layout);
+        return priceEdit;
+    }
+
+    public static long validateAndGetPriceFromInput(Activity activity, TextView textView) {
+        String value = textView.getText().toString().trim();
+        if (StringUtils.isEmpty(value)) {
+            Toast.makeText(activity, activity.getString(R.string.invalid_post_price_empty), Toast.LENGTH_SHORT).show();
+            return -1L;
+        }
+
+        Long price = -1L;
+        try {
+            price = Long.valueOf(value);
+            if (price < 0) {
+                Toast.makeText(activity, activity.getString(R.string.invalid_post_price_negative), Toast.LENGTH_SHORT).show();
+                return -1L;
+            }
+            return price;
+        } catch (NumberFormatException e) {
+            Toast.makeText(activity, activity.getString(R.string.invalid_post_price_not_number), Toast.LENGTH_SHORT).show();
+            return -1L;
+        }
+    }
+
+    public static void strikeText(TextView textView) {
+        textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+    }
+
+    public static double formatDouble(double value, int scale) {
+        return new BigDecimal(value).setScale(scale, RoundingMode.UP).doubleValue();
+    }
+
+    public static String formatPrice(double value) {
         //return String.format("$%.2f", value);
         return String.format("$%.0f", value);
+    }
+
+    public static String formatSellerLastActive(Long value) {
+        if (DefaultValues.LANG_EN.equalsIgnoreCase(getAppLocale().getLanguage())) {
+            return AppController.getInstance().getString(R.string.last_active) + " " + DateTimeUtil.getTimeAgo(value);
+        }
+        return DateTimeUtil.getTimeAgo(value) + AppController.getInstance().getString(R.string.last_active);
+    }
+
+    public static String formatUserProducts(Long value) {
+        return AppController.getInstance().getString(R.string.products) + ": " + value;
+    }
+
+    public static String formatUserFollowers(Long value) {
+        return AppController.getInstance().getString(R.string.user_followers) + ": " + value;
+    }
+
+    public static String formatFollowers(Long value) {
+        return AppController.getInstance().getString(R.string.followers) + " " + value;
+    }
+
+    public static String formatFollowings(Long value) {
+        return AppController.getInstance().getString(R.string.followings) + " " + value;
+    }
+
+    public static String formatProductsTab(Long value) {
+        return AppController.getInstance().getString(R.string.products) + "\n" + value;
+    }
+
+    public static String formatLikesTab(Long value) {
+        return AppController.getInstance().getString(R.string.likes) + "\n" + value;
     }
 
     //

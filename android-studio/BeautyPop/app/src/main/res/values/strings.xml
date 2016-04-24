@@ -131,7 +131,7 @@
     <string name="my_profile_tips">Click \"Sell\" to list your product now\nSell your style！</string>
 
     <!-- Home tab -->
-    <string name="main_tab_seller">Sellers</string>
+    <string name="main_tab_seller">Recommended</string>
     <string name="main_tab_following">Following</string>
     <string name="suggest_for_you">Suggest For You</string>
     <string name="follow">+ Follow</string>
@@ -150,6 +150,7 @@
     <string name="activity_followed">started following you.</string>
     <string name="activity_sold">already sold.</string>
     <string name="activity_game_badge">Congratulations! You got a new badge:</string>
+    <string name="activity_tips_new_user">Welcome to BeautyPop! Let\'s clean up your closet and start selling items you don\'t need anymore. If someone likes your item, they will chat with you directly. Tap here to start selling for free now!</string>
 
     <!-- Category page -->
     <string name="category">Category</string>
@@ -274,6 +275,9 @@
     <string name="pm_buy">Buy</string>
     <string name="pm_sell">Sell</string>
     <string name="pm_sold">Sold</string>
+    <string name="pm_accepted">Accepted</string>
+    <string name="pm_declined">Declined</string>
+    <string name="pm_cancelled">Cancelled</string>
     <string name="pm_buy_message">New offer</string>
     <string name="pm_cancelled_message">Offer is cancelled</string>
     <string name="pm_accepted_message">Offer is accepted</string>
@@ -298,6 +302,7 @@
     <string name="pm_order_cancel_confirm">Cancel order?</string>
     <string name="pm_order_accept_confirm">Accept order?</string>
     <string name="pm_order_decline_confirm">Decline order?</string>
+    <string name="pm_order_offered">Offered:</string>
 
     <!-- Game -->
     <string name="game_badges">Badges</string>

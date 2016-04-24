@@ -150,6 +150,7 @@
     <string name="activity_followed">關注了你。</string>
     <string name="activity_sold">已賣出商品。</string>
     <string name="activity_game_badge">恭喜你！你已獲得徽章:</string>
+    <string name="activity_tips_new_user">係BeautyPop賣出屋企唔再用嘅時裝美容用品就唔使再掉嘢啦，賣完又可以再買過！ 快D噤呢度刊登你嘅用品啦~</string>
 
     <!-- Category page -->
     <string name="category">商品分類</string>
@@ -274,6 +275,9 @@
     <string name="pm_buy">買</string>
     <string name="pm_sell">賣</string>
     <string name="pm_sold">已售</string>
+    <string name="pm_accepted">已接受</string>
+    <string name="pm_declined">不被接受</string>
+    <string name="pm_cancelled">已取消</string>
     <string name="pm_buy_message">購買商品</string>
     <string name="pm_cancelled_message">購買已取消</string>
     <string name="pm_accepted_message">購買已被接受</string>
@@ -298,6 +302,7 @@
     <string name="pm_order_cancel_confirm">取消購買商品?</string>
     <string name="pm_order_accept_confirm">接受購買?</string>
     <string name="pm_order_decline_confirm">不接受購買?</string>
+    <string name="pm_order_offered">已出價:</string>
 
     <!-- Game -->
     <string name="game_badges">徽章</string>

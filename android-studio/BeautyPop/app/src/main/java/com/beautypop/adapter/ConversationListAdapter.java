@@ -26,7 +26,6 @@ import android.widget.Toast;
 import com.beautypop.R;
 import com.beautypop.app.AppController;
 import com.beautypop.app.ConversationCache;
-import com.beautypop.app.UserInfoCache;
 import com.beautypop.util.DateTimeUtil;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
@@ -53,8 +52,9 @@ public class ConversationListAdapter extends BaseAdapter {
     private LinearLayout postImageLayout, hasImageLayout;
     private ImageView userImage, postImage;
     private TextView userText, postTitleText, lastMessageText, buyText, sellText, soldText, dateText, unreadCountText;
+    private TextView acceptedText, declinedText, cancelledText, offeredPriceText;
 
-    private RelativeLayout sellerAdminLayout;
+    private RelativeLayout orderStatusLayout, sellerAdminLayout;
     private Spinner colorSpinner, orderTransactionStateSpinner;
 
     private PopupWindow commentPopup;
@@ -115,6 +115,13 @@ public class ConversationListAdapter extends BaseAdapter {
         userImage = (ImageView) view.findViewById(R.id.userImage);
         postImageLayout = (LinearLayout) view.findViewById(R.id.postImageLayout);
         postImage = (ImageView) view.findViewById(R.id.postImage);
+
+        orderStatusLayout = (RelativeLayout) view.findViewById(R.id.orderStatusLayout);
+        acceptedText = (TextView) view.findViewById(R.id.acceptedText);
+        declinedText = (TextView) view.findViewById(R.id.declinedText);
+        cancelledText = (TextView) view.findViewById(R.id.cancelledText);
+        offeredPriceText = (TextView) view.findViewById(R.id.offeredPriceText);
+
         sellerAdminLayout = (RelativeLayout) view.findViewById(R.id.sellerAdminLayout);
         colorSpinner = (Spinner) view.findViewById(R.id.colorSpinner);
         orderTransactionStateSpinner = (Spinner) view.findViewById(R.id.orderTransactionStateSpinner);
@@ -182,6 +189,26 @@ public class ConversationListAdapter extends BaseAdapter {
         ViewUtil.setHtmlText(item.getLastMessage(), lastMessageText, activity);
 
         hasImageLayout.setVisibility(item.lastMessageHasImage? View.VISIBLE : View.GONE);
+
+        // order status
+
+        if (item.order != null && item.order.active) {
+            orderStatusLayout.setVisibility(View.VISIBLE);
+            acceptedText.setVisibility(View.GONE);
+            declinedText.setVisibility(View.GONE);
+            cancelledText.setVisibility(View.GONE);
+            offeredPriceText.setVisibility(View.VISIBLE);
+            if (item.order.accepted) {
+                acceptedText.setVisibility(View.VISIBLE);
+            } else if (item.order.declined) {
+                declinedText.setVisibility(View.VISIBLE);
+            } else if (item.order.cancelled) {
+                cancelledText.setVisibility(View.VISIBLE);
+            }
+            offeredPriceText.setText(activity.getString(R.string.pm_order_offered)+" "+ViewUtil.formatPrice(item.order.offeredPrice));
+        } else {
+            orderStatusLayout.setVisibility(View.GONE);
+        }
 
         // seller admin
 

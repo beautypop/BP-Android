@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beautypop.R;
@@ -30,6 +31,8 @@ public class AdminConversationListAdapter extends BaseAdapter {
     private LinearLayout postImageLayout, hasImageLayout;
     private ImageView user1Image, user2Image, postImage;
     private TextView user1Text, user2Text, postTitleText, lastMessageText, dateText, soldText;
+    private TextView acceptedText, declinedText, cancelledText, offeredPriceText;
+    private RelativeLayout orderStatusLayout;
 
     public AdminConversationListAdapter(Activity activity, List<AdminConversationVM> conversations) {
         this.activity = activity;
@@ -73,6 +76,12 @@ public class AdminConversationListAdapter extends BaseAdapter {
         postImage = (ImageView) view.findViewById(R.id.postImage);
         soldText = (TextView) view.findViewById(R.id.soldText);
 
+        orderStatusLayout = (RelativeLayout) view.findViewById(R.id.orderStatusLayout);
+        acceptedText = (TextView) view.findViewById(R.id.acceptedText);
+        declinedText = (TextView) view.findViewById(R.id.declinedText);
+        cancelledText = (TextView) view.findViewById(R.id.cancelledText);
+        offeredPriceText = (TextView) view.findViewById(R.id.offeredPriceText);
+
         final AdminConversationVM item = conversations.get(i);
 
         ImageUtil.displayThumbnailProfileImage(item.getUser1Id(), user1Image);
@@ -87,6 +96,26 @@ public class AdminConversationListAdapter extends BaseAdapter {
         ViewUtil.setHtmlText(item.getLastMessage(), lastMessageText, activity);
 
         hasImageLayout.setVisibility(item.lastMessageHasImage ? View.VISIBLE : View.GONE);
+
+        // order status
+
+        if (item.order != null && item.order.active) {
+            orderStatusLayout.setVisibility(View.VISIBLE);
+            acceptedText.setVisibility(View.GONE);
+            declinedText.setVisibility(View.GONE);
+            cancelledText.setVisibility(View.GONE);
+            offeredPriceText.setVisibility(View.VISIBLE);
+            if (item.order.accepted) {
+                acceptedText.setVisibility(View.VISIBLE);
+            } else if (item.order.declined) {
+                declinedText.setVisibility(View.VISIBLE);
+            } else if (item.order.cancelled) {
+                cancelledText.setVisibility(View.VISIBLE);
+            }
+            offeredPriceText.setText(activity.getString(R.string.pm_order_offered)+" "+ViewUtil.formatPrice(item.order.offeredPrice));
+        } else {
+            orderStatusLayout.setVisibility(View.GONE);
+        }
 
         conversationLayout.setOnClickListener(new View.OnClickListener() {
             @Override

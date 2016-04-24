@@ -126,7 +126,7 @@ public class ProductConversationListActivity extends ConversationListActivity {
                     postLayout.setVisibility(View.VISIBLE);
                     ConversationVM conversation = conversations.get(0);
                     postTitleText.setText(conversation.getPostTitle());
-                    postPriceText.setText(ViewUtil.priceFormat(conversation.getPostPrice()));
+                    postPriceText.setText(ViewUtil.formatPrice(conversation.getPostPrice()));
                     ImageUtil.displayPostImage(conversation.getPostImage(), postImage);
                     ViewUtil.setConversationImageTag(ProductConversationListActivity.this, conversations.get(0));
                 }

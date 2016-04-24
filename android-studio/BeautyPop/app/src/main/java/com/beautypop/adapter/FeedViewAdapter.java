@@ -1,7 +1,6 @@
 package com.beautypop.adapter;
 
 import android.app.Activity;
-import android.os.Handler;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -161,10 +160,10 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         }
 
         ViewUtil.setHtmlText(item.getTitle(), holder.title, activity, true);
-        holder.price.setText(ViewUtil.priceFormat(item.getPrice()));
+        holder.price.setText(ViewUtil.formatPrice(item.getPrice()));
         if (item.getOriginalPrice() > 0) {
             holder.originalPrice.setVisibility(View.VISIBLE);
-            holder.originalPrice.setText(ViewUtil.priceFormat(item.getOriginalPrice()));
+            holder.originalPrice.setText(ViewUtil.formatPrice(item.getOriginalPrice()));
             ViewUtil.strikeText(holder.originalPrice);
         } else {
             holder.originalPrice.setVisibility(View.GONE);

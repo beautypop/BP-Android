@@ -296,7 +296,7 @@ public class ProductActivity extends TrackedFragmentActivity {
                 ViewUtil.setHtmlText(post.getBody(), descText, ProductActivity.this, true, true);
                 catNameText.setText(post.getCategoryName());
                 subCatNameText.setText(post.getSubCategoryName());
-                priceText.setText(ViewUtil.priceFormat(post.getPrice()));
+                priceText.setText(ViewUtil.formatPrice(post.getPrice()));
                 conditionText.setText(ViewUtil.getPostConditionTypeValue(
                         ViewUtil.parsePostConditionType(post.getConditionType())));
                 timeText.setText(DateTimeUtil.getTimeAgo(post.getCreatedDate()));
@@ -365,7 +365,7 @@ public class ProductActivity extends TrackedFragmentActivity {
 
                 if (post.getOriginalPrice() > 0) {
                     originalPriceText.setVisibility(View.VISIBLE);
-                    originalPriceText.setText(ViewUtil.priceFormat(post.getOriginalPrice()));
+                    originalPriceText.setText(ViewUtil.formatPrice(post.getOriginalPrice()));
                     ViewUtil.strikeText(originalPriceText);
                 } else {
                     originalPriceText.setVisibility(View.GONE);

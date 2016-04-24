@@ -191,6 +191,75 @@
                         android:layout_gravity="center_vertical" />
 
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/orderStatusLayout"
+                    android:layout_below="@+id/hasImageLayout"
+                    android:layout_marginTop="10dp">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/orderStatusFrame">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pm_accepted"
+                            android:id="@+id/acceptedText"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textSize="12dp"
+                            android:background="@color/green"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pm_declined"
+                            android:id="@+id/declinedText"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textSize="12dp"
+                            android:background="@color/red"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pm_cancelled"
+                            android:id="@+id/cancelledText"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textSize="12dp"
+                            android:background="@color/gray"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="3dp"
+                            android:paddingRight="3dp"
+                            android:layout_marginRight="10dp" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/offeredPriceText"
+                        android:layout_toRightOf="@+id/orderStatusFrame"
+                        android:textSize="12dp"
+                        android:textColor="@color/gray" />
+
+                </RelativeLayout>
+
             </RelativeLayout>
 
         </LinearLayout>

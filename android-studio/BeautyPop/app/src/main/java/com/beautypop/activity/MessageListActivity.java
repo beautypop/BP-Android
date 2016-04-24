@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Gravity;
@@ -53,7 +52,6 @@ import org.json.JSONObject;
 import org.parceler.apache.commons.lang.StringUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -126,7 +124,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
 
         setToolbarTitle(conversation.getUserName());
         postTitleText.setText(conversation.getPostTitle());
-        postPriceText.setText(ViewUtil.priceFormat(conversation.getPostPrice()));
+        postPriceText.setText(ViewUtil.formatPrice(conversation.getPostPrice()));
         ImageUtil.displayPostImage(conversation.getPostImage(), postImage);
 
         listView.addHeaderView(listHeader);
