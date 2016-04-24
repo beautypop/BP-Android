@@ -118,6 +118,26 @@ public class SearchProductFragment extends TrackedFragment {
 			}
 		});
 
+
+		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+			@Override
+			public boolean onQueryTextSubmit(String s) {
+
+				if (s != null && !s.equals("")) {
+					ViewUtil.startSearchResultActivity(getActivity(), "product", s, catId);
+				} else {
+					Toast.makeText(getActivity(),"Enter search Text",Toast.LENGTH_LONG).show();
+				}
+
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String s) {
+				return false;
+			}
+		});
+
 		feedView = (RecyclerView) view.findViewById(R.id.feedView);
 		feedView.addItemDecoration(
 				new RecyclerView.ItemDecoration() {
