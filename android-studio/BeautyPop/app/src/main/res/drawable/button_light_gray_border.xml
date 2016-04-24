@@ -15,9 +15,9 @@
     <!-- If you want to add some padding -->
     <padding
         android:left="3dp"
-        android:top="3dp"
+        android:top="1dp"
         android:right="3dp"
-        android:bottom="3dp" >
+        android:bottom="1dp" >
     </padding>
 
     <!-- Here is the corner radius -->

@@ -196,8 +196,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/orderStatusLayout"
-                    android:layout_below="@+id/hasImageLayout"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/hasImageLayout">
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -212,11 +213,9 @@
                             android:gravity="center"
                             android:singleLine="true"
                             android:textSize="12dp"
-                            android:background="@color/green"
-                            android:textColor="@color/white"
+                            android:background="@drawable/button_green_border"
+                            android:textColor="@color/green"
                             android:layout_gravity="center_vertical"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
                             android:layout_marginRight="10dp" />
 
                         <TextView
@@ -227,11 +226,9 @@
                             android:gravity="center"
                             android:singleLine="true"
                             android:textSize="12dp"
-                            android:background="@color/red"
-                            android:textColor="@color/white"
+                            android:background="@drawable/button_red_border"
+                            android:textColor="@color/red"
                             android:layout_gravity="center_vertical"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
                             android:layout_marginRight="10dp" />
 
                         <TextView
@@ -242,11 +239,9 @@
                             android:gravity="center"
                             android:singleLine="true"
                             android:textSize="12dp"
-                            android:background="@color/gray"
-                            android:textColor="@color/white"
+                            android:background="@drawable/button_gray_border"
+                            android:textColor="@color/gray"
                             android:layout_gravity="center_vertical"
-                            android:paddingLeft="3dp"
-                            android:paddingRight="3dp"
                             android:layout_marginRight="10dp" />
                     </FrameLayout>
 
@@ -256,7 +251,9 @@
                         android:id="@+id/offeredPriceText"
                         android:layout_toRightOf="@+id/orderStatusFrame"
                         android:textSize="12dp"
-                        android:textColor="@color/gray" />
+                        android:textColor="@color/gray"
+                        android:gravity="center_vertical"
+                        android:layout_centerVertical="true" />
 
                 </RelativeLayout>
 
