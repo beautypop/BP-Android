@@ -204,9 +204,9 @@ public class SignupActivity extends AbstractLoginActivity {
 
     private boolean isValid() {
         boolean valid = true;
-        if (!ValidationUtil.hasText(lastName))
+        if (!ValidationUtil.isValidUserName(lastName))
             valid = false;
-        if (!ValidationUtil.hasText(firstName))
+        if (!ValidationUtil.isValidUserName(firstName))
             valid = false;
         if (!ValidationUtil.hasText(email) || !ValidationUtil.isEmailValid(email))
             valid = false;

@@ -208,12 +208,10 @@ public class EditProfileActivity extends TrackedFragmentActivity {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_displayname_format));
             valid = false;
         }
-        /*
-        if (!ValidationUtil.hasText(firstNameEdit) || !ValidationUtil.hasText(lastNameEdit)) {
+        if (!ValidationUtil.isValidUserName(firstNameEdit) || !ValidationUtil.isValidUserName(lastNameEdit)) {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_name_not_entered));
             valid = false;
         }
-        */
         if (locationId == -1) {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_location_not_entered));
             valid = false;
