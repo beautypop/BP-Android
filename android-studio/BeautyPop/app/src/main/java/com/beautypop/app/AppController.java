@@ -221,7 +221,7 @@ public class AppController extends Application {
     }
 
     public void initStaticCaches() {
-        DistrictCache.refresh();
+        //DistrictCache.refresh();
         CountryCache.refresh();
         CategoryCache.refresh();
     }

@@ -70,6 +70,7 @@ public class EditProfileActivity extends TrackedFragmentActivity {
 
         finishButton = (Button) findViewById(R.id.finishButton);
 
+        /*
         initDistrictSpinner();
 
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,6 +92,7 @@ public class EditProfileActivity extends TrackedFragmentActivity {
 
             }
         });
+        */
 
         getUserInfo();
 
@@ -212,10 +214,12 @@ public class EditProfileActivity extends TrackedFragmentActivity {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_name_not_entered));
             valid = false;
         }
+        /*
         if (locationId == -1) {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_location_not_entered));
             valid = false;
         }
+        */
 
         if (!valid)
             Toast.makeText(this, error, Toast.LENGTH_LONG).show();

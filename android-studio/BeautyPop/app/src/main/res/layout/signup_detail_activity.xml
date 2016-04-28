@@ -120,7 +120,8 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="25dp"
-            android:weightSum="10">
+            android:weightSum="10"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/locationText"
@@ -161,7 +162,8 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"
-            android:id="@+id/locationNoteLayout" >
+            android:id="@+id/locationNoteLayout"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="0dp"

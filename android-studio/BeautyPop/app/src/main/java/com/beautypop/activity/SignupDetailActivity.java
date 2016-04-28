@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +55,7 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
         finishButton = (Button) findViewById(R.id.finishButton);
 
         // location
+        /*
         setDistricts();
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -76,6 +76,7 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
 
             }
         });
+        */
 
         // lang
         languageAdapter = new ArrayAdapter<>(
@@ -163,10 +164,12 @@ public class SignupDetailActivity extends TrackedFragmentActivity {
             valid = false;
         }
 
+        /*
         if (locationId == -1) {
             error = ValidationUtil.appendError(error, getString(R.string.signup_details_error_location_not_entered));
             valid = false;
         }
+        */
 
         if (!valid) {
             Toast.makeText(this, error, Toast.LENGTH_LONG).show();
