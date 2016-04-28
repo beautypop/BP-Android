@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ public class AdminUserListAdapter extends BaseAdapter {
 
     private ImageView userImage;
     private TextView userDisplayNameText, userNameText, userEmailText, lastLoginUserAgentText, userIdText, createdDateText, lastActiveText;
+    private TextView numProductsText, numLikesText, numCommentsText;
     private Button loginAsButton, deleteButton;
 
     private Activity activity;
@@ -85,6 +87,9 @@ public class AdminUserListAdapter extends BaseAdapter {
         userIdText = (TextView) convertView.findViewById(R.id.userIdText);
         createdDateText = (TextView) convertView.findViewById(R.id.createdDateText);
         lastActiveText = (TextView) convertView.findViewById(R.id.lastActiveText);
+        numProductsText = (TextView) convertView.findViewById(R.id.numProductsText);
+        numLikesText = (TextView) convertView.findViewById(R.id.numLikesText);
+        numCommentsText = (TextView) convertView.findViewById(R.id.numCommentsText);
 
         final UserVMLite item = users.get(position);
 
@@ -176,6 +181,14 @@ public class AdminUserListAdapter extends BaseAdapter {
                 lastActiveText.setTextColor(activity.getResources().getColor(R.color.orange));
             }
         }
+
+        // stats
+        numProductsText.setText("Products: "+item.numProducts);
+        numProductsText.setTypeface(item.numProducts > 0? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
+        numLikesText.setText("Likes: "+item.numLikes);
+        numLikesText.setTypeface(item.numLikes > 0? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
+        numCommentsText.setText("Comments: "+item.numComments);
+        numCommentsText.setTypeface(item.numComments > 0? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
 
         return convertView;
     }
