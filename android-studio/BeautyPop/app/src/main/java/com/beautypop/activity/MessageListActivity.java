@@ -662,11 +662,12 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
-        doMessage(getString(R.string.pm_buy_message)+": $"+offeredPrice, true);
         final NewConversationOrderVM newConversationOrder = new NewConversationOrderVM(conversation.id, offeredPrice);
         AppController.getApiService().newConversationOrder(newConversationOrder, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
+                doMessage(getString(R.string.pm_buy_message)+": $"+offeredPrice, true);
+
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
@@ -696,10 +697,11 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
-        doMessage(getString(R.string.pm_cancelled_message), true);
         AppController.getApiService().cancelConversationOrder(conversation.getOrder().id, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
+                doMessage(getString(R.string.pm_cancelled_message), true);
+
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
@@ -729,10 +731,11 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
-        doMessage(getString(R.string.pm_accepted_message), true);
         AppController.getApiService().acceptConversationOrder(conversation.getOrder().id, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
+                doMessage(getString(R.string.pm_accepted_message), true);
+
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
@@ -762,10 +765,11 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
-        doMessage(getString(R.string.pm_declined_message), true);
         AppController.getApiService().declineConversationOrder(conversation.getOrder().id, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
+                doMessage(getString(R.string.pm_declined_message), true);
+
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
