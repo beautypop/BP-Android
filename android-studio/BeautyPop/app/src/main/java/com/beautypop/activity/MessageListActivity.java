@@ -226,7 +226,6 @@ public class MessageListActivity extends TrackedFragmentActivity {
         if (order == null) {    // no order yet
             if (conversation.postSold) {
                 buyerButtonsLayout.setVisibility(View.GONE);
-                sellerButtonsLayout.setVisibility(View.GONE);
             } else {
                 buyerOrderLayout.setVisibility(View.VISIBLE);
                 buyerOrderButton.setOnClickListener(new View.OnClickListener() {
@@ -324,8 +323,8 @@ public class MessageListActivity extends TrackedFragmentActivity {
     private void initSellerLayout(final ConversationVM conversation, final ConversationOrderVM order) {
         sellerAcceptDeclineLayout.setVisibility(View.GONE);
         sellerMessageLayout.setVisibility(View.GONE);
+
         if (order == null) {    // no order yet
-            // no actions... hide seller actions
             sellerButtonsLayout.setVisibility(View.GONE);
         } else if (!order.closed) {     // open orders
             sellerAcceptDeclineLayout.setVisibility(View.VISIBLE);

@@ -292,8 +292,10 @@ public class ProductActivity extends TrackedFragmentActivity {
                 //setToolbarTitle(post.getTitle());
                 showToolbarTitle(false);
 
-                ViewUtil.setHtmlText(post.getTitle(), titleText, ProductActivity.this, true);
-                ViewUtil.setHtmlText(post.getBody(), descText, ProductActivity.this, true, true);
+                //ViewUtil.setHtmlText(post.getTitle(), titleText, ProductActivity.this, true);
+                //ViewUtil.setHtmlText(post.getBody(), descText, ProductActivity.this, true, true);
+                titleText.setText(post.title);
+                descText.setText(post.body);
                 catNameText.setText(post.getCategoryName());
                 subCatNameText.setText(post.getSubCategoryName());
                 priceText.setText(ViewUtil.formatPrice(post.getPrice()));
