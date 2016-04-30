@@ -3,6 +3,7 @@ package com.beautypop.listener;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 public abstract class EndlessScrollListener extends RecyclerView.OnScrollListener {
     public static String TAG = EndlessScrollListener.class.getName();
@@ -55,12 +56,14 @@ public abstract class EndlessScrollListener extends RecyclerView.OnScrollListene
             // Do something
 
             // Need to check for accuracy.
-            if (recyclerView.getChildAt(visibleItemCount - 1) == null) {
+            View itemView = recyclerView.getChildAt(visibleItemCount - 1);
+            if (itemView == null ||
+                    (isOffsetItemTag && itemView.getTag() == null)) {
                 return;
             }
 
             currentPage++;
-            Long offset = isOffsetItemTag? (Long) recyclerView.getChildAt(visibleItemCount - 1).getTag() : currentPage;
+            Long offset = isOffsetItemTag? (Long) itemView.getTag() : currentPage;
             if (offset != null) {
                 onLoadMore(offset);
             }
