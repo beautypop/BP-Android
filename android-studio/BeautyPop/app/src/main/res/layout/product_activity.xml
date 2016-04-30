@@ -737,31 +737,34 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/suggestionsLayout"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:id="@+id/moreProductsLayout"
                         android:layout_marginBottom="10dp"
-                        android:visibility="gone">
+                        android:background="@color/white"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/more_products"
-                            android:textSize="14dp"
-                            android:textColor="@color/gray"
-                            android:layout_gravity="center_horizontal"
-                            android:textStyle="bold" />
+                            android:textSize="13dp"
+                            android:textColor="@color/gray" />
 
-                        <LinearLayout
-                            android:id="@+id/childLayout"
+                        <HorizontalScrollView
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:orientation="vertical"
-                            android:layout_gravity="center"
-                            android:measureWithLargestChild="false"
-                            android:layout_marginTop="15dp">
-                        </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp">
+
+                            <LinearLayout
+                                android:id="@+id/moreProductsImagesLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" />
+
+                        </HorizontalScrollView>
 
                     </LinearLayout>
 

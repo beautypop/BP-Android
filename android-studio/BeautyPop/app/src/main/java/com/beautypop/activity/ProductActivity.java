@@ -96,7 +96,7 @@ public class ProductActivity extends TrackedFragmentActivity {
     private Button sendButton;
 
     private ListView commentList;
-    private GridView suggestedProductsGrid;
+    private LinearLayout moreProductsLayout, moreProductsImagesLayout;
 
     private PopupWindow commentPopup;
     private Button followButton;
@@ -184,7 +184,8 @@ public class ProductActivity extends TrackedFragmentActivity {
         moreCommentsImage = (ImageView) findViewById(R.id.moreCommentsImage);
 
         commentList = (ListView) findViewById(R.id.commentList);
-        //suggestedProductsGrid = (GridView) findViewById((R.id.suggestedProductsGrid));
+        moreProductsLayout = (LinearLayout) findViewById(R.id.moreProductsLayout);
+        moreProductsImagesLayout = (LinearLayout) findViewById(R.id.moreProductsImagesLayout);
 
         commentText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,37 +225,55 @@ public class ProductActivity extends TrackedFragmentActivity {
         }
 
         getProduct(postId);
-        getSuggestedProducts(postId);
+        getMoreProducts(postId);
     }
 
     private void setPost(PostVM post) {
         this.post = post;
     }
 
-    private void getSuggestedProducts(final Long postId) {
-        /*
-        suggestedProductsGrid.setVisibility(View.GONE);
-        moreCommentsImage.setVisibility(View.GONE);
+    private void getMoreProducts(final Long postId) {
+        moreProductsLayout.setVisibility(View.GONE);
 
-        AppController.getApiService().getSuggestedPosts(postId, new Callback<List<PostVMLite>>() {
+        AppController.getApiService().getSuggestedProducts(postId, new Callback<List<PostVMLite>>() {
             @Override
             public void success(List<PostVMLite> posts, Response response) {
                 if (posts != null && posts.size() > 0) {
-                    suggestedProductGrid.setVisibility(View.VISIBLE);
-                    PostGridAdapter adapter = new PostGridAdapter(
-                            ProductActivity.this,
-                            posts);
-                    suggestedProductGrid.setAdapter(adapter);
-                    //ViewUtil.setHeightBasedOnChildren(ProductActivity.this, suggestedProductGrid);
+                    Log.d(TAG, "getMoreProducts.success: postId=" + postId + " size=" + posts.size());
+
+                    int imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(ProductActivity.this).width() / 4);  // fit around 4 items
+                    int margin = 10;
+
+                    moreProductsLayout.setVisibility(View.VISIBLE);
+
+                    for (final PostVMLite post : posts) {
+                        LinearLayout layout = new LinearLayout(getApplicationContext());
+                        layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth + margin, imageWidth + margin));
+                        layout.setGravity(Gravity.CENTER);
+
+                        ImageView imageView = new ImageView(getApplicationContext());
+                        imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
+                        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                        ImageUtil.displayPostImage(post.getImages()[0], imageView);
+                        layout.addView(imageView);
+
+                        layout.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ViewUtil.startProductActivity(ProductActivity.this, post.id);
+                            }
+                        });
+
+                        moreProductsImagesLayout.addView(layout);
+                    }
                 }
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e(TAG, "getSuggestedProducts: failure", error);
+                Log.e(TAG, "getMoreProducts.failure", error);
             }
         });
-        */
     }
 
     private void getProduct(final Long postId) {
