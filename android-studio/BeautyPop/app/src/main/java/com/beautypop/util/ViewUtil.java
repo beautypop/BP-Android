@@ -53,6 +53,7 @@ import android.widget.Toast;
 
 import com.beautypop.R;
 import com.beautypop.activity.AdminActivity;
+import com.beautypop.activity.AdminCommentsActivity;
 import com.beautypop.activity.AdminConversationListActivity;
 import com.beautypop.activity.AdminLatestLoginsActivity;
 import com.beautypop.activity.AdminMessageListActivity;
@@ -1324,6 +1325,11 @@ public class ViewUtil {
 
     public static void startAdminLatestLoginsActivity(Activity activity) {
         Intent intent = new Intent(activity, AdminLatestLoginsActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public static void startAdminCommentsActivity(Activity activity) {
+        Intent intent = new Intent(activity, AdminCommentsActivity.class);
         activity.startActivity(intent);
     }
 

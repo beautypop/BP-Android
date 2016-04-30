@@ -1,6 +1,7 @@
 package com.beautypop.app;
 
 import com.beautypop.viewmodel.ActivityVM;
+import com.beautypop.viewmodel.AdminCommentVM;
 import com.beautypop.viewmodel.AdminConversationVM;
 import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.CollectionVM;
@@ -287,6 +288,16 @@ public interface BeautyPopApi {
     public void declineConversationOrder(@Path("id") Long id, @Query("key") String key, Callback<ConversationOrderVM> cb);
 
     //
+    // Search API
+    //
+
+    @GET("/search-posts/{searchKey}/{catId}/{offset}")
+    public void searchProducts(@Path("searchKey") String searchtext,@Path("catId") Long id, @Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> callback);
+
+    @GET("/search-users/{searchKey}/{offset}")
+    public void searchUsers(@Path("searchKey") String searchtext, @Path("offset") int offset, @Query("key") String key, Callback<List<SellerVM>> callback);
+
+    //
     // GCM
     //
 
@@ -315,16 +326,12 @@ public interface BeautyPopApi {
     @GET("/api/get-users-by-login/{offset}")
     public void getUsersByLogin(@Path("offset") Long offset, @Query("key") String key, Callback<List<UserVMLite>> cb);
 
+    @GET("/api/get-latest-comments/{offset}")
+    public void getLatestComments(@Path("offset") Long offset, @Query("key") String key, Callback<List<AdminCommentVM>> cb);
+
     @GET("/api/get-latest-conversations/{offset}")
     public void getLatestConversations(@Path("offset") Long offset, @Query("key") String key, Callback<List<AdminConversationVM>> cb);
 
     @GET("/api/get-messages-for-admin/{conversationId}/{offset}")
     public void getMessagesForAdmin(@Path("conversationId") Long conversationId, @Path("offset") Long offset, @Query("key") String key, Callback<Response> cb);
-
-	// Search API
-    @GET("/search-posts/{searchKey}/{catId}/{offset}")
-    public void searchProducts(@Path("searchKey") String searchtext,@Path("catId") Long id, @Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> callback);
-
-    @GET("/search-users/{searchKey}/{offset}")
-	public void searchUsers(@Path("searchKey") String searchtext, @Path("offset") int offset, @Query("key") String key, Callback<List<SellerVM>> callback);
 }

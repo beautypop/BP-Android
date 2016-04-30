@@ -1,6 +1,7 @@
 package com.beautypop.app;
 
 import com.beautypop.viewmodel.ActivityVM;
+import com.beautypop.viewmodel.AdminCommentVM;
 import com.beautypop.viewmodel.AdminConversationVM;
 import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.CollectionVM;
@@ -323,6 +324,15 @@ public class BeautyPopService {
         api.declineConversationOrder(id, AppController.getInstance().getSessionId(), cb);
     }
 
+    // search
+    public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
+        api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);
+    }
+
+    public void searchUsers(String searchKey, int offset, Callback<List<SellerVM>> cb) {
+        api.searchUsers(searchKey, offset, AppController.getInstance().getSessionId(), cb);
+    }
+
     // admin
 
     public void deleteAccount(Long id, Callback<Response> cb) {
@@ -349,21 +359,16 @@ public class BeautyPopService {
         api.getUsersByLogin(offset, AppController.getInstance().getSessionId(), cb);
     }
 
+    public void getLatestComments(Long offset, Callback<List<AdminCommentVM>> cb) {
+        api.getLatestComments(offset, AppController.getInstance().getSessionId(), cb);
+    }
+
     public void getLatestConversations(Long offset, Callback<List<AdminConversationVM>> cb) {
         api.getLatestConversations(offset, AppController.getInstance().getSessionId(), cb);
     }
 
     public void getMessagesForAdmin(Long conversationId, Long offset, Callback<Response> cb) {
         api.getMessagesForAdmin(conversationId, offset, AppController.getInstance().getSessionId(), cb);
-    }
-
-	// search
-    public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
-        api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);
-    }
-
-    public void searchUsers(String searchKey, int offset, Callback<List<SellerVM>> cb) {
-        api.searchUsers(searchKey, offset, AppController.getInstance().getSessionId(), cb);
     }
 }
 

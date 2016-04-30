@@ -171,6 +171,9 @@
             android:name=".activity.AdminLatestLoginsActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.AdminCommentsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.AdminConversationListActivity"
             android:screenOrientation="portrait" />
         <activity
