@@ -22,6 +22,9 @@
     <string name="no_user_found">No Users Found</string>
     <string name="no_product_found">No Products Found</string>
 
+     <!--Review -->
+    <string name="title_purchased">Purchased</string>
+    <string name="title_sold">Sold</string>
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style</string>
     <string name="app_version">Version:</string>

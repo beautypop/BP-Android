@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".FeedbackActivity">
+
+    <include layout="@layout/actionbar_feedback"
+             android:id="@+id/toolbar" />
+
+    <TextView
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/expText"
+        android:text="How was your experience ?"
+        android:textStyle="bold"
+        android:textColor="@color/input_text"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/tabLayout"
+        android:layout_below="@+id/expText"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/star1"
+            android:padding="2dp"
+            android:src="@drawable/ic_action_important_light"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <ImageView
+            android:id="@+id/star2"
+            android:padding="2dp"
+            android:src="@drawable/ic_action_important_light"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <ImageView
+            android:id="@+id/star3"
+            android:padding="2dp"
+            android:src="@drawable/ic_action_important_light"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <ImageView
+            android:id="@+id/star4"
+            android:padding="2dp"
+            android:src="@drawable/ic_action_important_light"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <ImageView
+            android:id="@+id/star5"
+            android:src="@drawable/ic_action_important_light"
+            android:padding="2dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/descText"
+        android:text="Describe your experience ?"
+        android:textColor="@color/input_text"
+        android:textStyle="bold"
+        android:layout_below="@+id/tabLayout"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <FrameLayout
+        android:layout_below="@+id/descText"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+    <EditText
+        android:background="@drawable/box_light_gray_border"
+        android:id="@+id/feedBackText"
+        android:layout_margin="5dp"
+        android:maxLength="500"
+        android:gravity="top|left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/countText"
+            android:text="0"
+            android:padding="5dp"
+            android:background="@color/dark_gray"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="bottom|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_spinner"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="255dp" />
+</RelativeLayout>

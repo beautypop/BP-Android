@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Gravity;
@@ -52,6 +53,7 @@ import org.json.JSONObject;
 import org.parceler.apache.commons.lang.StringUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -82,7 +84,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
     private Button buyerOrderButton, buyerCancelButton, buyerOrderAgainButton, buyerMessageButton;
 
     private LinearLayout sellerButtonsLayout, sellerAcceptDeclineLayout, sellerMessageLayout;
-    private Button sellerAcceptButton, sellerDeclineButton, sellerMessageButton;
+    private Button sellerAcceptButton, sellerDeclineButton, sellerMessageButton,feedbackButton,sellerFeedbackButton;
 
     private List<MessageVM> messages = new ArrayList<>();
     private MessageListAdapter adapter;
@@ -195,6 +197,31 @@ public class MessageListActivity extends TrackedFragmentActivity {
         sellerDeclineButton = (Button) findViewById(R.id.sellerDeclineButton);
         sellerMessageLayout = (LinearLayout) findViewById(R.id.sellerMessageLayout);
         sellerMessageButton = (Button) findViewById(R.id.sellerMessageButton);
+        feedbackButton = (Button) findViewById(R.id.feedbackButton);
+		sellerFeedbackButton = (Button) findViewById(R.id.sellerFeedbackButton);
+
+
+		feedbackButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				Intent intent = new Intent(MessageListActivity.this,FeedbackActivity.class);
+				intent.putExtra("cId",conversation.getOrder().getId());
+				intent.putExtra("isSeller",false);
+				startActivity(intent);
+			}
+		});
+
+		sellerFeedbackButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				Intent intent = new Intent(MessageListActivity.this,FeedbackActivity.class);
+				intent.putExtra("cId",conversation.getOrder().getId());
+				intent.putExtra("isSeller",true);
+				startActivity(intent);
+			}
+		});
 
         initLayout(conversation);
         loadMessages(conversation);
@@ -226,6 +253,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
         if (order == null) {    // no order yet
             if (conversation.postSold) {
                 buyerButtonsLayout.setVisibility(View.GONE);
+                sellerButtonsLayout.setVisibility(View.GONE);
             } else {
                 buyerOrderLayout.setVisibility(View.VISIBLE);
                 buyerOrderButton.setOnClickListener(new View.OnClickListener() {
@@ -288,6 +316,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             } else if (order.accepted) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_accept, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_accepted_for_buyer));
+				feedbackButton.setVisibility(View.VISIBLE);
             } else if (order.declined) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_decline, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_declined_for_buyer));
@@ -323,8 +352,8 @@ public class MessageListActivity extends TrackedFragmentActivity {
     private void initSellerLayout(final ConversationVM conversation, final ConversationOrderVM order) {
         sellerAcceptDeclineLayout.setVisibility(View.GONE);
         sellerMessageLayout.setVisibility(View.GONE);
-
         if (order == null) {    // no order yet
+            // no actions... hide seller actions
             sellerButtonsLayout.setVisibility(View.GONE);
         } else if (!order.closed) {     // open orders
             sellerAcceptDeclineLayout.setVisibility(View.VISIBLE);
@@ -661,12 +690,11 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
+        doMessage(getString(R.string.pm_buy_message)+": $"+offeredPrice, true);
         final NewConversationOrderVM newConversationOrder = new NewConversationOrderVM(conversation.id, offeredPrice);
         AppController.getApiService().newConversationOrder(newConversationOrder, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
-                doMessage(getString(R.string.pm_buy_message)+": $"+offeredPrice, true);
-
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
@@ -696,11 +724,10 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
+        doMessage(getString(R.string.pm_cancelled_message), true);
         AppController.getApiService().cancelConversationOrder(conversation.getOrder().id, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
-                doMessage(getString(R.string.pm_cancelled_message), true);
-
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
@@ -730,11 +757,10 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
+        doMessage(getString(R.string.pm_accepted_message), true);
         AppController.getApiService().acceptConversationOrder(conversation.getOrder().id, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
-                doMessage(getString(R.string.pm_accepted_message), true);
-
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 
@@ -764,11 +790,10 @@ public class MessageListActivity extends TrackedFragmentActivity {
         }
 
         pendingOrder = true;
+        doMessage(getString(R.string.pm_declined_message), true);
         AppController.getApiService().declineConversationOrder(conversation.getOrder().id, new Callback<ConversationOrderVM>() {
             @Override
             public void success(ConversationOrderVM order, Response response) {
-                doMessage(getString(R.string.pm_declined_message), true);
-
                 ConversationVM updatedConversation = ConversationCache.updateConversationOrder(conversation.id, order);
                 initLayout(updatedConversation);
 

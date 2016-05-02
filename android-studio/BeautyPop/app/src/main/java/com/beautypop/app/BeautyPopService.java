@@ -19,10 +19,12 @@ import com.beautypop.viewmodel.NewMessageVM;
 import com.beautypop.viewmodel.NewPostVM;
 import com.beautypop.viewmodel.NewReportedPostVM;
 import com.beautypop.viewmodel.NotificationCounterVM;
+import com.beautypop.viewmodel.PostFeedbackVM;
 import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.PostVMLite;
 import com.beautypop.viewmodel.ResponseStatusVM;
 import com.beautypop.viewmodel.EditUserInfoVM;
+import com.beautypop.viewmodel.ReviewVM;
 import com.beautypop.viewmodel.SellerVM;
 import com.beautypop.viewmodel.SettingsVM;
 import com.beautypop.viewmodel.UserVM;
@@ -324,15 +326,6 @@ public class BeautyPopService {
         api.declineConversationOrder(id, AppController.getInstance().getSessionId(), cb);
     }
 
-    // search
-    public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
-        api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);
-    }
-
-    public void searchUsers(String searchKey, int offset, Callback<List<SellerVM>> cb) {
-        api.searchUsers(searchKey, offset, AppController.getInstance().getSessionId(), cb);
-    }
-
     // admin
 
     public void deleteAccount(Long id, Callback<Response> cb) {
@@ -370,6 +363,32 @@ public class BeautyPopService {
     public void getMessagesForAdmin(Long conversationId, Long offset, Callback<Response> cb) {
         api.getMessagesForAdmin(conversationId, offset, AppController.getInstance().getSessionId(), cb);
     }
+
+	// search
+    public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
+        api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);
+    }
+
+    public void searchUsers(String searchKey, int offset, Callback<List<SellerVM>> cb) {
+        api.searchUsers(searchKey, offset, AppController.getInstance().getSessionId(), cb);
+    }
+
+	//feedback
+	public void postFeedback(PostFeedbackVM postFeedbackVM,Callback<Response> cb){
+		api.postFeedback(postFeedbackVM,AppController.getInstance().getSessionId(),cb);
+	}
+
+	public void getSoldReviews(Callback<List<ReviewVM>> listCallback){
+		api.getSoldReviews(AppController.getInstance().getSessionId(),listCallback);
+	}
+
+	public void getPurchasedReviews(Callback<List<ReviewVM>> listCallback){
+		api.getPurchasedReviews(AppController.getInstance().getSessionId(),listCallback);
+	}
+
+	public void getFeedback(Long id,Callback<ReviewVM> callback){
+		api.getFeedback(id,AppController.getInstance().getSessionId(),callback);
+	}
 }
 
 

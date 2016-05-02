@@ -10,6 +10,7 @@ import com.beautypop.viewmodel.ConversationOrderVM;
 import com.beautypop.viewmodel.ConversationVM;
 import com.beautypop.viewmodel.CountryVM;
 import com.beautypop.viewmodel.FeaturedItemVM;
+import com.beautypop.viewmodel.ReviewVM;
 import com.beautypop.viewmodel.GameBadgeVM;
 import com.beautypop.viewmodel.LocationVM;
 import com.beautypop.viewmodel.MessageVM;
@@ -17,6 +18,7 @@ import com.beautypop.viewmodel.NewCommentVM;
 import com.beautypop.viewmodel.NewConversationOrderVM;
 import com.beautypop.viewmodel.NewReportedPostVM;
 import com.beautypop.viewmodel.NotificationCounterVM;
+import com.beautypop.viewmodel.PostFeedbackVM;
 import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.PostVMLite;
 import com.beautypop.viewmodel.ResponseStatusVM;
@@ -288,16 +290,6 @@ public interface BeautyPopApi {
     public void declineConversationOrder(@Path("id") Long id, @Query("key") String key, Callback<ConversationOrderVM> cb);
 
     //
-    // Search API
-    //
-
-    @GET("/search-posts/{searchKey}/{catId}/{offset}")
-    public void searchProducts(@Path("searchKey") String searchtext,@Path("catId") Long id, @Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> callback);
-
-    @GET("/search-users/{searchKey}/{offset}")
-    public void searchUsers(@Path("searchKey") String searchtext, @Path("offset") int offset, @Query("key") String key, Callback<List<SellerVM>> callback);
-
-    //
     // GCM
     //
 
@@ -334,4 +326,25 @@ public interface BeautyPopApi {
 
     @GET("/api/get-messages-for-admin/{conversationId}/{offset}")
     public void getMessagesForAdmin(@Path("conversationId") Long conversationId, @Path("offset") Long offset, @Query("key") String key, Callback<Response> cb);
+
+	// Search API
+    @GET("/search-posts/{searchKey}/{catId}/{offset}")
+    public void searchProducts(@Path("searchKey") String searchtext,@Path("catId") Long id, @Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> callback);
+
+    @GET("/search-users/{searchKey}/{offset}")
+	public void searchUsers(@Path("searchKey") String searchtext, @Path("offset") int offset, @Query("key") String key, Callback<List<SellerVM>> callback);
+
+	//Feedback API
+	@POST("/api/review/add")
+	public void postFeedback(@Body PostFeedbackVM feedbackVM, @Query("key") String key, Callback<Response> cb);
+
+	@GET("/api/reviews/sold/user")
+	public void getSoldReviews(@Query("key") String key, Callback<List<ReviewVM>> cb);
+
+	@GET("/api/reviews/purchased/user")
+	public void getPurchasedReviews(@Query("key") String key, Callback<List<ReviewVM>> cb);
+
+	@GET("/api/review/{id}")
+	public void getFeedback(@Path("id") Long id,@Query("key") String key,Callback<ReviewVM> cb);
+
 }
