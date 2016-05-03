@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:src="@drawable/logo_login"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -95,13 +95,13 @@
                             android:layout_height="45dp"
                             android:paddingLeft="40dp"
                             android:paddingRight="10dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="25dp"
                             android:editable="true"
                             android:focusable="true"
                             android:singleLine="true"
                             android:textSize="16dp"
                             android:background="@color/white"
-                            android:alpha="0.9"
+                            android:alpha="1"
                             android:autoText="false"
                             android:clickable="false"
                             android:textIsSelectable="false"
@@ -141,7 +141,7 @@
                             android:editable="true"
                             android:textSize="16dp"
                             android:background="@color/white"
-                            android:alpha="0.9"
+                            android:alpha="1"
                             android:textIsSelectable="false"
                             android:ellipsize="start" />
                     </FrameLayout>
@@ -206,7 +206,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentTop="false"
-                android:layout_marginBottom="120dp">
+                android:layout_marginBottom="80dp">
                 <ImageView
                     android:id="@+id/buttonFbLogin"
                     android:layout_width="wrap_content"
