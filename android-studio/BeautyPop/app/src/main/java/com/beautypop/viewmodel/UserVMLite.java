@@ -19,6 +19,8 @@ public class UserVMLite implements Serializable {
     public Long numConversationsAsSender = 0L;
     public Long numConversationsAsRecipient = 0L;
     public Long numCollections = 0L;
+    public Long numReviews = 0L;
+    public Double averageReviewScore = 0.0;
     public boolean isFollowing = false;
 
     // for feed
@@ -150,6 +152,22 @@ public class UserVMLite implements Serializable {
 
     public void setNumCollections(Long numCollections) {
         this.numCollections = numCollections;
+    }
+
+    public Long getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(Long numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    public Double getAverageReviewScore() {
+        return averageReviewScore;
+    }
+
+    public void setAverageReviewScore(Double averageReviewScore) {
+        this.averageReviewScore = averageReviewScore;
     }
 
     public boolean isFollowing() {

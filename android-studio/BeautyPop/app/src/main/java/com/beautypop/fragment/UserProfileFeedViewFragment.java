@@ -160,7 +160,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         userNameText.setText(user.name);
 
 		if(user.getNumReviews() > 0){
-			if(user.getNumReviews() ==  1){
+			if(user.getNumReviews() == 1){
 				totalReviews.setText(user.getNumReviews()+" review");
 			}else{
 				totalReviews.setText(user.getNumReviews()+" reviews");
@@ -173,8 +173,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 				startActivity(new Intent(getActivity(), ReviewActivity.class));
 			}
 		});
-
-
 
 		Log.d("UserProfile score :: ",user.getAverageReviewScore()+"");
 		if(user.getAverageReviewScore() >= 0.5 && user.getAverageReviewScore() <= 1.5){
