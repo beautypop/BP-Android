@@ -2,6 +2,7 @@ package com.beautypop.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.beautypop.R;
 import com.beautypop.activity.MainActivity;
+import com.beautypop.activity.ReviewActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.UserInfoCache;
 import com.beautypop.util.FeedFilter;
@@ -42,7 +44,8 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     private static final String TAG = UserProfileFeedViewFragment.class.getName();
 
     protected ImageView coverImage, profileImage, editCoverImage, editProfileImage, settingsIcon;
-    protected TextView userNameText, followersText, followingsText, userInfoText, userDescText, sellerUrlText;
+	protected ImageView star1,star2,star3,star4,star5;
+    protected TextView userNameText, followersText, followingsText, userInfoText, userDescText, sellerUrlText,totalReviews;
     protected LinearLayout userInfoLayout;
     protected RelativeLayout settingsLayout;
     protected Button loginAsButton, editButton, followButton, productsButton, likesButton;
@@ -51,6 +54,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected ImageView dismissTipsButton;
 
     private boolean following;
+	protected LinearLayout ratingsLayout;
 
     protected Long userId;
     protected FeedFilter.FeedType feedType;
@@ -71,10 +75,17 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         toolbarOffsetLayout.setVisibility(View.GONE);
 
         userNameText = (TextView) headerView.findViewById(R.id.userNameText);
+		totalReviews = (TextView) headerView.findViewById(R.id.totalReviews);
         coverImage = (ImageView) headerView.findViewById(R.id.coverImage);
         profileImage = (ImageView) headerView.findViewById(R.id.userImage);
         editCoverImage = (ImageView) headerView.findViewById(R.id.editCoverImage);
         editProfileImage = (ImageView) headerView.findViewById(R.id.editProfileImage);
+
+		star1 = (ImageView) headerView.findViewById(R.id.star1);
+		star2 = (ImageView) headerView.findViewById(R.id.star2);
+		star3 = (ImageView) headerView.findViewById(R.id.star3);
+		star4 = (ImageView) headerView.findViewById(R.id.star4);
+		star5 = (ImageView) headerView.findViewById(R.id.star5);
 
         settingsLayout = (RelativeLayout) headerView.findViewById(R.id.settingsLayout);
         settingsIcon = (ImageView) headerView.findViewById(R.id.settingsIcon);
@@ -92,6 +103,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         dismissTipsButton = (ImageView) headerView.findViewById(R.id.dismissTipsButton);
 
         userInfoLayout = (LinearLayout) headerView.findViewById(R.id.userInfoLayout);
+		ratingsLayout = (LinearLayout) headerView.findViewById(R.id.ratingsLayout);
         userInfoText = (TextView) headerView.findViewById(R.id.userInfoText);
         loginAsButton = (Button) headerView.findViewById(R.id.loginAsButton);
         userDescText = (TextView) headerView.findViewById(R.id.userDescText);
@@ -114,6 +126,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected void initLayout() {
         // hide
         editCoverImage.setVisibility(View.GONE);
+		ratingsLayout.setVisibility(View.GONE);
         editProfileImage.setVisibility(View.GONE);
         settingsLayout.setVisibility(View.GONE);
         editButton.setVisibility(View.GONE);
@@ -145,6 +158,46 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 
     protected void initUserInfoLayout(final UserVM user) {
         userNameText.setText(user.name);
+
+		if(user.getNumReviews() > 0){
+			if(user.getNumReviews() ==  1){
+				totalReviews.setText(user.getNumReviews()+" review");
+			}else{
+				totalReviews.setText(user.getNumReviews()+" reviews");
+			}
+		}
+
+		totalReviews.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				startActivity(new Intent(getActivity(), ReviewActivity.class));
+			}
+		});
+
+
+
+		Log.d("UserProfile score :: ",user.getAverageReviewScore()+"");
+		if(user.getAverageReviewScore() >= 0.5 && user.getAverageReviewScore() <= 1.5){
+            star1.setImageResource(R.drawable.star_selected);
+		}else if(user.getAverageReviewScore() > 1.5 && user.getAverageReviewScore() <= 2.5){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+		}else if(user.getAverageReviewScore() >2.5 && user.getAverageReviewScore() <= 3.5){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+			star3.setImageResource(R.drawable.star_selected);
+		}else if(user.getAverageReviewScore() >3.5 && user.getAverageReviewScore() <= 4.5){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+			star3.setImageResource(R.drawable.star_selected);
+			star4.setImageResource(R.drawable.star_selected);
+		}else if(user.getAverageReviewScore() >4.5 && user.getAverageReviewScore() <= 5.0){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+			star3.setImageResource(R.drawable.star_selected);
+			star4.setImageResource(R.drawable.star_selected);
+			star5.setImageResource(R.drawable.star_selected);
+		}
 
         if (!StringUtils.isEmpty(user.aboutMe)) {
             userDescText.setVisibility(View.VISIBLE);
@@ -194,6 +247,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
                 });
 
                 followersText.setText(ViewUtil.formatFollowers(user.numFollowers));
+
                 followersText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

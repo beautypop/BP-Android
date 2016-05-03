@@ -49,7 +49,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/profileImageLayout"
             android:layout_below="@+id/coverImageLayout"
-            android:background="@color/white"
             android:orientation="vertical">
 
             <LinearLayout
@@ -141,16 +140,58 @@
                         android:visibility="gone"
                         android:layout_marginBottom="5dp" />
 
-                </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/ratingsLayout"
-                android:layout_margin="10dp"
-                android:visibility="gone">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ratingsLayout"
+                        android:layout_margin="10dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/star1"
+                            android:padding="2dp"
+                            android:src="@drawable/star_unselected"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <ImageView
+                            android:id="@+id/star2"
+                            android:padding="2dp"
+                            android:src="@drawable/star_unselected"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <ImageView
+                            android:id="@+id/star3"
+                            android:padding="2dp"
+                            android:src="@drawable/star_unselected"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <ImageView
+                            android:id="@+id/star4"
+                            android:padding="2dp"
+                            android:src="@drawable/star_unselected"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <ImageView
+                            android:id="@+id/star5"
+                            android:src="@drawable/star_unselected"
+                            android:padding="2dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                        <TextView
+                            android:id="@+id/totalReviews"
+                            android:textSize="13dp"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/pale_blue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -165,7 +206,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginBottom="10dp"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <Button
                     android:layout_width="65dp"

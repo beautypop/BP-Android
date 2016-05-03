@@ -217,6 +217,8 @@ public class ViewUtil {
 
     public static String[] SEARCH_MAIN_TITLES;
 
+	public static String[] REVIEW_MAIN_TITLES;
+
     private static Map<PostConditionType, String> postConditionTypeMap = new HashMap<>();
 
     private static Map<ConversationOrderTransactionState, String> conversationOrderTransactionStateMap = new HashMap<>();
@@ -244,7 +246,13 @@ public class ViewUtil {
 				AppController.getInstance().getString(R.string.search_tab_users)
 		};
 
-        postConditionTypeMap.clear();
+		REVIEW_MAIN_TITLES = new String[] {
+				AppController.getInstance().getString(R.string.title_sold),
+				AppController.getInstance().getString(R.string.title_purchased)
+		};
+
+
+		postConditionTypeMap.clear();
         postConditionTypeMap.put(PostConditionType.NEW_WITH_TAG, AppController.getInstance().getString(R.string.new_with_tag));
         postConditionTypeMap.put(PostConditionType.NEW_WITHOUT_TAG, AppController.getInstance().getString(R.string.new_without_tag));
         postConditionTypeMap.put(PostConditionType.USED, AppController.getInstance().getString(R.string.used));

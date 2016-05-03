@@ -68,11 +68,15 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
         followButton.setVisibility(View.GONE);
         userInfoLayout.setVisibility(View.GONE);
 
+
         // show
         editCoverImage.setVisibility(View.VISIBLE);
         editProfileImage.setVisibility(View.VISIBLE);
         settingsLayout.setVisibility(View.VISIBLE);
         editButton.setVisibility(View.VISIBLE);
+		ratingsLayout.setVisibility(View.VISIBLE);
+
+
         ViewUtil.showTips(SharedPreferencesUtil.Screen.MY_PROFILE_TIPS, tipsLayout, dismissTipsButton);
 
         // actions
