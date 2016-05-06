@@ -45,13 +45,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -83,13 +84,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -121,13 +123,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -159,13 +162,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -208,13 +212,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -246,13 +251,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -284,13 +290,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -322,13 +329,14 @@
                         android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
-                        android:background="@color/dark_gray_2"
+                        android:background="@color/dark_gray"
                         android:gravity="center_horizontal|bottom"
                         android:lineSpacingMultiplier="0.9"
                         android:alpha="0.6"
                         android:layout_gravity="bottom"
                         android:text=""
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
