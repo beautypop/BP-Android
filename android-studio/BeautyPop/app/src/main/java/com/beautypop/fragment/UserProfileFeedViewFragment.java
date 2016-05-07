@@ -60,8 +60,8 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected FeedFilter.FeedType feedType;
 
     @Override
-    protected FeedViewLayout getFeedViewLayout() {
-        return FeedViewLayout.TWO_COLUMNS;
+    protected FeedViewItemsLayout getFeedViewItemsLayout() {
+        return FeedViewItemsLayout.TWO_COLUMNS;
     }
 
     @Override

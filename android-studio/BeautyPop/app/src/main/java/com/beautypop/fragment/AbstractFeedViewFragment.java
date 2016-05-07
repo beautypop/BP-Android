@@ -55,7 +55,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
 
     protected boolean reload = false;
 
-    public enum FeedViewLayout {
+    public enum FeedViewItemsLayout {
         TWO_COLUMNS,
         THREE_COLUMNS
     }
@@ -66,7 +66,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         ITEM_REMOVED
     }
 
-    abstract protected FeedViewLayout getFeedViewLayout();
+    abstract protected FeedViewItemsLayout getFeedViewItemsLayout();
 
     abstract protected void loadFeed(Long offset, FeedFilter feedFilter);
 
@@ -121,7 +121,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         //feedView.setHasFixedSize(true);
 
         // default is 3 columns layout
-        if (FeedViewLayout.TWO_COLUMNS.equals(getFeedViewLayout())) {
+        if (FeedViewItemsLayout.TWO_COLUMNS.equals(getFeedViewItemsLayout())) {
             RECYCLER_VIEW_COLUMN_SIZE = 2;
             TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_TOP_MARGIN);
             BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_BOTTOM_MARGIN);
@@ -158,7 +158,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         }
 
         // adapter
-        feedAdapter = new FeedViewAdapter(getActivity(), items, getFeedViewLayout(), headerView, showSeller());
+        feedAdapter = new FeedViewAdapter(getActivity(), items, getFeedViewItemsLayout(), headerView, showSeller());
         feedView.setAdapter(feedAdapter);
 
         // layout manager

@@ -19,7 +19,7 @@ import com.beautypop.activity.ProductActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.CountryCache;
 import com.beautypop.app.UserInfoCache;
-import com.beautypop.fragment.AbstractFeedViewFragment.FeedViewLayout;
+import com.beautypop.fragment.AbstractFeedViewFragment.FeedViewItemsLayout;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
@@ -42,7 +42,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
     private static final int ITEM_VIEW_TYPE_HEADER = 0;
     private static final int ITEM_VIEW_TYPE_ITEM = 1;
 
-    private FeedViewLayout feedViewLayout;
+    private FeedViewItemsLayout feedViewItemsLayout;
 
     private View headerView;
 
@@ -57,15 +57,15 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
     private boolean pending = false;
 
     public FeedViewAdapter(Activity activity, List<PostVMLite> items,
-                           FeedViewLayout feedViewLayout, View header) {
+                           FeedViewItemsLayout feedViewLayout, View header) {
         this(activity, items, feedViewLayout, header, false);
     }
 
     public FeedViewAdapter(Activity activity, List<PostVMLite> items,
-                           FeedViewLayout feedViewLayout, View header, boolean showSeller) {
+                           FeedViewItemsLayout feedViewLayout, View header, boolean showSeller) {
         this.activity = activity;
         this.items = items;
-        this.feedViewLayout = feedViewLayout;
+        this.feedViewItemsLayout = feedViewItemsLayout;
         this.headerView = header;
         this.showSeller = showSeller;
     }
@@ -211,7 +211,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         });
 
         // layout
-        if (FeedViewLayout.TWO_COLUMNS.equals(feedViewLayout)) {
+        if (FeedViewItemsLayout.TWO_COLUMNS.equals(feedViewItemsLayout)) {
             holder.price.setTextColor(activity.getResources().getColor(R.color.green));
             holder.price.setTypeface(null, Typeface.NORMAL);
 
@@ -220,7 +220,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             holder.price.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             holder.likeText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             holder.originalPrice.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-        } else if (FeedViewLayout.THREE_COLUMNS.equals(feedViewLayout)) {
+        } else if (FeedViewItemsLayout.THREE_COLUMNS.equals(feedViewItemsLayout)) {
             holder.price.setTextColor(activity.getResources().getColor(R.color.green));
             holder.price.setTypeface(null, Typeface.NORMAL);
 

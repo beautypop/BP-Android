@@ -25,8 +25,8 @@ public class FeedViewFragment extends AbstractFeedViewFragment {
     protected Callback<List<PostVMLite>> feedCallback;
 
     @Override
-    protected FeedViewLayout getFeedViewLayout() {
-        return FeedViewLayout.THREE_COLUMNS;
+    protected FeedViewItemsLayout getFeedViewItemsLayout() {
+        return FeedViewItemsLayout.THREE_COLUMNS;
     }
 
     @Override

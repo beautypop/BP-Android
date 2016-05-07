@@ -76,7 +76,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 					}
 				});
 
-		feedAdapter = new FeedViewAdapter(getActivity(), items, AbstractFeedViewFragment.FeedViewLayout.TWO_COLUMNS, null, false);
+		feedAdapter = new FeedViewAdapter(getActivity(), items, AbstractFeedViewFragment.FeedViewItemsLayout.TWO_COLUMNS, null, false);
 		feedView.setAdapter(feedAdapter);
 
 		// layout manager
