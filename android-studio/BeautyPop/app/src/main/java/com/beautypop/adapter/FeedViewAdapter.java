@@ -169,8 +169,8 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             holder.price.setTypeface(null, Typeface.NORMAL);
         } else if (FeedViewLayout.THREE_COLUMNS.equals(feedViewLayout)) {
             holder.titleLayout.setVisibility(View.GONE);
-            holder.price.setTextColor(activity.getResources().getColor(R.color.light_gray));
-            holder.price.setTypeface(null, Typeface.BOLD);
+            holder.price.setTextColor(activity.getResources().getColor(R.color.gray));
+            holder.price.setTypeface(null, Typeface.NORMAL);
         }
 
         holder.price.setText(ViewUtil.formatPrice(item.getPrice()));
