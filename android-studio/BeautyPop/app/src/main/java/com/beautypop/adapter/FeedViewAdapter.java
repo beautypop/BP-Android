@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -152,26 +153,15 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             holder.soldImage.setVisibility(View.INVISIBLE);
         }
 
-        if (FeedViewLayout.TWO_COLUMNS.equals(feedViewLayout)) {
-            holder.titleLayout.setVisibility(View.VISIBLE);
-
-            if (!StringUtils.isEmpty(item.countryCode) &&
-                    !item.countryCode.equalsIgnoreCase(CountryCache.COUNTRY_CODE_NA)) {
-                ImageUtil.displayImage(item.countryIcon, holder.countryImage);
-                holder.countryImage.setVisibility(View.VISIBLE);
-            } else {
-                holder.countryImage.setVisibility(View.GONE);
-            }
-
-            ViewUtil.setHtmlText(item.getTitle(), holder.title, activity, true);
-
-            holder.price.setTextColor(activity.getResources().getColor(R.color.green));
-            holder.price.setTypeface(null, Typeface.NORMAL);
-        } else if (FeedViewLayout.THREE_COLUMNS.equals(feedViewLayout)) {
-            holder.titleLayout.setVisibility(View.GONE);
-            holder.price.setTextColor(activity.getResources().getColor(R.color.gray));
-            holder.price.setTypeface(null, Typeface.NORMAL);
+        if (!StringUtils.isEmpty(item.countryCode) &&
+                !item.countryCode.equalsIgnoreCase(CountryCache.COUNTRY_CODE_NA)) {
+            ImageUtil.displayImage(item.countryIcon, holder.countryImage);
+            holder.countryImage.setVisibility(View.VISIBLE);
+        } else {
+            holder.countryImage.setVisibility(View.GONE);
         }
+
+        ViewUtil.setHtmlText(item.getTitle(), holder.title, activity, true);
 
         holder.price.setText(ViewUtil.formatPrice(item.getPrice()));
         if (item.getOriginalPrice() > 0) {
@@ -219,6 +209,27 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                 }
             }
         });
+
+        // layout
+        if (FeedViewLayout.TWO_COLUMNS.equals(feedViewLayout)) {
+            holder.price.setTextColor(activity.getResources().getColor(R.color.green));
+            holder.price.setTypeface(null, Typeface.NORMAL);
+
+            // font
+            holder.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            holder.price.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            holder.likeText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            holder.originalPrice.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+        } else if (FeedViewLayout.THREE_COLUMNS.equals(feedViewLayout)) {
+            holder.price.setTextColor(activity.getResources().getColor(R.color.green));
+            holder.price.setTypeface(null, Typeface.NORMAL);
+
+            // font
+            holder.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+            holder.price.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+            holder.likeText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+            holder.originalPrice.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
+        }
 
         // admin
         if (AppController.isUserAdmin()) {
