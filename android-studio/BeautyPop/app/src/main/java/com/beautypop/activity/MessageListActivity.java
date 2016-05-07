@@ -84,7 +84,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
     private Button buyerOrderButton, buyerCancelButton, buyerOrderAgainButton, buyerMessageButton;
 
     private LinearLayout sellerButtonsLayout, sellerAcceptDeclineLayout, sellerMessageLayout;
-    private Button sellerAcceptButton, sellerDeclineButton, sellerMessageButton,feedbackButton,sellerFeedbackButton;
+    private Button sellerAcceptButton, sellerDeclineButton, sellerMessageButton,feedbackButton, sellerFeedbackButton;
 
     private List<MessageVM> messages = new ArrayList<>();
     private MessageListAdapter adapter;

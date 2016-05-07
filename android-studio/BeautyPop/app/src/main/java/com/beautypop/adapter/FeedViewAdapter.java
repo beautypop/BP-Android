@@ -1,6 +1,8 @@
 package com.beautypop.adapter;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,6 +18,7 @@ import com.beautypop.activity.ProductActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.CountryCache;
 import com.beautypop.app.UserInfoCache;
+import com.beautypop.fragment.AbstractFeedViewFragment.FeedViewLayout;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
@@ -38,6 +41,8 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
     private static final int ITEM_VIEW_TYPE_HEADER = 0;
     private static final int ITEM_VIEW_TYPE_ITEM = 1;
 
+    private FeedViewLayout feedViewLayout;
+
     private View headerView;
 
     private Activity activity;
@@ -50,13 +55,16 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
     private boolean pending = false;
 
-    public FeedViewAdapter(Activity activity, List<PostVMLite> items, View header) {
-        this(activity, items, header, false);
+    public FeedViewAdapter(Activity activity, List<PostVMLite> items,
+                           FeedViewLayout feedViewLayout, View header) {
+        this(activity, items, feedViewLayout, header, false);
     }
 
-    public FeedViewAdapter(Activity activity, List<PostVMLite> items, View header, boolean showSeller) {
+    public FeedViewAdapter(Activity activity, List<PostVMLite> items,
+                           FeedViewLayout feedViewLayout, View header, boolean showSeller) {
         this.activity = activity;
         this.items = items;
+        this.feedViewLayout = feedViewLayout;
         this.headerView = header;
         this.showSeller = showSeller;
     }
@@ -144,22 +152,27 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             holder.soldImage.setVisibility(View.INVISIBLE);
         }
 
-        if (!StringUtils.isEmpty(item.countryCode) &&
-                !item.countryCode.equalsIgnoreCase(CountryCache.COUNTRY_CODE_NA)) {
-            ImageUtil.displayImage(item.countryIcon, holder.countryImage);
-            holder.countryImage.setVisibility(View.VISIBLE);
-        } else {
-            holder.countryImage.setVisibility(View.GONE);
+        if (FeedViewLayout.TWO_COLUMNS.equals(feedViewLayout)) {
+            holder.titleLayout.setVisibility(View.VISIBLE);
+
+            if (!StringUtils.isEmpty(item.countryCode) &&
+                    !item.countryCode.equalsIgnoreCase(CountryCache.COUNTRY_CODE_NA)) {
+                ImageUtil.displayImage(item.countryIcon, holder.countryImage);
+                holder.countryImage.setVisibility(View.VISIBLE);
+            } else {
+                holder.countryImage.setVisibility(View.GONE);
+            }
+
+            ViewUtil.setHtmlText(item.getTitle(), holder.title, activity, true);
+
+            holder.price.setTextColor(activity.getResources().getColor(R.color.green));
+            holder.price.setTypeface(null, Typeface.NORMAL);
+        } else if (FeedViewLayout.THREE_COLUMNS.equals(feedViewLayout)) {
+            holder.titleLayout.setVisibility(View.GONE);
+            holder.price.setTextColor(activity.getResources().getColor(R.color.light_gray));
+            holder.price.setTypeface(null, Typeface.BOLD);
         }
 
-        if (AppController.isUserAdmin()) {
-            holder.timeScoreText.setVisibility(View.VISIBLE);
-            holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE)+"");
-        } else {
-            holder.timeScoreText.setVisibility(View.INVISIBLE);
-        }
-
-        ViewUtil.setHtmlText(item.getTitle(), holder.title, activity, true);
         holder.price.setText(ViewUtil.formatPrice(item.getPrice()));
         if (item.getOriginalPrice() > 0) {
             holder.originalPrice.setVisibility(View.VISIBLE);
@@ -206,6 +219,14 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                 }
             }
         });
+
+        // admin
+        if (AppController.isUserAdmin()) {
+            holder.timeScoreText.setVisibility(View.VISIBLE);
+            holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE)+"");
+        } else {
+            holder.timeScoreText.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -289,6 +310,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
     class FeedViewHolder extends RecyclerView.ViewHolder {
         CardView itemCard;
         LinearLayout itemLayout;
+        LinearLayout titleLayout;
         ImageView image;
         ImageView sellerImage;
         ImageView freeDeliveryImage;
@@ -307,6 +329,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
             itemCard = (CardView) holder.findViewById(R.id.itemCard);
             itemLayout = (LinearLayout) holder.findViewById(R.id.itemLayout);
+            titleLayout = (LinearLayout) holder.findViewById(R.id.titleLayout);
             image = (ImageView) holder.findViewById(R.id.image);
             sellerImage = (ImageView) holder.findViewById(R.id.sellerImage);
             freeDeliveryImage = (ImageView) holder.findViewById(R.id.freeDeliveryImage);

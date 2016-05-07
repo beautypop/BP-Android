@@ -32,13 +32,13 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
 
     private static final String TAG = AbstractFeedViewFragment.class.getName();
 
-    public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
+    private int RECYCLER_VIEW_COLUMN_SIZE = 3;
 
-    static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_TOP_MARGIN);
-    private static final int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_BOTTOM_MARGIN);
-    private static final int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_SIDE_MARGIN);
-    private static final int LEFT_SIDE_MARGIN = SIDE_MARGIN * 2;
-    private static final int RIGHT_SIDE_MARGIN = SIDE_MARGIN * 2;
+    private int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_TOP_MARGIN);
+    private int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_BOTTOM_MARGIN);
+    private int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_SIDE_MARGIN);
+    private int LEFT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_LEFT_SIDE_MARGIN);
+    private int RIGHT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_RIGHT_SIDE_MARGIN);
 
     protected RecyclerView feedView;
     protected FeedViewAdapter feedAdapter;
@@ -55,11 +55,18 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
 
     protected boolean reload = false;
 
+    public enum FeedViewLayout {
+        TWO_COLUMNS,
+        THREE_COLUMNS
+    }
+
     public enum ItemChangedState {
         ITEM_UPDATED,
         ITEM_ADDED,
         ITEM_REMOVED
     }
+
+    abstract protected FeedViewLayout getFeedViewLayout();
 
     abstract protected void loadFeed(Long offset, FeedFilter feedFilter);
 
@@ -112,6 +119,17 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
 
         feedView = (RecyclerView) view.findViewById(R.id.feedView);
         //feedView.setHasFixedSize(true);
+
+        // default is 3 columns layout
+        if (FeedViewLayout.TWO_COLUMNS.equals(getFeedViewLayout())) {
+            RECYCLER_VIEW_COLUMN_SIZE = 2;
+            TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_TOP_MARGIN);
+            BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_BOTTOM_MARGIN);
+            SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_SIDE_MARGIN);
+            LEFT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_LEFT_SIDE_MARGIN);
+            RIGHT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_RIGHT_SIDE_MARGIN);
+        }
+
         feedView.addItemDecoration(
                 new RecyclerView.ItemDecoration() {
                     @Override
@@ -127,6 +145,8 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
                             outRect.set(LEFT_SIDE_MARGIN, TOP_MARGIN, SIDE_MARGIN, BOTTOM_MARGIN);
                         } else if (feedItemPosition == ViewUtil.FeedItemPosition.RIGHT_COLUMN) {
                             outRect.set(SIDE_MARGIN, TOP_MARGIN, RIGHT_SIDE_MARGIN, BOTTOM_MARGIN);
+                        } else if (feedItemPosition == ViewUtil.FeedItemPosition.MIDDLE_COLUMN) {
+                            outRect.set(SIDE_MARGIN, TOP_MARGIN, SIDE_MARGIN, BOTTOM_MARGIN);
                         }
                     }
                 });
@@ -138,7 +158,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         }
 
         // adapter
-        feedAdapter = new FeedViewAdapter(getActivity(), items, headerView, showSeller());
+        feedAdapter = new FeedViewAdapter(getActivity(), items, getFeedViewLayout(), headerView, showSeller());
         feedView.setAdapter(feedAdapter);
 
         // layout manager

@@ -25,6 +25,11 @@ public class FeedViewFragment extends AbstractFeedViewFragment {
     protected Callback<List<PostVMLite>> feedCallback;
 
     @Override
+    protected FeedViewLayout getFeedViewLayout() {
+        return FeedViewLayout.THREE_COLUMNS;
+    }
+
+    @Override
     protected void initFeedFilter() {
         FeedFilter.FeedType feedType = getFeedType(
                 getArguments().getString(ViewUtil.BUNDLE_KEY_FEED_TYPE));

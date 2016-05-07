@@ -1,11 +1,8 @@
 package com.beautypop.fragment;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beautypop.R;
-import com.beautypop.adapter.FeedViewAdapter;
 import com.beautypop.adapter.PopupCategoryListAdapter;
 import com.beautypop.app.CategoryCache;
 import com.beautypop.app.TrackedFragment;
@@ -30,32 +26,15 @@ import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
-import com.beautypop.viewmodel.PostVMLite;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchProductFragment extends TrackedFragment {
     private static final String TAG = SearchProductFragment.class.getName();
 
-	protected LinearLayout selectCatLayout, selectSubCatLayout;
-
-	public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
-	protected PopupCategoryListAdapter adapter;
-
-	private static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_TOP_MARGIN);
-	private static final int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_BOTTOM_MARGIN);
-	private static final int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_SIDE_MARGIN);
-	private static final int LEFT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
-	private static final int RIGHT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
-
     private RelativeLayout searchLayout;
     private PopupWindow categoryPopup;
     private PopupWindow subCategoryPopup;
-    private RecyclerView feedView;
-	protected FeedViewAdapter feedAdapter;
-    private GridLayoutManager layoutManager;
-    private List<PostVMLite> items;
     private TextView selectCatText, selectSubCatText;
     private ImageView selectCatIcon, selectSubCatIcon,catIcon,subCatIcon;
     private CategoryVM category;
@@ -64,7 +43,10 @@ public class SearchProductFragment extends TrackedFragment {
 	private SearchView searchView;
     private Long catId = -1L;
 
-	@Override
+    protected LinearLayout selectCatLayout, selectSubCatLayout;
+    protected PopupCategoryListAdapter adapter;
+
+    @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
@@ -85,8 +67,6 @@ public class SearchProductFragment extends TrackedFragment {
 		subCatIcon = (ImageView) view.findViewById(R.id.subCatIcon);
 		searchLayout = (RelativeLayout) view.findViewById(R.id.searchLayout);
 		searchView = (SearchView) getActivity().findViewById(R.id.searchView);
-
-		items = new ArrayList<>();
 
 		catId = getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1);
 		if (catId == null || catId <= 0) {
@@ -137,36 +117,6 @@ public class SearchProductFragment extends TrackedFragment {
 				return false;
 			}
 		});
-
-		feedView = (RecyclerView) view.findViewById(R.id.feedView);
-		feedView.addItemDecoration(
-				new RecyclerView.ItemDecoration() {
-					@Override
-					public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-						ViewUtil.FeedItemPosition feedItemPosition =
-								ViewUtil.getFeedItemPosition(view, RECYCLER_VIEW_COLUMN_SIZE, false);
-						if (feedItemPosition == ViewUtil.FeedItemPosition.HEADER) {
-							outRect.set(0, 0, 0, 0);
-						} else if (feedItemPosition == ViewUtil.FeedItemPosition.LEFT_COLUMN) {
-							outRect.set(LEFT_SIDE_MARGIN, TOP_MARGIN, SIDE_MARGIN, BOTTOM_MARGIN);
-						} else if (feedItemPosition == ViewUtil.FeedItemPosition.RIGHT_COLUMN) {
-							outRect.set(SIDE_MARGIN, TOP_MARGIN, RIGHT_SIDE_MARGIN, BOTTOM_MARGIN);
-						}
-					}
-				});
-
-		feedAdapter = new FeedViewAdapter(getActivity(), items, null, false);
-		feedView.setAdapter(feedAdapter);
-
-		// layout manager
-		layoutManager = new GridLayoutManager(getActivity(), RECYCLER_VIEW_COLUMN_SIZE);
-		layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                return feedAdapter.isHeader(position) ? layoutManager.getSpanCount() : 1;
-            }
-        });
-		feedView.setLayoutManager(layoutManager);
 
 		selectCatLayout.setOnClickListener(new View.OnClickListener() {
 			@Override

@@ -30,15 +30,15 @@ import retrofit.client.Response;
 public class SearchResultProductFragment extends TrackedFragment {
     private static final String TAG = SearchResultProductFragment.class.getName();
 
-    public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
+	public static int RECYCLER_VIEW_COLUMN_SIZE = 2;
 
-    protected static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_TOP_MARGIN);
-    protected static final int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_BOTTOM_MARGIN);
-    protected static final int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEEDVIEW_ITEM_SIDE_MARGIN);
-    protected static final int LEFT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
-    protected static final int RIGHT_SIDE_MARGIN = (SIDE_MARGIN * 2) + ViewUtil.getRealDimension(2);
+	private static final int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_TOP_MARGIN);
+	private static final int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_BOTTOM_MARGIN);
+	private static final int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_SIDE_MARGIN);
+	private static final int LEFT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_LEFT_SIDE_MARGIN);
+	private static final int RIGHT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_LEFT_SIDE_MARGIN);
 
-    protected TextView noDataText;
+	protected TextView noDataText;
 	protected RecyclerView feedView;
 	protected FeedViewAdapter feedAdapter;
 	protected GridLayoutManager layoutManager;
@@ -76,7 +76,7 @@ public class SearchResultProductFragment extends TrackedFragment {
 					}
 				});
 
-		feedAdapter = new FeedViewAdapter(getActivity(), items, null, false);
+		feedAdapter = new FeedViewAdapter(getActivity(), items, AbstractFeedViewFragment.FeedViewLayout.TWO_COLUMNS, null, false);
 		feedView.setAdapter(feedAdapter);
 
 		// layout manager

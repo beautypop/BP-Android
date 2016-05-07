@@ -60,6 +60,11 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected FeedFilter.FeedType feedType;
 
     @Override
+    protected FeedViewLayout getFeedViewLayout() {
+        return FeedViewLayout.TWO_COLUMNS;
+    }
+
+    @Override
     protected View getHeaderView(LayoutInflater inflater) {
         if (headerView == null) {
             headerView = inflater.inflate(R.layout.user_profile_feed_view_header, null);
