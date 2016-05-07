@@ -80,8 +80,8 @@
             android:id="@+id/detailsLayout"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp">
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -120,8 +120,7 @@
                     android:textColor="@color/green"
                     android:layout_alignParentLeft="true"
                     android:singleLine="true"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical" />
 
                 <TextView
                     android:id="@+id/originalPrice"
