@@ -72,14 +72,15 @@
         android:text="@string/category"
         android:layout_below="@+id/homeSlider"
         android:textColor="@color/gray"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:textSize="14dp"
         android:layout_marginBottom="5dp"
         android:id="@+id/categoryText"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:layout_centerInParent="true"
+        android:gravity="center" />
 
     <include layout="@layout/home_category_selector_view"
         android:id="@+id/categorySelector"
@@ -94,11 +95,12 @@
         android:textColor="@color/gray"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:textSize="15dp"
-        android:layout_marginBottom="3dp"
+        android:textSize="14dp"
+        android:layout_marginBottom="0dp"
         android:layout_below="@+id/categorySelector"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:gravity="center" />
 
 </RelativeLayout>

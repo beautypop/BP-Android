@@ -8,14 +8,14 @@
     card_view:cardPreventCornerOverlap="true"
     card_view:contentPadding="0dp"
     card_view:cardCornerRadius="0dp"
-    card_view:cardElevation="0.8dp">
+    card_view:cardElevation="0.0dp">
 
     <LinearLayout
         android:id="@+id/itemLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@drawable/box_bar_border">
 
         <FrameLayout
             android:id="@+id/imageFrame"
