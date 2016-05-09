@@ -193,7 +193,6 @@
                     android:minWidth="50dp"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
-                    android:background="@drawable/gradient_bottom"
                     android:visibility="gone" />
 
                 <View

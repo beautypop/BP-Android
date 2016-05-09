@@ -44,14 +44,14 @@ public class DefaultValues {
     public static final int PULL_TO_REFRESH_DELAY = 250;
 
     public static final int FEED_LAYOUT_2COL_TOP_MARGIN = 5;
-    public static final int FEED_LAYOUT_2COL_BOTTOM_MARGIN = 1;
-    public static final int FEED_LAYOUT_2COL_SIDE_MARGIN = 3;
+    public static final int FEED_LAYOUT_2COL_BOTTOM_MARGIN = 0;
+    public static final int FEED_LAYOUT_2COL_SIDE_MARGIN = 2;
     public static final int FEED_LAYOUT_2COL_LEFT_SIDE_MARGIN = FEED_LAYOUT_2COL_SIDE_MARGIN * 2;
     public static final int FEED_LAYOUT_2COL_RIGHT_SIDE_MARGIN = FEED_LAYOUT_2COL_SIDE_MARGIN * 2;
 
     public static final int FEED_LAYOUT_3COL_TOP_MARGIN = 3;
-    public static final int FEED_LAYOUT_3COL_BOTTOM_MARGIN = 1;
-    public static final int FEED_LAYOUT_3COL_SIDE_MARGIN = 1;
+    public static final int FEED_LAYOUT_3COL_BOTTOM_MARGIN = 0;
+    public static final int FEED_LAYOUT_3COL_SIDE_MARGIN = 0;
     public static final int FEED_LAYOUT_3COL_LEFT_SIDE_MARGIN = FEED_LAYOUT_3COL_SIDE_MARGIN;
     public static final int FEED_LAYOUT_3COL_RIGHT_SIDE_MARGIN = FEED_LAYOUT_3COL_SIDE_MARGIN;
 

@@ -15,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="7dp"
             android:id="@+id/catsRow1Layout">
 
             <RelativeLayout
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat1"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                         android:id="@+id/name1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat2"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                         android:id="@+id/name2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat3"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -120,7 +120,7 @@
                         android:id="@+id/name3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat4"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -159,7 +159,7 @@
                         android:id="@+id/name4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -182,8 +182,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/catsRow2Layout">
 
             <RelativeLayout
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat5"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -209,7 +209,7 @@
                         android:id="@+id/name5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -231,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat6"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -249,7 +249,7 @@
                         android:id="@+id/name6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -270,7 +270,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat7"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -288,7 +288,7 @@
                         android:id="@+id/name7"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"
@@ -309,7 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/cat8"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -327,7 +327,7 @@
                         android:id="@+id/name8"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="12dp"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_centerHorizontal="true"
                         android:background="@color/dark_gray_2"

@@ -66,27 +66,37 @@
         android:layout_height="120dp"
         android:visibility="gone" />
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/category"
+        android:id="@+id/categorySelectorLayout"
         android:layout_below="@+id/homeSlider"
-        android:textColor="@color/gray"
-        android:layout_marginTop="10dp"
-        android:textSize="14dp"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/categoryText"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_centerInParent="true"
-        android:gravity="center" />
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
-    <include layout="@layout/home_category_selector_view"
-        android:id="@+id/categorySelector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/categoryText" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:layout_below="@+id/homeSlider"
+            android:textColor="@color/gray"
+            android:layout_marginTop="0dp"
+            android:textSize="14dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/categoryText"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerInParent="true"
+            android:gravity="center" />
+
+        <include layout="@layout/home_category_selector_view"
+            android:id="@+id/categorySelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/categoryText" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -94,10 +104,10 @@
         android:text="@string/suggest_for_you"
         android:textColor="@color/gray"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:textSize="14dp"
         android:layout_marginBottom="0dp"
-        android:layout_below="@+id/categorySelector"
+        android:layout_below="@+id/categorySelectorLayout"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
