@@ -1,7 +1,7 @@
 package com.beautypop.adapter;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.app.Activity;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
