@@ -67,6 +67,7 @@ import com.beautypop.activity.FollowingsActivity;
 import com.beautypop.activity.ForgetPasswordActivity;
 import com.beautypop.activity.FullscreenImageActivity;
 import com.beautypop.activity.GameBadgesActivity;
+import com.beautypop.activity.InstagramActivity;
 import com.beautypop.activity.LoginActivity;
 import com.beautypop.activity.MainActivity;
 import com.beautypop.activity.MessageListActivity;
@@ -1343,6 +1344,11 @@ public class ViewUtil {
 
     public static void startAdminConversationListActivity(Activity activity) {
         Intent intent = new Intent(activity, AdminConversationListActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public static void startInstagramActivity(Activity activity) {
+        Intent intent = new Intent(activity, InstagramActivity.class);
         activity.startActivity(intent);
     }
 

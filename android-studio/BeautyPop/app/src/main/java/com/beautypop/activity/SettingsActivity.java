@@ -23,7 +23,7 @@ public class SettingsActivity extends TrackedFragmentActivity {
     private static final String TAG = SettingsActivity.class.getName();
 
     private TextView appVersionText;
-    private RelativeLayout notificationSettingsLayout, logoutLayout, adminLayout;
+    private RelativeLayout notificationSettingsLayout, logoutLayout, adminLayout, instagramLayout;
     private Spinner langSpinner;
     private ImageView backImage;
 
@@ -42,6 +42,7 @@ public class SettingsActivity extends TrackedFragmentActivity {
         notificationSettingsLayout = (RelativeLayout) findViewById(R.id.notificationSettingsLayout);
         logoutLayout = (RelativeLayout) findViewById(R.id.logoutLayout);
         adminLayout = (RelativeLayout) findViewById(R.id.adminLayout);
+        instagramLayout = (RelativeLayout) findViewById(R.id.instagramLayout);
 
         // version
         appVersionText.setText(AppController.getVersionName());
@@ -66,6 +67,14 @@ public class SettingsActivity extends TrackedFragmentActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 userSelect = true;
                 return false;
+            }
+        });
+
+
+        instagramLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewUtil.startInstagramActivity(SettingsActivity.this);
             }
         });
 
@@ -106,6 +115,8 @@ public class SettingsActivity extends TrackedFragmentActivity {
 
                 //ViewUtil.alert(SettingsActivity.this, getString(R.string.lang_complete));
             }
+
+
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

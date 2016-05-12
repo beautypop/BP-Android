@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/instagram_actionbar"
+        />
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_below="@+id/toolBar"
+        android:background="@drawable/insta_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/stepImage"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/step_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/trasitionIcon"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/stepImage"
+            android:src="@drawable/insta_import"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+        
+        <TextView
+            android:id="@+id/importButton"
+            android:layout_below="@+id/trasitionIcon"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="START IMPORT"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/pink"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/cancelButton"
+            android:layout_below="@+id/importButton"
+            android:text="Cancel"
+            android:padding="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/light_gray_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="45dp"
+                                   android:layout_gravity="center"
+                                   android:contentInsetLeft="0dp"
+                                   android:contentInsetStart="0dp"
+                                   app:contentInsetLeft="0dp"
+                                   app:contentInsetStart="0dp"
+                                   android:contentInsetRight="0dp"
+                                   android:contentInsetEnd="0dp"
+                                   app:contentInsetRight="0dp"
+                                   app:contentInsetEnd="0dp"
+                                   >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pink"
+        >
+
+        <ImageView
+            android:id="@+id/backImage"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+        <TextView
+            android:id="@+id/selectCountText"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="hi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

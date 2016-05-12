@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="45dp"
+                                   android:layout_gravity="center"
+                                   android:contentInsetLeft="0dp"
+                                   android:contentInsetStart="0dp"
+                                   app:contentInsetLeft="0dp"
+                                   app:contentInsetStart="0dp"
+                                   android:contentInsetRight="0dp"
+                                   android:contentInsetEnd="0dp"
+                                   app:contentInsetRight="0dp"
+                                   app:contentInsetEnd="0dp"
+                                   >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hero">
+        <ImageView
+            android:id="@+id/instaIcon"
+            android:src="@drawable/instashop"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+        <LinearLayout
+            android:layout_toRightOf="@+id/instaIcon"
+            android:layout_toLeftOf="@+id/appIcon"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/connectText"
+                android:text="Connect"
+                android:background="@drawable/image_rounded"
+                android:layout_weight="2"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/dark_gray"
+                android:layout_weight=".66"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+
+            <TextView
+                android:id="@+id/importText"
+                android:text="Import"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:background="@drawable/image_rounded"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/dark_gray"
+                android:layout_weight=".66"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+
+            <TextView
+                android:id="@+id/editText"
+                android:text="Edit"
+                android:layout_gravity="center"
+                android:background="@drawable/image_rounded"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/dark_gray"
+                android:layout_weight=".66"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+
+            <TextView
+                android:id="@+id/completeText"
+                android:text="Complete"
+                android:background="@drawable/image_rounded"
+                android:layout_weight="2"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="9dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/appIcon"
+            android:src="@drawable/mascot_box"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

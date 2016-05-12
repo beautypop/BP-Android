@@ -1,5 +1,6 @@
 package com.beautypop.app;
 
+import com.beautypop.instagram.InstagramVM;
 import com.beautypop.viewmodel.ActivityVM;
 import com.beautypop.viewmodel.AdminCommentVM;
 import com.beautypop.viewmodel.AdminConversationVM;
@@ -10,6 +11,7 @@ import com.beautypop.viewmodel.ConversationOrderVM;
 import com.beautypop.viewmodel.ConversationVM;
 import com.beautypop.viewmodel.CountryVM;
 import com.beautypop.viewmodel.FeaturedItemVM;
+import com.beautypop.viewmodel.NewPostVM;
 import com.beautypop.viewmodel.ReviewVM;
 import com.beautypop.viewmodel.GameBadgeVM;
 import com.beautypop.viewmodel.LocationVM;
@@ -346,5 +348,11 @@ public interface BeautyPopApi {
 
 	@GET("/api/review/{id}")
 	public void getFeedback(@Path("id") Long id,@Query("key") String key,Callback<ReviewVM> cb);
+
+    @POST("/api/instagram/products/new")
+    public void newInstagramPost(@Body List<NewPostVM> instagramVMs,@Query("key") String key,Callback<ResponseStatusVM> cb);
+
+    @GET("/api/instagram/images")
+    public void getInstagramImportdetPost(@Query("key") String key,Callback<List<String>> cb);
 
 }

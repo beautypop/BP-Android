@@ -24,7 +24,8 @@ public class NewPostVM {
     public Boolean freeDelivery;
     public String countryCode;
     public String deviceType;
-
+    public String image;
+    public String mediaId;
     public NewPostVM(Long catId, String title, String body, double price,
                      ViewUtil.PostConditionType conditionType, List<SelectedImage> selectedPostImages,
                      double originalPrice, Boolean freeDelivery, String countryCode) {
@@ -55,6 +56,8 @@ public class NewPostVM {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public NewPostVM(){}
 
     public NewPostVM(Long id, Long catId, String title, String body, double price,
                      ViewUtil.PostConditionType conditionType, List<SelectedImage> selectedImages,
@@ -99,5 +102,21 @@ public class NewPostVM {
             i++;
         }
         return multipartTypedOutput;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getMediaId() {
+        return mediaId;
+    }
+
+    public void setMediaId(String mediaId) {
+        this.mediaId = mediaId;
     }
 }

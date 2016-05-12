@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray"
+                tools:context="com.tag.instagramdemo.example.ImportImageActivity">
+
+    <include
+        layout="@layout/import_screen_actionbar"
+        android:id="@+id/toolBar"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/feedView"
+        android:layout_above="@+id/importButton"
+        android:layout_below="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/importButton"
+        android:text="IMPORT NOW"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="@color/pink"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

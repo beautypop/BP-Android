@@ -162,6 +162,15 @@
             android:name=".activity.NotificationSettingsActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.InstagramActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ImportImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EditImportImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.AdminActivity"
             android:screenOrientation="portrait" />
         <activity

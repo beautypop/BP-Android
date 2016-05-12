@@ -170,13 +170,17 @@ public class MainActivity extends TrackedFragmentActivity {
 		//Search Implementation
 
 		searchImage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 ViewUtil.startSearchActivity(MainActivity.this);
-			}
-		});
+            }
+        });
 
-        pressHomeTab();
+        if(getIntent().getBooleanExtra("profilePage", false)){
+            pressProfileTab();
+        } else {
+            pressHomeTab();
+        }
 
         checkAndroidUpgrade();
     }

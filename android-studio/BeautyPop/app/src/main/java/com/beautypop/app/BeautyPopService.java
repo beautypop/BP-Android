@@ -1,5 +1,6 @@
 package com.beautypop.app;
 
+import com.beautypop.instagram.InstagramVM;
 import com.beautypop.viewmodel.ActivityVM;
 import com.beautypop.viewmodel.AdminCommentVM;
 import com.beautypop.viewmodel.AdminConversationVM;
@@ -375,20 +376,28 @@ public class BeautyPopService {
 
 	//feedback
 	public void postFeedback(PostFeedbackVM postFeedbackVM,Callback<Response> cb){
-		api.postFeedback(postFeedbackVM,AppController.getInstance().getSessionId(),cb);
+		api.postFeedback(postFeedbackVM, AppController.getInstance().getSessionId(), cb);
 	}
 
 	public void getSoldReviews(Callback<List<ReviewVM>> listCallback){
-		api.getSoldReviews(AppController.getInstance().getSessionId(),listCallback);
+		api.getSoldReviews(AppController.getInstance().getSessionId(), listCallback);
 	}
 
 	public void getPurchasedReviews(Callback<List<ReviewVM>> listCallback){
-		api.getPurchasedReviews(AppController.getInstance().getSessionId(),listCallback);
+		api.getPurchasedReviews(AppController.getInstance().getSessionId(), listCallback);
 	}
 
 	public void getFeedback(Long id,Callback<ReviewVM> callback){
-		api.getFeedback(id,AppController.getInstance().getSessionId(),callback);
+		api.getFeedback(id, AppController.getInstance().getSessionId(), callback);
 	}
+
+    public void newInstagramPost(List<NewPostVM> newPostVMs,Callback<ResponseStatusVM> callback){
+        api.newInstagramPost(newPostVMs, AppController.getInstance().getSessionId(), callback);
+    }
+
+    public void getInstagramImportdetPost(Callback<List<String>> callback){
+        api.getInstagramImportdetPost(AppController.getInstance().getSessionId(), callback);
+    }
 }
 
 
