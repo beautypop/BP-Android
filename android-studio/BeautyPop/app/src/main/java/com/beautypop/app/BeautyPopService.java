@@ -19,7 +19,7 @@ import com.beautypop.viewmodel.NewMessageVM;
 import com.beautypop.viewmodel.NewPostVM;
 import com.beautypop.viewmodel.NewReportedPostVM;
 import com.beautypop.viewmodel.NotificationCounterVM;
-import com.beautypop.viewmodel.PostFeedbackVM;
+import com.beautypop.viewmodel.NewReviewVM;
 import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.PostVMLite;
 import com.beautypop.viewmodel.ResponseStatusVM;
@@ -373,21 +373,21 @@ public class BeautyPopService {
         api.searchUsers(searchKey, offset, AppController.getInstance().getSessionId(), cb);
     }
 
-	//feedback
-	public void postFeedback(PostFeedbackVM postFeedbackVM,Callback<Response> cb){
-		api.postFeedback(postFeedbackVM,AppController.getInstance().getSessionId(),cb);
+	// review
+	public void addReview(NewReviewVM newReviewVM,Callback<Response> cb){
+		api.addReview(newReviewVM, AppController.getInstance().getSessionId(), cb);
+    }
+
+	public void getReviewsAsSeller(Long userId, Callback<List<ReviewVM>> listCallback){
+		api.getReviewsAsSeller(userId, AppController.getInstance().getSessionId(), listCallback);
 	}
 
-	public void getSoldReviews(Callback<List<ReviewVM>> listCallback){
-		api.getSoldReviews(AppController.getInstance().getSessionId(),listCallback);
+	public void getReviewsAsBuyer(Long userId, Callback<List<ReviewVM>> listCallback){
+		api.getReviewsAsBuyer(userId, AppController.getInstance().getSessionId(), listCallback);
 	}
 
-	public void getPurchasedReviews(Callback<List<ReviewVM>> listCallback){
-		api.getPurchasedReviews(AppController.getInstance().getSessionId(),listCallback);
-	}
-
-	public void getFeedback(Long id,Callback<ReviewVM> callback){
-		api.getFeedback(id,AppController.getInstance().getSessionId(),callback);
+	public void getReview(Long conversationOrderId, Callback<ReviewVM> callback){
+		api.getReview(conversationOrderId, AppController.getInstance().getSessionId(),callback);
 	}
 }
 

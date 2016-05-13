@@ -1,29 +1,21 @@
 package com.beautypop.activity;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.app.TrackedFragmentActivity;
 import com.beautypop.fragment.PurchasedReviewFragment;
-import com.beautypop.fragment.SellerFeedFragment;
-import com.beautypop.fragment.SellerFollowingFeedViewFragment;
 import com.beautypop.fragment.SoldReviewFragment;
-import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ViewUtil;
 
-public class ReviewActivity extends TrackedFragmentActivity {
+public class UserReviewsActivity extends TrackedFragmentActivity {
 
 	private ViewPager viewPager;
 	private ReviewPagerAdapter adapter;
@@ -32,7 +24,10 @@ public class ReviewActivity extends TrackedFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_review);
+
+		setContentView(R.layout.user_reviews_activity);
+
+        setToolbarTitle(getString(R.string.reviews));
 
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.sellerTabs);
 		viewPager = (ViewPager) findViewById(R.id.sellerPager);
@@ -43,7 +38,6 @@ public class ReviewActivity extends TrackedFragmentActivity {
 		viewPager.setAdapter(adapter);
 
 		tabs.setViewPager(viewPager);
-
 	}
 }
 

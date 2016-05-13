@@ -314,8 +314,8 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="3dp" />
                         <Button
-                            android:id="@+id/feedbackButton"
-                            android:text="Leave FeedBack"
+                            android:id="@+id/buyerReviewButton"
+                            android:text="Leave Review"
                             android:layout_weight="2.5"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -425,8 +425,8 @@
                         </RelativeLayout>
 
                         <Button
-                            android:id="@+id/sellerFeedbackButton"
-                            android:text="Leave FeedBack"
+                            android:id="@+id/sellerReviewButton"
+                            android:text="Leave Review"
                             android:layout_weight="4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"

@@ -15,17 +15,16 @@ import android.widget.Toast;
 import com.beautypop.R;
 import com.beautypop.app.AppController;
 import com.beautypop.util.ViewUtil;
-import com.beautypop.viewmodel.PostFeedbackVM;
+import com.beautypop.viewmodel.NewReviewVM;
 import com.beautypop.viewmodel.ReviewVM;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+public class LeaveReviewActivity extends Activity {
 
-public class FeedbackActivity extends Activity {
-
-	private EditText feedBackText;
+	private EditText reviewText;
 	private TextView countText;
 	private ImageView submitImage,star1,star2,star3,star4,star5,backImage;
 	private Double score = 0.0;
@@ -34,9 +33,9 @@ public class FeedbackActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_feedback);
+		setContentView(R.layout.leave_review_activity);
 
-		feedBackText = (EditText) findViewById(R.id.feedBackText);
+		reviewText = (EditText) findViewById(R.id.reviewText);
 		countText = (TextView) findViewById(R.id.countText);
 		submitImage = (ImageView) findViewById(R.id.submitImage);
 		backImage = (ImageView) findViewById(R.id.backImage);
@@ -45,7 +44,6 @@ public class FeedbackActivity extends Activity {
 		star3 = (ImageView) findViewById(R.id.star3);
 		star4 = (ImageView) findViewById(R.id.star4);
 		star5 = (ImageView) findViewById(R.id.star5);
-
 
 		backImage.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -150,42 +148,40 @@ public class FeedbackActivity extends Activity {
 		});
 
 		ViewUtil.showSpinner(this);
-		AppController.getApiService().getFeedback(getIntent().getLongExtra("cId",0L),new Callback<ReviewVM>() {
+		AppController.getApiService().getReview(getIntent().getLongExtra("cId",0L),new Callback<ReviewVM>() {
 			@Override
 			public void success(ReviewVM reviewVM, Response response) {
-				ViewUtil.stopSpinner(FeedbackActivity.this);
+				ViewUtil.stopSpinner(LeaveReviewActivity.this);
 
-				feedBackText.setText(reviewVM.getReview());
+				reviewText.setText(reviewVM.getReview());
 
 				if(reviewVM.getScore() >= 0.5 && reviewVM.getScore() <= 1.5){
 					star1.setImageResource(R.drawable.star_selected);
 				}else if(reviewVM.getScore() > 1.5 && reviewVM.getScore() <= 2.5){
 					star1.setImageResource(R.drawable.star_selected);
 					star2.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() >2.5 && reviewVM.getScore() <= 3.5){
+				}else if(reviewVM.getScore() > 2.5 && reviewVM.getScore() <= 3.5){
 					star1.setImageResource(R.drawable.star_selected);
 					star2.setImageResource(R.drawable.star_selected);
 					star3.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() >3.5 && reviewVM.getScore() <= 4.5){
+				}else if(reviewVM.getScore() > 3.5 && reviewVM.getScore() <= 4.5){
 					star1.setImageResource(R.drawable.star_selected);
 					star2.setImageResource(R.drawable.star_selected);
 					star3.setImageResource(R.drawable.star_selected);
 					star4.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() >4.5 && reviewVM.getScore() <= 5.0){
+				}else if(reviewVM.getScore() > 4.5 && reviewVM.getScore() <= 5.0){
 					star1.setImageResource(R.drawable.star_selected);
 					star2.setImageResource(R.drawable.star_selected);
 					star3.setImageResource(R.drawable.star_selected);
 					star4.setImageResource(R.drawable.star_selected);
 					star5.setImageResource(R.drawable.star_selected);
 				}
-
-
 			}
 
 			@Override
 			public void failure(RetrofitError error) {
 				error.printStackTrace();
-				ViewUtil.stopSpinner(FeedbackActivity.this);
+				ViewUtil.stopSpinner(LeaveReviewActivity.this);
 			}
 		});
 
@@ -205,12 +201,12 @@ public class FeedbackActivity extends Activity {
 			}
 		};
 
-		feedBackText.addTextChangedListener(mTextEditorWatcher);
+		reviewText.addTextChangedListener(mTextEditorWatcher);
 
 		submitImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(!feedBackText.getText().toString().equals("")) {
+				if(!reviewText.getText().toString().equals("")) {
 					showDialog();
 				}else{
 					Toast.makeText(getApplicationContext(),"Please add your experience ",Toast.LENGTH_LONG).show();
@@ -222,11 +218,11 @@ public class FeedbackActivity extends Activity {
 	}
 
 	public void showDialog(){
-		final AlertDialog.Builder alertDialog = new AlertDialog.Builder(FeedbackActivity.this);
+		final AlertDialog.Builder alertDialog = new AlertDialog.Builder(LeaveReviewActivity.this);
 
-		alertDialog.setTitle("Ready to submit feedback");
+		alertDialog.setTitle("Ready to submit review");
 
-		alertDialog.setMessage("You are about to leave feedback for fellow member. A notification will be sent. All set ?");
+		alertDialog.setMessage("You are about to leave review for fellow member. A notification will be sent. All set ?");
 
 		alertDialog.setPositiveButton("MAKE CHANGES ", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int which) {
@@ -237,25 +233,25 @@ public class FeedbackActivity extends Activity {
 
 		alertDialog.setNegativeButton("SUBMIT", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				PostFeedbackVM postFeedbackVM = new PostFeedbackVM();
-				postFeedbackVM.setConversationId(getIntent().getLongExtra("cId",0L));
-				postFeedbackVM.setForSeller(getIntent().getBooleanExtra("isSeller",false));
-				postFeedbackVM.setScore(score);
-				postFeedbackVM.setReview(feedBackText.getText().toString());
+				NewReviewVM newReviewVM = new NewReviewVM();
+				newReviewVM.setConversationId(getIntent().getLongExtra("cId", 0L));
+				newReviewVM.setForSeller(getIntent().getBooleanExtra("isSeller", false));
+				newReviewVM.setScore(score);
+				newReviewVM.setReview(reviewText.getText().toString());
 
-				ViewUtil.showSpinner(FeedbackActivity.this);
+				ViewUtil.showSpinner(LeaveReviewActivity.this);
 
-				AppController.getApiService().postFeedback(postFeedbackVM,new Callback<Response>() {
+				AppController.getApiService().addReview(newReviewVM,new Callback<Response>() {
 					@Override
 					public void success(Response response, Response response2) {
-						ViewUtil.stopSpinner(FeedbackActivity.this);
+						ViewUtil.stopSpinner(LeaveReviewActivity.this);
 						Toast.makeText(getApplicationContext(), "Review submitted successfully !", Toast.LENGTH_SHORT).show();
 						finish();
 					}
 
 					@Override
 					public void failure(RetrofitError error) {
-						ViewUtil.stopSpinner(FeedbackActivity.this);
+						ViewUtil.stopSpinner(LeaveReviewActivity.this);
 						Toast.makeText(getApplicationContext(), "Failed to submit review. Please try again later.", Toast.LENGTH_SHORT).show();
 						error.printStackTrace();
 					}

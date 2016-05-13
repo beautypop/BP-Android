@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.beautypop.R;
+import com.beautypop.activity.UserReviewsActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.NotificationCounter;
 import com.beautypop.app.UserInfoCache;
@@ -68,18 +69,23 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
         followButton.setVisibility(View.GONE);
         userInfoLayout.setVisibility(View.GONE);
 
-
         // show
         editCoverImage.setVisibility(View.VISIBLE);
         editProfileImage.setVisibility(View.VISIBLE);
         settingsLayout.setVisibility(View.VISIBLE);
         editButton.setVisibility(View.VISIBLE);
-		ratingsLayout.setVisibility(View.VISIBLE);
-
+        ratingsLayout.setVisibility(View.VISIBLE);
 
         ViewUtil.showTips(SharedPreferencesUtil.Screen.MY_PROFILE_TIPS, tipsLayout, dismissTipsButton);
 
         // actions
+        ratingsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), UserReviewsActivity.class));
+            }
+        });
+
         editCoverImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

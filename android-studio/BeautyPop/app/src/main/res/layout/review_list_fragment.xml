@@ -5,14 +5,14 @@
                 tools:context="com.mnt.feedback.AllFeedActivity">
 
     <TextView
-        android:id="@+id/nodatText"
+        android:id="@+id/noItemText"
         android:text="No Record Found"
         android:layout_margin="10dp"
-        android:visibility="gone"
-        android:textStyle="bold"
         android:textSize="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
    <ListView
        android:id="@+id/feedList"
        android:layout_width="match_parent"

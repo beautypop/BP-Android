@@ -3,7 +3,7 @@ package com.beautypop.viewmodel;
 /**
  * Created by JAY GANESH on 4/25/2016.
  */
-public class PostFeedbackVM {
+public class NewReviewVM {
 	private Long conversationId;
 	private Double score;
 	private String review;

@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Gravity;
@@ -53,7 +52,6 @@ import org.json.JSONObject;
 import org.parceler.apache.commons.lang.StringUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -84,7 +82,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
     private Button buyerOrderButton, buyerCancelButton, buyerOrderAgainButton, buyerMessageButton;
 
     private LinearLayout sellerButtonsLayout, sellerAcceptDeclineLayout, sellerMessageLayout;
-    private Button sellerAcceptButton, sellerDeclineButton, sellerMessageButton,feedbackButton, sellerFeedbackButton;
+    private Button sellerAcceptButton, sellerDeclineButton, sellerMessageButton, buyerReviewButton, sellerReviewButton;
 
     private List<MessageVM> messages = new ArrayList<>();
     private MessageListAdapter adapter;
@@ -197,26 +195,23 @@ public class MessageListActivity extends TrackedFragmentActivity {
         sellerDeclineButton = (Button) findViewById(R.id.sellerDeclineButton);
         sellerMessageLayout = (LinearLayout) findViewById(R.id.sellerMessageLayout);
         sellerMessageButton = (Button) findViewById(R.id.sellerMessageButton);
-        feedbackButton = (Button) findViewById(R.id.feedbackButton);
-		sellerFeedbackButton = (Button) findViewById(R.id.sellerFeedbackButton);
+        buyerReviewButton = (Button) findViewById(R.id.buyerReviewButton);
+		sellerReviewButton = (Button) findViewById(R.id.sellerReviewButton);
 
-
-		feedbackButton.setOnClickListener(new View.OnClickListener() {
+		buyerReviewButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
-				Intent intent = new Intent(MessageListActivity.this,FeedbackActivity.class);
+				Intent intent = new Intent(MessageListActivity.this,LeaveReviewActivity.class);
 				intent.putExtra("cId",conversation.getOrder().getId());
 				intent.putExtra("isSeller",false);
 				startActivity(intent);
 			}
 		});
 
-		sellerFeedbackButton.setOnClickListener(new View.OnClickListener() {
+		sellerReviewButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
-				Intent intent = new Intent(MessageListActivity.this,FeedbackActivity.class);
+				Intent intent = new Intent(MessageListActivity.this,LeaveReviewActivity.class);
 				intent.putExtra("cId",conversation.getOrder().getId());
 				intent.putExtra("isSeller",true);
 				startActivity(intent);
@@ -316,7 +311,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             } else if (order.accepted) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_accept, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_accepted_for_buyer));
-				feedbackButton.setVisibility(View.VISIBLE);
+				buyerReviewButton.setVisibility(View.VISIBLE);
             } else if (order.declined) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_decline, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_declined_for_buyer));

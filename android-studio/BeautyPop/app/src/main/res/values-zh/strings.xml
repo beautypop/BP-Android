@@ -2,8 +2,8 @@
 <resources>
 
     <string name="env">dev</string>
-    <string name="facebook_app_id"></string>
-    <string name="gcm_project_id"></string>
+    <string name="facebook_app_id">195306590831308</string>
+    <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
     <string name="base_url_dev">http://192.168.1.117:9000</string>
     <string name="app_name">BeautyPop</string>
@@ -15,16 +15,19 @@
     <string name="crash_dialog_comment_prompt">按OK寄出 (報告只包括問題資訊)</string>
     <string name="crash_dialog_ok_toast">謝謝！</string>
 
-    <!--Search Tab-->
+    <!-- Search Tab -->
     <string name="search_text">Search</string>
     <string name="search_tab_products">Products</string>
     <string name="search_tab_users">Users</string>
     <string name="no_user_found">No Users Found</string>
     <string name="no_product_found">No Products Found</string>
 
-     <!--Review -->
+    <!-- Review -->
     <string name="title_purchased">Purchased</string>
     <string name="title_sold">Sold</string>
+    <string name="leave_review">Leave Review</string>
+    <string name="reviews">Reviews</string>
+
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style!</string>
     <string name="app_version">版本:</string>
@@ -370,10 +373,11 @@
     <string name="score_adjust_failure">Score Adjust Failure:\n%1$s</string>
     <string name="admin_new_users">New Users</string>
     <string name="admin_latest_logins">Latest Logins</string>
+    <string name="admin_latest_comments">Latest Comments</string>
+    <string name="admin_latest_conversations">Latest Chats</string>
     <string name="admin_login_as">Login As</string>
     <string name="admin_delete_account">Delete</string>
     <string name="admin_delete_account_confirm">Confirm delete account?</string>
     <string name="admin_delete_account_success">Account deleted</string>
     <string name="admin_delete_account_failed">Account delete failed</string>
-    <string name="admin_latest_conversations">Latest Chats</string>
 </resources>

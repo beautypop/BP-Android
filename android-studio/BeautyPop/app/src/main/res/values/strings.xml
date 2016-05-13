@@ -2,8 +2,8 @@
 <resources>
 
     <string name="env">dev</string>
-    <string name="facebook_app_id"></string>
-    <string name="gcm_project_id"></string>
+    <string name="facebook_app_id">195306590831308</string>
+    <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
     <string name="base_url_dev">http://192.168.1.117:9000</string>
     <string name="app_name">BeautyPop</string>
@@ -15,16 +15,19 @@
     <string name="crash_dialog_comment_prompt">Press OK to send (Report only contains information of the problem)</string>
     <string name="crash_dialog_ok_toast">Thanks!</string>
 
-    <!--Search Tab-->
+    <!-- Search Tab -->
     <string name="search_text">Search</string>
     <string name="search_tab_products">Products</string>
     <string name="search_tab_users">Users</string>
     <string name="no_user_found">No Users Found</string>
     <string name="no_product_found">No Products Found</string>
 
-     <!--Review -->
+    <!-- Review -->
     <string name="title_purchased">Purchased</string>
     <string name="title_sold">Sold</string>
+    <string name="leave_review">Leave Review</string>
+    <string name="reviews">Reviews</string>
+
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style</string>
     <string name="app_version">Version:</string>
@@ -47,7 +50,7 @@
     <string name="notifications_push_new_chat">New chat</string>
     <string name="notifications_push_new_comment">New comment on your product listings</string>
     <string name="notifications_push_new_follow">New follower</string>
-    <string name="notifications_push_new_feedback">New feedback</string>
+    <string name="notifications_push_new_review">New Review</string>
     <string name="notifications_push_new_promo">New promotions</string>
     <string name="spinner_select">-Select-</string>
     <string name="clipboard_text_label">Copy</string>
@@ -114,7 +117,7 @@
     <string name="signup_details_location">-Select-</string>
     <string name="signup_details_complete">Done!</string>
     <string name="signup_details_error_info">Please check information entered and try again</string>
-    <string name="signup_details_error_displayname_already_exists">Username not available. Please try another one.</string>
+    <string name="signup_details_error_displayname_already_exists">Username is not available. Please try another one.</string>
     <string name="signup_details_error_displayname_not_entered">Please enter username</string>
     <string name="signup_details_error_displayname_format">Username format not correct</string>
     <string name="signup_details_error_name_not_entered">Please enter your name</string>
@@ -370,10 +373,11 @@
     <string name="score_adjust_failure">Score Adjust Failure:\n%1$s</string>
     <string name="admin_new_users">New Users</string>
     <string name="admin_latest_logins">Latest Logins</string>
+    <string name="admin_latest_comments">Latest Comments</string>
+    <string name="admin_latest_conversations">Latest Chats</string>
     <string name="admin_login_as">Login As</string>
     <string name="admin_delete_account">Delete</string>
     <string name="admin_delete_account_confirm">Confirm delete account?</string>
     <string name="admin_delete_account_success">Account deleted</string>
     <string name="admin_delete_account_failed">Account delete failed</string>
-    <string name="admin_latest_conversations">Latest Chats</string>
 </resources>

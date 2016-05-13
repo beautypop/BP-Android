@@ -1,10 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".FeedbackActivity">
+                android:layout_height="match_parent">
 
-    <include layout="@layout/actionbar_feedback"
+    <include layout="@layout/leave_review_actionbar"
              android:id="@+id/toolbar" />
 
     <TextView
@@ -28,30 +26,30 @@
         <ImageView
             android:id="@+id/star1"
             android:padding="2dp"
-            android:src="@drawable/ic_action_important_light"
+            android:src="@drawable/star_unselected"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
         <ImageView
             android:id="@+id/star2"
             android:padding="2dp"
-            android:src="@drawable/ic_action_important_light"
+            android:src="@drawable/star_unselected"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
         <ImageView
             android:id="@+id/star3"
             android:padding="2dp"
-            android:src="@drawable/ic_action_important_light"
+            android:src="@drawable/star_unselected"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
         <ImageView
             android:id="@+id/star4"
             android:padding="2dp"
-            android:src="@drawable/ic_action_important_light"
+            android:src="@drawable/star_unselected"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
         <ImageView
             android:id="@+id/star5"
-            android:src="@drawable/ic_action_important_light"
+            android:src="@drawable/star_unselected"
             android:padding="2dp"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
@@ -72,7 +70,7 @@
         android:layout_height="250dp">
     <EditText
         android:background="@drawable/box_light_gray_border"
-        android:id="@+id/feedBackText"
+        android:id="@+id/reviewText"
         android:layout_margin="5dp"
         android:maxLength="500"
         android:gravity="top|left"

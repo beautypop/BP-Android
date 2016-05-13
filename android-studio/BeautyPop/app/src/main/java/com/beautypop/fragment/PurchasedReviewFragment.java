@@ -1,7 +1,6 @@
 package com.beautypop.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import com.beautypop.R;
 import com.beautypop.adapter.SoldReviewAdapter;
 import com.beautypop.app.AppController;
 import com.beautypop.app.TrackedFragment;
+import com.beautypop.app.UserInfoCache;
 import com.beautypop.viewmodel.ReviewVM;
 
 import java.util.List;
@@ -20,30 +20,25 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-
 public class PurchasedReviewFragment extends TrackedFragment {
-
 	private SoldReviewAdapter soldReviewAdapter;
 	private ListView listView;
-	private TextView nodatText;
-	@Override
+	private TextView noItemText;
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
-		View rootView = inflater.inflate(R.layout.fragment_all_feed, container, false);
+		View rootView = inflater.inflate(R.layout.review_list_fragment, container, false);
 		listView = (ListView) rootView.findViewById(R.id.feedList);
-		nodatText = (TextView) rootView.findViewById(R.id.nodatText);
+        noItemText = (TextView) rootView.findViewById(R.id.noItemText);
 
-
-		AppController.getApiService().getPurchasedReviews(new Callback<List<ReviewVM>>() {
+		AppController.getApiService().getReviewsAsBuyer(UserInfoCache.getUser().id, new Callback<List<ReviewVM>>() {
 			@Override
 			public void success(List<ReviewVM> reviewVMs, Response response) {
 				
 				if(reviewVMs.size() == 0){
-					nodatText.setVisibility(View.VISIBLE);
+                    noItemText.setVisibility(View.VISIBLE);
 				}
 				soldReviewAdapter = new SoldReviewAdapter(getActivity(), reviewVMs);
 				listView.setAdapter(soldReviewAdapter);
@@ -51,22 +46,10 @@ public class PurchasedReviewFragment extends TrackedFragment {
 
 			@Override
 			public void failure(RetrofitError error) {
-
 				error.printStackTrace();
-				
-
 			}
 		});
 
-
-
 		return rootView;
-
-
-
 	}
-
-
-
-
 }

@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.beautypop.R;
 import com.beautypop.activity.MainActivity;
-import com.beautypop.activity.ReviewActivity;
+import com.beautypop.activity.UserReviewsActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.app.UserInfoCache;
 import com.beautypop.util.FeedFilter;
@@ -46,15 +46,14 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected ImageView coverImage, profileImage, editCoverImage, editProfileImage, settingsIcon;
 	protected ImageView star1,star2,star3,star4,star5;
     protected TextView userNameText, followersText, followingsText, userInfoText, userDescText, sellerUrlText,totalReviews;
-    protected LinearLayout userInfoLayout;
+    protected LinearLayout userInfoLayout, ratingsLayout;
     protected RelativeLayout settingsLayout;
     protected Button loginAsButton, editButton, followButton, productsButton, likesButton;
 
     protected FrameLayout tipsLayout;
     protected ImageView dismissTipsButton;
 
-    private boolean following;
-	protected LinearLayout ratingsLayout;
+    protected boolean following;
 
     protected Long userId;
     protected FeedFilter.FeedType feedType;
@@ -108,7 +107,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         dismissTipsButton = (ImageView) headerView.findViewById(R.id.dismissTipsButton);
 
         userInfoLayout = (LinearLayout) headerView.findViewById(R.id.userInfoLayout);
-		ratingsLayout = (LinearLayout) headerView.findViewById(R.id.ratingsLayout);
+        ratingsLayout = (LinearLayout) headerView.findViewById(R.id.ratingsLayout);
         userInfoText = (TextView) headerView.findViewById(R.id.userInfoText);
         loginAsButton = (Button) headerView.findViewById(R.id.loginAsButton);
         userDescText = (TextView) headerView.findViewById(R.id.userDescText);
@@ -131,7 +130,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     protected void initLayout() {
         // hide
         editCoverImage.setVisibility(View.GONE);
-		ratingsLayout.setVisibility(View.GONE);
         editProfileImage.setVisibility(View.GONE);
         settingsLayout.setVisibility(View.GONE);
         editButton.setVisibility(View.GONE);
@@ -139,6 +137,8 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         userInfoLayout.setVisibility(View.GONE);
 
         // show
+        ratingsLayout.setVisibility(View.VISIBLE);
+
         if (userId.equals(UserInfoCache.getUser().id)) {
             followButton.setVisibility(View.GONE);
         } else {
@@ -146,6 +146,13 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         }
 
         // actions
+        ratingsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), UserReviewsActivity.class));
+            }
+        });
+
         productsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,23 +170,9 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 
     protected void initUserInfoLayout(final UserVM user) {
         userNameText.setText(user.name);
+        totalReviews.setText("(" + user.getNumReviews() + ")");
 
-		if(user.getNumReviews() > 0){
-			if(user.getNumReviews() == 1){
-				totalReviews.setText(user.getNumReviews()+" review");
-			}else{
-				totalReviews.setText(user.getNumReviews()+" reviews");
-			}
-		}
-
-		totalReviews.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				startActivity(new Intent(getActivity(), ReviewActivity.class));
-			}
-		});
-
-		Log.d("UserProfile score :: ",user.getAverageReviewScore()+"");
+		Log.d("Review score=",user.getAverageReviewScore()+"");
 		if(user.getAverageReviewScore() >= 0.5 && user.getAverageReviewScore() <= 1.5){
             star1.setImageResource(R.drawable.star_selected);
 		}else if(user.getAverageReviewScore() > 1.5 && user.getAverageReviewScore() <= 2.5){
