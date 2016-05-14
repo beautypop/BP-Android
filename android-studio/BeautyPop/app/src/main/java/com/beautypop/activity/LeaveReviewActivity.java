@@ -129,26 +129,28 @@ public class LeaveReviewActivity extends Activity {
 		});
 
 		star5.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if(starSelected5) {
-					star5.setImageResource(R.drawable.star_unselected);
-					score = 4.0;
-					starSelected5 = false;
-				}else{
-					star1.setImageResource(R.drawable.star_selected);
-					star2.setImageResource(R.drawable.star_selected);
-					star3.setImageResource(R.drawable.star_selected);
-					star4.setImageResource(R.drawable.star_selected);
-					star5.setImageResource(R.drawable.star_selected);
-					score = 5.0;
-					starSelected5 = true;
-				}
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                if (starSelected5) {
+                    star5.setImageResource(R.drawable.star_unselected);
+                    score = 4.0;
+                    starSelected5 = false;
+                } else {
+                    star1.setImageResource(R.drawable.star_selected);
+                    star2.setImageResource(R.drawable.star_selected);
+                    star3.setImageResource(R.drawable.star_selected);
+                    star4.setImageResource(R.drawable.star_selected);
+                    star5.setImageResource(R.drawable.star_selected);
+                    score = 5.0;
+                    starSelected5 = true;
+                }
+            }
+        });
+
+		final Long conversationOrderId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
 
 		ViewUtil.showSpinner(this);
-		AppController.getApiService().getReview(getIntent().getLongExtra("cId",0L),new Callback<ReviewVM>() {
+		AppController.getApiService().getReview(conversationOrderId, new Callback<ReviewVM>() {
 			@Override
 			public void success(ReviewVM reviewVM, Response response) {
 				ViewUtil.stopSpinner(LeaveReviewActivity.this);
@@ -234,8 +236,8 @@ public class LeaveReviewActivity extends Activity {
 		alertDialog.setNegativeButton("SUBMIT", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				NewReviewVM newReviewVM = new NewReviewVM();
-				newReviewVM.setConversationId(getIntent().getLongExtra("cId", 0L));
-				newReviewVM.setForSeller(getIntent().getBooleanExtra("isSeller", false));
+				newReviewVM.setConversationOrderId(getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L));
+				newReviewVM.setForSeller(getIntent().getBooleanExtra(ViewUtil.BUNDLE_KEY_ARG1, false));
 				newReviewVM.setScore(score);
 				newReviewVM.setReview(reviewText.getText().toString());
 

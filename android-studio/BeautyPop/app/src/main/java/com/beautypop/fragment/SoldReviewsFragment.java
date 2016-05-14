@@ -8,10 +8,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.beautypop.R;
-import com.beautypop.adapter.SoldReviewAdapter;
+import com.beautypop.adapter.UserReviewAdapter;
 import com.beautypop.app.AppController;
 import com.beautypop.app.TrackedFragment;
-import com.beautypop.app.UserInfoCache;
 import com.beautypop.viewmodel.ReviewVM;
 
 import java.util.List;
@@ -20,10 +19,16 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class SoldReviewFragment extends TrackedFragment {
-	private SoldReviewAdapter soldReviewAdapter;
+public class SoldReviewsFragment extends TrackedFragment {
+	private UserReviewAdapter adapter;
 	private ListView listView;
 	private TextView noItemText;
+
+    private Long userId;
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,22 +38,21 @@ public class SoldReviewFragment extends TrackedFragment {
 		listView = (ListView) rootView.findViewById(R.id.feedList);
         noItemText = (TextView) rootView.findViewById(R.id.noItemText);
 
-		AppController.getApiService().getReviewsAsSeller(UserInfoCache.getUser().id, new Callback<List<ReviewVM>>() {
-			@Override
-			public void success(List<ReviewVM> reviewVMs, Response response) {
-
-				if (reviewVMs.size() == 0) {
+		AppController.getApiService().getBuyerReviewsFor(userId, new Callback<List<ReviewVM>>() {
+            @Override
+            public void success(List<ReviewVM> reviewVMs, Response response) {
+                if (reviewVMs.size() == 0) {
                     noItemText.setVisibility(View.VISIBLE);
-				}
-				soldReviewAdapter = new SoldReviewAdapter(getActivity(), reviewVMs);
-				listView.setAdapter(soldReviewAdapter);
-			}
+                }
+                adapter = new UserReviewAdapter(getActivity(), reviewVMs);
+                listView.setAdapter(adapter);
+            }
 
-			@Override
-			public void failure(RetrofitError error) {
-				error.printStackTrace();
-			}
-		});
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
 
 		return rootView;
 	}

@@ -378,12 +378,12 @@ public class BeautyPopService {
 		api.addReview(newReviewVM, AppController.getInstance().getSessionId(), cb);
     }
 
-	public void getReviewsAsSeller(Long userId, Callback<List<ReviewVM>> listCallback){
-		api.getReviewsAsSeller(userId, AppController.getInstance().getSessionId(), listCallback);
+	public void getBuyerReviewsFor(Long userId, Callback<List<ReviewVM>> listCallback){
+		api.getBuyerReviewsFor(userId, AppController.getInstance().getSessionId(), listCallback);
 	}
 
-	public void getReviewsAsBuyer(Long userId, Callback<List<ReviewVM>> listCallback){
-		api.getReviewsAsBuyer(userId, AppController.getInstance().getSessionId(), listCallback);
+	public void getSellerReviewsFor(Long userId, Callback<List<ReviewVM>> listCallback){
+		api.getSellerReviewsFor(userId, AppController.getInstance().getSessionId(), listCallback);
 	}
 
 	public void getReview(Long conversationOrderId, Callback<ReviewVM> callback){

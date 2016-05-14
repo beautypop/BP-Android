@@ -202,8 +202,8 @@ public class MessageListActivity extends TrackedFragmentActivity {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(MessageListActivity.this,LeaveReviewActivity.class);
-				intent.putExtra("cId",conversation.getOrder().getId());
-				intent.putExtra("isSeller",false);
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ID,conversation.getOrder().getId());
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1,false);
 				startActivity(intent);
 			}
 		});
@@ -212,8 +212,8 @@ public class MessageListActivity extends TrackedFragmentActivity {
 			@Override
 			public void onClick(View view) {
 				Intent intent = new Intent(MessageListActivity.this,LeaveReviewActivity.class);
-				intent.putExtra("cId",conversation.getOrder().getId());
-				intent.putExtra("isSeller",true);
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ID,conversation.getOrder().getId());
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1,true);
 				startActivity(intent);
 			}
 		});

@@ -45,13 +45,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
                         android:background="@drawable/gradient_bottom"
-                        android:paddingBottom="2dp" />
+                        android:paddingBottom="5dp"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -84,13 +85,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -123,13 +125,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -173,13 +176,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -212,13 +216,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -251,13 +256,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -301,13 +307,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -340,13 +347,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -379,13 +387,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -429,13 +438,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -468,13 +478,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 
@@ -507,13 +518,14 @@
                         android:shadowDx="3"
                         android:shadowDy="3"
                         android:shadowRadius="6"
-                        android:textSize="16dp"
+                        android:textSize="15dp"
                         android:textColor="@color/white"
                         android:gravity="center_horizontal|bottom"
-                        android:paddingBottom="2dp"
+                        android:paddingBottom="5dp"
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="bottom"
-                        android:background="@drawable/gradient_bottom" />
+                        android:background="@drawable/gradient_bottom"
+                        android:textStyle="bold" />
 
                 </FrameLayout>
 

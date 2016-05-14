@@ -82,7 +82,9 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
         ratingsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), UserReviewsActivity.class));
+                Intent intent = new Intent(getActivity(), UserReviewsActivity.class);
+                intent.putExtra(ViewUtil.BUNDLE_KEY_ID, userId);
+                startActivity(intent);
             }
         });
 

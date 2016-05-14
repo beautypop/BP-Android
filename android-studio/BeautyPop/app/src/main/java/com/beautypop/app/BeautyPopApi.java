@@ -338,11 +338,11 @@ public interface BeautyPopApi {
 	@POST("/api/review/add")
 	public void addReview(@Body NewReviewVM newReviewVM, @Query("key") String key, Callback<Response> cb);
 
-	@GET("/api/get-reviews/seller/{userId}")
-	public void getReviewsAsSeller(@Path("userId") Long id, @Query("key") String key, Callback<List<ReviewVM>> cb);
+	@GET("/api/get-buyer-reviews-for/{userId}")
+	public void getBuyerReviewsFor(@Path("userId") Long id, @Query("key") String key, Callback<List<ReviewVM>> cb);
 
-	@GET("/api/get-reviews/buyer/{userId}")
-	public void getReviewsAsBuyer(@Path("userId") Long id, @Query("key") String key, Callback<List<ReviewVM>> cb);
+	@GET("/api/get-seller-reviews-for/{userId}")
+	public void getSellerReviewsFor(@Path("userId") Long id, @Query("key") String key, Callback<List<ReviewVM>> cb);
 
 	@GET("/api/review/{conversationOrderId}")
 	public void getReview(@Path("conversationOrderId") Long id, @Query("key") String key,Callback<ReviewVM> cb);

@@ -4,17 +4,17 @@ package com.beautypop.viewmodel;
  * Created by JAY GANESH on 4/25/2016.
  */
 public class NewReviewVM {
-	private Long conversationId;
+	private Long conversationOrderId;
 	private Double score;
 	private String review;
 	private Boolean forSeller;
 
-	public Long getConversationId() {
-		return conversationId;
+	public Long getConversationOrderId() {
+		return conversationOrderId;
 	}
 
-	public void setConversationId(Long conversationId) {
-		this.conversationId = conversationId;
+	public void setConversationOrderId(Long conversationOrderId) {
+		this.conversationOrderId = conversationOrderId;
 	}
 
 	public Double getScore() {

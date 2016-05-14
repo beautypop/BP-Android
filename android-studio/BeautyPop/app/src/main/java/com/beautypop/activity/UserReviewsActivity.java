@@ -11,8 +11,8 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
 import com.beautypop.app.TrackedFragmentActivity;
-import com.beautypop.fragment.PurchasedReviewFragment;
-import com.beautypop.fragment.SoldReviewFragment;
+import com.beautypop.fragment.PurchasedReviewsFragment;
+import com.beautypop.fragment.SoldReviewsFragment;
 import com.beautypop.util.ViewUtil;
 
 public class UserReviewsActivity extends TrackedFragmentActivity {
@@ -29,9 +29,11 @@ public class UserReviewsActivity extends TrackedFragmentActivity {
 
         setToolbarTitle(getString(R.string.reviews));
 
+        final Long userId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
+
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.sellerTabs);
 		viewPager = (ViewPager) findViewById(R.id.sellerPager);
-		adapter = new ReviewPagerAdapter(getSupportFragmentManager());
+		adapter = new ReviewPagerAdapter(getSupportFragmentManager(), userId);
 
 		int pageMargin = ViewUtil.getRealDimension(0);
 		viewPager.setPageMargin(pageMargin);
@@ -43,8 +45,11 @@ public class UserReviewsActivity extends TrackedFragmentActivity {
 
 class ReviewPagerAdapter extends FragmentStatePagerAdapter {
 
-	public ReviewPagerAdapter(FragmentManager fm) {
+    private Long userId;
+
+	public ReviewPagerAdapter(FragmentManager fm, Long userId) {
 		super(fm);
+        this.userId = userId;
 	}
 
 	@Override
@@ -65,11 +70,13 @@ class ReviewPagerAdapter extends FragmentStatePagerAdapter {
 		TrackedFragment fragment = null;
 		switch (position) {
 			case 0: {
-				fragment = new SoldReviewFragment();
+				fragment = new SoldReviewsFragment();
+                ((SoldReviewsFragment)fragment).setUserId(userId);
 				break;
 			}
 			case 1: {
-				fragment = new PurchasedReviewFragment();
+				fragment = new PurchasedReviewsFragment();
+                ((PurchasedReviewsFragment)fragment).setUserId(userId);
 				break;
 			}
 			default: {

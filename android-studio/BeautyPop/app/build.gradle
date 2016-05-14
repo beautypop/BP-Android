@@ -18,11 +18,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.beautypop.app"
+        applicationId "com.beautypop.app.dev"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 13
-        versionName "1.0.13"
+        versionCode 14
+        versionName "1.0.14"
 
         // Enabling multidex support.
         multiDexEnabled true

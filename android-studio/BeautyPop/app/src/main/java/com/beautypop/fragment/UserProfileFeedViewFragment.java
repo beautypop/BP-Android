@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beautypop.R;
+import com.beautypop.activity.LeaveReviewActivity;
 import com.beautypop.activity.MainActivity;
 import com.beautypop.activity.UserReviewsActivity;
 import com.beautypop.app.AppController;
@@ -149,7 +150,9 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         ratingsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), UserReviewsActivity.class));
+                Intent intent = new Intent(getActivity(), UserReviewsActivity.class);
+                intent.putExtra(ViewUtil.BUNDLE_KEY_ID, userId);
+                startActivity(intent);
             }
         });
 

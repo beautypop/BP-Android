@@ -12,12 +12,12 @@
         android:id="@+id/sellerTabs"
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
+        android:layout_height="40dp"
         android:textSize="15dp"
         android:textColorPrimary="@color/white"
         app:pstsDividerColor="@color/view_bg"
-        app:pstsIndicatorColor="@color/light_gray"
-        app:pstsUnderlineColor="@color/light_gray_2"
+        app:pstsIndicatorColor="@color/white"
+        app:pstsUnderlineColor="@color/light_gray"
         app:pstsTabPaddingLeftRight="10dp"
         app:pstsIndicatorHeight="3dp"
         app:pstsUnderlineHeight="0.8dp"
@@ -26,7 +26,7 @@
         app:pstsTextSelectedStyle="bold"
         app:pstsTextAllCaps="false"
         android:fillViewport="false"
-        android:background="@color/gray" />
+        android:background="@color/light_gray" />
 
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"

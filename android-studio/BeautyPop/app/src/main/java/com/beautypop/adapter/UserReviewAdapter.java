@@ -19,13 +19,13 @@ import java.util.List;
 /**
  * Created by JAY GANESH on 2/22/2016.
  */
-public class SoldReviewAdapter extends BaseAdapter {
+public class UserReviewAdapter extends BaseAdapter {
 	private Activity activity;
 	private LayoutInflater inflater;
 
 	private List<ReviewVM> reviewVMs;
 
-	public SoldReviewAdapter(Activity activity, List<ReviewVM> reviewVMs) {
+	public UserReviewAdapter(Activity activity, List<ReviewVM> reviewVMs) {
 		this.activity = activity;
 		this.reviewVMs = reviewVMs;
 	}
@@ -52,7 +52,7 @@ public class SoldReviewAdapter extends BaseAdapter {
 			inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		if (view == null)
-			view = inflater.inflate(R.layout.sold_review_item, null);
+			view = inflater.inflate(R.layout.user_review_item, null);
 
 		ReviewVM reviewVM = reviewVMs.get(i);
 
