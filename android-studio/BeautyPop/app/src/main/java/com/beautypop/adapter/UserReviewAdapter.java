@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.util.ImageUtil;
+import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.ReviewVM;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class UserReviewAdapter extends BaseAdapter {
 		if (view == null)
 			view = inflater.inflate(R.layout.user_review_item, null);
 
-		ReviewVM reviewVM = reviewVMs.get(i);
+		final ReviewVM reviewVM = reviewVMs.get(i);
 
 		TextView userNameText = (TextView) view.findViewById(R.id.userNameText);
 		TextView reviewText = (TextView) view.findViewById(R.id.reviewText);
@@ -68,6 +69,21 @@ public class UserReviewAdapter extends BaseAdapter {
 		ImageView star5 = (ImageView) view.findViewById(R.id.star5);
 		ImageUtil.displayPostImage(reviewVM.getPostId(), postImage);
 		ImageUtil.displayProfileImage(reviewVM.getUserId(), userImage);
+
+		userImage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				ViewUtil.startUserProfileActivity(activity,reviewVM.getUserId());
+			}
+		});
+
+		postImage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				ViewUtil.startProductActivity(activity,reviewVM.getPostId());
+			}
+		});
+
 
 		userNameText.setText(reviewVM.getUserName());
 		reviewText.setText(reviewVM.getReview());

@@ -308,6 +308,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             if (order.cancelled) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_cancelled));
+				buyerReviewButton.setVisibility(View.GONE);
             } else if (order.accepted) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_accept, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_accepted_for_buyer));
