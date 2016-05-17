@@ -72,7 +72,6 @@ public class MyProfileFeedViewFragment extends UserProfileFeedViewFragment {
         // show
         editCoverImage.setVisibility(View.VISIBLE);
         editProfileImage.setVisibility(View.VISIBLE);
-        settingsLayout.setVisibility(View.VISIBLE);
         editButton.setVisibility(View.VISIBLE);
         ratingsLayout.setVisibility(View.VISIBLE);
 

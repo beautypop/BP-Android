@@ -48,7 +48,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 	protected ImageView star1,star2,star3,star4,star5;
     protected TextView userNameText, followersText, followingsText, userInfoText, userDescText, sellerUrlText,totalReviews;
     protected LinearLayout userInfoLayout, ratingsLayout;
-    protected RelativeLayout settingsLayout;
     protected Button loginAsButton, editButton, followButton, productsButton, likesButton;
 
     protected FrameLayout tipsLayout;
@@ -92,7 +91,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 		star4 = (ImageView) headerView.findViewById(R.id.star4);
 		star5 = (ImageView) headerView.findViewById(R.id.star5);
 
-        settingsLayout = (RelativeLayout) headerView.findViewById(R.id.settingsLayout);
         settingsIcon = (ImageView) headerView.findViewById(R.id.settingsIcon);
 
         followersText = (TextView) headerView.findViewById(R.id.followersText);
@@ -132,7 +130,6 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         // hide
         editCoverImage.setVisibility(View.GONE);
         editProfileImage.setVisibility(View.GONE);
-        settingsLayout.setVisibility(View.GONE);
         editButton.setVisibility(View.GONE);
         tipsLayout.setVisibility(View.GONE);
         userInfoLayout.setVisibility(View.GONE);
@@ -172,6 +169,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
     }
 
     protected void initUserInfoLayout(final UserVM user) {
+        userNameText.setVisibility(StringUtils.isEmpty(user.name)? View.GONE : View.VISIBLE);
         userNameText.setText(user.name);
         totalReviews.setText("(" + user.getNumReviews() + ")");
 
@@ -181,16 +179,16 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 		}else if(user.getAverageReviewScore() > 1.5 && user.getAverageReviewScore() <= 2.5){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() >2.5 && user.getAverageReviewScore() <= 3.5){
+		}else if(user.getAverageReviewScore() > 2.5 && user.getAverageReviewScore() <= 3.5){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
 			star3.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() >3.5 && user.getAverageReviewScore() <= 4.5){
+		}else if(user.getAverageReviewScore() > 3.5 && user.getAverageReviewScore() <= 4.5){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
 			star3.setImageResource(R.drawable.star_selected);
 			star4.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() >4.5 && user.getAverageReviewScore() <= 5.0){
+		}else if(user.getAverageReviewScore() > 4.5 && user.getAverageReviewScore() <= 5.0){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
 			star3.setImageResource(R.drawable.star_selected);
