@@ -1,6 +1,7 @@
 package com.beautypop.fragment;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class SoldReviewsFragment extends TrackedFragment {
             public void success(List<ReviewVM> reviewVMs, Response response) {
                 if (reviewVMs.size() == 0) {
                     noItemText.setVisibility(View.VISIBLE);
+					((ViewPager)getActivity().findViewById(R.id.sellerPager)).setCurrentItem(1);
                 }
                 adapter = new UserReviewAdapter(getActivity(), reviewVMs);
                 listView.setAdapter(adapter);

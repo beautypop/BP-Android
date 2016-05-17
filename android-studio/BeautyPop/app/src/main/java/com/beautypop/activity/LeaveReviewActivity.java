@@ -173,6 +173,8 @@ public class LeaveReviewActivity extends Activity {
 			public void success(ReviewVM reviewVM, Response response) {
 				ViewUtil.stopSpinner(LeaveReviewActivity.this);
 
+				score = reviewVM.getScore();
+
 				reviewText.setText(reviewVM.getReview());
 
 				if(reviewVM.getScore() >= 0.5 && reviewVM.getScore() <= 1.5){
