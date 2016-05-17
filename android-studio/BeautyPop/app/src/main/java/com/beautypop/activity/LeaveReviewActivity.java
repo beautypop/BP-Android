@@ -57,9 +57,9 @@ public class LeaveReviewActivity extends Activity {
 
         String title1 = getString(R.string.leave_review_title_1);
         if (isBuyer) {
-            title1 += " " + getString(R.string.buyer);
-        } else {
             title1 += " " + getString(R.string.seller);
+        } else {
+            title1 += " " + getString(R.string.buyer);
         }
         title1Text.setText(title1);
 
@@ -239,7 +239,6 @@ public class LeaveReviewActivity extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 NewReviewVM newReviewVM = new NewReviewVM();
                 newReviewVM.setConversationOrderId(conversationOrderId);
-                newReviewVM.setIsBuyer(isBuyer);
                 newReviewVM.setScore(score);
                 newReviewVM.setReview(reviewText.getText().toString());
 

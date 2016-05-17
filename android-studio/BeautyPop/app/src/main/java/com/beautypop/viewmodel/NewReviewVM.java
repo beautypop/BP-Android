@@ -7,7 +7,6 @@ public class NewReviewVM {
 	private Long conversationOrderId;
 	private Double score;
 	private String review;
-	private Boolean isBuyer;
 
 	public Long getConversationOrderId() {
 		return conversationOrderId;
@@ -31,13 +30,5 @@ public class NewReviewVM {
 
 	public void setReview(String review) {
 		this.review = review;
-	}
-
-	public Boolean getIsBuyer() {
-		return isBuyer;
-	}
-
-	public void setIsBuyer(Boolean isBuyer) {
-		this.isBuyer = isBuyer;
 	}
 }
