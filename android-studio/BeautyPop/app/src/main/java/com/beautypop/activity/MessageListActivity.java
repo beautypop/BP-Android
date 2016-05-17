@@ -203,7 +203,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
 			public void onClick(View view) {
 				Intent intent = new Intent(MessageListActivity.this,LeaveReviewActivity.class);
 				intent.putExtra(ViewUtil.BUNDLE_KEY_ID,conversation.getOrder().getId());
-				intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1,false);
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1,true);
 				startActivity(intent);
 			}
 		});
@@ -213,7 +213,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
 			public void onClick(View view) {
 				Intent intent = new Intent(MessageListActivity.this,LeaveReviewActivity.class);
 				intent.putExtra(ViewUtil.BUNDLE_KEY_ID,conversation.getOrder().getId());
-				intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1,true);
+				intent.putExtra(ViewUtil.BUNDLE_KEY_ARG1,false);
 				startActivity(intent);
 			}
 		});
