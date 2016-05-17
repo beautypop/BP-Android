@@ -301,6 +301,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             });
         } else {    // closed orders
             buyerMessageLayout.setVisibility(View.VISIBLE);
+            buyerOrderAgainButton.setVisibility(View.VISIBLE);
             buyerReviewButton.setVisibility(View.GONE);
 
             if (conversation.postSold) {
@@ -310,6 +311,7 @@ public class MessageListActivity extends TrackedFragmentActivity {
             if (order.accepted) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_accept, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_accepted_for_buyer));
+                buyerOrderAgainButton.setVisibility(View.GONE);
 				buyerReviewButton.setVisibility(View.VISIBLE);
             } else if (order.declined) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_decline, 0, 0, 0);
