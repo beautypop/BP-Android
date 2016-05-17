@@ -12,12 +12,11 @@
     android:contentInsetEnd="0dp"
     app:contentInsetRight="0dp"
     app:contentInsetEnd="0dp"
-    android:background="@drawable/actionbar_bg_red">
+    android:background="@color/pink">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/actionbar_bg_red"
         android:layout_gravity="center">
 
         <ImageView

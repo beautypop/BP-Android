@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13dp"
-                    android:textColor="@color/dark_gray"
+                    android:textColor="@color/gray"
                     android:singleLine="true"
                     android:gravity="center_vertical" />
             </LinearLayout>

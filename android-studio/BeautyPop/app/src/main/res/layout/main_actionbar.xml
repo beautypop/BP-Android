@@ -13,7 +13,7 @@
     app:contentInsetRight="0dp"
     app:contentInsetEnd="0dp"
     android:id="@+id/toolBar"
-    android:background="@drawable/actionbar_bg_red">
+    android:background="@color/pink">
 
     <RelativeLayout
         android:layout_width="wrap_content"
