@@ -185,15 +185,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:id="@+id/buyerButtonsLayout"
-                    >
+                    android:visibility="gone">
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/buyerOrderLayout"
-                        android:weightSum="10">
+                        android:weightSum="10"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="0dp"
@@ -206,7 +206,7 @@
                             android:textSize="16dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:layout_weight="3" />
+                            android:layout_weight="5" />
 
                         <Button
                             android:layout_width="0dp"
@@ -218,7 +218,7 @@
                             android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:layout_weight="4"
+                            android:layout_weight="5"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="3dp"
@@ -228,12 +228,12 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/buyerCancelLayout"
-                        android:weightSum="10">
+                        android:weightSum="10"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="0dp"
@@ -246,7 +246,7 @@
                             android:textSize="16dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:layout_weight="3.5" />
+                            android:layout_weight="5" />
 
                         <Button
                             android:layout_width="0dp"
@@ -258,11 +258,12 @@
                             android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:layout_weight="6.5"
+                            android:layout_weight="5"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="3dp"
-                            android:layout_marginBottom="3dp" />
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -275,7 +276,7 @@
                         <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="5"
+                            android:layout_weight="6"
                             android:layout_gravity="center">
 
                             <Button
@@ -284,7 +285,7 @@
                                 android:text="@string/pm_order_accepted_for_buyer"
                                 android:id="@+id/buyerMessageButton"
                                 android:background="@color/view_bg"
-                                android:textSize="12dp"
+                                android:textSize="16dp"
                                 android:textColor="@color/dark_gray"
                                 android:singleLine="false"
                                 android:paddingLeft="10dp"
@@ -295,6 +296,7 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:paddingRight="10dp"
+                                android:textAllCaps="false"
                                 android:layout_centerInParent="true" />
                         </RelativeLayout>
 
@@ -305,29 +307,30 @@
                             android:id="@+id/buyerOrderAgainButton"
                             android:textColor="@color/white"
                             android:background="@drawable/button_pink"
-                            android:textSize="12dp"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:layout_weight="2.5"
+                            android:layout_weight="4"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="3dp" />
                         <Button
                             android:id="@+id/buyerReviewButton"
-                            android:text="Leave Review"
-                            android:layout_weight="2.5"
+                            android:text="@string/leave_review"
+                            android:layout_weight="4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:textColor="@color/white"
-                            android:background="@drawable/button_pink"
-                            android:textSize="12dp"
+                            android:textColor="@color/light_pink"
+                            android:background="@drawable/button_pink_border"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="3dp"
-                            android:layout_marginBottom="3dp"/>
+                            android:layout_marginBottom="3dp"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -336,15 +339,15 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:id="@+id/sellerButtonsLayout"
-                    android:visibility="gone">
+                    android:id="@+id/sellerButtonsLayout">
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/sellerAcceptDeclineLayout"
-                        android:weightSum="10">
+                        android:weightSum="10"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="0dp"
@@ -357,7 +360,7 @@
                             android:textSize="16dp"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:layout_weight="3" />
+                            android:layout_weight="4" />
 
                         <Button
                             android:layout_width="0dp"
@@ -369,7 +372,7 @@
                             android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:layout_weight="3.5"
+                            android:layout_weight="3"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="3dp" />
@@ -384,7 +387,7 @@
                             android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
-                            android:layout_weight="3.5"
+                            android:layout_weight="3"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="3dp"
@@ -421,18 +424,19 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:layout_centerInParent="true"
+                                android:textAllCaps="false"
                                 android:paddingRight="10dp" />
                         </RelativeLayout>
 
                         <Button
                             android:id="@+id/sellerReviewButton"
-                            android:text="Leave Review"
+                            android:text="@string/leave_review"
                             android:layout_weight="4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:textColor="@color/white"
-                            android:background="@drawable/button_pink"
-                            android:textSize="14dp"
+                            android:textColor="@color/light_pink"
+                            android:background="@drawable/button_pink_border"
+                            android:textSize="17dp"
                             android:textStyle="bold"
                             android:textAllCaps="false"
                             android:layout_marginLeft="5dp"

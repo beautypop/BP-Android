@@ -4,9 +4,9 @@
     <string name="env">dev</string>
     <string name="facebook_app_id">195306590831308</string>
     <string name="gcm_project_id">933530461024</string>
-    <string name="base_url"></string>
-    <string name="base_url_dev">http://192.168.1.117:9000</string>
-    <string name="app_name">BeautyPop</string>
+    <string name="base_url">http://www.beautypop.com.hk</string>
+    <string name="base_url_dev"></string>
+    <string name="app_name">Stg</string>
 
     <!-- Crash report -->
     <string name="crash_toast_text">對不起！BeautyPop 發生問題要退出</string>
@@ -23,10 +23,16 @@
     <string name="no_product_found">No Products Found</string>
 
     <!-- Review -->
-    <string name="title_purchased">Purchased</string>
-    <string name="title_sold">Sold</string>
-    <string name="leave_review">Leave Review</string>
-    <string name="reviews">Reviews</string>
+    <string name="title_purchased">買入的商品</string>
+    <string name="title_sold">賣出的商品</string>
+    <string name="leave_review">評價</string>
+    <string name="reviews">評價</string>
+    <string name="no_review">~ 沒有評價 ~</string>
+    <string name="leave_review_title_1">評分給</string>
+    <string name="leave_review_title_2">你的經驗</string>
+    <string name="leave_review_confirm">確定提交評價給對方嗎？</string>
+    <string name="leave_review_success">成功提交評價 !</string>
+    <string name="leave_review_failed">暫時不能提交評價，請稍後重試</string>
 
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style!</string>
@@ -129,6 +135,9 @@
     <string name="tabset_seller">賣家</string>
     <string name="tabset_activity">動態</string>
     <string name="tabset_profile">我的</string>
+
+    <string name="seller">賣家</string>
+    <string name="buyer">買家</string>
 
     <!-- Tips -->
     <string name="home_explore_tips">所有商品都是 BeautyPop 用家刊登\n發掘心目中最喜愛商品！</string>
@@ -337,6 +346,7 @@
     <string name="no">取消</string>
     <string name="confirm">確定</string>
     <string name="cancel">取消</string>
+    <string name="submit">提交</string>
 
     <!-- Validation -->
     <string name="invalid_post_no_photo">請上載照片</string>

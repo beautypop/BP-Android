@@ -7,17 +7,18 @@
 
     <TextView
         android:layout_below="@+id/toolbar"
-        android:id="@+id/expText"
-        android:text="How was your experience ?"
+        android:id="@+id/title1Text"
+        android:text="@string/leave_review_title_1"
         android:textStyle="bold"
-        android:textColor="@color/input_text"
+        android:textColor="@color/dark_gray_3"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textSize="15dp" />
 
     <LinearLayout
         android:id="@+id/tabLayout"
-        android:layout_below="@+id/expText"
+        android:layout_below="@+id/title1Text"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -56,18 +57,22 @@
         </LinearLayout>
 
     <TextView
-        android:id="@+id/descText"
-        android:text="Describe your experience ?"
-        android:textColor="@color/input_text"
+        android:id="@+id/title2Text"
+        android:text="@string/leave_review_title_2"
+        android:textColor="@color/dark_gray_3"
         android:textStyle="bold"
         android:layout_below="@+id/tabLayout"
-        android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="15dp" />
     <FrameLayout
-        android:layout_below="@+id/descText"
+        android:layout_below="@+id/title2Text"
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="100dp">
     <EditText
         android:background="@drawable/box_light_gray_border"
         android:id="@+id/reviewText"
@@ -75,18 +80,23 @@
         android:maxLength="500"
         android:gravity="top|left"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:textSize="15dp"
+        android:padding="5dp" />
         <TextView
             android:id="@+id/countText"
             android:text="0"
-            android:padding="5dp"
-            android:background="@color/dark_gray"
+            android:background="@color/gray"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:textSize="14dp"
             android:layout_margin="10dp"
             android:layout_gravity="bottom|right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp" />
     </FrameLayout>
     <ProgressBar
         style="?android:attr/progressBarStyle"

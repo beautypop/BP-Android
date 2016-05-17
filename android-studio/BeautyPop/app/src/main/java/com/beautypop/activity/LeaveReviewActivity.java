@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,20 +24,26 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class LeaveReviewActivity extends Activity {
+    private static final String TAG = ProductActivity.class.getName();
 
 	private EditText reviewText;
-	private TextView countText;
+	private TextView title1Text,countText;
 	private ImageView submitImage,star1,star2,star3,star4,star5,backImage;
 	private Double score = 0.0;
 	private Boolean starSelected1=false,starSelected2=false,starSelected3=false,starSelected4=false,starSelected5=false;
 
+    private Long conversationOrderId = -1L;
+    private boolean isBuyer = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.leave_review_activity);
 
 		reviewText = (EditText) findViewById(R.id.reviewText);
 		countText = (TextView) findViewById(R.id.countText);
+        title1Text = (TextView) findViewById(R.id.title1Text);
 		submitImage = (ImageView) findViewById(R.id.submitImage);
 		backImage = (ImageView) findViewById(R.id.backImage);
 		star1 = (ImageView) findViewById(R.id.star1);
@@ -44,6 +51,17 @@ public class LeaveReviewActivity extends Activity {
 		star3 = (ImageView) findViewById(R.id.star3);
 		star4 = (ImageView) findViewById(R.id.star4);
 		star5 = (ImageView) findViewById(R.id.star5);
+
+        this.conversationOrderId = getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L);
+        this.isBuyer = getIntent().getBooleanExtra(ViewUtil.BUNDLE_KEY_ARG1, false);
+
+        String title1 = getString(R.string.leave_review_title_1);
+        if (isBuyer) {
+            title1 += " " + getString(R.string.buyer);
+        } else {
+            title1 += " " + getString(R.string.seller);
+        }
+        title1Text.setText(title1);
 
 		backImage.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -182,14 +200,9 @@ public class LeaveReviewActivity extends Activity {
 
 			@Override
 			public void failure(RetrofitError error) {
-				error.printStackTrace();
 				ViewUtil.stopSpinner(LeaveReviewActivity.this);
 			}
 		});
-
-
-
-
 
 		TextWatcher mTextEditorWatcher = new TextWatcher() {
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -215,51 +228,47 @@ public class LeaveReviewActivity extends Activity {
 				}
 			}
 		});
-
-
 	}
 
 	public void showDialog(){
 		final AlertDialog.Builder alertDialog = new AlertDialog.Builder(LeaveReviewActivity.this);
 
-		alertDialog.setTitle("Ready to submit review");
+		alertDialog.setMessage(getString(R.string.leave_review_confirm));
 
-		alertDialog.setMessage("You are about to leave review for fellow member. A notification will be sent. All set ?");
+		alertDialog.setPositiveButton(getString(R.string.submit), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                NewReviewVM newReviewVM = new NewReviewVM();
+                newReviewVM.setConversationOrderId(conversationOrderId);
+                newReviewVM.setIsBuyer(isBuyer);
+                newReviewVM.setScore(score);
+                newReviewVM.setReview(reviewText.getText().toString());
 
-		alertDialog.setPositiveButton("MAKE CHANGES ", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int which) {
-				dialog.dismiss();
-				//Toast.makeText(getApplicationContext(), "You clicked on YES", Toast.LENGTH_SHORT).show();
-			}
-		});
+                ViewUtil.showSpinner(LeaveReviewActivity.this);
 
-		alertDialog.setNegativeButton("SUBMIT", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				NewReviewVM newReviewVM = new NewReviewVM();
-				newReviewVM.setConversationOrderId(getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_ID, 0L));
-				newReviewVM.setForSeller(getIntent().getBooleanExtra(ViewUtil.BUNDLE_KEY_ARG1, false));
-				newReviewVM.setScore(score);
-				newReviewVM.setReview(reviewText.getText().toString());
+                AppController.getApiService().addReview(newReviewVM, new Callback<Response>() {
+                    @Override
+                    public void success(Response response, Response response2) {
+                        ViewUtil.stopSpinner(LeaveReviewActivity.this);
+                        Toast.makeText(getApplicationContext(), "Review submitted successfully !", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
 
-				ViewUtil.showSpinner(LeaveReviewActivity.this);
+                    @Override
+                    public void failure(RetrofitError error) {
+                        ViewUtil.stopSpinner(LeaveReviewActivity.this);
+                        Toast.makeText(getApplicationContext(), "Failed to submit review. Please try again later.", Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+                    }
+                });
+            }
+        });
 
-				AppController.getApiService().addReview(newReviewVM,new Callback<Response>() {
-					@Override
-					public void success(Response response, Response response2) {
-						ViewUtil.stopSpinner(LeaveReviewActivity.this);
-						Toast.makeText(getApplicationContext(), "Review submitted successfully !", Toast.LENGTH_SHORT).show();
-						finish();
-					}
-
-					@Override
-					public void failure(RetrofitError error) {
-						ViewUtil.stopSpinner(LeaveReviewActivity.this);
-						Toast.makeText(getApplicationContext(), "Failed to submit review. Please try again later.", Toast.LENGTH_SHORT).show();
-						error.printStackTrace();
-					}
-				});
-			}
-		});
+        alertDialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                //Toast.makeText(getApplicationContext(), "You clicked on YES", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 		alertDialog.show();
 	}

@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
@@ -20,6 +22,7 @@ public class UserReviewsActivity extends TrackedFragmentActivity {
 	private ViewPager viewPager;
 	private ReviewPagerAdapter adapter;
 	private PagerSlidingTabStrip tabs;
+    private ImageView backImage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +37,21 @@ public class UserReviewsActivity extends TrackedFragmentActivity {
 		tabs = (PagerSlidingTabStrip) findViewById(R.id.sellerTabs);
 		viewPager = (ViewPager) findViewById(R.id.sellerPager);
 		adapter = new ReviewPagerAdapter(getSupportFragmentManager(), userId);
+        backImage = (ImageView) findViewById(R.id.backImage);
 
 		int pageMargin = ViewUtil.getRealDimension(0);
 		viewPager.setPageMargin(pageMargin);
 		viewPager.setAdapter(adapter);
 
 		tabs.setViewPager(viewPager);
-	}
+
+        backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
 }
 
 class ReviewPagerAdapter extends FragmentStatePagerAdapter {

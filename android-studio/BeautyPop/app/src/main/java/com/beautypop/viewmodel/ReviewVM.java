@@ -9,8 +9,10 @@ public class ReviewVM {
 	private Long userId;
 	private String userName;
 	private Long postId;
+    private Long postImageId;
 	private String review;
 	private Double score;
+	public Long reviewDate;
 
 	public Long getId() {
 		return id;
@@ -44,6 +46,14 @@ public class ReviewVM {
 		this.postId = postId;
 	}
 
+    public Long getPostImageId() {
+        return postImageId;
+    }
+
+    public void setPostImageId(Long postImageId) {
+        this.postImageId = postImageId;
+    }
+
 	public String getReview() {
 		return review;
 	}
@@ -59,4 +69,12 @@ public class ReviewVM {
 	public void setScore(Double score) {
 		this.score = score;
 	}
+
+    public Long getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Long reviewDate) {
+        this.reviewDate = reviewDate;
+    }
 }

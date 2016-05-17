@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 
 import com.beautypop.R;
+import com.beautypop.util.DateTimeUtil;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.ReviewVM;
@@ -59,6 +60,7 @@ public class UserReviewAdapter extends BaseAdapter {
 
 		TextView userNameText = (TextView) view.findViewById(R.id.userNameText);
 		TextView reviewText = (TextView) view.findViewById(R.id.reviewText);
+		TextView timeText = (TextView) view.findViewById(R.id.timeText);
 		ImageView postImage = (ImageView) view.findViewById(R.id.postImage);
 		ImageView userImage = (ImageView) view.findViewById(R.id.userImage);
 
@@ -67,26 +69,26 @@ public class UserReviewAdapter extends BaseAdapter {
 		ImageView star3 = (ImageView) view.findViewById(R.id.star3);
 		ImageView star4 = (ImageView) view.findViewById(R.id.star4);
 		ImageView star5 = (ImageView) view.findViewById(R.id.star5);
-		ImageUtil.displayPostImage(reviewVM.getPostId(), postImage);
 		ImageUtil.displayProfileImage(reviewVM.getUserId(), userImage);
+        ImageUtil.displayPostImage(reviewVM.getPostImageId(), postImage);
 
 		userImage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				ViewUtil.startUserProfileActivity(activity,reviewVM.getUserId());
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                ViewUtil.startUserProfileActivity(activity, reviewVM.getUserId());
+            }
+        });
 
 		postImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				ViewUtil.startProductActivity(activity,reviewVM.getPostId());
+				ViewUtil.startProductActivity(activity, reviewVM.getPostId());
 			}
 		});
 
-
 		userNameText.setText(reviewVM.getUserName());
 		reviewText.setText(reviewVM.getReview());
+        timeText.setText(DateTimeUtil.getTimeAgo(reviewVM.getReviewDate()));
 
 		if(reviewVM.getScore() > 0.5 && reviewVM.getScore() <= 1.5){
 			star1.setImageResource(R.drawable.star_selected);
