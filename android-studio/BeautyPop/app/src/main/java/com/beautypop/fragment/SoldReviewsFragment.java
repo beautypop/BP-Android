@@ -44,7 +44,7 @@ public class SoldReviewsFragment extends TrackedFragment {
             public void success(List<ReviewVM> reviewVMs, Response response) {
                 if (reviewVMs.size() == 0) {
                     noItemText.setVisibility(View.VISIBLE);
-					((ViewPager)getActivity().findViewById(R.id.sellerPager)).setCurrentItem(1);
+                    ((ViewPager)getActivity().findViewById(R.id.sellerPager)).setCurrentItem(1);
                 }
                 adapter = new UserReviewAdapter(getActivity(), reviewVMs);
                 listView.setAdapter(adapter);

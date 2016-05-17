@@ -301,21 +301,22 @@ public class MessageListActivity extends TrackedFragmentActivity {
             });
         } else {    // closed orders
             buyerMessageLayout.setVisibility(View.VISIBLE);
+            buyerReviewButton.setVisibility(View.GONE);
+
             if (conversation.postSold) {
                 buyerOrderAgainButton.setVisibility(View.GONE);
             }
 
-            if (order.cancelled) {
-                buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-                buyerMessageButton.setText(getString(R.string.pm_order_cancelled));
-                buyerReviewButton.setVisibility(View.GONE);
-            } else if (order.accepted) {
+            if (order.accepted) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_accept, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_accepted_for_buyer));
 				buyerReviewButton.setVisibility(View.VISIBLE);
             } else if (order.declined) {
                 buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_decline, 0, 0, 0);
                 buyerMessageButton.setText(getString(R.string.pm_order_declined_for_buyer));
+            } else if (order.cancelled) {
+                buyerMessageButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                buyerMessageButton.setText(getString(R.string.pm_order_cancelled));
             }
 
             buyerOrderAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -397,9 +398,12 @@ public class MessageListActivity extends TrackedFragmentActivity {
             });
         } else {    // closed orders
             sellerMessageLayout.setVisibility(View.VISIBLE);
+            sellerReviewButton.setVisibility(View.GONE);
+
             if (order.accepted) {
                 sellerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_accept, 0, 0, 0);
                 sellerMessageButton.setText(getString(R.string.pm_order_accepted_for_seller));
+                sellerReviewButton.setVisibility(View.VISIBLE);
             } else if (order.declined) {
                 sellerMessageButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_decline, 0, 0, 0);
                 sellerMessageButton.setText(getString(R.string.pm_order_declined_for_seller));

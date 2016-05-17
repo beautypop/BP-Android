@@ -223,10 +223,10 @@ public class LeaveReviewActivity extends Activity {
 		submitImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(!reviewText.getText().toString().equals("")) {
+				if (!reviewText.getText().toString().equals("")) {
 					showDialog();
-				}else{
-					Toast.makeText(getApplicationContext(),"Please add your experience ",Toast.LENGTH_LONG).show();
+				} else {
+					Toast.makeText(LeaveReviewActivity.this, getString(R.string.leave_review_input_review), Toast.LENGTH_LONG).show();
 				}
 			}
 		});
