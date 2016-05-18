@@ -26,11 +26,23 @@ public class SellerMainFragment extends TrackedFragment {
     private PagerSlidingTabStrip tabs;
 	private ImageView searchImage;
 
+    private static SellerMainFragment mInstance;
+
+    public static synchronized SellerMainFragment getInstance() {
+        return mInstance;
+    }
+
+    public ViewPager getViewPager() {
+        return viewPager;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.seller_main_fragment, container, false);
+
+        mInstance = this;
 
 		searchImage = (ImageView) getActivity().findViewById(R.id.searchImage);
 
@@ -104,15 +116,15 @@ class SellerMainPagerAdapter extends FragmentStatePagerAdapter {
         Bundle bundle = new Bundle();
         TrackedFragment fragment = null;
         switch (position) {
-            // Seller
-            case 0: {
-                fragment = new SellerFeedFragment();
-                break;
-            }
             // Following
-            case 1: {
+            case 0: {
                 bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, FeedFilter.FeedType.HOME_FOLLOWING.name());
                 fragment = new SellerFollowingFeedViewFragment();
+                break;
+            }
+            // Seller
+            case 1: {
+                fragment = new SellerFeedFragment();
                 break;
             }
             default: {

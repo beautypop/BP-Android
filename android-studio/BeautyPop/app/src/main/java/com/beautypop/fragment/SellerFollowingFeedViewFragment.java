@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -14,8 +15,7 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
 
     private static final String TAG = SellerFollowingFeedViewFragment.class.getName();
 
-    private FrameLayout tipsLayout;
-    private ImageView dismissTipsButton;
+    private Button startFollowingButton;
 
     @Override
     public boolean showSeller() {
@@ -23,9 +23,14 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
     }
 
     @Override
+    protected FeedViewItemsLayout getFeedViewItemsLayout() {
+        return FeedViewItemsLayout.TWO_COLUMNS;
+    }
+
+    @Override
     protected View getHeaderView(LayoutInflater inflater) {
         if (headerView == null) {
-            headerView = inflater.inflate(R.layout.home_following_feed_view_header, null);
+            headerView = inflater.inflate(R.layout.seller_following_feed_view_header, null);
         }
         return headerView;
     }
@@ -34,22 +39,13 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        // tips
-        tipsLayout = (FrameLayout) headerView.findViewById(R.id.tipsLayout);
-        if (SharedPreferencesUtil.getInstance().isScreenViewed(SharedPreferencesUtil.Screen.HOME_FOLLOWING_TIPS)) {
-            tipsLayout.setVisibility(View.GONE);
-        } else {
-            tipsLayout.setVisibility(View.VISIBLE);
-
-            dismissTipsButton = (ImageView) headerView.findViewById(R.id.dismissTipsButton);
-            dismissTipsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedPreferencesUtil.getInstance().setScreenViewed(SharedPreferencesUtil.Screen.HOME_FOLLOWING_TIPS);
-                    tipsLayout.setVisibility(View.GONE);
-                }
-            });
-        }
+        startFollowingButton = (Button) headerView.findViewById(R.id.startFollowingButton);
+        startFollowingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SellerMainFragment.getInstance().getViewPager().setCurrentItem(1);
+            }
+        });
 
         return view;
     }

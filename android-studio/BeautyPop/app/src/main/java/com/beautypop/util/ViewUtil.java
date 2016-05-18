@@ -237,8 +237,9 @@ public class ViewUtil {
 
     public static void initCachedLocaleStrings() {
         SELLER_MAIN_TITLES = new String[] {
-                AppController.getInstance().getString(R.string.main_tab_seller),
-                AppController.getInstance().getString(R.string.main_tab_following)
+                AppController.getInstance().getString(R.string.main_tab_following),
+                AppController.getInstance().getString(R.string.main_tab_seller)
+
         };
 
         SEARCH_MAIN_TITLES = new String[] {

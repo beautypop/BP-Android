@@ -143,7 +143,7 @@
 
     <!-- Tips -->
     <string name="home_explore_tips">All products in BeautyPop are listed by users. Explore most popular products now！</string>
-    <string name="home_following_tips">Follow your favorite sellers. Explore their newest products.</string>
+    <string name="home_following_tips">Follow your favorite sellers. Check out their newest products in your feed.</string>
     <string name="category_tips">Explore products by category filters.</string>
     <string name="my_profile_tips">Click \"Sell\" to list your product now\nSell your style！</string>
 
@@ -151,6 +151,7 @@
     <string name="main_tab_seller">Recommended</string>
     <string name="main_tab_following">Following</string>
     <string name="suggest_for_you">Suggest For You</string>
+    <string name="start_following">Start following</string>
     <string name="follow">+ Follow</string>
     <string name="following">Following</string>
     <string name="followings">Followings</string>
