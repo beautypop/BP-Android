@@ -36,7 +36,7 @@ public class AdminUserListAdapter extends BaseAdapter {
 
     private ImageView userImage;
     private TextView userDisplayNameText, userNameText, userEmailText, lastLoginUserAgentText, userIdText, createdDateText, lastActiveText;
-    private TextView numProductsText, numLikesText, numCommentsText;
+    private TextView numProductsText, numLikesText, numCommentsText, numViewsText;
     private Button loginAsButton, deleteButton;
 
     private Activity activity;
@@ -90,6 +90,7 @@ public class AdminUserListAdapter extends BaseAdapter {
         numProductsText = (TextView) convertView.findViewById(R.id.numProductsText);
         numLikesText = (TextView) convertView.findViewById(R.id.numLikesText);
         numCommentsText = (TextView) convertView.findViewById(R.id.numCommentsText);
+        numViewsText = (TextView) convertView.findViewById(R.id.numViewsText);
 
         final UserVMLite item = users.get(position);
 
@@ -189,6 +190,8 @@ public class AdminUserListAdapter extends BaseAdapter {
         numLikesText.setTypeface(item.numLikes > 0? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
         numCommentsText.setText("Comments: "+item.numComments);
         numCommentsText.setTypeface(item.numComments > 0? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
+        numViewsText.setText("Views: "+item.numViews);
+        numViewsText.setTypeface(item.numViews > 0? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
 
         return convertView;
     }

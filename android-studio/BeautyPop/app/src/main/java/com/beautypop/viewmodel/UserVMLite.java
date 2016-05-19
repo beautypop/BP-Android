@@ -11,6 +11,7 @@ public class UserVMLite implements Serializable {
     public String email;
     public String firstName;
     public String lastName;
+    public Long numViews = 0L;
     public Long numLikes = 0L;
     public Long numFollowings = 0L;
     public Long numFollowers = 0L;
@@ -112,6 +113,14 @@ public class UserVMLite implements Serializable {
 
     public void setNumProducts(Long numProducts) {
         this.numProducts = numProducts;
+    }
+
+    public Long getNumViews() {
+        return numViews;
+    }
+
+    public void setNumViews(Long numViews) {
+        this.numViews = numViews;
     }
 
     public Long getNumLikes() {
@@ -302,6 +311,7 @@ public class UserVMLite implements Serializable {
                 "lastLogin=" + new DateTime(lastLogin) + "\n" +
                 "lastLoginUserAgent=" + lastLoginUserAgent + "\n" +
                 "totalLogin=" + totalLogin + "\n" +
+                "numViews=" + numViews + "\n" +
                 "numLikes=" + numLikes + "\n" +
                 "numFollowers=" + numFollowers + "\n" +
                 "numFollowings=" + numFollowings + "\n" +
