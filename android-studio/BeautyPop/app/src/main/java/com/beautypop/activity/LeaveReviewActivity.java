@@ -223,10 +223,13 @@ public class LeaveReviewActivity extends Activity {
 		submitImage.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (!reviewText.getText().toString().equals("")) {
-					showDialog();
-				} else {
+				if (reviewText.getText().toString().equals("")) {
 					Toast.makeText(LeaveReviewActivity.this, getString(R.string.leave_review_input_review), Toast.LENGTH_LONG).show();
+					//showDialog();
+				} else if(score == 0.0) {
+					Toast.makeText(LeaveReviewActivity.this, getString(R.string.leave_review_input_rating), Toast.LENGTH_LONG).show();
+				}else{
+					showDialog();
 				}
 			}
 		});

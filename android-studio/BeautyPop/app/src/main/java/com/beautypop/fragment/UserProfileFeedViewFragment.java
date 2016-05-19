@@ -174,21 +174,40 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         totalReviews.setText("(" + user.getNumReviews() + ")");
 
 		Log.d("Review score=",user.getAverageReviewScore()+"");
-		if(user.getAverageReviewScore() >= 0.5 && user.getAverageReviewScore() <= 1.5){
+
+		if(user.getAverageReviewScore() > 1.0 && user.getAverageReviewScore() <= 1.25){
             star1.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() > 1.5 && user.getAverageReviewScore() <= 2.5){
+		}else if(user.getAverageReviewScore() > 1.25 && user.getAverageReviewScore() <= 1.75){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.half_star_selected);
+		}else if(user.getAverageReviewScore() > 1.75 && user.getAverageReviewScore() <= 2.25){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() > 2.5 && user.getAverageReviewScore() <= 3.5){
+		}else if(user.getAverageReviewScore() > 2.25 && user.getAverageReviewScore() <= 2.75){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+			star3.setImageResource(R.drawable.half_star_selected);
+		}else if(user.getAverageReviewScore() > 2.75 && user.getAverageReviewScore() <= 3.25){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
 			star3.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() > 3.5 && user.getAverageReviewScore() <= 4.5){
+		}else if(user.getAverageReviewScore() > 3.25 && user.getAverageReviewScore() <= 3.75){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+			star3.setImageResource(R.drawable.star_selected);
+			star4.setImageResource(R.drawable.half_star_selected);
+		}else if(user.getAverageReviewScore() > 3.75 && user.getAverageReviewScore() <= 4.25){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
 			star3.setImageResource(R.drawable.star_selected);
 			star4.setImageResource(R.drawable.star_selected);
-		}else if(user.getAverageReviewScore() > 4.5 && user.getAverageReviewScore() <= 5.0){
+		}else if(user.getAverageReviewScore() > 4.25 && user.getAverageReviewScore() <= 4.75){
+			star1.setImageResource(R.drawable.star_selected);
+			star2.setImageResource(R.drawable.star_selected);
+			star3.setImageResource(R.drawable.star_selected);
+			star4.setImageResource(R.drawable.star_selected);
+			star5.setImageResource(R.drawable.half_star_selected);
+		}else if(user.getAverageReviewScore() > 4.75 && user.getAverageReviewScore() <= 5.0){
 			star1.setImageResource(R.drawable.star_selected);
 			star2.setImageResource(R.drawable.star_selected);
 			star3.setImageResource(R.drawable.star_selected);
