@@ -44,7 +44,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 
     private static final String TAG = UserProfileFeedViewFragment.class.getName();
 
-    protected ImageView coverImage, profileImage, editCoverImage, editProfileImage, settingsIcon;
+    protected ImageView coverImage, profileImage, editCoverImage, editProfileImage, settingsIcon, fbImage;
 	protected ImageView star1,star2,star3,star4,star5;
     protected TextView userNameText, followersText, followingsText, userInfoText, userDescText, sellerUrlText,totalReviews;
     protected LinearLayout userInfoLayout, ratingsLayout;
@@ -108,6 +108,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         userInfoLayout = (LinearLayout) headerView.findViewById(R.id.userInfoLayout);
         ratingsLayout = (LinearLayout) headerView.findViewById(R.id.ratingsLayout);
         userInfoText = (TextView) headerView.findViewById(R.id.userInfoText);
+        fbImage = (ImageView) headerView.findViewById(R.id.fbImage);
         loginAsButton = (Button) headerView.findViewById(R.id.loginAsButton);
         userDescText = (TextView) headerView.findViewById(R.id.userDescText);
         sellerUrlText = (TextView) headerView.findViewById(R.id.sellerUrlText);
@@ -304,6 +305,9 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
                 if (AppController.isUserAdmin()) {
                     userInfoText.setText(user.toString());
                     userInfoLayout.setVisibility(View.VISIBLE);
+
+                    // fb login
+                    fbImage.setVisibility(user.isFbLogin? View.VISIBLE : View.GONE);
 
                     // login as
                     loginAsButton.setOnClickListener(new View.OnClickListener() {
