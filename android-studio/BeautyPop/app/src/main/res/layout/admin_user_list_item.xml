@@ -74,6 +74,15 @@
             android:weightSum="10"
             android:layout_marginTop="2dp">
 
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:id="@+id/fbImage"
+                android:src="@drawable/ic_fb_logo"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/userDisplayNameText"
+                android:layout_gravity="center_vertical" />
+
             <TextView
                 android:id="@+id/userNameText"
                 android:layout_width="wrap_content"
@@ -137,7 +146,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_weight="4"
-                android:layout_marginLeft="2dp" />
+                android:layout_marginLeft="2dp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/createdDateText"
@@ -171,14 +181,15 @@
                 android:layout_marginLeft="2dp" />
 
             <TextView
-                android:id="@+id/numProductsText"
+                android:id="@+id/numLikesText"
                 android:layout_width="0dp"
                 android:textColor="@color/gray"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true"
-                android:layout_weight="5" />
+                android:layout_weight="5"
+                android:layout_marginLeft="2dp" />
 
         </LinearLayout>
 
@@ -190,15 +201,14 @@
             android:layout_marginTop="2dp">
 
             <TextView
-                android:id="@+id/numLikesText"
+                android:id="@+id/numProductsText"
                 android:layout_width="0dp"
                 android:textColor="@color/gray"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true"
-                android:layout_weight="5"
-                android:layout_marginLeft="2dp" />
+                android:layout_weight="5" />
 
             <TextView
                 android:id="@+id/numCommentsText"

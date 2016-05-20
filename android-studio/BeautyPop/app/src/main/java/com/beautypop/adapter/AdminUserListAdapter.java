@@ -34,7 +34,7 @@ import retrofit.client.Response;
 public class AdminUserListAdapter extends BaseAdapter {
     private static final String TAG = AdminUserListAdapter.class.getName();
 
-    private ImageView userImage;
+    private ImageView userImage, fbImage;
     private TextView userDisplayNameText, userNameText, userEmailText, lastLoginUserAgentText, userIdText, createdDateText, lastActiveText;
     private TextView numProductsText, numLikesText, numCommentsText, numViewsText;
     private Button loginAsButton, deleteButton;
@@ -78,6 +78,7 @@ public class AdminUserListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.admin_user_list_item, null);
 
         userImage = (ImageView) convertView.findViewById(R.id.userImage);
+        fbImage = (ImageView) convertView.findViewById(R.id.fbImage);
         userDisplayNameText = (TextView) convertView.findViewById(R.id.userDisplayNameText);
         userNameText = (TextView) convertView.findViewById(R.id.userNameText);
         userEmailText = (TextView) convertView.findViewById(R.id.userEmailText);
@@ -96,6 +97,8 @@ public class AdminUserListAdapter extends BaseAdapter {
 
         // profile pic
         ImageUtil.displayThumbnailProfileImage(item.getId(), userImage);
+
+        fbImage.setVisibility(item.isFbLogin? View.VISIBLE : View.GONE);
 
         userImage.setOnClickListener(new View.OnClickListener() {
             @Override

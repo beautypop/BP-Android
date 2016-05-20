@@ -143,6 +143,12 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         if (showSeller) {
             ImageUtil.displayThumbnailProfileImage(item.getOwnerId(), holder.sellerImage);
             holder.sellerImage.setVisibility(View.VISIBLE);
+            holder.sellerImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ViewUtil.startUserProfileActivity(activity, item.getOwnerId());
+                }
+            });
         } else {
             holder.sellerImage.setVisibility(View.INVISIBLE);
         }
