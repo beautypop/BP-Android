@@ -146,8 +146,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_weight="4"
-                android:layout_marginLeft="2dp"
-                android:visibility="gone" />
+                android:layout_marginLeft="2dp" />
 
             <TextView
                 android:id="@+id/createdDateText"
