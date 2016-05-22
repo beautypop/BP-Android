@@ -30,6 +30,7 @@ public class TourActivity extends TrackedFragmentActivity {
     private LinearLayout dotsLayout;
     private List<ImageView> dots = new ArrayList<>();
 
+    private ImageView nextImage;
     private TextView doneText;
 
     @Override
@@ -40,12 +41,23 @@ public class TourActivity extends TrackedFragmentActivity {
 
         imagePager = (AdaptiveViewPager) findViewById(R.id.imagePager);
         dotsLayout = (LinearLayout) findViewById(R.id.dotsLayout);
+        nextImage = (ImageView) findViewById(R.id.nextImage);
         doneText = (TextView) findViewById(R.id.doneText);
 
         imagePagerAdapter = new TourImagePagerAdapter(getSupportFragmentManager());
         imagePager.setAdapter(imagePagerAdapter);
         imagePager.setCurrentItem(0);
         ViewUtil.addDots(TourActivity.this, imagePagerAdapter.getCount(), dotsLayout, dots, imagePager);
+
+        nextImage.setVisibility(View.VISIBLE);
+        doneText.setVisibility(View.GONE);
+
+        nextImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextPage();
+            }
+        });
 
         doneText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +66,6 @@ public class TourActivity extends TrackedFragmentActivity {
                 finish();
             }
         });
-
-        doneText.setVisibility(View.GONE);
 
         imagePager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -73,7 +83,14 @@ public class TourActivity extends TrackedFragmentActivity {
         });
     }
 
+    public void nextPage() {
+        if (imagePager.getCurrentItem() < imagePagerAdapter.getImages().length - 1) {
+            imagePager.setCurrentItem(imagePager.getCurrentItem() + 1);
+        }
+    }
+
     public void showDoneAction(boolean show) {
+        nextImage.setVisibility(!show? View.VISIBLE : View.GONE);
         doneText.setVisibility(show? View.VISIBLE : View.GONE);
     }
 }

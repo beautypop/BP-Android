@@ -21,14 +21,24 @@
                 android:layout_centerInParent="true">
             </com.beautypop.view.AdaptiveViewPager>
 
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="35dp"
+                android:id="@+id/nextImage"
+                android:src="@drawable/ic_next"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp" />
+
             <TextView
                 android:id="@+id/doneText"
                 android:background="@drawable/button_white_border"
                 android:layout_width="135dp"
-                android:layout_height="30dp"
+                android:layout_height="35dp"
                 android:text="@string/tour_complete"
                 android:textAlignment="center"
-                android:textSize="17dp"
+                android:textSize="18dp"
                 android:textColor="@color/white"
                 android:layout_weight="4"
                 android:layout_gravity="center_vertical|right"
@@ -36,7 +46,8 @@
                 android:layout_alignParentLeft="false"
                 android:layout_marginBottom="15dp"
                 android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true" />
+                android:layout_alignParentBottom="true"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
