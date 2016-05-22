@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,8 +15,15 @@ import android.view.ViewGroup;
  * Get height of the biggest child
  */
 public class AdaptiveViewPager extends ViewPager {
+    private static final String TAG = AdaptiveViewPager.class.getName();
 
     private static final int DEFAULT_OFFSCREEN_PAGE_LIMIT = 1;
+
+    private boolean isPagingEnabled = true;
+
+    public void setPagingEnabled(boolean isPagingEnabled) {
+        this.isPagingEnabled = isPagingEnabled;
+    }
 
     public AdaptiveViewPager(Context context) {
         super(context);
@@ -28,7 +37,6 @@ public class AdaptiveViewPager extends ViewPager {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
         int height = 0;
         for(int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
@@ -40,5 +48,15 @@ public class AdaptiveViewPager extends ViewPager {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return this.isPagingEnabled && super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        return this.isPagingEnabled && super.onInterceptTouchEvent(event);
     }
 }

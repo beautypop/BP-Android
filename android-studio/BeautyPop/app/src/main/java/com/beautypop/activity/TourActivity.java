@@ -1,5 +1,7 @@
 package com.beautypop.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +20,8 @@ import com.beautypop.util.DefaultValues;
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.view.AdaptiveViewPager;
+
+import org.parceler.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +50,7 @@ public class TourActivity extends TrackedFragmentActivity {
 
         imagePagerAdapter = new TourImagePagerAdapter(getSupportFragmentManager());
         imagePager.setAdapter(imagePagerAdapter);
+        imagePager.setPagingEnabled(false);
         imagePager.setCurrentItem(0);
         ViewUtil.addDots(TourActivity.this, imagePagerAdapter.getCount(), dotsLayout, dots, imagePager);
 
@@ -85,13 +90,19 @@ public class TourActivity extends TrackedFragmentActivity {
 
     public void nextPage() {
         if (imagePager.getCurrentItem() < imagePagerAdapter.getImages().length - 1) {
-            imagePager.setCurrentItem(imagePager.getCurrentItem() + 1);
+            imagePager.setCurrentItem(imagePager.getCurrentItem() + 1, false);
         }
     }
 
     public void showDoneAction(boolean show) {
         nextImage.setVisibility(!show? View.VISIBLE : View.GONE);
         doneText.setVisibility(show? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        SharedPreferencesUtil.getInstance().setScreenViewed(SharedPreferencesUtil.Screen.TOUR);
+        super.onBackPressed();
     }
 }
 
