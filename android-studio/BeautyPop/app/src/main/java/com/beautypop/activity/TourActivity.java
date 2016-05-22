@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -41,7 +42,7 @@ public class TourActivity extends TrackedFragmentActivity {
         dotsLayout = (LinearLayout) findViewById(R.id.dotsLayout);
         doneText = (TextView) findViewById(R.id.doneText);
 
-        imagePagerAdapter = new TourImagePagerAdapter(getSupportFragmentManager(), this);
+        imagePagerAdapter = new TourImagePagerAdapter(getSupportFragmentManager());
         imagePager.setAdapter(imagePagerAdapter);
         imagePager.setCurrentItem(0);
         ViewUtil.addDots(TourActivity.this, imagePagerAdapter.getCount(), dotsLayout, dots, imagePager);
@@ -55,6 +56,21 @@ public class TourActivity extends TrackedFragmentActivity {
         });
 
         doneText.setVisibility(View.GONE);
+
+        imagePager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                showDoneAction(position == imagePagerAdapter.getImages().length - 1);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
     }
 
     public void showDoneAction(boolean show) {
@@ -72,7 +88,12 @@ class TourImagePagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.tour_5_en,
             R.drawable.tour_6_en,
             R.drawable.tour_7_en,
-            R.drawable.tour_8_en
+            R.drawable.tour_8_en,
+            R.drawable.tour_9_en,
+            R.drawable.tour_10_en,
+            R.drawable.tour_11_en,
+            R.drawable.tour_12_en,
+            R.drawable.tour_13_en
     };
 
     private int[] zh_images = {
@@ -83,17 +104,22 @@ class TourImagePagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.tour_5_zh,
             R.drawable.tour_6_zh,
             R.drawable.tour_7_zh,
-            R.drawable.tour_8_zh
+            R.drawable.tour_8_zh,
+            R.drawable.tour_9_zh,
+            R.drawable.tour_10_zh,
+            R.drawable.tour_11_zh,
+            R.drawable.tour_12_zh,
+            R.drawable.tour_13_zh
     };
 
     private int[] images;
 
-    private TourActivity activity;
+    public int[] getImages() {
+        return images;
+    }
 
-    public TourImagePagerAdapter(FragmentManager fm, TourActivity activity) {
+    public TourImagePagerAdapter(FragmentManager fm) {
         super(fm);
-
-        this.activity = activity;
 
         String lang = SharedPreferencesUtil.getInstance().getLang();
         if (DefaultValues.LANG_ZH.equalsIgnoreCase(lang)) {
@@ -123,18 +149,12 @@ class TourImagePagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         Log.d(this.getClass().getSimpleName(), "getItem: item - " + position);
 
-        // done action
-        this.activity.showDoneAction(position == images.length - 1);
-
-        switch (position) {
-            default: {
-                if (position < images.length) {
-                    ImagePagerFragment fragment = new ImagePagerFragment();
-                    fragment.setImageSource(images[position]);
-                    return fragment;
-                }
-                return null;
-            }
+        if (position < images.length) {
+            ImagePagerFragment fragment = new ImagePagerFragment();
+            fragment.setImageSource(images[position]);
+            return fragment;
         }
+
+        return null;
     }
 }
