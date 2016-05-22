@@ -48,6 +48,7 @@ public class SharedPreferencesUtil {
         ACTIVITY_TAB,
         PROFILE_TAB,
 
+        TOUR,
         HOME_EXPLORE_TIPS,
         HOME_FOLLOWING_TIPS,
         CATEGORY_TIPS,

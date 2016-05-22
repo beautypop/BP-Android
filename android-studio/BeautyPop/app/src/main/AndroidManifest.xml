@@ -75,6 +75,9 @@
             android:name="com.beautypop.activity.PrivacyActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.beautypop.activity.TourActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.beautypop.activity.SelectImageActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -82,6 +82,7 @@ import com.beautypop.activity.SettingsActivity;
 import com.beautypop.activity.SignupActivity;
 import com.beautypop.activity.SignupDetailActivity;
 import com.beautypop.activity.SplashActivity;
+import com.beautypop.activity.TourActivity;
 import com.beautypop.activity.UserProfileActivity;
 import com.beautypop.activity.WelcomeActivity;
 import com.beautypop.app.AppController;
@@ -1166,6 +1167,11 @@ public class ViewUtil {
         Intent intent = new Intent(activity, SplashActivity.class);
         intent.putExtra(BUNDLE_KEY_LOGIN_KEY, key);
         intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        activity.startActivity(intent);
+    }
+
+    public static void startTourActivity(Activity activity) {
+        Intent intent = new Intent(activity, TourActivity.class);
         activity.startActivity(intent);
     }
 

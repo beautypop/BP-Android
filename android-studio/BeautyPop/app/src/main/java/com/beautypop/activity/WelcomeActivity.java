@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragmentActivity;
-import com.beautypop.fragment.WelcomeImagePagerFragment;
+import com.beautypop.fragment.ImagePagerFragment;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.view.AdaptiveViewPager;
 
@@ -90,7 +90,7 @@ class WelcomeImagePagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             default: {
                 if (position < images.length) {
-                    WelcomeImagePagerFragment fragment = new WelcomeImagePagerFragment();
+                    ImagePagerFragment fragment = new ImagePagerFragment();
                     fragment.setImageSource(images[position]);
                     return fragment;
                 }
@@ -99,5 +99,3 @@ class WelcomeImagePagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 }
-
-

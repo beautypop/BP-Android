@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.beautypop.R;
 import com.beautypop.app.TrackedFragment;
 
-public class WelcomeImagePagerFragment extends TrackedFragment {
+public class ImagePagerFragment extends TrackedFragment {
 
     private ImageView image;
 
@@ -18,7 +18,7 @@ public class WelcomeImagePagerFragment extends TrackedFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.welcome_image_pager_fragment, container, false);
+        View view = inflater.inflate(R.layout.image_pager_fragment, container, false);
 
         image = (ImageView) view.findViewById(R.id.image);
         image.setImageResource(src);
