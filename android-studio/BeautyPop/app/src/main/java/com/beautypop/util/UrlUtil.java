@@ -7,8 +7,8 @@ import java.util.regex.Pattern;
 import com.beautypop.R;
 import com.beautypop.app.AppController;
 import com.beautypop.viewmodel.CategoryVM;
-import com.beautypop.viewmodel.PostVM;
-import com.beautypop.viewmodel.UserVM;
+import com.beautypop.viewmodel.PostVMLite;
+import com.beautypop.viewmodel.UserVMLite;
 
 /**
  * Created by keithlei on 3/16/15.
@@ -53,11 +53,11 @@ public class UrlUtil {
         return url;
     }
 
-    public static String createSellerUrl(UserVM user) {
+    public static String createSellerUrl(UserVMLite user) {
         return AppController.BASE_URL + "/" + user.displayName.toLowerCase();
     }
 
-    public static String createProductUrl(PostVM post) {
+    public static String createProductUrl(PostVMLite post) {
         return String.format(PRODUCT_URL, post.getId());
     }
 
@@ -81,7 +81,7 @@ public class UrlUtil {
         return parseUrlMatcher(CATEGORY_URL_REGEX, url);
     }
 
-    public static String createShortSellerUrl(UserVM user) {
+    public static String createShortSellerUrl(UserVMLite user) {
         //return AppController.getInstance().getString(R.string.seller_url) + ": " + stripHttpPrefix(createSellerUrl(user));
         return stripHttpPrefix(createSellerUrl(user));
     }

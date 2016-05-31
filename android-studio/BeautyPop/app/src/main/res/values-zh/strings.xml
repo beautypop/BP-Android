@@ -5,7 +5,7 @@
     <string name="facebook_app_id"></string>
     <string name="gcm_project_id"></string>
     <string name="base_url"></string>
-    <string name="base_url_dev">http://119.81.228.91</string>
+    <string name="base_url_dev">http://192.168.1.114:9000</string>
     <string name="app_name">BeautyPop</string>
 
     <!-- Crash report -->
@@ -131,7 +131,7 @@
     <string name="signup_details_error_name_not_entered">請填寫姓名</string>
     <string name="signup_details_error_location_not_entered">請選擇地區</string>
     <string name="signup_details_error_status_not_entered">請選擇您現在是</string>
-    <string name="tour_complete">完成!</string>
+    <string name="tour_complete">立即進入!</string>
 
     <!-- Main -->
     <string name="tabset_home">逛逛</string>
@@ -193,8 +193,8 @@
     <string name="likes">喜歡</string>
     <string name="comments">個留言</string>
     <string name="chat">發問</string>
-    <string name="buy">立即購買</string>
-    <string name="buy_again">再購買</string>
+    <string name="buy">出價</string>
+    <string name="buy_again">出價</string>
     <string name="view_chats">查看訊息</string>
     <string name="mark_as_sold">標為已售</string>
     <string name="sold_text">此商品已售</string>
@@ -297,30 +297,30 @@
     <string name="pm_accepted">已接受</string>
     <string name="pm_declined">不被接受</string>
     <string name="pm_cancelled">已取消</string>
-    <string name="pm_buy_message">購買商品</string>
-    <string name="pm_cancelled_message">購買已取消</string>
-    <string name="pm_accepted_message">購買已被接受</string>
-    <string name="pm_declined_message">購買不被接受</string>
+    <string name="pm_buy_message">出價</string>
+    <string name="pm_cancelled_message">出價已取消</string>
+    <string name="pm_accepted_message">出價已被接受</string>
+    <string name="pm_declined_message">出價不被接受</string>
     <string name="pm_order_buy_text">有興趣？</string>
-    <string name="pm_order_buy">購買商品</string>
-    <string name="pm_order_buy_again">再購買</string>
+    <string name="pm_order_buy">出價</string>
+    <string name="pm_order_buy_again">出價</string>
     <string name="pm_order_cancel_text">已下訂單</string>
-    <string name="pm_order_cancel">取消購買</string>
-    <string name="pm_order_cancelled">購買已被取消</string>
+    <string name="pm_order_cancel">取消出價</string>
+    <string name="pm_order_cancelled">出價已被取消</string>
     <string name="pm_order_new_text">你有新訂單</string>
-    <string name="pm_order_accept">接受購買</string>
-    <string name="pm_order_accepted_for_buyer">賣家已接受你的購買</string>
-    <string name="pm_order_accepted_for_seller">購買已被接受</string>
-    <string name="pm_order_decline">不接受購買</string>
-    <string name="pm_order_declined_for_buyer">賣家不接受購買</string>
-    <string name="pm_order_declined_for_seller">購買不被接受</string>
-    <string name="pm_order_failed">暫時不能購買，請稍後重試</string>
-    <string name="pm_order_already">你已發出購買訂單，請等待回覆或聯絡賣家</string>
-    <string name="pm_order_already_closed">購買訂單已完成，如有問題請聯絡賣家</string>
+    <string name="pm_order_accept">接受出價</string>
+    <string name="pm_order_accepted_for_buyer">賣家已接受你的出價</string>
+    <string name="pm_order_accepted_for_seller">出價已被接受</string>
+    <string name="pm_order_decline">不接受出價</string>
+    <string name="pm_order_declined_for_buyer">賣家不接受出價</string>
+    <string name="pm_order_declined_for_seller">出價不被接受</string>
+    <string name="pm_order_failed">暫時不能出價，請稍後重試</string>
+    <string name="pm_order_already">你已出價，請等待回覆或聯絡賣家</string>
+    <string name="pm_order_already_closed">購買已完成，如有問題請聯絡賣家</string>
     <string name="pm_order_buy_confirm">購買商品\n出價給賣家</string>
-    <string name="pm_order_cancel_confirm">取消購買商品?</string>
-    <string name="pm_order_accept_confirm">接受購買?</string>
-    <string name="pm_order_decline_confirm">不接受購買?</string>
+    <string name="pm_order_cancel_confirm">取消出價?</string>
+    <string name="pm_order_accept_confirm">接受出價?</string>
+    <string name="pm_order_decline_confirm">不接受出價?</string>
     <string name="pm_order_offered">已出價:</string>
 
     <!-- Game -->

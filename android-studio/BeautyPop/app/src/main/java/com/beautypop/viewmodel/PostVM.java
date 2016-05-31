@@ -6,8 +6,6 @@ public class PostVM extends PostVMLite {
     public Long ownerNumProducts;
     public Long ownerNumFollowers;
     public Long ownerLastLogin;
-    public Long createdDate;
-    public Long updatedDate;
     public String body;
     public Long categoryId;
     public String categoryType;
@@ -46,22 +44,6 @@ public class PostVM extends PostVMLite {
 
     public void setOwnerLastLogin(Long ownerLastLogin) {
         this.ownerLastLogin = ownerLastLogin;
-    }
-
-    public long getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(long createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public long getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(long updatedDate) {
-        this.updatedDate = updatedDate;
     }
 
     public String getBody() {

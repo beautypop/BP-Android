@@ -132,6 +132,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         editCoverImage.setVisibility(View.GONE);
         editProfileImage.setVisibility(View.GONE);
         editButton.setVisibility(View.GONE);
+        settingsIcon.setVisibility(View.GONE);
         tipsLayout.setVisibility(View.GONE);
         userInfoLayout.setVisibility(View.GONE);
 

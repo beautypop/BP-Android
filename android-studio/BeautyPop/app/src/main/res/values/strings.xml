@@ -5,7 +5,7 @@
     <string name="facebook_app_id"></string>
     <string name="gcm_project_id"></string>
     <string name="base_url"></string>
-    <string name="base_url_dev">http://119.81.228.91</string>
+    <string name="base_url_dev">http://192.168.1.114:9000</string>
     <string name="app_name">BeautyPop</string>
 
     <!-- Crash report -->
@@ -131,7 +131,7 @@
     <string name="signup_details_error_name_not_entered">Please enter your name</string>
     <string name="signup_details_error_location_not_entered">Please select location</string>
     <string name="signup_details_error_status_not_entered">Please select your status</string>
-    <string name="tour_complete">Done!</string>
+    <string name="tour_complete">Start now!</string>
 
     <!-- Main -->
     <string name="tabset_home">Explore</string>
@@ -193,8 +193,8 @@
     <string name="likes">Likes</string>
     <string name="comments">Comments</string>
     <string name="chat">Chat</string>
-    <string name="buy">Buy Now</string>
-    <string name="buy_again">Buy Again</string>
+    <string name="buy">Make Offer</string>
+    <string name="buy_again">Make Offer</string>
     <string name="view_chats">View Chats</string>
     <string name="mark_as_sold">Mark as Sold</string>
     <string name="sold_text">This item has been sold</string>
@@ -302,8 +302,8 @@
     <string name="pm_accepted_message">Offer is accepted</string>
     <string name="pm_declined_message">Offer is declined</string>
     <string name="pm_order_buy_text">Interested?</string>
-    <string name="pm_order_buy">Buy Now</string>
-    <string name="pm_order_buy_again">Buy Again</string>
+    <string name="pm_order_buy">Make Offer</string>
+    <string name="pm_order_buy_again">Make Offer</string>
     <string name="pm_order_cancel_text">Ordered</string>
     <string name="pm_order_cancel">Cancel Order</string>
     <string name="pm_order_cancelled">Order cancelled</string>

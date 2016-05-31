@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class PostVMLite implements Serializable {
     public Long id;
+    public Long createdDate;
+    public Long updatedDate;
     public Long ownerId;
     public String ownerName;
     public String title;
@@ -50,6 +52,22 @@ public class PostVMLite implements Serializable {
         this.id = id;
     }
 
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(long createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public long getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(long updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+    
     public Long getOwnerId() {
         return ownerId;
     }
