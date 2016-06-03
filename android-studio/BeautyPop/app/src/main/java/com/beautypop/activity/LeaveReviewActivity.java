@@ -173,31 +173,33 @@ public class LeaveReviewActivity extends Activity {
 			public void success(ReviewVM reviewVM, Response response) {
 				ViewUtil.stopSpinner(LeaveReviewActivity.this);
 
-				score = reviewVM.getScore();
+				if (reviewVM != null) {
+                    score = reviewVM.getScore();
 
-				reviewText.setText(reviewVM.getReview());
+                    reviewText.setText(reviewVM.getReview());
 
-				if(reviewVM.getScore() >= 0.5 && reviewVM.getScore() <= 1.5){
-					star1.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() > 1.5 && reviewVM.getScore() <= 2.5){
-					star1.setImageResource(R.drawable.star_selected);
-					star2.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() > 2.5 && reviewVM.getScore() <= 3.5){
-					star1.setImageResource(R.drawable.star_selected);
-					star2.setImageResource(R.drawable.star_selected);
-					star3.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() > 3.5 && reviewVM.getScore() <= 4.5){
-					star1.setImageResource(R.drawable.star_selected);
-					star2.setImageResource(R.drawable.star_selected);
-					star3.setImageResource(R.drawable.star_selected);
-					star4.setImageResource(R.drawable.star_selected);
-				}else if(reviewVM.getScore() > 4.5 && reviewVM.getScore() <= 5.0){
-					star1.setImageResource(R.drawable.star_selected);
-					star2.setImageResource(R.drawable.star_selected);
-					star3.setImageResource(R.drawable.star_selected);
-					star4.setImageResource(R.drawable.star_selected);
-					star5.setImageResource(R.drawable.star_selected);
-				}
+                    if (reviewVM.getScore() >= 0.5 && reviewVM.getScore() <= 1.5) {
+                        star1.setImageResource(R.drawable.star_selected);
+                    } else if (reviewVM.getScore() > 1.5 && reviewVM.getScore() <= 2.5) {
+                        star1.setImageResource(R.drawable.star_selected);
+                        star2.setImageResource(R.drawable.star_selected);
+                    } else if (reviewVM.getScore() > 2.5 && reviewVM.getScore() <= 3.5) {
+                        star1.setImageResource(R.drawable.star_selected);
+                        star2.setImageResource(R.drawable.star_selected);
+                        star3.setImageResource(R.drawable.star_selected);
+                    } else if (reviewVM.getScore() > 3.5 && reviewVM.getScore() <= 4.5) {
+                        star1.setImageResource(R.drawable.star_selected);
+                        star2.setImageResource(R.drawable.star_selected);
+                        star3.setImageResource(R.drawable.star_selected);
+                        star4.setImageResource(R.drawable.star_selected);
+                    } else if (reviewVM.getScore() > 4.5 && reviewVM.getScore() <= 5.0) {
+                        star1.setImageResource(R.drawable.star_selected);
+                        star2.setImageResource(R.drawable.star_selected);
+                        star3.setImageResource(R.drawable.star_selected);
+                        star4.setImageResource(R.drawable.star_selected);
+                        star5.setImageResource(R.drawable.star_selected);
+                    }
+                }
 			}
 
 			@Override

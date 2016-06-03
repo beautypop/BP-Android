@@ -389,6 +389,7 @@
     <string name="admin_latest_logins">Latest Logins</string>
     <string name="admin_latest_comments">Latest Comments</string>
     <string name="admin_latest_conversations">Latest Chats</string>
+    <string name="admin_new_products">New Products</string>
     <string name="admin_login_as">Login As</string>
     <string name="admin_delete_account">Delete</string>
     <string name="admin_delete_account_confirm">Confirm delete account?</string>

@@ -327,7 +327,10 @@ public interface BeautyPopApi {
     @GET("/api/get-messages-for-admin/{conversationId}/{offset}")
     public void getMessagesForAdmin(@Path("conversationId") Long conversationId, @Path("offset") Long offset, @Query("key") String key, Callback<Response> cb);
 
-	// Search API
+    @GET("/api/get-latest-products/{offset}")
+    public void getNewProducts(@Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> cb);
+
+    // Search API
     @GET("/search-posts/{searchKey}/{catId}/{offset}")
     public void searchProducts(@Path("searchKey") String searchKey, @Path("catId") Long id, @Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> callback);
 

@@ -57,6 +57,7 @@ import com.beautypop.activity.AdminCommentsActivity;
 import com.beautypop.activity.AdminConversationListActivity;
 import com.beautypop.activity.AdminLatestLoginsActivity;
 import com.beautypop.activity.AdminMessageListActivity;
+import com.beautypop.activity.AdminNewProductsActivity;
 import com.beautypop.activity.AdminNewUsersActivity;
 import com.beautypop.activity.CategoryActivity;
 import com.beautypop.activity.ConversationListActivity;
@@ -1350,6 +1351,11 @@ public class ViewUtil {
 
     public static void startAdminConversationListActivity(Activity activity) {
         Intent intent = new Intent(activity, AdminConversationListActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public static void startAdminNewProductsActivity(Activity activity) {
+        Intent intent = new Intent(activity, AdminNewProductsActivity.class);
         activity.startActivity(intent);
     }
 

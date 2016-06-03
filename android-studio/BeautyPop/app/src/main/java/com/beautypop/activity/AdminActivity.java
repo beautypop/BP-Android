@@ -12,7 +12,7 @@ import com.beautypop.util.ViewUtil;
 public class AdminActivity extends TrackedFragmentActivity {
     private static final String TAG = AdminActivity.class.getName();
 
-    private LinearLayout newUsersLayout, latestLoginsLayout, latestCommentsLayout, latestConversationsLayout;
+    private LinearLayout newUsersLayout, latestLoginsLayout, latestCommentsLayout, latestConversationsLayout, newProductsLayout;
     private ImageView backImage;
 
     @Override
@@ -29,6 +29,7 @@ public class AdminActivity extends TrackedFragmentActivity {
         latestLoginsLayout = (LinearLayout) findViewById(R.id.latestLoginsLayout);
         latestCommentsLayout = (LinearLayout) findViewById(R.id.latestCommentsLayout);
         latestConversationsLayout = (LinearLayout) findViewById(R.id.latestConversationsLayout);
+        newProductsLayout = (LinearLayout) findViewById(R.id.newProductsLayout);
 
         // new users
         newUsersLayout.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,14 @@ public class AdminActivity extends TrackedFragmentActivity {
             @Override
             public void onClick(View v) {
                 ViewUtil.startAdminConversationListActivity(AdminActivity.this);
+            }
+        });
+
+        // new products
+        newProductsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewUtil.startAdminNewProductsActivity(AdminActivity.this);
             }
         });
 

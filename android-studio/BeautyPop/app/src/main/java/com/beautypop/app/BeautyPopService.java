@@ -364,6 +364,10 @@ public class BeautyPopService {
         api.getMessagesForAdmin(conversationId, offset, AppController.getInstance().getSessionId(), cb);
     }
 
+    public void getNewProducts(Long offset, Callback<List<PostVMLite>> cb) {
+        api.getNewProducts(offset, AppController.getInstance().getSessionId(), cb);
+    }
+
 	// search
     public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
         api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);

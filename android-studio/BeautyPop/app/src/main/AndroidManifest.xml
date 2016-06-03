@@ -186,6 +186,9 @@
             android:name="com.beautypop.activity.AdminMessageListActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.beautypop.activity.AdminNewProductsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.beautypop.activity.ReportPostActivity"
             android:screenOrientation="portrait" />
         <activity
