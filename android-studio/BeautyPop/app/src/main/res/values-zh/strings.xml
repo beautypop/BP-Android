@@ -159,6 +159,8 @@
     <string name="followers">關注我</string>
     <string name="user_followers">關注</string>
     <string name="products">商品</string>
+    <string name="shop_now">立即購買</string>
+    <string name="view_sellers">看看推薦賣家</string>
 
     <!-- Activity tab -->
     <string name="no_activity">~ 暫沒有動態 ~</string>

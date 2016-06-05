@@ -125,7 +125,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Shop Now"
+                android:text="@string/shop_now"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/white"
@@ -149,7 +149,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Meet our sellers"
+                android:text="@string/view_sellers"
                 android:layout_gravity="center"
                 android:textColor="@color/dark_gray_2"
                 android:textSize="14dp"

@@ -159,6 +159,8 @@
     <string name="followers">Followers</string>
     <string name="user_followers">Followers</string>
     <string name="products">Products</string>
+    <string name="shop_now">Show Now</string>
+    <string name="view_sellers">Meet our sellers</string>
 
     <!-- Activity tab -->
     <string name="no_activity">~ No Activity ~</string>
