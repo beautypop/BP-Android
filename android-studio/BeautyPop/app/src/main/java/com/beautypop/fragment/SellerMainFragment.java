@@ -21,10 +21,15 @@ import com.beautypop.util.ViewUtil;
 public class SellerMainFragment extends TrackedFragment {
     private static final String TAG = SellerMainFragment.class.getName();
 
+    public static final int PAGER_TAB_FOLLOWING_FEED = 0;
+    public static final int PAGER_TAB_RECOMMENDED_SELLERS = 1;
+
     private ViewPager viewPager;
     private SellerMainPagerAdapter adapter;
     private PagerSlidingTabStrip tabs;
 	private ImageView searchImage;
+
+    private static int preselectedTab = 0;
 
     private static SellerMainFragment mInstance;
 
@@ -32,8 +37,45 @@ public class SellerMainFragment extends TrackedFragment {
         return mInstance;
     }
 
+    public static void selectTab(int tab) {
+        if (tab == PAGER_TAB_FOLLOWING_FEED) {
+            selectFollowingFeedTab();
+        } else {
+            selectRecommendedSellersTab();
+        }
+    }
+
+    public static void selectFollowingFeedTab() {
+        if (mInstance != null && mInstance.isVisible()) {
+            getInstance().getViewPager().setCurrentItem(PAGER_TAB_FOLLOWING_FEED);
+            preselectedTab = 0;
+        } else {
+            preselectedTab = PAGER_TAB_FOLLOWING_FEED;
+        }
+    }
+
+    public static void selectRecommendedSellersTab() {
+        if (mInstance != null && mInstance.isVisible()) {
+            getInstance().getViewPager().setCurrentItem(PAGER_TAB_RECOMMENDED_SELLERS);
+            preselectedTab = 0;
+        } else {
+            preselectedTab = PAGER_TAB_RECOMMENDED_SELLERS;
+        }
+    }
+
     public ViewPager getViewPager() {
         return viewPager;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (preselectedTab == PAGER_TAB_FOLLOWING_FEED) {
+            selectFollowingFeedTab();
+        } else if (preselectedTab == PAGER_TAB_RECOMMENDED_SELLERS){
+            selectRecommendedSellersTab();
+        }
     }
 
     @Override
@@ -67,7 +109,8 @@ public class SellerMainFragment extends TrackedFragment {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == 0 && SellerFollowingFeedViewFragment.isRefreshFeed()) {
+                if (position == SellerMainFragment.PAGER_TAB_FOLLOWING_FEED
+                        && SellerFollowingFeedViewFragment.isRefreshFeed()) {
                     SellerFollowingFeedViewFragment.refreshFeed();
                 }
             }
@@ -134,13 +177,13 @@ class SellerMainPagerAdapter extends FragmentStatePagerAdapter {
         TrackedFragment fragment = null;
         switch (position) {
             // Following
-            case 0: {
+            case SellerMainFragment.PAGER_TAB_FOLLOWING_FEED: {
                 bundle.putString(ViewUtil.BUNDLE_KEY_FEED_TYPE, FeedFilter.FeedType.HOME_FOLLOWING.name());
                 fragment = new SellerFollowingFeedViewFragment();
                 break;
             }
             // Seller
-            case 1: {
+            case SellerMainFragment.PAGER_TAB_RECOMMENDED_SELLERS: {
                 fragment = new SellerFeedFragment();
                 break;
             }

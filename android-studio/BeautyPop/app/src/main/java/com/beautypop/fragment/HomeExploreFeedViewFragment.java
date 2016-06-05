@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.beautypop.R;
 import com.beautypop.activity.MainActivity;
@@ -46,6 +47,8 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
 
     private SliderLayout homeSlider;
 
+    private LinearLayout viewSellersLayout;
+
     @Override
     protected View getHeaderView(LayoutInflater inflater) {
         if (headerView == null) {
@@ -67,6 +70,15 @@ public class HomeExploreFeedViewFragment extends FeedViewFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
         homeSlider = (SliderLayout) headerView.findViewById(R.id.homeSlider);
+
+        viewSellersLayout = (LinearLayout) headerView.findViewById(R.id.viewSellersLayout);
+
+        viewSellersLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.getInstance().pressSellerTab(SellerMainFragment.PAGER_TAB_RECOMMENDED_SELLERS);
+            }
+        });
 
         // tips
         tipsLayout = (FrameLayout) headerView.findViewById(R.id.tipsLayout);

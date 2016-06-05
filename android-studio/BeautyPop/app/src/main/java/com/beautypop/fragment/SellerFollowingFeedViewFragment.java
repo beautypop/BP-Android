@@ -16,7 +16,7 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
 
     private static boolean refresh = false;
 
-    private static SellerFollowingFeedViewFragment instance;
+    private static SellerFollowingFeedViewFragment mInstance;
 
     public static void setRefreshFeed() {
         refresh = true;
@@ -27,14 +27,14 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
     }
 
     public static void refreshFeed() {
-        if (instance != null) {
-            instance.reloadFeed();
+        if (mInstance != null) {
+            mInstance.reloadFeed();
         }
         refresh = false;
     }
 
     public static synchronized SellerFollowingFeedViewFragment getInstance() {
-        return instance;
+        return mInstance;
     }
 
     @Override
@@ -59,13 +59,13 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        this.instance = this;
+        this.mInstance = this;
 
         startFollowingButton = (Button) headerView.findViewById(R.id.startFollowingButton);
         startFollowingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SellerMainFragment.getInstance().getViewPager().setCurrentItem(1);
+                SellerMainFragment.selectRecommendedSellersTab();
             }
         });
 

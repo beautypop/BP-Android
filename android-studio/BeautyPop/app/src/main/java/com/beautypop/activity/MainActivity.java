@@ -224,7 +224,12 @@ public class MainActivity extends TrackedFragmentActivity {
     }
 
     public void pressSellerTab() {
+        pressSellerTab(0);
+    }
+
+    public void pressSellerTab(int tab) {
         if (sellerClicked) {
+            SellerMainFragment.selectTab(tab);
             return;
         }
 
@@ -246,6 +251,8 @@ public class MainActivity extends TrackedFragmentActivity {
 
         setMenuButton(profileImage, profileText, R.drawable.mn_profile, R.color.dark_gray_2);
         profileClicked = false;
+
+        SellerMainFragment.selectTab(tab);
     }
 
     public void pressActivityTab() {
