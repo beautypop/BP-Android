@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.beautypop.R;
 import com.beautypop.app.AppController;
 import com.beautypop.app.UserInfoCache;
+import com.beautypop.fragment.SellerFollowingFeedViewFragment;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.PostVMLite;
@@ -155,6 +156,8 @@ public class SellerListAdapter extends BaseAdapter {
                 } else {
                     follow(item);
                 }
+
+                SellerFollowingFeedViewFragment.setRefreshFeed();
             }
         });
 

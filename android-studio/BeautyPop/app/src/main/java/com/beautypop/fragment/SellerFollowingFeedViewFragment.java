@@ -5,17 +5,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import com.beautypop.R;
-import com.beautypop.util.SharedPreferencesUtil;
 
 public class SellerFollowingFeedViewFragment extends FeedViewFragment {
 
     private static final String TAG = SellerFollowingFeedViewFragment.class.getName();
 
     private Button startFollowingButton;
+
+    private static boolean refresh = false;
+
+    private static SellerFollowingFeedViewFragment instance;
+
+    public static void setRefreshFeed() {
+        refresh = true;
+    }
+
+    public static boolean isRefreshFeed() {
+        return refresh;
+    }
+
+    public static void refreshFeed() {
+        if (instance != null) {
+            instance.reloadFeed();
+        }
+        refresh = false;
+    }
+
+    public static synchronized SellerFollowingFeedViewFragment getInstance() {
+        return instance;
+    }
 
     @Override
     public boolean showSeller() {
@@ -38,6 +58,8 @@ public class SellerFollowingFeedViewFragment extends FeedViewFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+
+        this.instance = this;
 
         startFollowingButton = (Button) headerView.findViewById(R.id.startFollowingButton);
         startFollowingButton.setOnClickListener(new View.OnClickListener() {

@@ -193,7 +193,7 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
         return view;
     }
 
-    protected void reloadFeed() {
+    public void reloadFeed() {
         reloadFeed(feedFilter);
     }
 

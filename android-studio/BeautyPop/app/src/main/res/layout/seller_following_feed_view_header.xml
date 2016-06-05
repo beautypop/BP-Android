@@ -50,7 +50,6 @@
             android:textAllCaps="false"
             android:singleLine="true"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold" />

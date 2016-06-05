@@ -60,6 +60,23 @@ public class SellerMainFragment extends TrackedFragment {
 
         tabs.setViewPager(viewPager);
 
+        tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0 && SellerFollowingFeedViewFragment.isRefreshFeed()) {
+                    SellerFollowingFeedViewFragment.refreshFeed();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
         /*
         // styles declared in xml
         tabs.setTextColor(getResources().getColor(R.color.dark_gray));
