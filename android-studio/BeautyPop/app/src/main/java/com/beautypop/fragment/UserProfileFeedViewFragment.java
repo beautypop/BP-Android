@@ -177,7 +177,7 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
 
 		Log.d("Review score=",user.getAverageReviewScore()+"");
 
-		if(user.getAverageReviewScore() > 1.0 && user.getAverageReviewScore() <= 1.25){
+		if(user.getAverageReviewScore() >= 1.0 && user.getAverageReviewScore() <= 1.25){
             star1.setImageResource(R.drawable.star_selected);
 		}else if(user.getAverageReviewScore() > 1.25 && user.getAverageReviewScore() <= 1.75){
 			star1.setImageResource(R.drawable.star_selected);
