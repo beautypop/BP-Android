@@ -114,14 +114,7 @@ class TourImagePagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.tour_3_en,
             R.drawable.tour_4_en,
             R.drawable.tour_5_en,
-            R.drawable.tour_6_en,
-            R.drawable.tour_7_en,
-            R.drawable.tour_8_en,
-            R.drawable.tour_9_en,
-            R.drawable.tour_10_en,
-            R.drawable.tour_11_en,
-            R.drawable.tour_12_en,
-            R.drawable.tour_13_en
+            R.drawable.tour_6_en
     };
 
     private int[] zh_images = {
@@ -130,14 +123,7 @@ class TourImagePagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.tour_3_zh,
             R.drawable.tour_4_zh,
             R.drawable.tour_5_zh,
-            R.drawable.tour_6_zh,
-            R.drawable.tour_7_zh,
-            R.drawable.tour_8_zh,
-            R.drawable.tour_9_zh,
-            R.drawable.tour_10_zh,
-            R.drawable.tour_11_zh,
-            R.drawable.tour_12_zh,
-            R.drawable.tour_13_zh
+            R.drawable.tour_6_zh
     };
 
     private int[] images;
