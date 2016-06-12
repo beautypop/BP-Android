@@ -1,7 +1,5 @@
 package com.beautypop.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,8 +18,6 @@ import com.beautypop.util.DefaultValues;
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.view.AdaptiveViewPager;
-
-import org.parceler.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;

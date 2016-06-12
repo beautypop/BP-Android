@@ -57,12 +57,12 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
     private boolean pending = false;
 
     public FeedViewAdapter(Activity activity, List<PostVMLite> items,
-                           FeedViewItemsLayout feedViewLayout, View header) {
-        this(activity, items, feedViewLayout, header, false);
+                           FeedViewItemsLayout feedViewItemsLayout, View header) {
+        this(activity, items, feedViewItemsLayout, header, false);
     }
 
     public FeedViewAdapter(Activity activity, List<PostVMLite> items,
-                           FeedViewItemsLayout feedViewLayout, View header, boolean showSeller) {
+                           FeedViewItemsLayout feedViewItemsLayout, View header, boolean showSeller) {
         this.activity = activity;
         this.items = items;
         this.feedViewItemsLayout = feedViewItemsLayout;
@@ -218,23 +218,25 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
         // layout
         if (FeedViewItemsLayout.TWO_COLUMNS.equals(feedViewItemsLayout)) {
+            holder.titleLayout.setVisibility(View.VISIBLE);
             holder.price.setTextColor(activity.getResources().getColor(R.color.green));
             holder.price.setTypeface(null, Typeface.NORMAL);
 
             // font
-            holder.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            holder.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             holder.price.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             holder.likeText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
             holder.originalPrice.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         } else if (FeedViewItemsLayout.THREE_COLUMNS.equals(feedViewItemsLayout)) {
-            holder.price.setTextColor(activity.getResources().getColor(R.color.green));
-            holder.price.setTypeface(null, Typeface.NORMAL);
+            holder.titleLayout.setVisibility(View.GONE);
+            holder.price.setTextColor(activity.getResources().getColor(R.color.light_gray));
+            holder.price.setTypeface(null, Typeface.BOLD);
 
             // font
-            holder.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-            holder.price.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-            holder.likeText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-            holder.originalPrice.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
+            holder.title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+            holder.price.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            holder.likeText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            holder.originalPrice.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         }
 
         // admin
