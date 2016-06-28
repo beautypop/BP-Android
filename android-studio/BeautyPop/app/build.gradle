@@ -18,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.beautypop.app.dev"
+        applicationId "com.beautypop.app"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 14

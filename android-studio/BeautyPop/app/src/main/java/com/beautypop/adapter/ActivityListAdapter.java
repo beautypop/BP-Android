@@ -118,6 +118,10 @@ public class ActivityListAdapter extends BaseAdapter {
             case "TIPS_NEW_USER":
                 message = activity.getString(R.string.activity_tips_new_user);
                 break;
+            case "BUYER_REVIEW":
+            case "SELLER_REVIEW":
+                message = activity.getString(R.string.activity_review) + "\n" + item.getTargetName();
+                break;
         }
 
         // skip unknown activities
@@ -172,7 +176,7 @@ public class ActivityListAdapter extends BaseAdapter {
                 postImage.setVisibility(View.GONE);
                 break;
             case "TIPS_NEW_USER":
-                // open new post page
+                // open review page
                 activityLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -185,7 +189,40 @@ public class ActivityListAdapter extends BaseAdapter {
                         ViewUtil.startNewPostActivity(activity);
                     }
                 });
-                postImage.setVisibility(View.GONE);
+                break;
+            case "BUYER_REVIEW":
+                // open new post page
+                activityLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startUserReviewstActivity(activity, UserInfoCache.getUser().id, true);
+                    }
+                });
+                messageText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startUserReviewstActivity(activity, UserInfoCache.getUser().id, true);
+                    }
+                });
+                ImageUtil.displayPostImage(item.getTargetImage(), postImage);
+                postImage.setVisibility(View.VISIBLE);
+                break;
+            case "SELLER_REVIEW":
+                // open new post page
+                activityLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startUserReviewstActivity(activity, UserInfoCache.getUser().id, false);
+                    }
+                });
+                messageText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewUtil.startUserReviewstActivity(activity, UserInfoCache.getUser().id, false);
+                    }
+                });
+                ImageUtil.displayPostImage(item.getTargetImage(), postImage);
+                postImage.setVisibility(View.VISIBLE);
                 break;
             case "NEW_GAME_BADGE":
             default:

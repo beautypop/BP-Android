@@ -19,12 +19,32 @@ import com.beautypop.util.ViewUtil;
 
 public class UserReviewsActivity extends TrackedFragmentActivity {
 
-	private ViewPager viewPager;
+    public static final int PAGER_TAB_BUYER_REVIEWS = 0;
+    public static final int PAGER_TAB_SELLER_REVIEWS = 1;
+
+    private ViewPager viewPager;
 	private ReviewPagerAdapter adapter;
 	private PagerSlidingTabStrip tabs;
     private ImageView backImage;
 
-	@Override
+    public ViewPager getViewPager() {
+        return viewPager;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        final boolean buyerReviews = getIntent().getBooleanExtra(ViewUtil.BUNDLE_KEY_ARG1, true);
+
+        if (buyerReviews) {
+            getViewPager().setCurrentItem(PAGER_TAB_BUYER_REVIEWS);
+        } else {
+            getViewPager().setCurrentItem(PAGER_TAB_SELLER_REVIEWS);
+        }
+    }
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -74,8 +94,8 @@ class ReviewPagerAdapter extends FragmentStatePagerAdapter {
 	}
 
 	@Override
-	public Fragment getItem(int position) {
-		Log.d(this.getClass().getSimpleName(), "getItem: item position=" + position);
+    public Fragment getItem(int position) {
+        Log.d(this.getClass().getSimpleName(), "getItem: item position=" + position);
 
 		Bundle bundle = new Bundle();
 		TrackedFragment fragment = null;

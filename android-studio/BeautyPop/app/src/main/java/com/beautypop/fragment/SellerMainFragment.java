@@ -38,29 +38,20 @@ public class SellerMainFragment extends TrackedFragment {
     }
 
     public static void selectTab(int tab) {
-        if (tab == PAGER_TAB_FOLLOWING_FEED) {
-            selectFollowingFeedTab();
+        if (mInstance != null && mInstance.isVisible()) {
+            getInstance().getViewPager().setCurrentItem(tab);
+            preselectedTab = 0;
         } else {
-            selectRecommendedSellersTab();
+            preselectedTab = tab;
         }
     }
 
     public static void selectFollowingFeedTab() {
-        if (mInstance != null && mInstance.isVisible()) {
-            getInstance().getViewPager().setCurrentItem(PAGER_TAB_FOLLOWING_FEED);
-            preselectedTab = 0;
-        } else {
-            preselectedTab = PAGER_TAB_FOLLOWING_FEED;
-        }
+       selectTab(PAGER_TAB_FOLLOWING_FEED);
     }
 
     public static void selectRecommendedSellersTab() {
-        if (mInstance != null && mInstance.isVisible()) {
-            getInstance().getViewPager().setCurrentItem(PAGER_TAB_RECOMMENDED_SELLERS);
-            preselectedTab = 0;
-        } else {
-            preselectedTab = PAGER_TAB_RECOMMENDED_SELLERS;
-        }
+        selectTab(PAGER_TAB_RECOMMENDED_SELLERS);
     }
 
     public ViewPager getViewPager() {

@@ -85,6 +85,7 @@ import com.beautypop.activity.SignupDetailActivity;
 import com.beautypop.activity.SplashActivity;
 import com.beautypop.activity.TourActivity;
 import com.beautypop.activity.UserProfileActivity;
+import com.beautypop.activity.UserReviewsActivity;
 import com.beautypop.activity.WelcomeActivity;
 import com.beautypop.app.AppController;
 import com.beautypop.viewmodel.AdminConversationVM;
@@ -1233,6 +1234,14 @@ public class ViewUtil {
     public static void startEditProfileActivity(Activity activity) {
         Intent intent = new Intent(activity, EditProfileActivity.class);
         activity.startActivityForResult(intent, START_ACTIVITY_REQUEST_CODE);
+    }
+
+    public static void startUserReviewstActivity(Activity activity, Long userId, boolean buyerReviews) {
+        Intent intent = new Intent(activity, UserReviewsActivity.class);
+        intent.putExtra(BUNDLE_KEY_ID, userId);
+        intent.putExtra(BUNDLE_KEY_ARG1, buyerReviews);
+        intent.putExtra(BUNDLE_KEY_SOURCE, activity.getClass().getSimpleName());
+        activity.startActivity(intent);
     }
 
     public static void startGameBadgesActivity(Activity activity, Long userId) {

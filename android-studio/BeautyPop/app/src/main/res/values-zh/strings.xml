@@ -2,10 +2,10 @@
 <resources>
 
     <string name="env">dev</string>
-    <string name="facebook_app_id"></string>
-    <string name="gcm_project_id"></string>
+    <string name="facebook_app_id">195306590831308</string>
+    <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
-    <string name="base_url_dev">http://192.168.1.114:9000</string>
+    <string name="base_url_dev">http://119.81.228.91</string>
     <string name="app_name">BeautyPop</string>
 
     <!-- Crash report -->
@@ -137,7 +137,7 @@
     <string name="tabset_home">逛逛</string>
     <string name="tabset_seller">賣家</string>
     <string name="tabset_activity">動態</string>
-    <string name="tabset_profile">我的</string>
+    <string name="tabset_profile">我</string>
 
     <string name="seller">賣家</string>
     <string name="buyer">買家</string>
@@ -159,7 +159,7 @@
     <string name="followers">關注我</string>
     <string name="user_followers">關注</string>
     <string name="products">商品</string>
-    <string name="shop_now">立即購買</string>
+    <string name="shop_now">熱門商品</string>
     <string name="view_sellers">看看推薦賣家</string>
 
     <!-- Activity tab -->
@@ -172,6 +172,7 @@
     <string name="activity_sold">已賣出商品。</string>
     <string name="activity_game_badge">恭喜你！你已獲得徽章:</string>
     <string name="activity_tips_new_user">係BeautyPop賣出屋企唔再用嘅時裝美容用品就唔使再掉嘢啦，賣完又可以再買過！ 快D噤呢度刊登你嘅用品啦~</string>
+    <string name="activity_review">給了你一個評價:</string>
 
     <!-- Category page -->
     <string name="category">商品分類</string>
