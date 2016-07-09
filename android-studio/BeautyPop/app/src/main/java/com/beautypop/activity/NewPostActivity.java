@@ -519,9 +519,13 @@ public class NewPostActivity extends TrackedFragmentActivity{
             return null;
         }
 
+        String countryCode = "";
+        if (country != null) {
+            countryCode = country.code;
+        }
+
         Long originalPrice = -1L;
         Boolean freeDelivery = false;
-        String countryCode = "";
         if (AppController.isUserAdmin() ||
                 UserInfoCache.getUser().isPromotedSeller() ||
                 UserInfoCache.getUser().isVerifiedSeller()) {
@@ -541,10 +545,6 @@ public class NewPostActivity extends TrackedFragmentActivity{
             freeDelivery = freeDeliveryCheckBox.isChecked();
             if (freeDelivery == null) {
                 freeDelivery = false;
-            }
-
-            if (country != null) {
-                countryCode = country.code;
             }
         }
 

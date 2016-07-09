@@ -181,9 +181,12 @@
                                     android:layout_height="16dp"
                                     android:id="@+id/countryImage"
                                     android:scaleType="fitXY"
-                                    android:visibility="gone"
                                     android:layout_marginRight="5dp"
-                                    android:layout_gravity="center_vertical" />
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@color/light_gray"
+                                    android:cropToPadding="false"
+                                    android:padding="0.5dp"
+                                    android:visibility="gone" />
 
                                 <TextView
                                     android:layout_width="wrap_content"

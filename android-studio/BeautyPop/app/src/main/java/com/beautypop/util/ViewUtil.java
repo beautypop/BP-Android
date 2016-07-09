@@ -1414,8 +1414,8 @@ public class ViewUtil {
             case "URL":
                 // TODO start url page
                 break;
+            case "NO_ACTION":
             default:
-                // TODO start url page
                 break;
         }
     }
