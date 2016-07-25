@@ -56,7 +56,8 @@ public abstract class AbstractFeedViewFragment extends TrackedFragment {
     protected boolean reload = false;
 
     public enum FeedViewItemsLayout {
-        TWO_COLUMNS,
+        ONE_COLUMNS,
+		TWO_COLUMNS,
         THREE_COLUMNS
     }
 

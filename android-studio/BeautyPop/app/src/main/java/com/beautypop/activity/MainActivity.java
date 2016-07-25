@@ -29,6 +29,7 @@ import com.beautypop.fragment.ActivityMainFragment;
 import com.beautypop.fragment.HomeMainFragment;
 import com.beautypop.fragment.ProfileMainFragment;
 import com.beautypop.fragment.SellerMainFragment;
+import com.beautypop.fragment.ThemeFragment;
 import com.beautypop.listener.EndlessScrollListener;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.SharedPreferencesUtil;
@@ -44,9 +45,9 @@ public class MainActivity extends TrackedFragmentActivity {
     private TextView chatCountText;
     private LinearLayout bottomBarLayout;
 
-    private LinearLayout homeLayout;
-    private ImageView homeImage;
-    private TextView homeText;
+    private LinearLayout homeLayout,themeLayout;
+    private ImageView homeImage,themeImage;
+    private TextView homeText,themeText;
 
     private LinearLayout sellerLayout;
     private ImageView sellerImage;
@@ -61,7 +62,7 @@ public class MainActivity extends TrackedFragmentActivity {
     private ImageView profileImage,searchImage;
     private TextView profileText;
     private View toolBar;
-    private boolean homeClicked = false, sellerClicked = false, activityClicked = false, profileClicked = false;
+    private boolean homeClicked = false, sellerClicked = false, activityClicked = false, profileClicked = false, themeClicked = false;
 
     private boolean animatingToolbar = false;
     private boolean showBottomMenuBar = true;
@@ -119,8 +120,11 @@ public class MainActivity extends TrackedFragmentActivity {
         bottomBarLayout = (LinearLayout) findViewById(R.id.bottomBarLayout);
 
         homeLayout = (LinearLayout) findViewById(R.id.homeLayout);
+		themeLayout = (LinearLayout) findViewById(R.id.themeLayout);
         homeImage = (ImageView) findViewById(R.id.homeImage);
+        themeImage = (ImageView) findViewById(R.id.themeImage);
         homeText = (TextView) findViewById(R.id.homeText);
+        themeText = (TextView) findViewById(R.id.themeText);
 
         sellerLayout = (LinearLayout) findViewById(R.id.sellerLayout);
         sellerImage = (ImageView) findViewById(R.id.sellerImage);
@@ -142,6 +146,14 @@ public class MainActivity extends TrackedFragmentActivity {
                 pressHomeTab();
             }
         });
+
+		themeLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.d(TAG, "onClick: Theme tab clicked");
+				pressThemeTab();
+			}
+		});
 
         sellerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +210,35 @@ public class MainActivity extends TrackedFragmentActivity {
         }
     }
 
+	public void pressThemeTab(){
+		if (themeClicked) {
+			return;
+		}
+
+		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+		selectedFragment = new ThemeFragment();
+		fragmentTransaction.replace(R.id.placeHolder, selectedFragment).commit();
+
+		showToolbar(true, false);
+		showToolbarTitle(false);
+
+		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.sharp_pink);
+		themeClicked = true;
+
+		setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
+		sellerClicked = false;
+
+		setMenuButton(activityImage, activityText, R.drawable.mn_notif, R.color.dark_gray_2);
+		activityClicked = false;
+
+		setMenuButton(profileImage, profileText, R.drawable.mn_profile, R.color.dark_gray_2);
+		profileClicked = false;
+
+		setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
+		homeClicked = false;
+
+	}
+
     public void pressHomeTab() {
         if (homeClicked) {
             return;
@@ -212,6 +253,9 @@ public class MainActivity extends TrackedFragmentActivity {
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home_sel, R.color.sharp_pink);
         homeClicked = true;
+
+		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.sharp_pink);
+		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
         sellerClicked = false;
@@ -242,6 +286,9 @@ public class MainActivity extends TrackedFragmentActivity {
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
+
+		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.dark_gray_2);
+		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller_sel, R.color.sharp_pink);
         sellerClicked = true;
@@ -274,6 +321,9 @@ public class MainActivity extends TrackedFragmentActivity {
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
 
+		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.dark_gray_2);
+		themeClicked = false;
+
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
         sellerClicked = false;
 
@@ -303,6 +353,9 @@ public class MainActivity extends TrackedFragmentActivity {
 
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
+
+		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.dark_gray_2);
+		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
         sellerClicked = false;

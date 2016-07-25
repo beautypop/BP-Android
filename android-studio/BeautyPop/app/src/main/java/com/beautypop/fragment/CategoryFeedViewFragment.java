@@ -177,7 +177,7 @@ public class CategoryFeedViewFragment extends FeedViewFragment {
         selectFeedFilter(feedType, true);
     }
 
-    private void selectFeedFilter(FeedFilter.FeedType feedType, boolean loadFeed) {
+    public void selectFeedFilter(FeedFilter.FeedType feedType, boolean loadFeed) {
         if (FeedFilter.FeedType.CATEGORY_POPULAR.equals(feedType)) {
             ViewUtil.selectFilterButtonStyle(popularFilterButton);
         } else {

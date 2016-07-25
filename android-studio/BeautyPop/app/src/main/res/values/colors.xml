@@ -21,6 +21,7 @@
     <color name="pink">#FF2742</color>
     <color name="light_pink">#fd4e64</color>
     <color name="light_pink_2">#ff7990</color>
+    <color name="colorPrimary">#ff7990</color>
     <color name="light_pink_3">#ffcdd5</color>
     <color name="light_pink_4">#ffe7eb</color>
     <color name="yellow">#F3F300</color>

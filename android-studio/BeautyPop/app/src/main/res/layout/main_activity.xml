@@ -74,7 +74,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/homeLayout"
                     android:background="@color/main_menubar_bg"
-                    android:layout_weight="2.5"
+                    android:layout_weight="2"
                     android:gravity="center">
 
                     <ImageView
@@ -89,6 +89,34 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tabset_home"
                         android:id="@+id/homeText"
+                        android:visibility="gone"
+                        android:textSize="15dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/themeLayout"
+                    android:background="@color/main_menubar_bg"
+                    android:layout_weight="2"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:id="@+id/themeImage"
+                        android:src="@drawable/ic_theme_light_dark"
+                        android:layout_gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tabset_seller"
+                        android:id="@+id/themeText"
+                        android:visibility="gone"
                         android:textSize="15dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="4dp" />
@@ -100,7 +128,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/sellerLayout"
                     android:background="@color/main_menubar_bg"
-                    android:layout_weight="2.5"
+                    android:layout_weight="2"
                     android:gravity="center">
 
                     <ImageView
@@ -115,6 +143,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tabset_seller"
                         android:id="@+id/sellerText"
+                        android:visibility="gone"
                         android:textSize="15dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="4dp" />
@@ -124,7 +153,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:id="@+id/activitiesFrame"
-                    android:layout_weight="2.5">
+                    android:layout_weight="2">
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -146,6 +175,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/tabset_activity"
                             android:id="@+id/activityText"
+                            android:visibility="gone"
                             android:textSize="15dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="4dp" />
@@ -177,7 +207,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/profileLayout"
                     android:background="@color/main_menubar_bg"
-                    android:layout_weight="2.5"
+                    android:layout_weight="2"
                     android:gravity="center" >
 
                     <ImageView
@@ -188,6 +218,7 @@
                         android:layout_gravity="center" />
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tabset_profile"
