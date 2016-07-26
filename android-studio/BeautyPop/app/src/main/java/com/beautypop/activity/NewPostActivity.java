@@ -69,6 +69,11 @@ public class NewPostActivity extends TrackedFragmentActivity{
     protected CheckBox freeDeliveryCheckBox;
     protected TextView autoCompleteText;
 
+	protected ImageView selectThemeIcon,selectTrendIcon,trendIcon,themeIcon;
+	protected TextView selectThemeText,selectTrendText,themeName,trendName;
+	protected RelativeLayout themeLayout,trendLayout;
+	protected LinearLayout selectThemeLayout,selectTrendLayout;
+
     protected List<ImageView> postImages = new ArrayList<>();
 
     protected int selectedPostImageIndex = -1;
@@ -81,9 +86,14 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
     protected CategoryVM category;
     protected CategoryVM subCategory;
+    protected CategoryVM themeCategory;
+    protected CategoryVM trendCategory;
     protected PopupWindow categoryPopup;
     protected PopupWindow subCategoryPopup;
     protected PopupCategoryListAdapter adapter;
+
+	protected PopupWindow themePopup;
+	protected PopupWindow trendPopup;
 
     protected ToggleButton fbSharingButton;
 
@@ -126,6 +136,21 @@ public class NewPostActivity extends TrackedFragmentActivity{
         countrySpinner = (Spinner) findViewById(R.id.countrySpinner);
         sharingLayout = (LinearLayout) findViewById(R.id.sharingLayout);
         editTextInFocus = titleEdit;
+
+		trendIcon = (ImageView) findViewById(R.id.trendIcon);
+		themeIcon = (ImageView) findViewById(R.id.themeIcon);
+		selectTrendIcon = (ImageView) findViewById(R.id.selectTrendIcon);
+		selectThemeIcon = (ImageView) findViewById(R.id.selectThemeIcon);
+		selectThemeText = (TextView) findViewById(R.id.selectThemeText);
+		selectTrendText = (TextView) findViewById(R.id.selectTrendText);
+		themeName = (TextView) findViewById(R.id.themeName);
+		trendName = (TextView) findViewById(R.id.trendName);
+
+		themeLayout = (RelativeLayout) findViewById(R.id.themeLayout);
+		trendLayout = (RelativeLayout) findViewById(R.id.trendLayout);
+
+		selectTrendLayout = (LinearLayout) findViewById(R.id.selectTrendLayout);
+		selectThemeLayout = (LinearLayout) findViewById(R.id.selectThemeLayout);
 
         ViewUtil.hideInputMethodWindow(this, titleEdit);
 
@@ -183,6 +208,20 @@ public class NewPostActivity extends TrackedFragmentActivity{
                 initCategoryPopup(categoryPopup, CategoryCache.getCategories(), false);
             }
         });
+
+		selectThemeLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				initThemePopup(themePopup, CategoryCache.getThemeCategories(), true);
+			}
+		});
+
+		selectTrendLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				initThemePopup(trendPopup, CategoryCache.getTrendCategories(), false);
+			}
+		});
 
         selectSubCatLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -403,6 +442,41 @@ public class NewPostActivity extends TrackedFragmentActivity{
         countrySpinner.setAdapter(adapter);
     }
 
+
+	protected void updateSelectThemeLayout() {
+		System.out.println("themeCategory :::: "+themeCategory);
+		if (themeCategory != null) {
+			themeName.setText(themeCategory.getName());
+			ImageUtil.displayImage(themeCategory.getIcon(), themeIcon);
+			selectThemeText.setVisibility(View.GONE);
+			selectThemeIcon.setVisibility(View.GONE);
+			themeIcon.setVisibility(View.VISIBLE);
+			themeName.setVisibility(View.VISIBLE);
+		} else {
+			selectThemeText.setVisibility(View.VISIBLE);
+			selectThemeIcon.setVisibility(View.VISIBLE);
+			themeIcon.setVisibility(View.GONE);
+			themeName.setVisibility(View.GONE);
+		}
+	}
+
+	protected void updateSelectTrendLayout() {
+		System.out.println("trendCategory :::: "+trendCategory);
+		if (trendCategory != null) {
+			trendName.setText(trendCategory.getName());
+			ImageUtil.displayImage(trendCategory.getIcon(), trendIcon);
+			selectTrendText.setVisibility(View.GONE);
+			selectTrendIcon.setVisibility(View.GONE);
+			trendIcon.setVisibility(View.VISIBLE);
+			trendName.setVisibility(View.VISIBLE);
+		} else {
+			selectTrendText.setVisibility(View.VISIBLE);
+			selectTrendIcon.setVisibility(View.VISIBLE);
+			trendIcon.setVisibility(View.GONE);
+			trendName.setVisibility(View.GONE);
+		}
+	}
+
     protected void updateSelectCategoryLayout() {
         if (category != null) {
             catName.setText(category.getName());
@@ -519,6 +593,16 @@ public class NewPostActivity extends TrackedFragmentActivity{
             return null;
         }
 
+		if (themeCategory == null) {
+			initThemePopup(themePopup, CategoryCache.getThemeCategories(), true);
+			return null;
+		}
+
+		if (trendCategory == null) {
+			initThemePopup(themePopup, CategoryCache.getTrendCategories(), false);
+			return null;
+		}
+
         String countryCode = "";
         if (country != null) {
             countryCode = country.code;
@@ -549,7 +633,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
         }
 
         NewPostVM newPost = new NewPostVM(
-                subCategory.id, title, body, price, conditionType, selectedImages,
+                subCategory.id,themeCategory.id,trendCategory.id, title, body, price, conditionType, selectedImages,
                 originalPrice, freeDelivery, countryCode);
         return newPost;
     }
@@ -632,6 +716,16 @@ public class NewPostActivity extends TrackedFragmentActivity{
         updateSelectCategoryLayout();
     }
 
+	protected void setTheme(CategoryVM cat) {
+		this.themeCategory = cat;
+		updateSelectThemeLayout();
+	}
+
+	protected void setTrend(CategoryVM cat) {
+		this.trendCategory = cat;
+		updateSelectTrendLayout();
+	}
+
     protected void setSubCategory(CategoryVM cat) {
         this.subCategory = cat;
         updateSelectSubCategoryLayout();
@@ -682,6 +776,52 @@ public class NewPostActivity extends TrackedFragmentActivity{
             e.printStackTrace();
         }
     }
+
+	protected void initThemePopup(PopupWindow popup, List<CategoryVM> categories, final boolean isTheme) {
+		try {
+			LayoutInflater inflater = (LayoutInflater) NewPostActivity.this
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			View layout = inflater.inflate(R.layout.category_popup_window,
+					(ViewGroup) findViewById(R.id.popupElement));
+
+			if (popup == null) {
+				popup = new PopupWindow(
+						layout,
+						ViewUtil.getRealDimension(DefaultValues.CATEGORY_PICKER_POPUP_WIDTH),
+						ViewGroup.LayoutParams.WRAP_CONTENT,    //ViewUtil.getRealDimension(DefaultValues.CATEGORY_PICKER_POPUP_HEIGHT),
+						true);
+			}
+
+			popup.setBackgroundDrawable(new BitmapDrawable(getResources(), ""));
+			popup.setOutsideTouchable(false);
+			popup.setFocusable(true);
+			popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+			ListView listView = (ListView) layout.findViewById(R.id.categoryList);
+			adapter = new PopupCategoryListAdapter(this, categories);
+			listView.setAdapter(adapter);
+
+			final PopupWindow thisPopup = popup;
+			listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					CategoryVM cat = adapter.getItem(position);
+					if (isTheme) {
+						setTheme(cat);
+						//setSubCategory(null);
+					} else {
+						setTrend(cat);
+					}
+
+					thisPopup.dismiss();
+					//Log.d(TAG, "initCategoryPopup: listView.onItemClick: category=" + category.getId() + "|" + category.getName());
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

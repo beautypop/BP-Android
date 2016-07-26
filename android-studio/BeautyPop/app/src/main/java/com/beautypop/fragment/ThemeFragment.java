@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,15 +18,9 @@ import android.widget.TextView;
 import com.beautypop.R;
 import com.beautypop.activity.ThemeActivity;
 import com.beautypop.app.CategoryCache;
-import com.beautypop.app.NotificationCounter;
-import com.beautypop.app.TrackedFragment;
-import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
-import com.beautypop.viewmodel.CustomData;
-import com.beautypop.viewmodel.PostVMLite;
-import com.facebook.share.widget.LikeView;
 
 import java.lang.reflect.Field;
 
@@ -36,8 +28,6 @@ public class ThemeFragment extends TrendFragment {
     private static final String TAG = ThemeFragment.class.getName();
 	private LinearLayout moreProductsImagesLayout;
 	private HorizontalScrollView horizontalView;
-
-
 
 	@Override
 	protected View getHeaderView(LayoutInflater inflater) {

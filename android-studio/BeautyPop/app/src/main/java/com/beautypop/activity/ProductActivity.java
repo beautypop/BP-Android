@@ -254,7 +254,10 @@ public class ProductActivity extends TrackedFragmentActivity {
                         ImageView imageView = new ImageView(getApplicationContext());
                         imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
                         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                        ImageUtil.displayPostImage(post.getImages()[0], imageView);
+
+						if(post.getImages() != null)
+	                        ImageUtil.displayPostImage(post.getImages()[0], imageView);
+
                         layout.addView(imageView);
 
                         layout.setOnClickListener(new View.OnClickListener() {

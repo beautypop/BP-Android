@@ -10,6 +10,7 @@ public class CategoryVM {
     public String categoryType;
     public int seq;
     public Long parentId;
+    public boolean featured;
     public List<CategoryVM> subCategories;
 
     public Long getId() {
@@ -75,4 +76,8 @@ public class CategoryVM {
     public void setSubCategories(List<CategoryVM> subCategories) {
         this.subCategories = subCategories;
     }
+
+	public boolean isFeatured() { return featured; }
+
+	public void setFeatured(boolean featured) {	this.featured = featured; }
 }

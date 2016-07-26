@@ -2,36 +2,22 @@ package com.beautypop.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.beautypop.R;
 import com.beautypop.app.CategoryCache;
-import com.beautypop.fragment.CategoryFeedViewFragment;
 import com.beautypop.fragment.PopularFeedViewFragment;
-import com.beautypop.fragment.ProductImagePagerFragment;
 import com.beautypop.fragment.ThemeImagePagerFragment;
 import com.beautypop.util.DefaultValues;
-import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
-import com.beautypop.view.AdaptiveViewPager;
-import com.beautypop.view.CustomViewPager;
 import com.beautypop.viewmodel.CategoryVM;
-import com.daimajia.slider.library.SliderLayout;
-
-import org.w3c.dom.Text;
 
 public class ThemeActivity extends ActionBarActivity {
 

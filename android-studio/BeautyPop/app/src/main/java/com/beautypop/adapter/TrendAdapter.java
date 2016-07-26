@@ -138,7 +138,18 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 		holder.trendTitleText.setText(item.getName());
 		ImageUtil.displayImage(item.getIcon(), holder.trendImageView);
 
-		getPopularProducts(item,holder.moreProductsImagesLayout);
+		holder.trendImageView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				Intent intent = new Intent(activity, ThemeActivity.class);
+				intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, item.getId());
+				activity.startActivity(intent);
+
+			}
+		});
+
+		getPopularProducts(item, holder.moreProductsImagesLayout);
 
 	}
 
@@ -181,8 +192,11 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
 					imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
+					if (vm.getImages() != null)
+						System.out.println("vm ::::: "+vm.images.length);
+
 					if (vm.getImages() != null && vm.getImages().length != 0) {
-					//	loadImage(vm.getImages()[0], imageView);
+						loadImage(vm.getImages()[0], imageView);
 					}
 
 					layout.addView(imageView);
@@ -196,15 +210,11 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					layout.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View v) {
-							Intent intent = new Intent(activity, ThemeActivity.class);
-							intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, vm.getId());
-							activity.startActivity(intent);
+							ViewUtil.startProductActivity(activity, vm.getId());
 						}
 					});
 					linearLayout.addView(layout);
 				}
-
-
 			}
 
 			@Override
@@ -213,5 +223,21 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 			}
 		});
 
+	}
+
+	private void loadImage(final Long imageId, final ImageView imageView) {
+		imageView.setAdjustViewBounds(true);
+		imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		imageView.setPadding(0, 0, 0, 0);
+		ImageUtil.displayPostImage(imageId, imageView);
+
+        /*
+        imageView.setImageResource(ImageUtil.getImageLoadingResId(imageId));
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                ImageUtil.displayPostImage(imageId, imageView);
+            }
+        }, 0);
+        */
 	}
 }

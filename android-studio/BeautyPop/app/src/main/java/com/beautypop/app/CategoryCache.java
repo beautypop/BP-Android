@@ -51,11 +51,20 @@ public class CategoryCache {
         AppController.getApiService().getCategories(new Callback<List<CategoryVM>>() {
             @Override
             public void success(List<CategoryVM> vms, Response response) {
+				System.out.println("Category cache size ::: "+vms.size());
                 if (vms == null || vms.size() == 0)
                     return;
 
                 initAllCategories(vms);
-                SharedPreferencesUtil.getInstance().saveCategories(vms);
+
+				for(CategoryVM vm : vms){
+
+					System.out.println("category  name ::::: "+vm.getCategoryType());
+					System.out.println("category  name ::::: "+vm.getName());
+					System.out.println("category  name ::::: "+vm.getDescription());
+				}
+
+				SharedPreferencesUtil.getInstance().saveCategories(vms);
                 if (callback != null) {
                     callback.success(vms, response);
                 }

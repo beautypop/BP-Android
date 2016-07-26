@@ -15,6 +15,8 @@ import retrofit.mime.TypedString;
 public class NewPostVM {
     public Long id;
     public Long catId;
+    public Long themeId;
+    public Long trendId;
     public String title, body;
     public double price;
     public String conditionType;
@@ -25,10 +27,10 @@ public class NewPostVM {
     public String countryCode;
     public String deviceType;
 
-    public NewPostVM(Long catId, String title, String body, double price,
+    public NewPostVM(Long catId,Long themeId,Long trendId, String title, String body, double price,
                      ViewUtil.PostConditionType conditionType, List<SelectedImage> selectedPostImages,
                      double originalPrice, Boolean freeDelivery, String countryCode) {
-        this(-1L, catId, title, body, price, conditionType, selectedPostImages, originalPrice, freeDelivery, countryCode);
+        this(-1L, catId, themeId,trendId,title, body, price, conditionType, selectedPostImages, originalPrice, freeDelivery, countryCode);
     }
 
 
@@ -56,12 +58,14 @@ public class NewPostVM {
         this.price = price;
     }
 
-    public NewPostVM(Long id, Long catId, String title, String body, double price,
+    public NewPostVM(Long id, Long catId,Long themeId,Long trendId, String title, String body, double price,
                      ViewUtil.PostConditionType conditionType, List<SelectedImage> selectedImages,
                      double originalPrice, Boolean freeDelivery, String countryCode) {
         this.id = id;
         this.catId = catId;
         this.title = title;
+        this.themeId = themeId;
+        this.trendId = trendId;
         this.body = body;
         this.price = price;
         this.conditionType = conditionType.name();
@@ -81,6 +85,8 @@ public class NewPostVM {
         MultipartTypedOutput multipartTypedOutput = new MultipartTypedOutput();
         multipartTypedOutput.addPart("id", new TypedString(id+""));
         multipartTypedOutput.addPart("catId", new TypedString(catId+""));
+        multipartTypedOutput.addPart("themeId", new TypedString(themeId+""));
+        multipartTypedOutput.addPart("trendId", new TypedString(trendId+""));
         multipartTypedOutput.addPart("title", new TypedString(title));
         multipartTypedOutput.addPart("body", new TypedString(body));
         multipartTypedOutput.addPart("price", new TypedString(price+""));
