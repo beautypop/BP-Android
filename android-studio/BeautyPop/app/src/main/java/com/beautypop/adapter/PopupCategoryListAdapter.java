@@ -62,7 +62,11 @@ public class PopupCategoryListAdapter extends BaseAdapter {
 
         CategoryVM item = categories.get(position);
         catName.setText(item.getName());
-        ImageUtil.displayImage(item.getIcon(), catIcon);
+        if(item.getIcon() != null) {
+            ImageUtil.displayImage(item.getIcon(), catIcon);
+        } else {
+            catIcon.setVisibility(View.GONE);
+        }
 
         return convertView;
     }

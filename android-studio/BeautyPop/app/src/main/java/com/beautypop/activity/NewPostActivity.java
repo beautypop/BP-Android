@@ -447,10 +447,16 @@ public class NewPostActivity extends TrackedFragmentActivity{
 		System.out.println("themeCategory :::: "+themeCategory);
 		if (themeCategory != null) {
 			themeName.setText(themeCategory.getName());
-			ImageUtil.displayImage(themeCategory.getIcon(), themeIcon);
+            if(themeCategory.getIcon() != null) {
+                ImageUtil.displayImage(themeCategory.getIcon(), themeIcon);
+                themeIcon.setVisibility(View.VISIBLE);
+            } else {
+                themeIcon.setVisibility(View.GONE);
+            }
+
 			selectThemeText.setVisibility(View.GONE);
 			selectThemeIcon.setVisibility(View.GONE);
-			themeIcon.setVisibility(View.VISIBLE);
+
 			themeName.setVisibility(View.VISIBLE);
 		} else {
 			selectThemeText.setVisibility(View.VISIBLE);
@@ -464,10 +470,14 @@ public class NewPostActivity extends TrackedFragmentActivity{
 		System.out.println("trendCategory :::: "+trendCategory);
 		if (trendCategory != null) {
 			trendName.setText(trendCategory.getName());
-			ImageUtil.displayImage(trendCategory.getIcon(), trendIcon);
+            if(trendCategory.getIcon() != null) {
+                ImageUtil.displayImage(trendCategory.getIcon(), trendIcon);
+                trendIcon.setVisibility(View.VISIBLE);
+            } else {
+                trendIcon.setVisibility(View.GONE);
+            }
 			selectTrendText.setVisibility(View.GONE);
 			selectTrendIcon.setVisibility(View.GONE);
-			trendIcon.setVisibility(View.VISIBLE);
 			trendName.setVisibility(View.VISIBLE);
 		} else {
 			selectTrendText.setVisibility(View.VISIBLE);
@@ -593,15 +603,6 @@ public class NewPostActivity extends TrackedFragmentActivity{
             return null;
         }
 
-		if (themeCategory == null) {
-			initThemePopup(themePopup, CategoryCache.getThemeCategories(), true);
-			return null;
-		}
-
-		if (trendCategory == null) {
-			initThemePopup(themePopup, CategoryCache.getTrendCategories(), false);
-			return null;
-		}
 
         String countryCode = "";
         if (country != null) {
@@ -632,8 +633,16 @@ public class NewPostActivity extends TrackedFragmentActivity{
             }
         }
 
+        Long themeId = -1L, trendId = -1L;
+
+        if(themeCategory != null)
+            themeId = themeCategory.id;
+
+        if(trendCategory != null)
+            trendId = trendCategory.id;
+
         NewPostVM newPost = new NewPostVM(
-                subCategory.id,themeCategory.id,trendCategory.id, title, body, price, conditionType, selectedImages,
+                subCategory.id,themeId,trendId, title, body, price, conditionType, selectedImages,
                 originalPrice, freeDelivery, countryCode);
         return newPost;
     }
@@ -798,8 +807,11 @@ public class NewPostActivity extends TrackedFragmentActivity{
 			popup.setFocusable(true);
 			popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
+            List<CategoryVM> categorieList = new ArrayList<>();
+            categorieList.add(new CategoryVM(-1L, "- SELECT -"));
+            categorieList.addAll(categories);
 			ListView listView = (ListView) layout.findViewById(R.id.categoryList);
-			adapter = new PopupCategoryListAdapter(this, categories);
+			adapter = new PopupCategoryListAdapter(this, categorieList);
 			listView.setAdapter(adapter);
 
 			final PopupWindow thisPopup = popup;

@@ -90,6 +90,10 @@ public class EditPostActivity extends NewPostActivity {
                 setCategory(CategoryCache.getCategory(post.categoryId));
                 setSubCategory(CategoryCache.getCategory(post.subCategoryId));
 
+                //theme, trend
+                setTrend(CategoryCache.getCategory(post.getTrendId()));
+                setTheme(CategoryCache.getCategory(post.getThemeId()));
+
                 // seller
                 if (post.getOriginalPrice() > 0) {
                     originalPriceEdit.setText((int) post.getOriginalPrice() + "");

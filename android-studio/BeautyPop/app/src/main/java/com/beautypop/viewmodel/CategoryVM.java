@@ -13,6 +13,13 @@ public class CategoryVM {
     public boolean featured;
     public List<CategoryVM> subCategories;
 
+    public CategoryVM(){}
+
+    public CategoryVM(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

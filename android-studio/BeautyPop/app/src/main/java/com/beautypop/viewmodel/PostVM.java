@@ -15,6 +15,10 @@ public class PostVM extends PostVMLite {
     public String subCategoryType;
     public String subCategoryName;
     public String subCategoryIcon;
+
+    public Long themeId;
+    public Long trendId;
+
     public List<CommentVM> latestComments;
 
     public boolean isOwner = false;
@@ -60,6 +64,22 @@ public class PostVM extends PostVMLite {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Long getThemeId() {
+        return themeId;
+    }
+
+    public void setThemeId(Long categoryId) {
+        this.themeId = themeId;
+    }
+
+    public Long getTrendId() {
+        return trendId;
+    }
+
+    public void setTrendId(Long categoryId) {
+        this.trendId = trendId;
     }
 
     public String getCategoryType() {
