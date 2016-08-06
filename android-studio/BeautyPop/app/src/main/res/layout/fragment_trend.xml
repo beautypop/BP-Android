@@ -8,16 +8,11 @@
         android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <android.support.v7.widget.RecyclerView
+            android:background="@color/feed_bg"
             android:id="@+id/feedView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical" />
-
     </com.yalantis.phoenix.PullToRefreshView>
-
-
-
-
 </LinearLayout>

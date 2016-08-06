@@ -91,18 +91,43 @@ public class TrendFragment extends TrackedFragment {
 					}
 				});
 
+		pullListView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				pullListView.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						System.out.println("pull to refresh trend :::: ");
+						pullListView.setRefreshing(false);
+						reloadFeed();
+					}
+				}, DefaultValues.PULL_TO_REFRESH_DELAY);
+			}
+		});
+
 		// header
 		headerView = getHeaderView(inflater);
 		if (headerView != null) {
 			//noItemView = headerView.findViewById(R.id.noItemView);
 		}
 
+		reloadFeed();
+
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+	public void reloadFeed(){
 		List<CategoryVM> items = new ArrayList<>();
 
 		for(CategoryVM vm : CategoryCache.getTrendCategories()){
 			items.add(vm);
 		}
-
 		// adapter
 		feedAdapter = new TrendAdapter(getActivity(), items, AbstractFeedViewFragment.FeedViewItemsLayout.ONE_COLUMNS, headerView, false);
 		feedView.setAdapter(feedAdapter);
@@ -115,15 +140,7 @@ public class TrendFragment extends TrackedFragment {
 			}
 		});
 		feedView.setLayoutManager(layoutManager);
-
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
+	}
 
     @Override
     public void onDetach() {

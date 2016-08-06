@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beautypop.R;
@@ -53,6 +54,8 @@ public class PopularFeedViewFragment extends FeedViewFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
+
+
 
         backImage = (ImageView) getActivity().findViewById(R.id.backImage);
         newPostAction = (ImageView) getActivity().findViewById(R.id.newPostAction);

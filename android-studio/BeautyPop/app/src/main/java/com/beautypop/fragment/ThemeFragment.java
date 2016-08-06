@@ -44,20 +44,41 @@ public class ThemeFragment extends TrendFragment {
 		moreProductsImagesLayout = (LinearLayout)headerView. findViewById(R.id.moreProductsImagesLayout);
 		horizontalView = (HorizontalScrollView) headerView.findViewById(R.id.horizontalView);
 
-		int imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(getActivity()).width() / 4);  // fit around 4 items
-		int margin = 10;
-
-		System.out.println("Theme size :::: "+CategoryCache.getThemeCategories().size());
-		for (CategoryVM vm : CategoryCache.getCategories()){
-
-			System.out.println("Theme name :::: "+vm.getName());
-		}
-
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
 		params.addRule(RelativeLayout.BELOW,R.id.themeLabel);
 
-		//horizontalView.setLayoutParams(params);
+		showThemes();
 
+        return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        try {
+            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+            childFragmentManager.setAccessible(true);
+            childFragmentManager.set(this, null);
+
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+	public void showThemes(){
+
+		moreProductsImagesLayout.removeAllViews();
+
+		int imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(getActivity()).width() / 4);  // fit around 4 items
+		int margin = 10;
 		for (final CategoryVM vm : CategoryCache.getThemeCategories()) {
 
 			FrameLayout layout = new FrameLayout(getActivity());
@@ -85,40 +106,18 @@ public class ThemeFragment extends TrendFragment {
 			});
 			moreProductsImagesLayout.addView(layout);
 		}
-
-
-
-
-        return view;
-    }
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        try {
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-            childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	}
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		reloadFeed();
+		showThemes();
+	}
 }

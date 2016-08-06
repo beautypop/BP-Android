@@ -222,7 +222,7 @@ public class MainActivity extends TrackedFragmentActivity {
 		showToolbar(true, false);
 		showToolbarTitle(false);
 
-		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.sharp_pink);
+		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid_sel, R.color.sharp_pink);
 		themeClicked = true;
 
 		setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
