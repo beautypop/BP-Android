@@ -63,7 +63,6 @@ public class LocationActivity extends Activity implements AdapterView.OnItemClic
 
             URL url = new URL(sb.toString());
 
-            System.out.println("URL: "+url);
             conn = (HttpURLConnection) url.openConnection();
             InputStreamReader in = new InputStreamReader(conn.getInputStream());
 

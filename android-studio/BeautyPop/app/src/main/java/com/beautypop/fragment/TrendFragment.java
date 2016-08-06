@@ -97,7 +97,6 @@ public class TrendFragment extends TrackedFragment {
 				pullListView.postDelayed(new Runnable() {
 					@Override
 					public void run() {
-						System.out.println("pull to refresh trend :::: ");
 						pullListView.setRefreshing(false);
 						reloadFeed();
 					}

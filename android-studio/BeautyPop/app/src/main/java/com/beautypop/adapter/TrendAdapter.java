@@ -192,9 +192,6 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
 					imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-					if (vm.getImages() != null)
-						System.out.println("vm ::::: "+vm.images.length);
-
 					if (vm.getImages() != null && vm.getImages().length != 0) {
 						loadImage(vm.getImages()[0], imageView);
 					}

@@ -444,7 +444,6 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
 
 	protected void updateSelectThemeLayout() {
-		System.out.println("themeCategory :::: "+themeCategory);
 		if (themeCategory != null) {
 			themeName.setText(themeCategory.getName());
             if(themeCategory.getIcon() != null) {
@@ -467,7 +466,6 @@ public class NewPostActivity extends TrackedFragmentActivity{
 	}
 
 	protected void updateSelectTrendLayout() {
-		System.out.println("trendCategory :::: "+trendCategory);
 		if (trendCategory != null) {
 			trendName.setText(trendCategory.getName());
             if(trendCategory.getIcon() != null) {

@@ -79,7 +79,7 @@ public class PopularFeedViewFragment extends FeedViewFragment {
         });
 
 		CategoryVM categoryVM = CategoryCache.getCategory(getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L));
-		System.out.println("categoryVM :::: "+categoryVM);
+
 
 		titleText.setText(categoryVM.getName());
 		infoText.setText(categoryVM.getDescription());

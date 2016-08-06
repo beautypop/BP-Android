@@ -56,7 +56,6 @@ public class ThemeActivity extends ActionBarActivity {
 			}
 		});
 
-		System.out.println("Theme activity :::: "+categoryVM.getDescription());
 
 
 	}
