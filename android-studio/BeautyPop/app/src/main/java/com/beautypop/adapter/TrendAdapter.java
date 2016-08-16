@@ -2,6 +2,8 @@ package com.beautypop.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -136,7 +138,11 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 		 margin = 10;
 
 		holder.trendTitleText.setText(item.getName());
+
 		ImageUtil.displayImage(item.getIcon(), holder.trendImageView);
+
+		Bitmap icon = BitmapFactory.decodeResource(activity.getResources(), R.drawable.white);
+		holder.triangleImageView.setImageBitmap(icon);
 
 		holder.trendImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -148,9 +154,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 			}
 		});
-
 		getPopularProducts(item, holder.moreProductsImagesLayout);
-
 	}
 
 	@Override
@@ -159,7 +163,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 	}
 
 	class FeedViewHolder extends RecyclerView.ViewHolder {
-		ImageView trendImageView;
+		ImageView trendImageView,triangleImageView;
 		TextView trendTitleText;
 		LinearLayout moreProductsImagesLayout;
 
@@ -168,6 +172,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 			super(holder);
 
 			trendImageView = (ImageView) holder.findViewById(R.id.trendImageView);
+			triangleImageView = (ImageView) holder.findViewById(R.id.triangleIcon);
 			trendTitleText = (TextView) holder.findViewById(R.id.trendTitleText);
 			moreProductsImagesLayout = (LinearLayout) holder.findViewById(R.id.moreProductsImagesLayout);
 		}
