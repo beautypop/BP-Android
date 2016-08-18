@@ -34,6 +34,7 @@
     <color name="red">#FF0000</color>
     <color name="dark_blue">#1255B4</color>
     <color name="green">#39ba35</color>
+    <color name="transparent_black">#22000000</color>
 
     <color name="bar">#e2d6e3</color>
     <color name="main_menubar_bg">#FCFAF8</color>
