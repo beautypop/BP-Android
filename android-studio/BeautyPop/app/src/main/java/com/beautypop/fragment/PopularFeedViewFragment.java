@@ -18,6 +18,8 @@ import com.beautypop.util.FeedFilter;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class PopularFeedViewFragment extends FeedViewFragment {
@@ -80,13 +82,18 @@ public class PopularFeedViewFragment extends FeedViewFragment {
 
 		CategoryVM categoryVM = CategoryCache.getCategory(getArguments().getLong(ViewUtil.BUNDLE_KEY_CATEGORY_ID, -1L));
 
-
 		titleText.setText(categoryVM.getName());
 		infoText.setText(categoryVM.getDescription());
-		ImageUtil.displayImage(categoryVM.getIcon(), image);
+
+			Glide
+				.with(getActivity())
+				.load(categoryVM.getIcon())
+				.dontAnimate()
+				.placeholder(R.drawable.ic_image_load)
+				.into(image);
+
 
         selectFeedFilter(FeedFilter.FeedType.CATEGORY_POPULAR, false);
-
 
         return view;
     }

@@ -24,6 +24,8 @@ import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
 import com.beautypop.viewmodel.PostVMLite;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -139,10 +141,14 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 		holder.trendTitleText.setText(item.getName());
 
-		ImageUtil.displayImage(item.getIcon(), holder.trendImageView);
+			Glide
+				.with(activity)
+				.load(item.getIcon())
+		        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+				.dontAnimate()
+				.placeholder(R.drawable.ic_image_load)
+				.into(holder.trendImageView);
 
-		Bitmap icon = BitmapFactory.decodeResource(activity.getResources(), R.drawable.white);
-		holder.triangleImageView.setImageBitmap(icon);
 
 		holder.trendImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -163,7 +169,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 	}
 
 	class FeedViewHolder extends RecyclerView.ViewHolder {
-		ImageView trendImageView,triangleImageView;
+		ImageView trendImageView;
 		TextView trendTitleText;
 		LinearLayout moreProductsImagesLayout;
 
@@ -172,7 +178,6 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 			super(holder);
 
 			trendImageView = (ImageView) holder.findViewById(R.id.trendImageView);
-			triangleImageView = (ImageView) holder.findViewById(R.id.triangleIcon);
 			trendTitleText = (TextView) holder.findViewById(R.id.trendTitleText);
 			moreProductsImagesLayout = (LinearLayout) holder.findViewById(R.id.moreProductsImagesLayout);
 		}
@@ -192,7 +197,6 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 					FrameLayout layout = new FrameLayout(activity);
 					layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth + margin, imageWidth + margin));
-					//layout.setGravity(Gravity.CENTER);
 					ImageView imageView = new ImageView(activity);
 					imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
 					imageView.setScaleType(ImageView.ScaleType.FIT_XY);

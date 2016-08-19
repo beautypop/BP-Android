@@ -55,9 +55,6 @@ public class ThemeActivity extends ActionBarActivity {
 				finish();
 			}
 		});
-
-
-
 	}
 
 	@Override
