@@ -147,8 +147,8 @@ public interface BeautyPopApi {
     // Category + post + comments
     //
 
-    @GET("/api/get-categories")
-    public void getCategories(@Query("key") String key, Callback<List<CategoryVM>> cb);
+    @GET("/api/get-all-categories")
+    public void getAllCategories(@Query("key") String key, Callback<List<CategoryVM>> cb);
 
     @GET("/api/get-category/{id}")
     public void getCategory(@Path("id") Long id, @Query("key") String key, Callback<CategoryVM> cb);

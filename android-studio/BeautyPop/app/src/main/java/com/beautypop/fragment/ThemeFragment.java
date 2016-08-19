@@ -77,17 +77,18 @@ public class ThemeFragment extends TrendFragment {
 
 		themeImagesLayout.removeAllViews();
 
-		int imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(getActivity()).width() / 4);  // fit around 4 items
-		int margin = 0;
+		int imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(getActivity()).width() / 3.5);  // fit around 3.5 items
+		int padding = 10;
 		for (final CategoryVM vm : CategoryCache.getThemeCategories()) {
 
 			FrameLayout layout = new FrameLayout(getActivity());
-			layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth + margin, imageWidth + margin));
-			//layout.setGravity(Gravity.CENTER);
+            layout.setPadding(padding,padding,padding,padding);
+			layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
+
 			ImageView imageView = new ImageView(getActivity());
 			imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
 			imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-			ImageUtil.displayImage(vm.getIcon(), imageView);
+			ImageUtil.displayImage(vm.getThumbnail(), imageView);
 			layout.addView(imageView);
 
 			TextView textView = new TextView(getActivity());
@@ -95,7 +96,7 @@ public class ThemeFragment extends TrendFragment {
 			textView.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
             textView.setPadding(0,0,0,10);
 			textView.setTextColor(Color.WHITE);
-            textView.setTextSize(15);
+            textView.setTextSize(13);
 			textView.setBackground(getActivity().getResources().getDrawable(R.drawable.gradient_bottom));
 			layout.addView(textView);
 

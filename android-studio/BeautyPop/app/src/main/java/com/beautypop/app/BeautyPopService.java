@@ -150,8 +150,8 @@ public class BeautyPopService {
 
     // category + post + comments
 
-    public void getCategories(Callback<List<CategoryVM>> cb) {
-        api.getCategories(AppController.getInstance().getSessionId(), cb);
+    public void getAllCategories(Callback<List<CategoryVM>> cb) {
+        api.getAllCategories(AppController.getInstance().getSessionId(), cb);
     }
 
     public void getCategory(Long id, Callback<CategoryVM> cb) {

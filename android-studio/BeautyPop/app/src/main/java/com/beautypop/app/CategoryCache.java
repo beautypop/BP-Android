@@ -48,7 +48,7 @@ public class CategoryCache {
     public static void refresh(final Callback<List<CategoryVM>> callback) {
         Log.d(TAG, "refresh");
 
-        AppController.getApiService().getCategories(new Callback<List<CategoryVM>>() {
+        AppController.getApiService().getAllCategories(new Callback<List<CategoryVM>>() {
             @Override
             public void success(List<CategoryVM> vms, Response response) {
 
@@ -56,7 +56,6 @@ public class CategoryCache {
                     return;
 
                 initAllCategories(vms);
-
 
 				SharedPreferencesUtil.getInstance().saveCategories(vms);
                 if (callback != null) {

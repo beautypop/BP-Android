@@ -5,6 +5,7 @@ import java.util.List;
 public class CategoryVM {
     public Long id;
     public String icon;
+    public String thumbnail;
     public String name;
     public String description;
     public String categoryType;
@@ -34,6 +35,14 @@ public class CategoryVM {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String getName() {

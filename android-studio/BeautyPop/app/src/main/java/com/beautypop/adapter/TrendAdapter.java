@@ -56,7 +56,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 	private boolean pending = false;
 
-	int imageWidth,margin;
+	private int imageWidth, padding;
 
 	public TrendAdapter(Activity activity, List<CategoryVM> items,
 						   FeedViewItemsLayout feedViewItemsLayout, View header) {
@@ -136,8 +136,9 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 		final CategoryVM item = getItem(position);
 
-		 imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(activity).width() / 4);  // fit around 4 items
-		 margin = 10;
+		imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(activity).width() / 3.5);  // fit around 3.5 items
+
+        padding = 10;
 
 		holder.trendTitleText.setText(item.getName());
 
@@ -173,7 +174,6 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 		TextView trendTitleText;
 		LinearLayout moreProductsImagesLayout;
 
-
 		public FeedViewHolder(View holder) {
 			super(holder);
 
@@ -196,7 +196,9 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 				for (final PostVMLite vm : postVMLites) {
 
 					FrameLayout layout = new FrameLayout(activity);
-					layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth + margin, imageWidth + margin));
+                    layout.setPadding(padding,padding,padding,padding);
+					layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
+
 					ImageView imageView = new ImageView(activity);
 					imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
 					imageView.setScaleType(ImageView.ScaleType.FIT_XY);

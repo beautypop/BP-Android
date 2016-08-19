@@ -25,14 +25,13 @@
             android:shadowDx="3"
             android:shadowDy="3"
             android:shadowRadius="6"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textColor="@color/white"
             android:gravity="center_horizontal|bottom"
             android:layout_centerHorizontal="true"
             android:layout_gravity="bottom"
             android:background="@drawable/gradient_bottom"
-            android:paddingBottom="10dp"
-            android:textStyle="bold" />
+            android:paddingBottom="15dp" />
 
         <ImageView
             android:layout_marginLeft="20dp"
