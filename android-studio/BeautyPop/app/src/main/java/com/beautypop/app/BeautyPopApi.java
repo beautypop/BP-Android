@@ -330,6 +330,12 @@ public interface BeautyPopApi {
     @GET("/api/get-latest-products/{offset}")
     public void getNewProducts(@Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> cb);
 
+    @GET("/api/set-product-theme/{id}/{themeId}")
+    public void setProductTheme(@Path("id") Long id, @Path("themeId") Long themeId, @Query("key") String key, Callback<Response> cb);
+
+    @GET("/api/set-product-trend/{id}/{trendId}")
+    public void setProductTrend(@Path("id") Long id, @Path("trendId") Long trendId, @Query("key") String key, Callback<Response> cb);
+
     // Search API
     @GET("/search-posts/{searchKey}/{catId}/{offset}")
     public void searchProducts(@Path("searchKey") String searchKey, @Path("catId") Long id, @Path("offset") Long offset, @Query("key") String key, Callback<List<PostVMLite>> callback);

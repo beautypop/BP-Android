@@ -1,7 +1,6 @@
 package com.beautypop.adapter;
 
 import android.app.Activity;
-import android.app.Activity;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +9,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beautypop.R;
 import com.beautypop.activity.ProductActivity;
@@ -27,8 +28,8 @@ import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
-import com.beautypop.viewmodel.CountryVM;
 import com.beautypop.viewmodel.PostVMLite;
+import com.beautypop.viewmodel.ResponseStatusVM;
 
 import org.parceler.apache.commons.lang.StringUtils;
 
@@ -44,6 +45,7 @@ import retrofit.client.Response;
  * https://github.com/chiuki/android-recyclerview
  */
 public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedViewHolder> {
+    private static final String TAG = FeedViewAdapter.class.getName();
 
     private static final int ITEM_VIEW_TYPE_HEADER = 0;
     private static final int ITEM_VIEW_TYPE_ITEM = 1;
@@ -250,8 +252,74 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             holder.timeScoreText.setVisibility(View.VISIBLE);
             holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE) + "");
             holder.adminLayout.setVisibility(View.VISIBLE);
+
             initThemeSpinner(holder);
+            holder.themeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (!AppController.isUserAdmin()) {
+                        return;
+                    }
+
+                    if (holder.themeSpinner.getSelectedItem() != null) {
+                        String value = holder.themeSpinner.getSelectedItem().toString();
+                        CategoryVM themeCategory = CategoryCache.getThemeCategoryWithName(value);
+                        if (themeCategory != null) {
+                            AppController.getApiService().setProductTheme(item.id, themeCategory.id, new Callback<Response>() {
+                                @Override
+                                public void success(Response response, Response response2) {
+                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_success), Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_failed), Toast.LENGTH_SHORT).show();
+                                    Log.e(TAG, "setProductTheme: failure", error);
+                                }
+                            });
+                        }
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
             initTrendSpinner(holder);
+            holder.trendSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (!AppController.isUserAdmin()) {
+                        return;
+                    }
+
+                    if (holder.trendSpinner.getSelectedItem() != null) {
+                        String value = holder.trendSpinner.getSelectedItem().toString();
+                        CategoryVM trendCategory = CategoryCache.getTrendCategoryWithName(value);
+                        if (trendCategory != null) {
+                            AppController.getApiService().setProductTrend(item.id, trendCategory.id, new Callback<Response>() {
+                                @Override
+                                public void success(Response response, Response response2) {
+                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_success), Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_failed), Toast.LENGTH_SHORT).show();
+                                    Log.e(TAG, "setProductTrend: failure", error);
+                                }
+                            });
+                        }
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
         } else {
             holder.timeScoreText.setVisibility(View.GONE);
             holder.adminLayout.setVisibility(View.GONE);

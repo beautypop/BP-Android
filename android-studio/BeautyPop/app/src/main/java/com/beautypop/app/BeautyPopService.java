@@ -368,6 +368,14 @@ public class BeautyPopService {
         api.getNewProducts(offset, AppController.getInstance().getSessionId(), cb);
     }
 
+    public void setProductTheme(Long id, Long themeId, Callback<Response> cb) {
+        api.setProductTheme(id, themeId, AppController.getInstance().getSessionId(), cb);
+    }
+
+    public void setProductTrend(Long id, Long trendId, Callback<Response> cb) {
+        api.setProductTrend(id, trendId, AppController.getInstance().getSessionId(), cb);
+    }
+
 	// search
     public void searchProducts(String searchKey, Long id, Long offset, Callback<List<PostVMLite>> cb) {
         api.searchProducts(searchKey, id, offset, AppController.getInstance().getSessionId(), cb);
@@ -378,7 +386,7 @@ public class BeautyPopService {
     }
 
 	// review
-	public void addReview(NewReviewVM newReviewVM,Callback<Response> cb){
+	public void addReview(NewReviewVM newReviewVM, Callback<Response> cb){
 		api.addReview(newReviewVM, AppController.getInstance().getSessionId(), cb);
     }
 

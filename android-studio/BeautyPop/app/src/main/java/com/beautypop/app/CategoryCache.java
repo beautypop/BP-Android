@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.beautypop.util.SharedPreferencesUtil;
 import com.beautypop.viewmodel.CategoryVM;
+import com.beautypop.viewmodel.CountryVM;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class CategoryCache {
 
                 initAllCategories(vms);
 
-				SharedPreferencesUtil.getInstance().saveCategories(vms);
+                SharedPreferencesUtil.getInstance().saveCategories(vms);
                 if (callback != null) {
                     callback.success(vms, response);
                 }
@@ -107,6 +108,24 @@ public class CategoryCache {
 
     public static CategoryVM getCategory(Long id) {
         return allCategoriesMap.get(id);
+    }
+
+    public static CategoryVM getThemeCategoryWithName(String name) {
+        for (CategoryVM category : themeCategories) {
+            if (category.name.equals(name)) {
+                return category;
+            }
+        }
+        return null;
+    }
+
+    public static CategoryVM getTrendCategoryWithName(String name) {
+        for (CategoryVM category : trendCategories) {
+            if (category.name.equals(name)) {
+                return category;
+            }
+        }
+        return null;
     }
 
     public static void clear() {
