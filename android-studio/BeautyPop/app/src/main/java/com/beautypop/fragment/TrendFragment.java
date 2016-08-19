@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.beautypop.R;
 import com.beautypop.adapter.TrendAdapter;
@@ -26,13 +25,13 @@ import java.util.List;
 
 public class TrendFragment extends TrackedFragment {
     private static final String TAG = TrendFragment.class.getName();
-	private int RECYCLER_VIEW_COLUMN_SIZE = 3;
+	private int RECYCLER_VIEW_COLUMN_SIZE = 1;
 
-	private int TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_TOP_MARGIN);
-	private int BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_BOTTOM_MARGIN);
-	private int SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_SIDE_MARGIN);
-	private int LEFT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_LEFT_SIDE_MARGIN);
-	private int RIGHT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_3COL_RIGHT_SIDE_MARGIN);
+	private int TOP_MARGIN = ViewUtil.getRealDimension(0);
+	private int BOTTOM_MARGIN = ViewUtil.getRealDimension(0);
+	private int SIDE_MARGIN = ViewUtil.getRealDimension(0);
+	private int LEFT_SIDE_MARGIN = ViewUtil.getRealDimension(0);
+	private int RIGHT_SIDE_MARGIN = ViewUtil.getRealDimension(0);
 
 	protected RecyclerView feedView;
 	protected TrendAdapter feedAdapter;
@@ -46,7 +45,6 @@ public class TrendFragment extends TrackedFragment {
 		return null;
 	}
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -59,16 +57,6 @@ public class TrendFragment extends TrackedFragment {
 
 		feedView = (RecyclerView) view.findViewById(R.id.feedView);
 		//feedView.setHasFixedSize(true);
-
-		// default is 3 columns layout
-	//	if (AbstractFeedViewFragment.FeedViewItemsLayout.TWO_COLUMNS.equals(1)) {
-			RECYCLER_VIEW_COLUMN_SIZE = 1;
-			TOP_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_TOP_MARGIN);
-			BOTTOM_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_BOTTOM_MARGIN);
-			SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_SIDE_MARGIN);
-			LEFT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_LEFT_SIDE_MARGIN);
-			RIGHT_SIDE_MARGIN = ViewUtil.getRealDimension(DefaultValues.FEED_LAYOUT_2COL_RIGHT_SIDE_MARGIN);
-	//	}
 
 		feedView.addItemDecoration(
 				new RecyclerView.ItemDecoration() {

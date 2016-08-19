@@ -26,13 +26,13 @@ import java.lang.reflect.Field;
 
 public class ThemeFragment extends TrendFragment {
     private static final String TAG = ThemeFragment.class.getName();
-	private LinearLayout moreProductsImagesLayout;
+	private LinearLayout themeImagesLayout;
 	private HorizontalScrollView horizontalView;
 
 	@Override
 	protected View getHeaderView(LayoutInflater inflater) {
 		if (headerView == null) {
-			headerView = inflater.inflate(R.layout.fragment_theme, null);
+			headerView = inflater.inflate(R.layout.theme_fragment, null);
 		}
 		return headerView;
 	}
@@ -41,7 +41,7 @@ public class ThemeFragment extends TrendFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		moreProductsImagesLayout = (LinearLayout)headerView. findViewById(R.id.moreProductsImagesLayout);
+		themeImagesLayout = (LinearLayout)headerView. findViewById(R.id.themeImagesLayout);
 		horizontalView = (HorizontalScrollView) headerView.findViewById(R.id.horizontalView);
 
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
@@ -75,10 +75,10 @@ public class ThemeFragment extends TrendFragment {
 
 	public void showThemes(){
 
-		moreProductsImagesLayout.removeAllViews();
+		themeImagesLayout.removeAllViews();
 
 		int imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(getActivity()).width() / 4);  // fit around 4 items
-		int margin = 10;
+		int margin = 0;
 		for (final CategoryVM vm : CategoryCache.getThemeCategories()) {
 
 			FrameLayout layout = new FrameLayout(getActivity());
@@ -92,8 +92,11 @@ public class ThemeFragment extends TrendFragment {
 
 			TextView textView = new TextView(getActivity());
 			textView.setText(vm.getName());
-			textView.setGravity(Gravity.CENTER);
+			textView.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+            textView.setPadding(0,0,0,10);
 			textView.setTextColor(Color.WHITE);
+            textView.setTextSize(15);
+			textView.setBackground(getActivity().getResources().getDrawable(R.drawable.gradient_bottom));
 			layout.addView(textView);
 
 			layout.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +107,7 @@ public class ThemeFragment extends TrendFragment {
 					startActivity(intent);
 				}
 			});
-			moreProductsImagesLayout.addView(layout);
+			themeImagesLayout.addView(layout);
 		}
 	}
 

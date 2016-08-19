@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,23 +12,22 @@ import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.app.CategoryCache;
+import com.beautypop.app.TrackedFragmentActivity;
 import com.beautypop.fragment.PopularFeedViewFragment;
 import com.beautypop.fragment.ThemeImagePagerFragment;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
 
-public class ThemeActivity extends ActionBarActivity {
+public class ThemeActivity extends TrackedFragmentActivity {
 
-
-	private ImageView backImage,image;
+	private ImageView backImage, image;
 	private TextView titleText,infoText;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_theme);
+		setContentView(R.layout.theme_activity);
 
 		infoText = (TextView) findViewById(R.id.infoText);
 		titleText = (TextView) findViewById(R.id.titleText);
@@ -65,7 +63,7 @@ public class ThemeActivity extends ActionBarActivity {
 }
 
 class ThemeImagePagerAdapter extends FragmentStatePagerAdapter {
-	private static final String TAG = ProductImagePagerAdapter.class.getName();
+	private static final String TAG = ThemeImagePagerAdapter.class.getName();
 
 	private int[] images;
 

@@ -14,7 +14,7 @@
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/progress_spinner"></ProgressBar>
 
-    <include layout="@layout/category_actionbar"
+    <include layout="@layout/view_actionbar"
              android:id="@+id/toolbar" />
 
     <LinearLayout

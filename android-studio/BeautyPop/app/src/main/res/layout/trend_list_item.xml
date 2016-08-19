@@ -15,26 +15,31 @@
         <ImageView
             android:id="@+id/trendImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/trendTitleText"
-            android:layout_gravity="center"
-            android:background="@color/dark_gray_2"
-            android:gravity="center"
-            android:lineSpacingMultiplier="0.9"
-            android:alpha="0.5"
-            android:text=""
-            android:padding="2dp"
-            android:textSize="20dp"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:shadowColor="@color/dark_gray_2"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="6"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal|bottom"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:background="@drawable/gradient_bottom"
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+
         <ImageView
             android:layout_marginLeft="20dp"
             android:id="@+id/triangleIcon"
             android:layout_gravity="bottom"
             android:scaleType="fitXY"
-            android:src="@drawable/triangle"
+            android:src="@drawable/ic_triangle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -44,7 +49,9 @@
         android:id="@+id/horizontalView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
         <LinearLayout
             android:id="@+id/moreProductsImagesLayout"

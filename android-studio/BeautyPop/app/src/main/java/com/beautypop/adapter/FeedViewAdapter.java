@@ -10,23 +10,29 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.activity.ProductActivity;
 import com.beautypop.app.AppController;
+import com.beautypop.app.CategoryCache;
 import com.beautypop.app.CountryCache;
 import com.beautypop.app.UserInfoCache;
 import com.beautypop.fragment.AbstractFeedViewFragment.FeedViewItemsLayout;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
+import com.beautypop.viewmodel.CategoryVM;
+import com.beautypop.viewmodel.CountryVM;
 import com.beautypop.viewmodel.PostVMLite;
 
 import org.parceler.apache.commons.lang.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -242,10 +248,42 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         // admin
         if (AppController.isUserAdmin()) {
             holder.timeScoreText.setVisibility(View.VISIBLE);
-            holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE)+"");
+            holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE) + "");
+            holder.adminLayout.setVisibility(View.VISIBLE);
+            initThemeSpinner(holder);
+            initTrendSpinner(holder);
         } else {
-            holder.timeScoreText.setVisibility(View.INVISIBLE);
+            holder.timeScoreText.setVisibility(View.GONE);
+            holder.adminLayout.setVisibility(View.GONE);
         }
+    }
+
+    private void initThemeSpinner(FeedViewHolder holder) {
+        List<String> items = new ArrayList<>();
+        items.add(activity.getString(R.string.spinner_select));
+        for (CategoryVM theme : CategoryCache.getThemeCategories()) {
+            items.add(theme.name);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                activity,
+                R.layout.spinner_item_admin,
+                items);
+        holder.themeSpinner.setAdapter(adapter);
+    }
+
+    private void initTrendSpinner(FeedViewHolder holder) {
+        List<String> items = new ArrayList<>();
+        items.add(activity.getString(R.string.spinner_select));
+        for (CategoryVM theme : CategoryCache.getTrendCategories()) {
+            items.add(theme.name);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                activity,
+                R.layout.spinner_item_admin,
+                items);
+        holder.trendSpinner.setAdapter(adapter);
     }
 
     @Override
@@ -342,6 +380,9 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         LinearLayout likeLayout;
         ImageView likeImage;
         TextView likeText;
+        LinearLayout adminLayout;
+        Spinner themeSpinner;
+        Spinner trendSpinner;
 
         public FeedViewHolder(View holder) {
             super(holder);
@@ -361,6 +402,9 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             likeLayout = (LinearLayout) holder.findViewById(R.id.likeLayout);
             likeImage = (ImageView) holder.findViewById(R.id.likeImage);
             likeText = (TextView) holder.findViewById(R.id.likeText);
+            adminLayout = (LinearLayout) holder.findViewById(R.id.adminLayout);
+            themeSpinner = (Spinner) holder.findViewById(R.id.themeSpinner);
+            trendSpinner = (Spinner) holder.findViewById(R.id.trendSpinner);
         }
 
         void setTag(long score) {

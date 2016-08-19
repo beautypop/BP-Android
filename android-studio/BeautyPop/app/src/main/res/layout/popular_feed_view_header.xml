@@ -20,7 +20,7 @@
             android:layout_below="@+id/image"
             android:id="@+id/titleText"
             android:textSize="20dp"
-            android:text="Carnival"
+            android:text="-"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -31,7 +31,7 @@
             android:layout_below="@+id/titleText"
             android:id="@+id/infoText"
             android:textSize="15dp"
-            android:text="This is summer,it's time to get playful. Our collection features a selection of clothing that is as fun as carnival ! Happy Shopping !!"
+            android:text="-"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -75,8 +75,8 @@ public class DefaultValues {
     public static final int HOT_POST_NOL = 5;
     public static final int HOT_POST_NOC = 5;
 
-    public static final long POST_SCORE_POINTS_ADJUST = 10;
-    public static final long POST_SCORE_POINTS_ADJUST2 = 50;
+    public static final long POST_SCORE_POINTS_ADJUST = 100;
+    public static final long POST_SCORE_POINTS_ADJUST2 = 500;
 
     public static final int DEFAULT_DOUBLE_SCALE = 3;
 }

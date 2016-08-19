@@ -609,6 +609,7 @@ public class NewPostActivity extends TrackedFragmentActivity{
 
         Long originalPrice = -1L;
         Boolean freeDelivery = false;
+        Long themeId = -1L, trendId = -1L;
         if (AppController.isUserAdmin() ||
                 UserInfoCache.getUser().isPromotedSeller() ||
                 UserInfoCache.getUser().isVerifiedSeller()) {
@@ -629,18 +630,18 @@ public class NewPostActivity extends TrackedFragmentActivity{
             if (freeDelivery == null) {
                 freeDelivery = false;
             }
+
+            if(themeCategory != null) {
+                themeId = themeCategory.id;
+            }
+
+            if(trendCategory != null) {
+                trendId = trendCategory.id;
+            }
         }
 
-        Long themeId = -1L, trendId = -1L;
-
-        if(themeCategory != null)
-            themeId = themeCategory.id;
-
-        if(trendCategory != null)
-            trendId = trendCategory.id;
-
         NewPostVM newPost = new NewPostVM(
-                subCategory.id,themeId,trendId, title, body, price, conditionType, selectedImages,
+                subCategory.id, themeId, trendId, title, body, price, conditionType, selectedImages,
                 originalPrice, freeDelivery, countryCode);
         return newPost;
     }

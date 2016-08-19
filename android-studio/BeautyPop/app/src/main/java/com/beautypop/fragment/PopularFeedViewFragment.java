@@ -4,23 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beautypop.R;
 import com.beautypop.app.CategoryCache;
-import com.beautypop.util.CategorySelectorViewUtil;
 import com.beautypop.util.FeedFilter;
 
-import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
 import com.bumptech.glide.Glide;
-
-import java.util.List;
 
 public class PopularFeedViewFragment extends FeedViewFragment {
     private static final String TAG = PopularFeedViewFragment.class.getName();
@@ -32,8 +25,13 @@ public class PopularFeedViewFragment extends FeedViewFragment {
     private FeedFilter.ConditionType conditionType;
 	private TextView titleText,infoText;
 
-    private ImageView backImage, newPostAction;
+    private ImageView backImage;
     private ImageView image;
+
+    @Override
+    protected FeedViewItemsLayout getFeedViewItemsLayout() {
+        return FeedViewItemsLayout.TWO_COLUMNS;
+    }
 
     @Override
     protected void initFeedFilter() {
@@ -57,10 +55,7 @@ public class PopularFeedViewFragment extends FeedViewFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-
-
         backImage = (ImageView) getActivity().findViewById(R.id.backImage);
-        newPostAction = (ImageView) getActivity().findViewById(R.id.newPostAction);
 
 		infoText = (TextView)headerView. findViewById(R.id.infoText);
 		titleText = (TextView)headerView. findViewById(R.id.titleText);
@@ -70,13 +65,6 @@ public class PopularFeedViewFragment extends FeedViewFragment {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
-            }
-        });
-
-        newPostAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewUtil.startNewPostActivity(getActivity(), catId);
             }
         });
 

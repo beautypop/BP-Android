@@ -87,6 +87,10 @@
             android:name="com.beautypop.activity.CategoryActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.beautypop.activity.ThemeActivity"
+            android:screenOrientation="portrait" />
+            <!--android:label="@string/title_activity_theme" /-->
+        <activity
             android:name="com.beautypop.activity.NewPostActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -230,10 +234,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
- <activity
-            android:name=".activity.ThemeActivity"
-            android:label="@string/title_activity_theme" >
-        </activity>
     </application>
 
 </manifest>
