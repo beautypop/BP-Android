@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -61,6 +62,8 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
     private boolean showSeller = false;
 
     private int clickedPosition = -1;
+
+    private boolean userSelect = false;
 
     private boolean pending = false;
 
@@ -253,31 +256,51 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
             holder.timeScoreText.setText(ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE) + "");
             holder.adminLayout.setVisibility(View.VISIBLE);
 
+            // theme
+
             initThemeSpinner(holder);
+
+            holder.themeSpinner.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    userSelect = true;
+                    return false;
+                }
+            });
+
             holder.themeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (!userSelect) {
+                        return;
+                    }
+
+                    userSelect = false;
+
                     if (!AppController.isUserAdmin()) {
                         return;
                     }
 
                     if (holder.themeSpinner.getSelectedItem() != null) {
                         String value = holder.themeSpinner.getSelectedItem().toString();
+                        long themeId = -1;
                         CategoryVM themeCategory = CategoryCache.getThemeCategoryWithName(value);
                         if (themeCategory != null) {
-                            AppController.getApiService().setProductTheme(item.id, themeCategory.id, new Callback<Response>() {
-                                @Override
-                                public void success(Response response, Response response2) {
-                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_success), Toast.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void failure(RetrofitError error) {
-                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_failed), Toast.LENGTH_SHORT).show();
-                                    Log.e(TAG, "setProductTheme: failure", error);
-                                }
-                            });
+                            themeId = themeCategory.id;
                         }
+
+                        AppController.getApiService().setProductTheme(item.id, themeId, new Callback<Response>() {
+                            @Override
+                            public void success(Response response, Response response2) {
+                                Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_success), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_failed), Toast.LENGTH_SHORT).show();
+                                Log.e(TAG, "setProductTheme: failure", error);
+                            }
+                        });
                     }
                 }
 
@@ -287,31 +310,52 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                 }
             });
 
+            // trend
+
             initTrendSpinner(holder);
+
+            holder.trendSpinner.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    userSelect = true;
+                    return false;
+                }
+            });
+
             holder.trendSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (!userSelect) {
+                        return;
+                    }
+
+                    userSelect = false;
+
                     if (!AppController.isUserAdmin()) {
                         return;
                     }
 
                     if (holder.trendSpinner.getSelectedItem() != null) {
                         String value = holder.trendSpinner.getSelectedItem().toString();
+
+                        long trendId = -1;
                         CategoryVM trendCategory = CategoryCache.getTrendCategoryWithName(value);
                         if (trendCategory != null) {
-                            AppController.getApiService().setProductTrend(item.id, trendCategory.id, new Callback<Response>() {
-                                @Override
-                                public void success(Response response, Response response2) {
-                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_success), Toast.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void failure(RetrofitError error) {
-                                    Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_failed), Toast.LENGTH_SHORT).show();
-                                    Log.e(TAG, "setProductTrend: failure", error);
-                                }
-                            });
+                            trendId = trendCategory.id;
                         }
+
+                        AppController.getApiService().setProductTrend(item.id, trendId, new Callback<Response>() {
+                            @Override
+                            public void success(Response response, Response response2) {
+                                Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_success), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_failed), Toast.LENGTH_SHORT).show();
+                                Log.e(TAG, "setProductTrend: failure", error);
+                            }
+                        });
                     }
                 }
 

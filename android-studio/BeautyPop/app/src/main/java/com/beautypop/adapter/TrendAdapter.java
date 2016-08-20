@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -142,26 +143,32 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 		holder.trendTitleText.setText(item.getName());
 
-			Glide
-				.with(activity)
-				.load(item.getIcon())
-		        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-				.dontAnimate()
-				.placeholder(R.drawable.ic_image_load)
-				.into(holder.trendImageView);
-
+        Glide
+            .with(activity)
+            .load(item.getIcon())
+            .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+            .dontAnimate()
+            .placeholder(R.drawable.ic_image_load)
+            .into(holder.trendImageView);
 
 		holder.trendImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				Intent intent = new Intent(activity, ThemeActivity.class);
 				intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, item.getId());
 				activity.startActivity(intent);
-
 			}
 		});
-		getPopularProducts(item, holder.moreProductsImagesLayout);
+
+        if (item.featured) {
+            holder.triangleIcon.setVisibility(View.VISIBLE);
+            holder.horizontalView.setVisibility(View.VISIBLE);
+
+            getPopularProducts(item, holder.moreProductsImagesLayout);
+        } else {
+            holder.triangleIcon.setVisibility(View.GONE);
+            holder.horizontalView.setVisibility(View.GONE);
+        }
 	}
 
 	@Override
@@ -172,6 +179,8 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 	class FeedViewHolder extends RecyclerView.ViewHolder {
 		ImageView trendImageView;
 		TextView trendTitleText;
+        ImageView triangleIcon;
+        HorizontalScrollView horizontalView;
 		LinearLayout moreProductsImagesLayout;
 
 		public FeedViewHolder(View holder) {
@@ -179,6 +188,8 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 			trendImageView = (ImageView) holder.findViewById(R.id.trendImageView);
 			trendTitleText = (TextView) holder.findViewById(R.id.trendTitleText);
+            triangleIcon = (ImageView) holder.findViewById(R.id.triangleIcon);
+            horizontalView = (HorizontalScrollView) holder.findViewById(R.id.horizontalView);
 			moreProductsImagesLayout = (LinearLayout) holder.findViewById(R.id.moreProductsImagesLayout);
 		}
 
