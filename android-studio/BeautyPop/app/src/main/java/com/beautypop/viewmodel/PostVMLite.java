@@ -15,6 +15,12 @@ public class PostVMLite implements Serializable {
     public String conditionType;
     public Long[] images;
     public Boolean hasImage = false;
+
+    public Long categoryId;
+    public Long subCategoryId;
+    public Long themeId;
+    public Long trendId;
+
     public int numRelatedPosts;
     public int numLikes;
     public int numChats;
@@ -162,6 +168,38 @@ public class PostVMLite implements Serializable {
 
     public void setConditionType(String conditionType) {
         this.conditionType = conditionType;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Long getSubCategoryId() {
+        return subCategoryId;
+    }
+
+    public void setSubCategoryId(Long subCategoryId) {
+        this.subCategoryId = subCategoryId;
+    }
+
+    public Long getThemeId() {
+        return themeId;
+    }
+
+    public void setThemeId(Long categoryId) {
+        this.themeId = themeId;
+    }
+
+    public Long getTrendId() {
+        return trendId;
+    }
+
+    public void setTrendId(Long categoryId) {
+        this.trendId = trendId;
     }
 
     public int getNumRelatedPosts() {

@@ -29,6 +29,8 @@ import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ImageUtil;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
+import com.beautypop.viewmodel.CountryVM;
+import com.beautypop.viewmodel.PostVM;
 import com.beautypop.viewmodel.PostVMLite;
 import com.beautypop.viewmodel.ResponseStatusVM;
 
@@ -258,12 +260,14 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
             // theme
 
-            initThemeSpinner(holder);
+            initThemeSpinner(holder, item);
 
             holder.themeSpinner.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    userSelect = true;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        userSelect = true;
+                    }
                     return false;
                 }
             });
@@ -289,9 +293,11 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                             themeId = themeCategory.id;
                         }
 
-                        AppController.getApiService().setProductTheme(item.id, themeId, new Callback<Response>() {
+                        final long setThemeId = themeId;
+                        AppController.getApiService().setProductTheme(item.id, setThemeId, new Callback<Response>() {
                             @Override
                             public void success(Response response, Response response2) {
+                                item.themeId = setThemeId;
                                 Toast.makeText(activity, activity.getString(R.string.admin_set_product_theme_success), Toast.LENGTH_SHORT).show();
                             }
 
@@ -312,12 +318,14 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
             // trend
 
-            initTrendSpinner(holder);
+            initTrendSpinner(holder, item);
 
             holder.trendSpinner.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    userSelect = true;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        userSelect = true;
+                    }
                     return false;
                 }
             });
@@ -344,9 +352,11 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                             trendId = trendCategory.id;
                         }
 
-                        AppController.getApiService().setProductTrend(item.id, trendId, new Callback<Response>() {
+                        final long setTrendId = trendId;
+                        AppController.getApiService().setProductTrend(item.id, setTrendId, new Callback<Response>() {
                             @Override
                             public void success(Response response, Response response2) {
+                                item.trendId = setTrendId;
                                 Toast.makeText(activity, activity.getString(R.string.admin_set_product_trend_success), Toast.LENGTH_SHORT).show();
                             }
 
@@ -370,7 +380,7 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
         }
     }
 
-    private void initThemeSpinner(FeedViewHolder holder) {
+    private void initThemeSpinner(FeedViewHolder holder, PostVMLite post) {
         List<String> items = new ArrayList<>();
         items.add(activity.getString(R.string.spinner_select));
         for (CategoryVM theme : CategoryCache.getThemeCategories()) {
@@ -382,9 +392,16 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                 R.layout.spinner_item_admin,
                 items);
         holder.themeSpinner.setAdapter(adapter);
+
+        // select
+        CategoryVM theme = CategoryCache.getCategory(post.themeId);
+        if (theme != null) {
+            int pos = ((ArrayAdapter)holder.themeSpinner.getAdapter()).getPosition(theme.name);
+            holder.themeSpinner.setSelection(pos);
+        }
     }
 
-    private void initTrendSpinner(FeedViewHolder holder) {
+    private void initTrendSpinner(FeedViewHolder holder, PostVMLite post) {
         List<String> items = new ArrayList<>();
         items.add(activity.getString(R.string.spinner_select));
         for (CategoryVM theme : CategoryCache.getTrendCategories()) {
@@ -396,6 +413,13 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
                 R.layout.spinner_item_admin,
                 items);
         holder.trendSpinner.setAdapter(adapter);
+
+        // select
+        CategoryVM trend = CategoryCache.getCategory(post.trendId);
+        if (trend != null) {
+            int pos = ((ArrayAdapter)holder.trendSpinner.getAdapter()).getPosition(trend.name);
+            holder.trendSpinner.setSelection(pos);
+        }
     }
 
     @Override

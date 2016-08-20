@@ -7,17 +7,12 @@ public class PostVM extends PostVMLite {
     public Long ownerNumFollowers;
     public Long ownerLastLogin;
     public String body;
-    public Long categoryId;
     public String categoryType;
     public String categoryName;
     public String categoryIcon;
-    public Long subCategoryId;
     public String subCategoryType;
     public String subCategoryName;
     public String subCategoryIcon;
-
-    public Long themeId;
-    public Long trendId;
 
     public List<CommentVM> latestComments;
 
@@ -58,30 +53,6 @@ public class PostVM extends PostVMLite {
         this.body = body;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public Long getThemeId() {
-        return themeId;
-    }
-
-    public void setThemeId(Long categoryId) {
-        this.themeId = themeId;
-    }
-
-    public Long getTrendId() {
-        return trendId;
-    }
-
-    public void setTrendId(Long categoryId) {
-        this.trendId = trendId;
-    }
-
     public String getCategoryType() {
         return categoryType;
     }
@@ -104,14 +75,6 @@ public class PostVM extends PostVMLite {
 
     public void setCategoryIcon(String categoryIcon) {
         this.categoryIcon = categoryIcon;
-    }
-
-    public Long getSubCategoryId() {
-        return subCategoryId;
-    }
-
-    public void setSubCategoryId(Long subCategoryId) {
-        this.subCategoryId = subCategoryId;
     }
 
     public String getSubCategoryType() {
