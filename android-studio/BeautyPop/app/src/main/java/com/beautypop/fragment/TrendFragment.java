@@ -3,6 +3,7 @@ package com.beautypop.fragment;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ import java.util.List;
 public class TrendFragment extends TrackedFragment {
     private static final String TAG = TrendFragment.class.getName();
 	private int RECYCLER_VIEW_COLUMN_SIZE = 1;
+	Parcelable state;
 
 	private int TOP_MARGIN = ViewUtil.getRealDimension(0);
 	private int BOTTOM_MARGIN = ViewUtil.getRealDimension(0);
@@ -109,6 +111,7 @@ public class TrendFragment extends TrackedFragment {
 
     }
 
+
 	public void reloadFeed(){
 		List<CategoryVM> items = new ArrayList<>();
 
@@ -128,26 +131,4 @@ public class TrendFragment extends TrackedFragment {
 		});
 		feedView.setLayoutManager(layoutManager);
 	}
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        try {
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-            childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
 }

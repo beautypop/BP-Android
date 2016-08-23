@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,11 +113,18 @@ public class ThemeFragment extends TrendFragment {
 		}
 	}
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (getChildFragmentManager() != null && getChildFragmentManager().getFragments() != null) {
+			for (Fragment fragment : getChildFragmentManager().getFragments()) {
+				if (fragment != null) {
+					Log.d(TAG, "onActivityResult: propagate to fragment=" + fragment.getClass().getSimpleName());
+					fragment.onActivityResult(requestCode, resultCode, data);
+				}
+			}
+		}
+	}
 
 	@Override
 	public void onResume() {

@@ -2,15 +2,12 @@ package com.beautypop.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -57,7 +54,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 	private boolean pending = false;
 
-	private int imageWidth, padding;
+	int imageWidth,margin;
 
 	public TrendAdapter(Activity activity, List<CategoryVM> items,
 						   FeedViewItemsLayout feedViewItemsLayout, View header) {
@@ -139,7 +136,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 		imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(activity).width() / 3.5);  // fit around 3.5 items
 
-        padding = 10;
+       // padding = 10;
 
 		holder.trendTitleText.setText(item.getName());
 
@@ -206,10 +203,12 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 				for (final PostVMLite vm : postVMLites) {
 
-					FrameLayout layout = new FrameLayout(activity);
-                    layout.setPadding(padding,padding,padding,padding);
-					layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
-
+					LinearLayout layout = new LinearLayout(activity);
+					layout.setOrientation(LinearLayout.VERTICAL);
+					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+					params.setMargins(5,0,5,0);
+					//layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth + margin, imageWidth + margin));
+					layout.setLayoutParams(params);
 					ImageView imageView = new ImageView(activity);
 					imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
 					imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -217,14 +216,48 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					if (vm.getImages() != null && vm.getImages().length != 0) {
 						loadImage(vm.getImages()[0], imageView);
 					}
-
 					layout.addView(imageView);
 
-					TextView textView = new TextView(activity);
-					textView.setText(vm.getTitle());
-					textView.setGravity(Gravity.CENTER);
-					textView.setTextColor(Color.WHITE);
-					layout.addView(textView);
+					TextView titleText = new TextView(activity);
+					titleText.setSingleLine(false);
+					titleText.setLines(2);
+					titleText.setTextSize(12);
+					titleText.setEllipsize(TextUtils.TruncateAt.END);
+					titleText.setText(vm.getTitle());
+					titleText.setGravity(Gravity.CENTER_HORIZONTAL);
+					titleText.setTextColor(activity.getResources().getColor(R.color.dark_gray));
+					layout.addView(titleText);
+
+					LinearLayout layout1 = new LinearLayout(activity);
+					layout1.setOrientation(LinearLayout.HORIZONTAL);
+
+					TextView originalPrice = new TextView(activity);
+					originalPrice.setText(ViewUtil.formatPrice(vm.getOriginalPrice()));
+					originalPrice.setGravity(Gravity.CENTER_HORIZONTAL);
+					originalPrice.setTextSize(12);
+					originalPrice.setTextColor(activity.getResources().getColor(R.color.light_gray));
+					layout1.addView(originalPrice);
+
+					LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+					layoutParams.setMargins(5,0,0,0);
+
+					TextView priceText = new TextView(activity);
+					priceText.setText(ViewUtil.formatPrice(vm.getPrice()));
+					priceText.setLayoutParams(layoutParams);
+					priceText.setTextSize(12);
+					priceText.setGravity(Gravity.CENTER_HORIZONTAL);
+					priceText.setTextColor(activity.getResources().getColor(R.color.green));
+					layout1.addView(priceText);
+
+					if (vm.getOriginalPrice() > 0) {
+						originalPrice.setVisibility(View.VISIBLE);
+						originalPrice.setText(ViewUtil.formatPrice(vm.getOriginalPrice()));
+						ViewUtil.strikeText(originalPrice);
+					} else {
+						originalPrice.setVisibility(View.GONE);
+					}
+
+					layout.addView(layout1);
 
 					layout.setOnClickListener(new View.OnClickListener() {
 						@Override
@@ -249,14 +282,5 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 		imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 		imageView.setPadding(0, 0, 0, 0);
 		ImageUtil.displayPostImage(imageId, imageView);
-
-        /*
-        imageView.setImageResource(ImageUtil.getImageLoadingResId(imageId));
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                ImageUtil.displayPostImage(imageId, imageView);
-            }
-        }, 0);
-        */
 	}
 }
