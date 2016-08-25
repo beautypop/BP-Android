@@ -48,7 +48,7 @@ public class TrendFragment extends TrackedFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        View view = inflater.inflate(R.layout.fragment_trend, container, false);
+        View view = inflater.inflate(R.layout.trend_fragment, container, false);
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
 
