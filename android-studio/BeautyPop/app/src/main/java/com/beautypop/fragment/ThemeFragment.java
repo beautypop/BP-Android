@@ -58,22 +58,6 @@ public class ThemeFragment extends TrendFragment {
         super.onStart();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        try {
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-            childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 	public void showThemes(){
 
 		themeImagesLayout.removeAllViews();
@@ -114,22 +98,23 @@ public class ThemeFragment extends TrendFragment {
 	}
 
 	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (getChildFragmentManager() != null && getChildFragmentManager().getFragments() != null) {
-			for (Fragment fragment : getChildFragmentManager().getFragments()) {
-				if (fragment != null) {
-					Log.d(TAG, "onActivityResult: propagate to fragment=" + fragment.getClass().getSimpleName());
-					fragment.onActivityResult(requestCode, resultCode, data);
-				}
-			}
+	public void onDetach() {
+		super.onDetach();
+
+		try {
+			Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+			childFragmentManager.setAccessible(true);
+			childFragmentManager.set(this, null);
+
+		} catch (NoSuchFieldException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		reloadFeed();
-		showThemes();
 	}
 }

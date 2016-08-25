@@ -1,10 +1,7 @@
 package com.beautypop.fragment;
 
-import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,19 +12,19 @@ import com.beautypop.R;
 import com.beautypop.adapter.TrendAdapter;
 import com.beautypop.app.CategoryCache;
 import com.beautypop.app.TrackedFragment;
+import com.beautypop.listener.EndlessScrollListener;
 import com.beautypop.util.DefaultValues;
 import com.beautypop.util.ViewUtil;
 import com.beautypop.viewmodel.CategoryVM;
 import com.yalantis.phoenix.PullToRefreshView;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrendFragment extends TrackedFragment {
     private static final String TAG = TrendFragment.class.getName();
 	private int RECYCLER_VIEW_COLUMN_SIZE = 1;
-	Parcelable state;
+	List<CategoryVM> items = new ArrayList<>();
 
 	private int TOP_MARGIN = ViewUtil.getRealDimension(0);
 	private int BOTTOM_MARGIN = ViewUtil.getRealDimension(0);
@@ -54,8 +51,6 @@ public class TrendFragment extends TrackedFragment {
         View view = inflater.inflate(R.layout.fragment_trend, container, false);
 
 		pullListView = (PullToRefreshView) view.findViewById(R.id.pull_to_refresh);
-
-		//items = new ArrayList<>();
 
 		feedView = (RecyclerView) view.findViewById(R.id.feedView);
 		//feedView.setHasFixedSize(true);
@@ -100,6 +95,23 @@ public class TrendFragment extends TrackedFragment {
 			//noItemView = headerView.findViewById(R.id.noItemView);
 		}
 
+		layoutManager = new GridLayoutManager(getActivity(), RECYCLER_VIEW_COLUMN_SIZE);
+
+		feedView.setOnScrollListener(new EndlessScrollListener(layoutManager) {
+			@Override
+			public void onLoadMore(Long offset) {
+				refresh();
+			}
+			@Override
+			public void onScrollUp() {
+
+			}
+			@Override
+			public void onScrollDown() {
+
+			}
+		});
+
 		reloadFeed();
 
         return view;
@@ -131,4 +143,16 @@ public class TrendFragment extends TrackedFragment {
 		});
 		feedView.setLayoutManager(layoutManager);
 	}
+
+
+
+
+	public void refresh(){
+		items.clear();
+		for(CategoryVM vm : CategoryCache.getTrendCategories()){
+			items.add(vm);
+		}
+		feedAdapter.notifyDataSetChanged();
+	}
+
 }

@@ -151,6 +151,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 		holder.trendImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				clickedPosition = position;
 				Intent intent = new Intent(activity, ThemeActivity.class);
 				intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, item.getId());
 				activity.startActivity(intent);
@@ -161,7 +162,8 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
             holder.triangleIcon.setVisibility(View.VISIBLE);
             holder.horizontalView.setVisibility(View.VISIBLE);
 
-            getPopularProducts(item, holder.moreProductsImagesLayout);
+			getPopularProducts(item, holder);
+
         } else {
             holder.triangleIcon.setVisibility(View.GONE);
             holder.horizontalView.setVisibility(View.GONE);
@@ -195,19 +197,18 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 		}
 	}
 
-	public void getPopularProducts(CategoryVM categoryVM, final LinearLayout linearLayout){
-
+	public void getPopularProducts(CategoryVM categoryVM,  final FeedViewHolder viewHolder){
+		viewHolder.moreProductsImagesLayout.removeAllViews();
+		ViewUtil.showSpinner(activity);
 		AppController.getApiService().getCategoryPopularFeed(0L,categoryVM.getId(), FeedFilter.ConditionType.ALL.name(),new Callback<List<PostVMLite>>() {
 			@Override
 			public void success(List<PostVMLite> postVMLites, Response response) {
-
 				for (final PostVMLite vm : postVMLites) {
 
 					LinearLayout layout = new LinearLayout(activity);
 					layout.setOrientation(LinearLayout.VERTICAL);
 					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 					params.setMargins(5,0,5,0);
-					//layout.setLayoutParams(new ViewGroup.LayoutParams(imageWidth + margin, imageWidth + margin));
 					layout.setLayoutParams(params);
 					ImageView imageView = new ImageView(activity);
 					imageView.setLayoutParams(new ViewGroup.LayoutParams(imageWidth, imageWidth));
@@ -255,6 +256,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 						ViewUtil.strikeText(originalPrice);
 					} else {
 						originalPrice.setVisibility(View.GONE);
+						priceText.setGravity(Gravity.CENTER_HORIZONTAL);
 					}
 
 					layout.addView(layout1);
@@ -265,13 +267,15 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 							ViewUtil.startProductActivity(activity, vm.getId());
 						}
 					});
-					linearLayout.addView(layout);
+
+					viewHolder.moreProductsImagesLayout.addView(layout);
+					ViewUtil.stopSpinner(activity);
 				}
 			}
 
 			@Override
 			public void failure(RetrofitError error) {
-
+				ViewUtil.stopSpinner(activity);
 			}
 		});
 

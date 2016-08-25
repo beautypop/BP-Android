@@ -1,5 +1,6 @@
 package com.beautypop.activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -34,7 +35,6 @@ public class ThemeActivity extends TrackedFragmentActivity {
 		backImage = (ImageView) findViewById(R.id.backImage);
 		image = (ImageView) findViewById(R.id.image);
 
-		//ViewUtil.addDots(ProductActivity.this, imagePagerAdapter.getCount(), dotsLayout, dots, imagePager);
 		CategoryVM categoryVM = CategoryCache.getCategory(getIntent().getLongExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, 0L));
 
 		Bundle bundle = new Bundle();
@@ -59,7 +59,6 @@ public class ThemeActivity extends TrackedFragmentActivity {
 	public void onBackPressed()
 	{
 		finish();
-		//super.onBackPressed();
 	}
 }
 
