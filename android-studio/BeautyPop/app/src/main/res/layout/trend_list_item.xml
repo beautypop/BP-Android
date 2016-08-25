@@ -27,11 +27,12 @@
             android:shadowRadius="6"
             android:textSize="20dp"
             android:textColor="@color/white"
-            android:gravity="center_horizontal|bottom"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="bottom"
-            android:background="@drawable/gradient_bottom"
-            android:paddingBottom="15dp" />
+            android:background="@drawable/gradient_all"
+            android:textStyle="bold"
+            android:minHeight="100dp"
+            android:gravity="center"
+            android:layout_gravity="center" />
 
         <ImageView
             android:layout_marginLeft="20dp"

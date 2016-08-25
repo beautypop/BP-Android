@@ -136,7 +136,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 		imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(activity).width() / 3.5);  // fit around 3.5 items
 
-       // padding = 10;
+        // padding = 10;
 
 		holder.trendTitleText.setText(item.getName());
 
