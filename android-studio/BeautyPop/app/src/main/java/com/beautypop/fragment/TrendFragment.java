@@ -100,7 +100,7 @@ public class TrendFragment extends TrackedFragment {
 		feedView.setOnScrollListener(new EndlessScrollListener(layoutManager) {
 			@Override
 			public void onLoadMore(Long offset) {
-				refresh();
+				//refresh();
 			}
 			@Override
 			public void onScrollUp() {
@@ -108,7 +108,7 @@ public class TrendFragment extends TrackedFragment {
 			}
 			@Override
 			public void onScrollDown() {
-
+				//refresh();
 			}
 		});
 
@@ -148,10 +148,10 @@ public class TrendFragment extends TrackedFragment {
 
 
 	public void refresh(){
-		items.clear();
+		/*items.clear();
 		for(CategoryVM vm : CategoryCache.getTrendCategories()){
 			items.add(vm);
-		}
+		}*/
 		feedAdapter.notifyDataSetChanged();
 	}
 

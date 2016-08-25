@@ -2,6 +2,7 @@ package com.beautypop.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -25,6 +26,7 @@ import com.beautypop.viewmodel.PostVMLite;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit.Callback;
@@ -41,6 +43,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 	private static final int ITEM_VIEW_TYPE_ITEM = 1;
 
 	private FeedViewItemsLayout feedViewItemsLayout;
+	private HashMap<Long,TrendAdapter.FeedViewHolder> hashMap = new HashMap<>();
 
 	private View headerView;
 
@@ -139,7 +142,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
         // padding = 10;
 
 		holder.trendTitleText.setText(item.getName());
-
+		holder.categoryId = item.id;
         Glide
             .with(activity)
             .load(item.getIcon())
@@ -162,7 +165,10 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
             holder.triangleIcon.setVisibility(View.VISIBLE);
             holder.horizontalView.setVisibility(View.VISIBLE);
 
-			getPopularProducts(item, holder);
+			if(hashMap.get(item.getId()) == null) {
+				hashMap.put(item.getId(),holder);
+				getPopularProducts(item, holder);
+			}
 
         } else {
             holder.triangleIcon.setVisibility(View.GONE);
@@ -176,6 +182,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 	}
 
 	class FeedViewHolder extends RecyclerView.ViewHolder {
+		Long categoryId = 0L;
 		ImageView trendImageView;
 		TextView trendTitleText;
         ImageView triangleIcon;
@@ -219,7 +226,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					}
 					layout.addView(imageView);
 
-					TextView titleText = new TextView(activity);
+					/*TextView titleText = new TextView(activity);
 					titleText.setSingleLine(false);
 					titleText.setLines(2);
 					titleText.setTextSize(12);
@@ -227,7 +234,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					titleText.setText(vm.getTitle());
 					titleText.setGravity(Gravity.CENTER_HORIZONTAL);
 					titleText.setTextColor(activity.getResources().getColor(R.color.dark_gray));
-					layout.addView(titleText);
+					layout.addView(titleText);*/
 
 					LinearLayout layout1 = new LinearLayout(activity);
 					layout1.setOrientation(LinearLayout.HORIZONTAL);
@@ -235,7 +242,8 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					TextView originalPrice = new TextView(activity);
 					originalPrice.setText(ViewUtil.formatPrice(vm.getOriginalPrice()));
 					originalPrice.setGravity(Gravity.CENTER_HORIZONTAL);
-					originalPrice.setTextSize(12);
+					originalPrice.setTextSize(13);
+					originalPrice.setTypeface(null, Typeface.BOLD);
 					originalPrice.setTextColor(activity.getResources().getColor(R.color.light_gray));
 					layout1.addView(originalPrice);
 
@@ -245,7 +253,8 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 					TextView priceText = new TextView(activity);
 					priceText.setText(ViewUtil.formatPrice(vm.getPrice()));
 					priceText.setLayoutParams(layoutParams);
-					priceText.setTextSize(12);
+					priceText.setTextSize(13);
+					priceText.setTypeface(null, Typeface.BOLD);
 					priceText.setGravity(Gravity.CENTER_HORIZONTAL);
 					priceText.setTextColor(activity.getResources().getColor(R.color.green));
 					layout1.addView(priceText);
@@ -268,8 +277,15 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 						}
 					});
 
-					viewHolder.moreProductsImagesLayout.addView(layout);
+					if (viewHolder == hashMap.get(vm.getTrendId()) &&
+							viewHolder.categoryId == vm.getTrendId()) {
+						viewHolder.moreProductsImagesLayout.addView(layout);
+					} else {
+
+					}
+					//hashMap.get(vm.getTrendId()).moreProductsImagesLayout.addView(layout);
 					ViewUtil.stopSpinner(activity);
+					//TrendAdapter.this.notifyDataSetChanged();
 				}
 			}
 
