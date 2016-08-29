@@ -18,53 +18,72 @@
         android:layout_height="45dp"
         android:id="@+id/toolbarOffsetLayout"
         android:background="@android:color/transparent"></RelativeLayout>
-    <TextView
-        android:layout_below="@+id/toolbarOffsetLayout"
-        android:id="@+id/themeLabel"
-        android:textSize="14dp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="Explore by Theme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/gray" />
-    <HorizontalScrollView
-        android:id="@+id/horizontalView"
-        android:layout_below="@+id/themeLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp">
-        <LinearLayout
-            android:layout_marginLeft="5dp"
-            android:id="@+id/themeImagesLayout"
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/themesLayout"
+                android:layout_below="@+id/toolbarOffsetLayout">
+
+                <TextView
+            android:layout_below="@+id/toolbarOffsetLayout"
+            android:id="@+id/themeLabel"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Explore by Theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
-    <TextView
-        android:layout_below="@+id/horizontalView"
-        android:id="@+id/trendLabel"
-        android:textSize="14dp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"
-        android:text="Trending Collections"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/gray" />
+            android:textColor="@color/gray" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_below="@+id/trendLabel"
-        android:id="@+id/placeHolder"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+                <HorizontalScrollView
+            android:id="@+id/horizontalView"
+            android:layout_below="@+id/themeLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:id="@+id/themeImagesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/trendsLayout"
+                android:layout_below="@+id/themesLayout">
+
+                <TextView
+            android:layout_below="@+id/horizontalView"
+            android:id="@+id/trendLabel"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:text="Trending Collections"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray" />
+
+                <LinearLayout
+            android:orientation="vertical"
+            android:layout_below="@+id/trendLabel"
+            android:id="@+id/placeHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
 
 
-    </LinearLayout>
+        </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 
