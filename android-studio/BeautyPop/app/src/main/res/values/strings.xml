@@ -6,7 +6,7 @@
     <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
     <string name="base_url_dev">http://119.81.228.91</string>
-    <string name="app_name">BeautyPop</string>
+    <string name="app_name">Stg</string>
 
     <!-- Crash report -->
     <string name="crash_toast_text">Sorry.. BeautyPop encountered problem and exit</string>
@@ -35,6 +35,8 @@
     <string name="leave_review_confirm">You are about to leave review for the other party. All set ?</string>
     <string name="leave_review_success">Review submitted successfully !</string>
     <string name="leave_review_failed">Failed to submit review. Please try again later.</string>
+    <string name="alert_user_low_review_score">%1$s has negative reviews.  Please check his/her reviews before completing the order.</string>
+    <string name="alert_user_suspended">User account %1$s is suspended.</string>
 
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style</string>
@@ -397,8 +399,9 @@
     <string name="admin_delete_account_confirm">Confirm delete account?</string>
     <string name="admin_delete_account_success">Account deleted</string>
     <string name="admin_delete_account_failed">Account delete failed</string>
-    <string name="title_activity_theme">ThemeActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="admin_set_product_theme_success">Successfully set product to theme</string>
+    <string name="admin_set_product_theme_failed">Failed to set product to theme</string>
+    <string name="admin_set_product_trend_success">Successfully set product to trend</string>
+    <string name="admin_set_product_trend_failed">Failed to set product to trend</string>
 
 </resources>

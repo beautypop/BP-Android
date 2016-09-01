@@ -12,6 +12,8 @@ public class ConversationVM implements Serializable, Comparable<ConversationVM> 
     public boolean postSold;
     public Long userId;
     public String userName;
+    public boolean userSuspended;
+    public boolean userLowReviewScore;
     public Long lastMessageDate;
     public String lastMessage;
     public boolean lastMessageHasImage;
@@ -93,6 +95,22 @@ public class ConversationVM implements Serializable, Comparable<ConversationVM> 
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public boolean isUserSuspended() {
+        return userSuspended;
+    }
+
+    public void setUserSuspended(boolean userSuspended) {
+        this.userSuspended = userSuspended;
+    }
+
+    public boolean isUserLowReviewScore() {
+        return userLowReviewScore;
+    }
+
+    public void setUserLowReviewScore(boolean userLowReviewScore) {
+        this.userLowReviewScore = userLowReviewScore;
     }
 
     public String getLastMessage() {

@@ -222,7 +222,7 @@ public class MainActivity extends TrackedFragmentActivity {
 		showToolbar(true, false);
 		showToolbarTitle(false);
 
-		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid_sel, R.color.sharp_pink);
+		setMenuButton(themeImage, themeText, R.drawable.mn_trend_sel, R.color.sharp_pink);
 		themeClicked = true;
 
 		setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
@@ -254,7 +254,7 @@ public class MainActivity extends TrackedFragmentActivity {
         setMenuButton(homeImage, homeText, R.drawable.mn_home_sel, R.color.sharp_pink);
         homeClicked = true;
 
-		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.sharp_pink);
+		setMenuButton(themeImage, themeText, R.drawable.mn_trend, R.color.sharp_pink);
 		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
@@ -287,7 +287,7 @@ public class MainActivity extends TrackedFragmentActivity {
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
 
-		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.dark_gray_2);
+		setMenuButton(themeImage, themeText, R.drawable.mn_trend, R.color.dark_gray_2);
 		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller_sel, R.color.sharp_pink);
@@ -321,7 +321,7 @@ public class MainActivity extends TrackedFragmentActivity {
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
 
-		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.dark_gray_2);
+		setMenuButton(themeImage, themeText, R.drawable.mn_trend, R.color.dark_gray_2);
 		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);
@@ -354,7 +354,7 @@ public class MainActivity extends TrackedFragmentActivity {
         setMenuButton(homeImage, homeText, R.drawable.mn_home, R.color.dark_gray_2);
         homeClicked = false;
 
-		setMenuButton(themeImage, themeText, R.drawable.ic_view_grid, R.color.dark_gray_2);
+		setMenuButton(themeImage, themeText, R.drawable.mn_trend, R.color.dark_gray_2);
 		themeClicked = false;
 
         setMenuButton(sellerImage, sellerText, R.drawable.mn_seller, R.color.dark_gray_2);

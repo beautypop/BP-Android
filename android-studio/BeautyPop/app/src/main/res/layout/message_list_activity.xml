@@ -129,6 +129,40 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/alertLayout"
+                android:layout_below="@+id/postLayout"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/button_pink_border"
+                android:layout_margin="5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_alert"
+                    android:id="@+id/alertImage"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:layout_gravity="center"
+                    android:textColor="@color/pink"
+                    android:id="@+id/alertText"
+                    android:layout_toRightOf="@+id/alertImage"
+                    android:layout_centerVertical="true"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="5dp" />
+
+            </RelativeLayout>
+
             <ListView
                 android:id="@+id/messageList"
                 android:layout_width="match_parent"
@@ -137,7 +171,7 @@
                 android:stackFromBottom="true"
                 android:divider="@null"
                 android:layout_above="@+id/commentLayout"
-                android:layout_below="@+id/postLayout">
+                android:layout_below="@+id/alertLayout">
             </ListView>
 
             <LinearLayout

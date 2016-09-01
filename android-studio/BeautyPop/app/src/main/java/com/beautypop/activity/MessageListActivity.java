@@ -74,9 +74,9 @@ public class MessageListActivity extends TrackedFragmentActivity {
 
     private ListView listView;
     private View listHeader;
-    private RelativeLayout postLayout, loadMoreLayout;
+    private RelativeLayout postLayout, alertLayout, loadMoreLayout;
 
-    private TextView commentSendButton;
+    private TextView alertText, commentSendButton;
 
     private LinearLayout buyerButtonsLayout, buyerOrderLayout, buyerCancelLayout, buyerMessageLayout;
     private Button buyerOrderButton, buyerCancelButton, buyerOrderAgainButton, buyerMessageButton;
@@ -114,6 +114,9 @@ public class MessageListActivity extends TrackedFragmentActivity {
         postImage = (ImageView) findViewById(R.id.postImage);
         postTitleText = (TextView) findViewById(R.id.postTitleText);
         postPriceText = (TextView) findViewById(R.id.postPriceText);
+
+        alertLayout = (RelativeLayout) findViewById(R.id.alertLayout);
+        alertText = (TextView) findViewById(R.id.alertText);
 
         mainFrameLayout = (FrameLayout) findViewById(R.id.mainFrameLayout);
         profileButton = (ImageView) findViewById(R.id.profileButton);
@@ -156,6 +159,18 @@ public class MessageListActivity extends TrackedFragmentActivity {
                 ViewUtil.startProductActivity(MessageListActivity.this, conversation.getPostId());
             }
         });
+
+        if (conversation.isUserLowReviewScore() || conversation.isUserSuspended()) {
+            String alertMessage = getString(R.string.alert_user_low_review_score, conversation.getUserName());
+            if (conversation.isUserSuspended()) {
+                alertMessage = getString(R.string.alert_user_suspended, conversation.getUserName());
+            }
+
+            alertText.setText(alertMessage);
+            alertLayout.setVisibility(View.VISIBLE);
+        } else {
+            alertLayout.setVisibility(View.GONE);
+        }
 
         loadMoreLayout.setOnClickListener(new View.OnClickListener() {
             @Override

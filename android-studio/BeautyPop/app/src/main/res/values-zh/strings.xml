@@ -6,7 +6,7 @@
     <string name="gcm_project_id">933530461024</string>
     <string name="base_url"></string>
     <string name="base_url_dev">http://119.81.228.91</string>
-    <string name="app_name">BeautyPop</string>
+    <string name="app_name">Stg</string>
 
     <!-- Crash report -->
     <string name="crash_toast_text">對不起！BeautyPop 發生問題要退出</string>
@@ -35,6 +35,8 @@
     <string name="leave_review_confirm">確定提交評價給對方嗎？</string>
     <string name="leave_review_success">成功提交評價 !</string>
     <string name="leave_review_failed">暫時不能提交評價，請稍後重試</string>
+    <string name="alert_user_low_review_score">%1$s 有較多負評。完成交易前請查看用家評價。</string>
+    <string name="alert_user_suspended">用家 %1$s 已彼暫停.</string>
 
     <!-- Settings -->
     <string name="app_desc">BeautyPop - Sell your style!</string>
@@ -402,4 +404,9 @@
     <string name="admin_delete_account_confirm">Confirm delete account?</string>
     <string name="admin_delete_account_success">Account deleted</string>
     <string name="admin_delete_account_failed">Account delete failed</string>
+    <string name="admin_set_product_theme_success">Successfully set product to theme</string>
+    <string name="admin_set_product_theme_failed">Failed to set product to theme</string>
+    <string name="admin_set_product_trend_success">Successfully set product to trend</string>
+    <string name="admin_set_product_trend_failed">Failed to set product to trend</string>
+
 </resources>
