@@ -40,10 +40,10 @@
             android:layout_gravity="bottom"
             android:scaleType="fitXY"
             android:src="@drawable/ic_triangle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="20dp"
+            android:layout_height="10dp"/>
 
-        </FrameLayout>
+    </FrameLayout>
 
     <HorizontalScrollView
         android:id="@+id/horizontalView"
@@ -52,7 +52,10 @@
         android:background="@color/white"
         android:paddingLeft="5dp"
         android:paddingTop="7dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="5dp"
+        android:minHeight="100dp"
+        android:scrollbars="none"
+        android:scrollIndicators="none">
 
         <LinearLayout
             android:id="@+id/moreProductsImagesLayout"

@@ -23,7 +23,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/toolbar"
+        android:scrollIndicators="none">
     </LinearLayout>
 
 </RelativeLayout>
