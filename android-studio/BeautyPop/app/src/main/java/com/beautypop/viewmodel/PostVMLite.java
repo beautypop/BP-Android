@@ -39,6 +39,7 @@ public class PostVMLite implements Serializable {
     public String countryIcon;
 
     // admin fields
+    public long baseScoreAdjust = 0L;
     public long baseScore = 0L;
     public double timeScore = 0D;
 
@@ -264,6 +265,14 @@ public class PostVMLite implements Serializable {
 
     public void setCountryIcon(String countryIcon) {
         this.countryIcon = countryIcon;
+    }
+
+    public long getBaseScoreAdjust() {
+        return baseScoreAdjust;
+    }
+
+    public void setBaseScoreAdjust(long baseScoreAdjust) {
+        this.baseScoreAdjust = baseScoreAdjust;
     }
 
     public long getBaseScore() {
