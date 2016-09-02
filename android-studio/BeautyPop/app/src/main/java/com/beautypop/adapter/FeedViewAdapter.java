@@ -254,14 +254,10 @@ public class FeedViewAdapter extends RecyclerView.Adapter<FeedViewAdapter.FeedVi
 
         // admin
         if (AppController.isUserAdmin()) {
-            holder.timeScoreText.setVisibility(View.VISIBLE);
             holder.adminLayout.setVisibility(View.VISIBLE);
+            holder.timeScoreText.setVisibility(View.VISIBLE);
 
-            String timeScore = ViewUtil.formatDouble(item.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE) + "";
-            if (item.baseScoreAdjust > 0) {
-                timeScore = "*" + timeScore;
-            }
-            holder.timeScoreText.setText(timeScore);
+            holder.timeScoreText.setText(ViewUtil.formatScore(item.timeScore, item.baseScoreAdjust, DefaultValues.DEFAULT_DOUBLE_SCALE));
 
             // theme
 

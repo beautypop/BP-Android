@@ -897,6 +897,14 @@ public class ViewUtil {
         return new BigDecimal(value).setScale(scale, RoundingMode.UP).doubleValue();
     }
 
+    public static String formatScore(double value, double scoreAdjust, int scale) {
+        String score = new BigDecimal(value).setScale(scale, RoundingMode.UP).doubleValue() + "";
+        if (scoreAdjust > 0) {
+            score = "*" + score;
+        }
+        return score;
+    }
+
     public static String formatPrice(double value) {
         //return String.format("$%.2f", value);
         return String.format("$%.0f", value);

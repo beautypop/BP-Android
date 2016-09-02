@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:showDividers="none"
     android:paddingTop="7dp"
-    android:paddingBottom="7dp"
+    android:paddingBottom="10dp"
     android:background="@color/view_bg">
 
     <FrameLayout

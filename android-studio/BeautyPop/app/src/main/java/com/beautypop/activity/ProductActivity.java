@@ -632,7 +632,7 @@ public class ProductActivity extends TrackedFragmentActivity {
 
                     idText.setText(post.id + "");
                     numViewsText.setText(post.getNumViews() + "");
-                    scoreText.setText(ViewUtil.formatDouble(post.timeScore, DefaultValues.DEFAULT_DOUBLE_SCALE) + "");
+                    scoreText.setText(ViewUtil.formatScore(post.timeScore, post.baseScoreAdjust, DefaultValues.DEFAULT_DOUBLE_SCALE));
 
                     idText.setOnClickListener(new View.OnClickListener() {
                         @Override
