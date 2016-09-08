@@ -90,6 +90,13 @@ public class UserReviewAdapter extends BaseAdapter {
 		reviewText.setText(reviewVM.getReview());
         timeText.setText(DateTimeUtil.getTimeAgo(reviewVM.getReviewDate()));
 
+        // reset
+        star1.setImageResource(R.drawable.star_unselected);
+        star2.setImageResource(R.drawable.star_unselected);
+        star3.setImageResource(R.drawable.star_unselected);
+        star4.setImageResource(R.drawable.star_unselected);
+        star5.setImageResource(R.drawable.star_unselected);
+
 		if(reviewVM.getScore() > 0.5 && reviewVM.getScore() <= 1.5){
 			star1.setImageResource(R.drawable.star_selected);
 		}else if(reviewVM.getScore() > 1.5 && reviewVM.getScore() <= 2.5){

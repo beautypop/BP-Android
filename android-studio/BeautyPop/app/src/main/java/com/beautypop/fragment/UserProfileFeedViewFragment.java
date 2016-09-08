@@ -175,9 +175,16 @@ public class UserProfileFeedViewFragment extends FeedViewFragment {
         userNameText.setText(user.name);
         totalReviews.setText("(" + user.getNumReviews() + ")");
 
-		Log.d("Review score=",user.getAverageReviewScore()+"");
+		Log.d("Review score=", user.getAverageReviewScore() + "");
 
-		if(user.getAverageReviewScore() >= 1.0 && user.getAverageReviewScore() <= 1.25){
+        // reset
+        star1.setImageResource(R.drawable.star_unselected);
+        star2.setImageResource(R.drawable.star_unselected);
+        star3.setImageResource(R.drawable.star_unselected);
+        star4.setImageResource(R.drawable.star_unselected);
+        star5.setImageResource(R.drawable.star_unselected);
+
+        if(user.getAverageReviewScore() >= 1.0 && user.getAverageReviewScore() <= 1.25){
             star1.setImageResource(R.drawable.star_selected);
 		}else if(user.getAverageReviewScore() > 1.25 && user.getAverageReviewScore() <= 1.75){
 			star1.setImageResource(R.drawable.star_selected);
