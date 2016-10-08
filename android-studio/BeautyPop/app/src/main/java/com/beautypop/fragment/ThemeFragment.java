@@ -134,10 +134,7 @@ public class ThemeFragment extends TrackedFragment {
 
 
 	public void showTrends(){
-		List<CategoryVM> items = new ArrayList<>();
-
 		for(final CategoryVM vm : CategoryCache.getTrendCategories()){
-
 			LayoutInflater vi = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View v = vi.inflate(R.layout.trend_list_item, null);
 
@@ -149,11 +146,11 @@ public class ThemeFragment extends TrackedFragment {
 			LinearLayout moreProductsImagesLayout = (LinearLayout) v.findViewById(R.id.moreProductsImagesLayout);
 
 			Glide
-					.with(getActivity())
+                    .with(getActivity())
 					.load(vm.getIcon())
 					.diskCacheStrategy(DiskCacheStrategy.SOURCE)
 					.dontAnimate()
-					.placeholder(R.drawable.ic_image_load)
+					.placeholder(R.drawable.ic_banner_load)
 					.into(trendImageView);
 
 			trendTitleText.setText(vm.getName());
@@ -167,15 +164,14 @@ public class ThemeFragment extends TrackedFragment {
 				horizontalView.setVisibility(View.GONE);
 			}
 
-		trendImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ThemeActivity.class);
-                intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, vm.getId());
-                getActivity().startActivity(intent);
-            }
-        });
-
+            trendImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), ThemeActivity.class);
+                    intent.putExtra(ViewUtil.BUNDLE_KEY_CATEGORY_ID, vm.getId());
+                    getActivity().startActivity(intent);
+                }
+            });
 		}
 	}
 

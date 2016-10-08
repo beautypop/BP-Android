@@ -15,7 +15,9 @@
         <ImageView
             android:id="@+id/trendImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scrollIndicators="none" />
 
         <TextView
             android:id="@+id/trendTitleText"
@@ -30,9 +32,9 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/gradient_all"
             android:textStyle="bold"
-            android:minHeight="100dp"
             android:gravity="center"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:scrollIndicators="none" />
 
         <ImageView
             android:layout_marginLeft="20dp"

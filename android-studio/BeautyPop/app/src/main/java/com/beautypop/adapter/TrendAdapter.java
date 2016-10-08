@@ -139,17 +139,15 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.FeedViewHold
 
 		imageWidth = (int) ((double) ViewUtil.getDisplayDimensions(activity).width() / 3.5);  // fit around 3.5 items
 
-        // padding = 10;
-
 		holder.trendTitleText.setText(item.getName());
 		holder.categoryId = item.id;
-        Glide
-            .with(activity)
-            .load(item.getIcon())
-            .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-            .dontAnimate()
-            .placeholder(R.drawable.ic_image_load)
-            .into(holder.trendImageView);
+
+        Glide.with(activity)
+                .load(item.getIcon())
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .dontAnimate()
+                .placeholder(R.drawable.ic_image_load)
+                .into(holder.trendImageView);
 
 		holder.trendImageView.setOnClickListener(new View.OnClickListener() {
 			@Override
